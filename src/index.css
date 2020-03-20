@@ -40,3 +40,17 @@ code {
 .golden{
   color: #B9986D;
 }
+
+.login-logout {
+  color: #B9986D;
+}
+
+.login-logout-button {
+  color: #3F392F;
+  border: 2px #B9986D;
+}
+
+.border {
+  border: 2px #B9986D;
+  border-color: #B9986D !important;
+}
