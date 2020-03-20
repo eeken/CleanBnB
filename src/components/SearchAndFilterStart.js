@@ -1,64 +1,66 @@
 import React, { useState } from "react";
-import {
-  Button,
-  Form,
-  FormGroup,
-  Label,
-  Input,
-} from "reactstrap";
+import { Button, Form, FormGroup, Label, Input } from "reactstrap";
 
 function LandingPage() {
-  const [dropdownOpen, setDropdownOpen] = useState(false);
-
-  const toggle = () => setDropdownOpen(prevState => !prevState);
   return (
-    <main>
+    <main className="row justify-content-center align-middle">
       <Form
-        className="darkbrown golden"
+        className="col-9 col-lg-4 col-md-4 darkbrown golden"
         style={{
           borderRadius: "5px",
-          width: "87.5%",
-          marginTop: "20%",
           padding: "30px",
-          fontWeight: "bold"
+          fontWeight: "bold",
+          marginTop: "25%"
         }}
       >
         <p style={{ fontSize: "1.4em" }} align="center">
-          {" "}
-          Book your uniqe stay around the world!{" "}
+          Book your unique stay around the world!
         </p>
-        <FormGroup className="col-sm-12" align="left">
+        <FormGroup align="left">
           <Label for="destination-input">Destination </Label>
           <Input type="text" id="destination-input" className="mb-4"></Input>
         </FormGroup>
 
-        <FormGroup className="col-sm-12 mb-4">
+        <FormGroup>
           <div className="row justify-content-around">
-            <Input style={{ width: "40%" }} type="date" />
-            <Input style={{ width: "40%" }} type="date" />
+            <Label for="destination-input">Check-in </Label>
+            <Label for="destination-input">Check-out </Label>
+          </div>
+          <div className="row justify-content-around">
+            <Input
+              id="destination-input"
+              style={{ width: "40%" }}
+              type="date"
+            />
+            <Input
+              id="destination-input"
+              style={{ width: "40%" }}
+              type="date"
+            />
           </div>
         </FormGroup>
 
-        <FormGroup className="col-sm-12 mb-4">
-        <Label for="guestSelection" align="left">Guests</Label>
-        <Input type="select" name="guestSelection" id="guestSelection">
-          <option> </option>
-          <option>1</option>
-          <option>2</option>
-          <option>3</option>
-          <option>4</option>
-          <option>5</option>
-          <option>6+</option>
-        </Input>
-      </FormGroup>
+        <FormGroup>
+          <Label for="guestSelection" align="left">
+            Guests
+          </Label>
+          <Input type="select" name="guestSelection" id="guestSelection">
+            <option> </option>
+            <option>1</option>
+            <option>2</option>
+            <option>3</option>
+            <option>4</option>
+            <option>5</option>
+            <option>6+</option>
+          </Input>
+        </FormGroup>
 
         <Button
           style={{
-            width: "90%",
+            width: "100%",
             backgroundColor: "#B9986D",
             fontWeight: "Bold"
           }}
-          className="col-sm-12 mb-4"
         >
           SEARCH
         </Button>
