@@ -1,12 +1,30 @@
 import React from 'react';
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route
+} from "react-router-dom";
+
 import Footer from './components/Footer';
+import Header from './components/Header'
 import './sass/style.scss'
 // import { BrowserRouter as Router, Route } from 'react-router-dom';
 import LandingPage from './Pages/LandingPage'
 
 function App() {
+
+  let menu = [
+    { label: 'Home', route: '/' },
+    { label: 'Explore', route: '/explore' },
+    { label: 'About', route: '/about' }
+  ];
+
+  let userIsLoggedIn = false;
+
   return (
+    <Router>
     <div className="App">
+      <Header menuData={menu} userIsLoggedIn={userIsLoggedIn} />
       <main className="container">
       {/* <Router> */}
       <h1>Clean BnB</h1>
@@ -23,6 +41,7 @@ Sed in ante in quam ullamcorper euismod. Suspendisse viverra rutrum est ac dapib
       {/* <Route exact path="/" component={LandingPage}/>
       </Router> */}
     </div>
+    </Router>
   );
 }
 
