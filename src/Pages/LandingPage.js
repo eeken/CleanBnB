@@ -1,13 +1,12 @@
-import React from 'react';
+import React from "react";
+import SearchAndFilerStart from "../components/SearchAndFilterStart";
 
 function LandingPage() {
-    return (
-        <div className="container">
-            <div className="darkbrown">
-                <h1 className="golden"> test </h1>
-            </div>
-        </div>
-    )
+  return (
+    <div className="row" align="center">
+      <SearchAndFilerStart className="col" />
+    </div>
+  );
 }
 
 export default LandingPage;
