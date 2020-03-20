@@ -1,14 +1,14 @@
 import React from 'react';
 import Footer from './components/Footer';
 import './sass/style.scss'
-import { BrowserRouter as Router, Route } from 'react-router-dom';
+// import { BrowserRouter as Router, Route } from 'react-router-dom';
 import LandingPage from './Pages/LandingPage'
 
 function App() {
   return (
     <div className="App">
       <main className="container">
-      <Router>
+      {/* <Router> */}
       <h1>Clean BnB</h1>
       <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean lobortis dui id consequat aliquam. Quisque ut turpis porttitor, hendrerit urna ac, placerat nisl. Phasellus mattis id nisl nec aliquet. Morbi sit amet malesuada diam. Quisque in efficitur mi. Ut imperdiet magna vel fringilla accumsan. Nunc blandit vehicula ex, vel gravida mauris viverra et. Nam eget eleifend mauris, vitae elementum dolor. Fusce ullamcorper metus non massa hendrerit imperdiet. Curabitur ac ante in lectus elementum maximus in malesuada lectus. Phasellus tellus dui, ultrices ut nulla vitae, volutpat ornare dolor. Curabitur vehicula ex placerat mollis fringilla.
 </p><p>
@@ -20,8 +20,8 @@ Sed in ante in quam ullamcorper euismod. Suspendisse viverra rutrum est ac dapib
         
       </main>
       <Footer/>
-      <Route exact path="/" component={LandingPage}/>
-      </Router>
+      {/* <Route exact path="/" component={LandingPage}/>
+      </Router> */}
     </div>
   );
 }
