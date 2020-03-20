@@ -5,6 +5,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+   
 }
 
 code {
@@ -16,6 +17,12 @@ code {
   margin: 0;
   padding: 0;
 }
+
+.footer{
+ background-color: #3F392F;
+ color: #B9986D
+}
+
 
 .App{
   height: 100vh;
