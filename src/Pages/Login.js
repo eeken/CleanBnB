@@ -16,14 +16,16 @@ function Login() {
       className="container"
       style={{
         display: "flex",
-        width: "19em",
         flexDirection: "column",
-        alignItems: "center"
+        alignItems: "center",
+        marginTop: "7em",
+        marginBottom: "7em",
       }}
     >
       <Form
-        className="col-12 col-lg-4 col-md-6 darkbrown golden"
+        className="col-12 col-lg-8 col-md-6 darkbrown golden"
         style={{
+          width: "80%",
           borderRadius: "5px",
           padding: "30px",
           fontWeight: "bold"
@@ -60,10 +62,10 @@ function Login() {
         >
           Log In
         </Button>
-        <p style={{
+        <p align="right"
+          style={{
           fontStyle: "italic",
           fontSize: "12px",
-          marginLeft: "5em",
           marginTop: "3px"
           }}>Or become a member here!</p>
       </Form>

@@ -1,6 +1,5 @@
 import React from "react";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-
+import { BrowserRouter as Router, Switch, Route} from "react-router-dom";
 import Footer from "./components/Footer";
 import Header from "./components/Header";
 import "./sass/style.scss";
@@ -21,7 +20,7 @@ function App() {
 
   return (
     
-    <div className="App">
+    <div className="App bg-image">
       <Router>
         <Header menuData={menu} userIsLoggedIn={userIsLoggedIn} />
         <main className="container mt-4">
@@ -41,7 +40,7 @@ function App() {
             </Route>
           </Switch>
         </main>
-        <Footer />
+        <Footer className="footer"/>
       </Router>
   </div>
   );
