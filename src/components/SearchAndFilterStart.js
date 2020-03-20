@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Button, Form, FormGroup, Label, Input } from "reactstrap";
+import { Button, Form, FormGroup, Label, Input, Container } from "reactstrap";
 
 function LandingPage() {
   const [destination, setDestination] = useState("");
@@ -16,14 +16,20 @@ function LandingPage() {
   };
 
   return (
-    <main className="row justify-content-center align-middle">
+    <div
+      className="container"
+      style={{
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center"
+      }}
+    >
       <Form
-        className="col-9 col-lg-4 col-md-6 darkbrown golden"
+        className="col-12 col-lg-4 col-md-6 darkbrown golden"
         style={{
           borderRadius: "5px",
           padding: "30px",
-          fontWeight: "bold",
-          marginTop: "25%"
+          fontWeight: "bold"
         }}
         onSubmit={submitSearch}
       >
@@ -34,6 +40,7 @@ function LandingPage() {
           <Label for="destination-input">Destination </Label>
           <Input
             type="text"
+
             id="destination-input"
             value={destination}
             onChange={e => setDestination(e.target.value)}
@@ -45,17 +52,17 @@ function LandingPage() {
             <Label for="destination-input"> Check-in </Label>
             <Label for="destination-input"> Check-out </Label>
           </div>
-          <div className="row justify-content-around">
+          <div className="row" style={{ justifyContent: "space-around" }}>
             <Input
+              className="col-5"
               id="destination-input"
-              style={{ width: "40%" }}
               type="date"
               value={checkIn}
               onChange={e => setCheckIn(e.target.value)}
             />
             <Input
+              className="col-5"
               id="destination-input"
-              style={{ width: "40%" }}
               type="date"
               value={checkOut}
               onChange={e => setCheckOut(e.target.value)}
@@ -92,7 +99,7 @@ function LandingPage() {
           SEARCH
         </Button>
       </Form>
-    </main>
+    </div>
   );
 }
 export default LandingPage;
