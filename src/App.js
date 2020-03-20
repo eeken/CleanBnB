@@ -16,7 +16,8 @@ function App() {
   let menu = [
     { label: 'Home', route: '/' },
     { label: 'Explore', route: '/explore' },
-    { label: 'About', route: '/about' }
+    { label: 'About', route: '/about' },
+    { label: 'CLEANBNB', route: '/'}
   ];
 
   let userIsLoggedIn = false;

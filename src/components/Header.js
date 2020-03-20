@@ -31,11 +31,11 @@ export default function Header(props) {
                 </NavLink>
               </li>
             ))}
-            <div className="ml-5" style={{flexDirection: 'row', justifyContent: 'flex-end'}}>
-              <Button color="light">
+            <div className="ml-5 login-logout-button">
+              <Button color="dark" className="border">
                 {props.userIsLoggedIn ?
-                  <a href="#log-out">Log out</a> :
-                  <a href="#log-in">Log in</a>
+                  <a href="#log-out" className="login-logout">LOG OUT</a> :
+                  <a href="#log-in" className="login-logout">LOG IN</a>
                 }
               </Button>
             </div>
