@@ -20,8 +20,9 @@ function App() {
   let userIsLoggedIn = false;
 
   return (
-    <Router>
-      <div className="App">
+    
+    <div className="App">
+      <Router>
         <Header menuData={menu} userIsLoggedIn={userIsLoggedIn} />
         <main className="container mt-4" style={{ minHeight: "90vh" }}>
           {/* <Router> */}
@@ -40,9 +41,9 @@ function App() {
             </Route>
           </Switch>
         </main>
-      </div>
-      <Footer />
-    </Router>
+        <Footer />
+      </Router>
+  </div>
   );
 }
 

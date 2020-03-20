@@ -1,6 +1,6 @@
 import React from 'react';
 
-function LandingPage() {
+function About() {
     return (
         <div className="container">
             <div className="darkbrown">
@@ -10,4 +10,4 @@ function LandingPage() {
     )
 }
 
-export default LandingPage;
+export default About;
