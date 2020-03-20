@@ -7,7 +7,7 @@ function LandingPage() {
       <Container style={{
         display: 'flex',
         flexDirection: 'column',
-        height: '100vh',
+        height: '80vh',
         alignItems: 'center',
         justifyContent: 'center'
       }}>
