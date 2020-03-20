@@ -31,14 +31,14 @@ export default function Header(props) {
                 </NavLink>
               </li>
             ))}
-            <div className="ml-5 login-logout-button">
+            {/* <div className="ml-5 login-logout-button">
               <Button color="dark" className="border">
                 {props.userIsLoggedIn ?
                   <a href="#log-out" className="login-logout">LOG OUT</a> :
                   <a href="#log-in" className="login-logout">LOG IN</a>
                 }
               </Button>
-            </div>
+            </div> */}
           </Nav>
         </Collapse>
       </Navbar>
