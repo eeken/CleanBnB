@@ -23,7 +23,7 @@ function App() {
     <Router>
       <div className="App">
         <Header menuData={menu} userIsLoggedIn={userIsLoggedIn} />
-        <main className="container mt-4">
+        <main className="container mt-4" style={{ minHeight: "90vh" }}>
           {/* <Router> */}
           <Switch>
             <Route exact path="/">
