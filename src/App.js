@@ -1,15 +1,21 @@
+/*    ----- LIBRARIES -----   */
 import React from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import "./sass/style.scss";
 
+/*    ----- IMPORTS FROM /COMPONENTS -----   */
 import Footer from "./components/Footer";
 import Header from "./components/Header";
-import "./sass/style.scss";
+
+/*    ----- IMPORTS FROM /PAGES -----   */
 import LandingPage from "./Pages/LandingPage";
 import Explore from "./Pages/Explore";
 import About from "./Pages/About";
 import Login from "./Pages/Login";
+import ResidenceDetails from "./Pages/ResidenceDetails";
 
 function App() {
+  /*    ----- MENU/ROUTES -----   */
   let menu = [
     { label: "Home", route: "/" },
     { label: "Explore", route: "/explore" },
@@ -20,30 +26,21 @@ function App() {
   let userIsLoggedIn = false;
 
   return (
-    <Router>
-      <div className="App">
+    <div className="App bg-image">
+      <Router>
         <Header menuData={menu} userIsLoggedIn={userIsLoggedIn} />
         <main className="container mt-4">
-          {/* <Router> */}
           <Switch>
-            <Route exact path="/">
-              <LandingPage></LandingPage>
-            </Route>
-            <Route exact path="/explore">
-              <Explore></Explore>
-            </Route>
-            <Route exact path="/about">
-              <About></About>
-            </Route>
-            <Route exact path="/login">
-              <Login></Login>
-            </Route>
+            <Route exact path="/" component={LandingPage} />
+            <Route exact path="/explore" component={Explore} />
+            <Route exact path="/about" component={About} />
+            <Route exact path="/login" component={Login} />
+            <Route exact path="/ResidenceDetails" component={ResidenceDetails} />
           </Switch>
         </main>
-      </div>
-      <Footer />
-    </Router>
+        <Footer className="footer" />
+      </Router>
+    </div>
   );
 }
-
 export default App;
