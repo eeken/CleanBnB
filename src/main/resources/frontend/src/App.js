@@ -9,6 +9,7 @@ import Explore from "./Pages/Explore";
 import About from "./Pages/About";
 import Login from "./Pages/Login";
 
+
 function App() {
   let menu = [
     { label: "Home", route: "/" },

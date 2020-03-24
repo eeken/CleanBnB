@@ -12,6 +12,7 @@ public class Residence {
     private int size;
     private int rooms;
     private int maxguests;
+    private int pricepernight;
 
     public int getPricepernight() {
         return pricepernight;
@@ -20,8 +21,6 @@ public class Residence {
     public void setPricepernight(int pricepernight) {
         this.pricepernight = pricepernight;
     }
-
-    private int pricepernight;
 
     public int getId() {
         return id;
