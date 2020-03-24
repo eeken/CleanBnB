@@ -23,7 +23,7 @@ function Login() {
       }}
     >
       <Form
-        className="col-12 col-lg-8 col-md-6 darkbrown golden"
+        className="col-12 col-lg-4 col-md-6 darkbrown golden"
         style={{
           width: "80%",
           borderRadius: "5px",
