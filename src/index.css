@@ -39,6 +39,9 @@ code {
 .golden{
   color: #B9986D;
 }
+.white{
+  background-color: white;
+}
 
 .login-logout {
   color: #B9986D;
