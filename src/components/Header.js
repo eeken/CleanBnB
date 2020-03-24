@@ -4,7 +4,6 @@ import {
   Navbar,
   NavbarToggler,
   Nav,
-  Button,
   /*NavLink,*/ // collides with router
 } from 'reactstrap';
 
