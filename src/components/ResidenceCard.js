@@ -24,7 +24,7 @@ function ResidenceCard() {
         }}
       ></div>
       <div className="col-8">
-        <p className="golden" style={{ fontSize: "1.2em", fontWeight: "bold" }}>
+        <p className="golden mt-3 mb-0" style={{ fontSize: "1.2em", fontWeight: "bold" }}>
           {residence.title}
         </p>
         <p className="golden" style={{ fontSize: "0.75em" }}>
@@ -32,7 +32,8 @@ function ResidenceCard() {
           {residence.numberOfRooms} rooms
         </p>
         <p className="golden">
-          <span style={{ fontSize: "1.8em", fontWeight: "bold" }}>
+          <span style={{ fontSize: "1.8em", fontWeight: "bold" }}
+          className="self-align-end">
             {residence.pricePerNight}kr
           </span>
           <span style={{ fontSize: "1em" }}> per night</span>
