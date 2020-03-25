@@ -1,35 +1,27 @@
 import React from "react";
 
-function ResidenceCard() {
-  const residence = {
-    title: "Lake House In South Sweden",
-    maxGuests: 4,
-    numberOfBeds: 2,
-    numberOfRooms: 4,
-    pricePerNight: 650
-  };
-
+function ResidenceCard(props) {
   return (
     <div className="row text-left residenceCard mb-0">
       <div className="col-5 prevImage">
         <img
           className="cardImage"
-          src="https://a0.muscache.com/im/pictures/690033e1-e80d-4966-be65-d968da63934f.jpg"
+          src={props.residence.image}
           alt="residence-preview"
         />
       </div>
       <div className="col-7">
         <p className="golden mt-3 mb-0 residenceDetailsTitle">
-          {residence.title}
+          {props.residence.title}
         </p>
         <p className="golden residenceDetailsCommonDetails">
-          {residence.maxGuests} guests - {residence.numberOfBeds} beds -
-          {residence.numberOfRooms} rooms
+          {props.residence.maxGuests} guests - {props.numberOfBeds} beds -
+          {props.residence.numberOfRooms} rooms
         </p>
 
         <div className="golden residencePriceDetails">
           <p>
-            {residence.pricePerNight} kr
+            {props.residence.pricePerNight} kr
             <span className="residenceDetailsCommonDetails"> per night </span>
           </p>
         </div>
