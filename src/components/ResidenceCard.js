@@ -10,8 +10,8 @@ function ResidenceCard() {
   };
 
   return (
-    <div className="row text-left">
-      <div className="col-5 image-container">
+    <div className="row text-left residenceCard mb-0">
+      <div className="col-5 prevImage">
         <img
           className="cardImage"
           src="https://a0.muscache.com/im/pictures/690033e1-e80d-4966-be65-d968da63934f.jpg"
