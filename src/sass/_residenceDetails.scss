@@ -1,0 +1,31 @@
+.residenceCard {
+  height: 20vh;
+  display: flex;
+  align-items: center;
+}
+.image-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0;
+}
+.cardImage {
+  height: auto;
+  width: 100%;
+  border-radius: 10px;
+}
+.residenceDetailsTitle {
+  font-size: 0.95rem;
+  font-weight: 1000;
+}
+.residencePriceDetails {
+  font-size: 0.95rem;
+  font-weight: 1000;
+}
+.residenceDetailsCommonDetails {
+  font-size: 0.75rem;
+  font-weight: 0;
+}
+.perNightText {
+  font-size: 1em;
+}

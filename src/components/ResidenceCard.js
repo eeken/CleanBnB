@@ -1,7 +1,6 @@
 import React from "react";
 
 function ResidenceCard() {
-  
   const residence = {
     title: "Lake House In South Sweden",
     maxGuests: 4,
@@ -11,27 +10,29 @@ function ResidenceCard() {
   };
 
   return (
-    <div className="row" style={{height: '20vh', display: 'flex', alignItems: 'center'}}>
-      <div className="col-5">
-        <img src="https://a0.muscache.com/im/pictures/690033e1-e80d-4966-be65-d968da63934f.jpg"
-          style={{ height: 'auto', width: '100%', borderRadius: '10px' }}
-        alt="imag"/>
+    <div className="row text-left">
+      <div className="col-5 image-container">
+        <img
+          className="cardImage"
+          src="https://a0.muscache.com/im/pictures/690033e1-e80d-4966-be65-d968da63934f.jpg"
+          alt="residence-preview"
+        />
       </div>
       <div className="col-7">
-        <p className="golden mt-3 mb-0" style={{ fontSize: "2.1vh", fontWeight: "bold" }}>
+        <p className="golden mt-3 mb-0 residenceDetailsTitle">
           {residence.title}
         </p>
-        <p className="golden" style={{ fontSize: "2vh" }}>
-          {residence.maxGuests} guests - {residence.numberOfBeds} beds - 
+        <p className="golden residenceDetailsCommonDetails">
+          {residence.maxGuests} guests - {residence.numberOfBeds} beds -
           {residence.numberOfRooms} rooms
         </p>
-        <p className="golden">
-          <span style={{ fontSize: "2.8vh", fontWeight: "bold" }}
-          className="self-align-end">
-            {residence.pricePerNight}kr
-          </span>
-          <span style={{ fontSize: "1em" }}> per night</span>
-        </p>
+
+        <div className="golden residencePriceDetails">
+          <p>
+            {residence.pricePerNight} kr
+            <span className="residenceDetailsCommonDetails"> per night </span>
+          </p>
+        </div>
       </div>
     </div>
   );
