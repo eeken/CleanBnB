@@ -16,28 +16,18 @@ function LandingPage() {
   };
 
   return (
-    <div
-      className="container"
-      style={{
-        display: "flex",
-        flexDirection: "column",
-        alignItems: "center"
-      }}
-    >
+    <div className="col-12 col-lg-3 col-md-6">
       <Form
-        className="col-12 col-lg-4 col-md-6 darkbrown golden"
-        style={{
-          borderRadius: "5px",
-          padding: "30px",
-          fontWeight: "bold"
-        }}
+        className="darkbrown golden searchAndFilterForm"
         onSubmit={submitSearch}
       >
-        <h2 style={{ fontSize: "1.4rem" }} align="center">
+        <h2 className="searchAndFilterFormTitle" align="center">
           Book your unique stay around the world!
         </h2>
-        <FormGroup align="left" style={{fontSize: "0.8em"}}>
-          <Label for="destination-input" className="mb-1">Destination </Label>
+        <FormGroup align="left">
+          <Label for="destination-input" className="mb-1">
+            Destination{" "}
+          </Label>
           <Input
             type="text"
             id="destination-input"
@@ -46,14 +36,18 @@ function LandingPage() {
           ></Input>
         </FormGroup>
 
-        <FormGroup style={{fontSize: "0.8em"}}>
+        <FormGroup>
           <div className="row justify-content-around">
-            <Label for="destination-input" className="mb-1"> Check-in </Label>
-            <Label for="destination-input" className="mb-1"> Check-out </Label>
+            <Label for="destination-input" className="mb-1">
+              Check-in
+            </Label>
+            <Label for="destination-input" className="mb-1">
+              Check-out
+            </Label>
           </div>
-          <div className="row" style={{ justifyContent: "space-around" }}>
+          <div className="row dateInputRow">
             <Input
-              className="col-5"
+              className="col-5 dateInput"
               id="destination-input"
               type="date"
               value={checkIn}
@@ -69,7 +63,7 @@ function LandingPage() {
           </div>
         </FormGroup>
 
-        <FormGroup style={{fontSize: "0.8em"}}>
+        <FormGroup>
           <Label for="guestSelection" align="left" className="mb-1">
             Guests
           </Label>
@@ -87,16 +81,7 @@ function LandingPage() {
             <option value={6}>6</option>
           </Input>
         </FormGroup>
-
-        <Button
-          style={{
-            width: "100%",
-            backgroundColor: "#B9986D",
-            fontWeight: "Bold"
-          }}
-        >
-          SEARCH
-        </Button>
+        <Button className="searchButton" style={{backgroundColor: '#B9986D'}}>SEARCH</Button>
       </Form>
     </div>
   );

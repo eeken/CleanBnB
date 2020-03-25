@@ -1,0 +1,19 @@
+.loginMain {
+  min-height: 85vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.loginForm {
+  border-radius: 5px;
+  padding: 30px;
+  font-weight: bold;
+}
+
+.loginFormTitle {
+  font-size: 1.8em;
+}
+.loginSubmitButton {
+  font-weight: Bold;
+  width: 100%;
+}

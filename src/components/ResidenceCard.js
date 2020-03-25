@@ -11,35 +11,28 @@ function ResidenceCard() {
   };
 
   return (
-    <div className="row" style={{ height: "25vh" }}>
-      <div
-        className="col-4"
-        style={{
-          backgroundImage:
-            "url(https://a0.muscache.com/im/pictures/690033e1-e80d-4966-be65-d968da63934f.jpg)",
-          backgroundSize: "cover",
-          backgroundRepeat: "no-repeat",
-          width: "100%",
-          height: "auto"
-        }}
-      ></div>
-      <div className="col-8">
-        <p className="golden mt-3 mb-0" style={{ fontSize: "1.2em", fontWeight: "bold" }}>
+    <div className="row" style={{height: '20vh', display: 'flex', alignItems: 'center'}}>
+      <div className="col-5">
+        <img src="https://a0.muscache.com/im/pictures/690033e1-e80d-4966-be65-d968da63934f.jpg"
+          style={{ height: 'auto', width: '100%', borderRadius: '10px' }}
+        alt="imag"/>
+      </div>
+      <div className="col-7">
+        <p className="golden mt-3 mb-0" style={{ fontSize: "2.1vh", fontWeight: "bold" }}>
           {residence.title}
         </p>
-        <p className="golden" style={{ fontSize: "0.75em" }}>
-          {residence.maxGuests} guests - {residence.numberOfBeds} beds -
+        <p className="golden" style={{ fontSize: "2vh" }}>
+          {residence.maxGuests} guests - {residence.numberOfBeds} beds - 
           {residence.numberOfRooms} rooms
         </p>
         <p className="golden">
-          <span style={{ fontSize: "1.8em", fontWeight: "bold" }}
+          <span style={{ fontSize: "2.8vh", fontWeight: "bold" }}
           className="self-align-end">
             {residence.pricePerNight}kr
           </span>
           <span style={{ fontSize: "1em" }}> per night</span>
         </p>
       </div>
-      <hr></hr>
     </div>
   );
 }

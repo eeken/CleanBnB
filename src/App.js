@@ -20,10 +20,10 @@ function App() {
 
   return (
     
-    <div className="App bg-image">
+    <div className="App">
       <Router>
-        <Header menuData={menu} userIsLoggedIn={userIsLoggedIn} style={{height: '10vh'}} />
-        <main className="container mt-4" style={{minHeight: '71vh'}}>
+        <Header menuData={menu} userIsLoggedIn={userIsLoggedIn}/>
+        <main className="mt-4">
           {/* <Router> */}
           <Switch>
             <Route exact path="/">
@@ -40,7 +40,7 @@ function App() {
             </Route>
           </Switch>
         </main>
-        <Footer className="footer" style={{height: '5vh'}}/>
+        <Footer className="footer"/>
       </Router>
   </div>
   );

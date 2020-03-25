@@ -24,13 +24,16 @@ code {
  color: #B9986D
 }
 
-
 .App{
   background-image: url('./images/clean-bnb-background-image.jpeg');
   background-repeat: no-repeat;
   background-size: cover;
   background-attachment: fixed;
   background-position: 33.5%; 
+  padding: 0;
+}
+main{
+  min-height: 81vh;
 }
 
 .darkbrown{
