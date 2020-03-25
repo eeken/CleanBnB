@@ -43,6 +43,7 @@ function Login() {
         </FormGroup>
 
         <Button
+          className="loginSubmitButton"
           style={{
             backgroundColor: "#B9986D"
           }}
@@ -51,11 +52,7 @@ function Login() {
         </Button>
         <p
           align="right"
-          style={{
-            fontStyle: "italic",
-            fontSize: "12px",
-            marginTop: "3px"
-          }}
+          className="loginRegisterText"
         >
           Or become a member here!
         </p>
