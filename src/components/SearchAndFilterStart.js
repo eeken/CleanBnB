@@ -33,24 +33,23 @@ function LandingPage() {
         }}
         onSubmit={submitSearch}
       >
-        <p style={{ fontSize: "1.4em" }} align="center">
+        <h2 style={{ fontSize: "1.4rem" }} align="center">
           Book your unique stay around the world!
-        </p>
-        <FormGroup align="left">
-          <Label for="destination-input">Destination </Label>
+        </h2>
+        <FormGroup align="left" style={{fontSize: "0.8em"}}>
+          <Label for="destination-input" className="mb-1">Destination </Label>
           <Input
             type="text"
-
             id="destination-input"
             value={destination}
             onChange={e => setDestination(e.target.value)}
           ></Input>
         </FormGroup>
 
-        <FormGroup>
+        <FormGroup style={{fontSize: "0.8em"}}>
           <div className="row justify-content-around">
-            <Label for="destination-input"> Check-in </Label>
-            <Label for="destination-input"> Check-out </Label>
+            <Label for="destination-input" className="mb-1"> Check-in </Label>
+            <Label for="destination-input" className="mb-1"> Check-out </Label>
           </div>
           <div className="row" style={{ justifyContent: "space-around" }}>
             <Input
@@ -70,8 +69,8 @@ function LandingPage() {
           </div>
         </FormGroup>
 
-        <FormGroup>
-          <Label for="guestSelection" align="left">
+        <FormGroup style={{fontSize: "0.8em"}}>
+          <Label for="guestSelection" align="left" className="mb-1">
             Guests
           </Label>
           <Input

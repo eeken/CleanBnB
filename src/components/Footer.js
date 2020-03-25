@@ -3,17 +3,13 @@ import { Row, Col } from 'reactstrap'
 
 export default function Footer() {
   return (
-    <footer className="container-fluid">
+    <footer className="container-fluid mt-4">
       <Row>
-        <Col xs="12" className="footer text light
-        pt-3 text-center">
-          &#169; 2020 CleanBNB, Inc. All rights reserved.
-        </Col>
-      </Row>
-      <Row>
-        <Col xs="12" className="footer text light
-         pb-3 text-center">
-          About | Contact.
+        <Col xs="12" className="footer p-2 text-center"
+        style={{
+            fontSize: "0.7em"
+          }}>
+          &#169; 2020 CleanBnb, Inc. All rights reserved.
         </Col>
       </Row>
     </footer>
