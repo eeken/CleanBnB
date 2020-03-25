@@ -15,7 +15,7 @@ function ResidenceCard(props) {
           {props.residence.title}
         </p>
         <p className="golden residenceDetailsCommonDetails">
-          {props.residence.maxGuests} guests - {props.numberOfBeds} beds -
+          {props.residence.maxGuests} guests - {props.residence.numberOfBeds} beds -
           {props.residence.numberOfRooms} rooms
         </p>
 
