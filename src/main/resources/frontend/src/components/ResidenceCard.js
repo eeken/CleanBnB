@@ -2,8 +2,8 @@ import React from "react";
 
 function ResidenceCard(props) {
   return (
-    <div className="row text-left residenceCard mb-0">
-      <div className="col-5 prevImage">
+    <div className="row text-left residenceCard mb-3">
+      <div className="col-4 col-lg-2 col-md-3 prevImage">
         <img
           className="cardImage"
           src={props.residence.image}

@@ -1,13 +1,20 @@
 import React from "react";
 import ResidenceCard from "../components/ResidenceCard";
+
 function Explore() {
   return (
+    <div>
+      <div className="white m-4 searchBar"> Click here to search... </div>
+
     <div className="col-12 white">
+      <div className="whiteBackground p-4">
       <ul>
         {listOfResidences.map(residence => {
           return <ResidenceCard residence={residence} />;
         })}
-      </ul>
+        </ul>
+      </div>
+      </div>
     </div>
   );
 }

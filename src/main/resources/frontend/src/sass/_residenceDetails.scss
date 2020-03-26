@@ -11,8 +11,8 @@
   padding: 0;
 }
 .cardImage {
-  height: auto;
-  width: 100%;
+  height: 15vh;
+  width: auto;
   border-radius: 5px;
 }
 .residenceDetailsTitle {
@@ -30,4 +30,16 @@
 }
 .perNightText {
   font-size: 1em;
+}
+
+.whiteBackground {
+  background-color: white;
+}
+
+.searchBar {
+  border-radius: 5px;
+  padding: 0.5em;
+  padding-left: 2em;
+  font-style: italic;
+  color: rgb(168, 168, 168);
 }
