@@ -1,16 +1,21 @@
-import React, { useContext } from 'react'
-import { ResidenceContext } from '../contexts/ResidenceContextProvider'
+import React, { useContext } from "react";
+import { ResidenceContext } from "../contexts/ResidenceContextProvider";
+import { useHistory } from "react-router-dom";
 
 function ResidenceCard() {
+  const { residences } = useContext(ResidenceContext);
 
-  const { residences } = useContext(ResidenceContext)
+  let history = useHistory();
 
   if (residences) {
     const list = () => {
       return residences.map((residence, i) => {
         return (
-        
-          <div className="row text-left residenceCard mb-3">
+          <div
+            key={i}
+            onClick={() => history.push("/residence/" + residence.id)}
+            className="row text-left residenceCard mb-3"
+          >
             <div className="col-4 col-lg-2 col-md-3 prevImage">
               <img
                 className="cardImage"
@@ -24,29 +29,25 @@ function ResidenceCard() {
               </p>
               <p className="golden residenceDetailsCommonDetails">
                 {residence.maxGuests} guests - {residence.numberofbeds} beds -
-          {residence.rooms} rooms
-        </p>
+                {residence.rooms} rooms
+              </p>
 
               <div className="golden residencePriceDetails">
                 <p>
                   {residence.pricepernight} kr
-            <span className="residenceDetailsCommonDetails"> per night </span>
+                  <span className="residenceDetailsCommonDetails">
+                    {" "}
+                    per night{" "}
+                  </span>
                 </p>
               </div>
             </div>
           </div>
+        );
+      });
+    };
 
-
-        )
-      })
-    }
-  
-
-    return (
-      <>
-        {list()}
-      </>
-    )
+    return <>{list()}</>;
   }
 
   return null;

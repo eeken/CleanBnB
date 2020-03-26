@@ -4,6 +4,7 @@ export const ResidenceContext = createContext();
 
 export default function ResidenceContextProvider(props) {
   const [residences, setResidences] = useState(null)
+  const [residenceDetails, setResidenceDetails] = useState('')
 
   const fetchResidence = async () => {
     let res = await fetch('/rest/residences')
@@ -17,14 +18,23 @@ export default function ResidenceContextProvider(props) {
     }
   }
 
+    const fetchResidenceDetails = async (id) => {
+    let res = await fetch("/rest/residences/" + id);
+    res = await res.json();
+    setResidenceDetails(res);
+  };
+
   useEffect(() => {
     fetchResidence()
-     }, [])
+  }, [])
 
   const values = {
     residences,
     fetchResidence,
-    setResidences
+    setResidences,
+    residenceDetails,
+    setResidenceDetails,
+    fetchResidenceDetails
   }
   
   return (

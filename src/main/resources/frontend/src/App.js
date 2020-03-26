@@ -7,6 +7,7 @@ import LandingPage from "./Pages/LandingPage";
 import Explore from "./Pages/Explore";
 import About from "./Pages/About";
 import Login from "./Pages/Login";
+import ResidenceDetailsPage from "./Pages/ResidenceDetailsPage";
 import ResidenceContextProvider from "./contexts/ResidenceContextProvider";
 
 
@@ -40,6 +41,9 @@ function App() {
             </Route>
             <Route exact path="/login">
               <Login></Login>
+            </Route>
+            <Route path={"/residence/:id"} component={ResidenceDetailsPage}>
+              <ResidenceDetailsPage></ResidenceDetailsPage>
             </Route>
           </Switch>
         </main>
