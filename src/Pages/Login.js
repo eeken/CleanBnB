@@ -5,38 +5,25 @@ function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const submitLogin = (e) => {
+  const submitLogin = e => {
     e.preventDefault();
     console.log("Email entered :  " + email);
     console.log("Password entered  :  " + password);
   };
 
   return (
-    <div
-      className="container"
-      style={{
-        display: "flex",
-        flexDirection: "column",
-        alignItems: "center",
-        marginTop: "7em",
-        marginBottom: "7em",
-      }}
-    >
+    <div className="loginMain ">
       <Form
-        className="col-12 col-lg-4 col-md-6 darkbrown golden"
-        style={{
-          width: "80%",
-          borderRadius: "5px",
-          padding: "30px",
-          fontWeight: "bold"
-        }}
+        className="loginForm col-10 col-lg-3 col-md-6 darkbrown golden"
         onSubmit={submitLogin}
       >
-        <p style={{ fontSize: "1.8em" }} align="center">
+        <p className="loginFormTitle" align="center">
           Log In
         </p>
         <FormGroup align="left">
-          <Label for="email-input" className="mb-1">E-mail</Label>
+          <Label for="email-input" className="mb-1">
+            E-mail
+          </Label>
           <Input
             type="text"
             id="email-input"
@@ -45,7 +32,9 @@ function Login() {
         </FormGroup>
 
         <FormGroup align="left">
-          <Label for="password-input" className="mb-1">Password</Label>
+          <Label for="password-input" className="mb-1">
+            Password
+          </Label>
           <Input
             type="text"
             id="password-input"
@@ -54,20 +43,19 @@ function Login() {
         </FormGroup>
 
         <Button
+          className="loginSubmitButton"
           style={{
-            width: "100%",
-            backgroundColor: "#B9986D",
-            fontWeight: "Bold"
+            backgroundColor: "#B9986D"
           }}
         >
           Log In
         </Button>
-        <p align="right"
-          style={{
-          fontStyle: "italic",
-          fontSize: "12px",
-          marginTop: "3px"
-          }}>Or become a member here!</p>
+        <p
+          align="right"
+          className="loginRegisterText"
+        >
+          Or become a member here!
+        </p>
       </Form>
     </div>
   );

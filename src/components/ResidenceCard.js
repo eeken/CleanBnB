@@ -1,44 +1,31 @@
 import React from "react";
 
-function ResidenceCard() {
-  
-  const residence = {
-    title: "Lake House In South Sweden",
-    maxGuests: 4,
-    numberOfBeds: 2,
-    numberOfRooms: 4,
-    pricePerNight: 650
-  };
-
+function ResidenceCard(props) {
   return (
-    <div className="row" style={{ height: "25vh" }}>
-      <div
-        className="col-4"
-        style={{
-          backgroundImage:
-            "url(https://a0.muscache.com/im/pictures/690033e1-e80d-4966-be65-d968da63934f.jpg)",
-          backgroundSize: "cover",
-          backgroundRepeat: "no-repeat",
-          width: "100%",
-          height: "auto"
-        }}
-      ></div>
-      <div className="col-8">
-        <p className="golden" style={{ fontSize: "1.2em", fontWeight: "bold" }}>
-          {residence.title}
-        </p>
-        <p className="golden" style={{ fontSize: "0.75em" }}>
-          {residence.maxGuests} guests - {residence.numberOfBeds} beds -
-          {residence.numberOfRooms} rooms
-        </p>
-        <p className="golden">
-          <span style={{ fontSize: "1.8em", fontWeight: "bold" }}>
-            {residence.pricePerNight}kr
-          </span>
-          <span style={{ fontSize: "1em" }}> per night</span>
-        </p>
+    <div className="row text-left residenceCard mb-0">
+      <div className="col-5 prevImage">
+        <img
+          className="cardImage"
+          src={props.residence.image}
+          alt="residence-preview"
+        />
       </div>
-      <hr></hr>
+      <div className="col-7">
+        <p className="golden mt-3 mb-0 residenceDetailsTitle">
+          {props.residence.title}
+        </p>
+        <p className="golden residenceDetailsCommonDetails">
+          {props.residence.maxGuests} guests - {props.residence.numberOfBeds} beds -
+          {props.residence.numberOfRooms} rooms
+        </p>
+
+        <div className="golden residencePriceDetails">
+          <p>
+            {props.residence.pricePerNight} kr
+            <span className="residenceDetailsCommonDetails"> per night </span>
+          </p>
+        </div>
+      </div>
     </div>
   );
 }
