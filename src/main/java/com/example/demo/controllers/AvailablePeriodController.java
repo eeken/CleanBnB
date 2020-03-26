@@ -15,12 +15,12 @@ public class AvailablePeriodController {
     @Autowired
     private AvailablePeriodService availablePeriodService;
 
-    @GetMapping("/rest/addresses")
+    @GetMapping("/rest/availableperiods")
     public List<AvailablePeriod> getAllAvailablePeriods(){
         return availablePeriodService.getAllAvailablePeriods();
     }
 
-    @GetMapping("/rest/addresses/{id}")
+    @GetMapping("/rest/availableperiods/{id}")
     public AvailablePeriod getOneAvailablePeriod(@PathVariable int id){
         return availablePeriodService.getOneAvailablePeriod(id);
     }
