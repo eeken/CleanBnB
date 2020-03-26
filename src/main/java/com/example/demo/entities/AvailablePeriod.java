@@ -3,17 +3,15 @@ package com.example.demo.entities;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "addresses")
+@Table(name = "availableperiods")
 public class AvailablePeriod {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    private String county;
-    private String city;
-    private String country;
-    private String street;
-    private String streetnumber;
+    private int residenceid;
+    private int startdate;
+    private int enddate;
 
     public int getId() {
         return id;
@@ -23,44 +21,28 @@ public class AvailablePeriod {
         this.id = id;
     }
 
-    public String getCountry() {
-        return country;
+    public int getResidenceid() {
+        return residenceid;
     }
 
-    public void setCountry(String country) {
-        this.country = country;
+    public void setResidenceid(int residenceid) {
+        this.residenceid = residenceid;
     }
 
-    public String getCity() {
-        return city;
+    public int getStartdate() {
+        return startdate;
     }
 
-    public void setCity(String city) {
-        this.city = city;
+    public void setStartdate(int startdate) {
+        this.startdate = startdate;
     }
 
-    public String getCounty() {
-        return county;
+    public int getEnddate() {
+        return enddate;
     }
 
-    public void setCounty(String county) {
-        this.county = county;
-    }
-
-    public String getStreet() {
-        return street;
-    }
-
-    public void setStreet(String street) {
-        this.street = street;
-    }
-
-    public String getStreetNumber() {
-        return streetnumber;
-    }
-
-    public void setStreetNumber(String streetnumber) {
-        this.streetnumber = streetnumber;
+    public void setEnddate(int enddate) {
+        this.enddate = enddate;
     }
 
     public AvailablePeriod() {}
