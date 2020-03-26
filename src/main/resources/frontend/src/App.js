@@ -7,6 +7,8 @@ import LandingPage from "./Pages/LandingPage";
 import Explore from "./Pages/Explore";
 import About from "./Pages/About";
 import Login from "./Pages/Login";
+import ResidenceContextProvider from "./contexts/ResidenceContextProvider";
+
 
 function App() {
   let menu = [
@@ -21,6 +23,7 @@ function App() {
   return (
     
     <div className="App">
+      <ResidenceContextProvider>
       <Router>
         <Header menuData={menu} userIsLoggedIn={userIsLoggedIn}/>
         <main className="mt-4">
@@ -42,6 +45,7 @@ function App() {
         </main>
         <Footer className="footer"/>
       </Router>
+      </ResidenceContextProvider>
   </div>
   );
 }
