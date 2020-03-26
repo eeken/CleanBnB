@@ -14,10 +14,12 @@ public class ResidenceService {
     private ResidenceRepo residenceRepo;
 
     public Residence getOneResidence(int id) {
+
         return residenceRepo.findById(id);
     }
 
     public List<Residence> getAllResidences(){
+
         return (List<Residence>) residenceRepo.findAll();
     }
 
