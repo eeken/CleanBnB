@@ -10,10 +10,10 @@ public class Booking {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    private Date checkIn;
-    private Date checkOut;
-    private int totalPrice;
-    private int residenceId;
+    private int checkin;
+    private int checkout;
+    private int totalprice;
+    private int residenceid;
 
     public int getId() {
         return id;
@@ -23,36 +23,36 @@ public class Booking {
         this.id = id;
     }
 
-    public Date getCheckIn() {
-        return checkIn;
+    public int getCheckin() {
+        return checkin;
     }
 
-    public void setCheckIn(Date checkIn) {
-        this.checkIn = checkIn;
+    public void setCheckin(int checkin) {
+        this.checkin = checkin;
     }
 
-    public Date getCheckOut() {
-        return checkOut;
+    public int getCheckout() {
+        return checkout;
     }
 
-    public void setCheckOut(Date checkOut) {
-        this.checkOut = checkOut;
+    public void setCheckout(int checkout) {
+        this.checkout = checkout;
     }
 
-    public int getTotalPrice() {
-        return totalPrice;
+    public int getTotalprice() {
+        return totalprice;
     }
 
-    public void setTotalPrice(int totalPrice) {
-        this.totalPrice = totalPrice;
+    public void setTotalprice(int totalprice) {
+        this.totalprice = totalprice;
     }
 
-    public int getResidenceId() {
-        return residenceId;
+    public int getResidenceid() {
+        return residenceid;
     }
 
-    public void setResidenceId(int residenceId) {
-        this.residenceId = residenceId;
+    public void setResidenceid(int residenceid) {
+        this.residenceid = residenceid;
     }
 }
 
