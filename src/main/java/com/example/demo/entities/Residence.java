@@ -14,6 +14,7 @@ public class Residence {
     private int rooms;
     private int maxguests;
     private int pricepernight;
+    private int numberofbeds;
 
 
     // FROM THE SECONDARY TABLE ADDRESSES
@@ -27,13 +28,9 @@ public class Residence {
     private String street;
 
     //SETTERS AND GETTERS FOR PRIMARY TABLE RESIDENCES
-    public int getPricepernight() {
-        return pricepernight;
-    }
+    public int getPricepernight() { return pricepernight; }
 
-    public void setPricepernight(int pricepernight) {
-        this.pricepernight = pricepernight;
-    }
+    public void setPricepernight(int pricepernight) { this.pricepernight = pricepernight; }
 
     public int getId() {
         return id;
@@ -67,9 +64,11 @@ public class Residence {
         this.maxguests = maxguests;
     }
 
+    public int getNumberofbeds() { return numberofbeds; }
+
+    public void setNumberofbeds(int numberofbeds) { this.numberofbeds = numberofbeds; }
+
     // GETTERS AND SETTERS FOR SECONDARY TABLE ADDRESSES
-
-
     public String getCounty() { return county; }
 
     public String getCity() { return city; }
