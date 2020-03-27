@@ -25,7 +25,7 @@ function ResidenceCard() {
             </div>
             <div className="col-7">
               <p className="golden mt-3 mb-0 residenceDetailsTitle">
-                {residence.id}
+                {residence.city}, {residence.country}
               </p>
               <p className="golden residenceDetailsCommonDetails">
                 {residence.maxGuests} guests - {residence.numberofbeds} beds -

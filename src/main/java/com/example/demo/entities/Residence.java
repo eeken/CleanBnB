@@ -4,6 +4,7 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "residences")
+@SecondaryTable(name="addresses")
 public class Residence {
 
     @Id
@@ -14,6 +15,18 @@ public class Residence {
     private int maxguests;
     private int pricepernight;
 
+
+    // FROM THE SECONDARY TABLE ADDRESSES
+    @Column(table="addresses")
+    private String county;
+    @Column(table="addresses")
+    private String city;
+    @Column(table="addresses")
+    private String country;
+    @Column(table="addresses")
+    private String street;
+
+    //SETTERS AND GETTERS FOR PRIMARY TABLE RESIDENCES
     public int getPricepernight() {
         return pricepernight;
     }
@@ -53,6 +66,18 @@ public class Residence {
     public void setMaxGuests(int maxguests) {
         this.maxguests = maxguests;
     }
+
+    // GETTERS AND SETTERS FOR SECONDARY TABLE ADDRESSES
+
+
+    public String getCounty() { return county; }
+
+    public String getCity() { return city; }
+
+    public String getCountry() { return country; }
+
+    public String getStreet() { return street; }
+
 
     public Residence() {}
 }
