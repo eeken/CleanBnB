@@ -6,7 +6,4 @@ import org.springframework.data.repository.CrudRepository;
 public interface ResidenceRepo extends CrudRepository<Residence, Integer> {
 
     public Residence findById(int id);
-
-
-
 }

@@ -1,32 +1,56 @@
-import React from "react";
+import React, { useContext } from "react";
+import { ResidenceContext } from "../contexts/ResidenceContextProvider";
+import { useHistory } from "react-router-dom";
 
-function ResidenceCard(props) {
-  return (
-    <div className="row text-left residenceCard mb-3">
-      <div className="col-4 col-lg-2 col-md-3 prevImage">
-        <img
-          className="cardImage"
-          src={props.residence.image}
-          alt="residence-preview"
-        />
-      </div>
-      <div className="col-7">
-        <p className="golden mt-3 mb-0 residenceDetailsTitle">
-          {props.residence.title}
-        </p>
-        <p className="golden residenceDetailsCommonDetails">
-          {props.residence.maxGuests} guests - {props.residence.numberOfBeds} beds -
-          {props.residence.numberOfRooms} rooms
-        </p>
+function ResidenceCard() {
+  const { residences } = useContext(ResidenceContext);
 
-        <div className="golden residencePriceDetails">
-          <p>
-            {props.residence.pricePerNight} kr
-            <span className="residenceDetailsCommonDetails"> per night </span>
-          </p>
-        </div>
-      </div>
-    </div>
-  );
+  let history = useHistory();
+
+  if (residences) {
+    const list = () => {
+      return residences.map((residence, i) => {
+        return (
+          <div
+            key={i}
+            onClick={() => history.push("/residence/" + residence.id)}
+            className="row text-left residenceCard mb-3"
+          >
+            <div className="col-4 col-lg-2 col-md-3 prevImage">
+              <img
+                className="cardImage"
+                src={residence.image}
+                alt="residence-preview"
+              />
+            </div>
+            <div className="col-7">
+              <p className="golden mt-3 mb-0 residenceDetailsTitle">
+                {residence.city}, {residence.country}
+              </p>
+              <p className="golden residenceDetailsCommonDetails">
+                {residence.maxGuests} guests - {residence.numberofbeds} beds -
+                {residence.rooms} rooms
+              </p>
+
+              <div className="golden residencePriceDetails">
+                <p>
+                  {residence.pricepernight} kr
+                  <span className="residenceDetailsCommonDetails">
+                    {" "}
+                    per night{" "}
+                  </span>
+                </p>
+              </div>
+            </div>
+          </div>
+        );
+      });
+    };
+
+    return <>{list()}</>;
+  }
+
+  return null;
 }
+
 export default ResidenceCard;
