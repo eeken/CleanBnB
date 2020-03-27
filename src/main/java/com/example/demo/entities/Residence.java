@@ -1,6 +1,7 @@
 package com.example.demo.entities;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "residences")
@@ -68,7 +69,7 @@ public class Residence {
 
     public void setNumberofbeds(int numberofbeds) { this.numberofbeds = numberofbeds; }
 
-    // GETTERS AND SETTERS FOR SECONDARY TABLE ADDRESSES
+    // GETTERS ADDRESSES
     public String getCounty() { return county; }
 
     public String getCity() { return city; }
@@ -76,7 +77,6 @@ public class Residence {
     public String getCountry() { return country; }
 
     public String getStreet() { return street; }
-
 
     public Residence() {}
 }

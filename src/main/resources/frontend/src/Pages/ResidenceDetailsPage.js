@@ -6,20 +6,29 @@ function ResidenceDetailsPage() {
   let { id } = useParams();
   const { residenceDetails } = useContext(ResidenceContext);
   const { fetchResidenceDetails } = useContext(ResidenceContext);
+  const { residenceImages } = useContext(ResidenceContext);
+  const { fetchResidenceImages } = useContext(ResidenceContext);
 
   useEffect(() => {
     fetchResidenceDetails(id);
   }, []);
 
-  console.log(residenceDetails);
-
-  return <div>
-    <h1>ID: {residenceDetails.id} </h1>
-    <h1>SIZE: {residenceDetails.size} </h1>
-    <h1>ROOMS: {residenceDetails.rooms} </h1>
-    <h1>PricePerNight: {residenceDetails.pricepernight} </h1>
-    <h1>maxGuests: {residenceDetails.maxGuests} </h1>
-  </div>;
+  useEffect(() => {
+    fetchResidenceImages(id);
+  }, []);
+  
+  console.log(residenceImages);
+  
+  
+  return (
+    <div className="row white justify-content-center">
+      <div className="residenceDetailsPageTitle golden col-12">  {residenceDetails.country}, {residenceDetails.city} </div>
+      <div className=" sliderContainer container col-12 col-lg-6">  </div>
+      <div>
+        <h4 className="golden">{residenceDetails.pricepernight}kr per night </h4>
+      </div>
+    </div>
+  );
 }
 
 export default ResidenceDetailsPage;
