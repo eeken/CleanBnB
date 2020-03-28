@@ -19,6 +19,7 @@
   font-size: 0.95rem;
   font-weight: 1000;
 }
+
 .residencePriceDetails {
   font-size: 0.95rem;
   font-weight: 1000;
@@ -50,10 +51,30 @@
   font-size: 1.75em;
   font-weight: bold;
 }
+
+.residenceDetailsPageAddress {
+  display: flex;
+  font-size: 1.3rem;
+  font-weight: bold;
+}
+
+.userImage {
+  display: flex;
+  align-items: flex-start;
+}
+
 .residenceSlider{
   width: auto;
 }
 .sliderContainer{
   display: flex;
   height: 50vh;
+}
+
+.bookingButton {
+  width: 100%;
+  font-weight: bold;
+  background-color: #B9986D !important;
+  border: none !important;
+  font-weight: bold !important;
 }
