@@ -1,18 +1,22 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { Button, Form, FormGroup, Label, Input } from "reactstrap";
+import { useHistory } from "react-router-dom";
+import { ResidenceContext } from "../contexts/ResidenceContextProvider";
 
 function LandingPage() {
   const [destination, setDestination] = useState("");
-  const [checkIn, setCheckIn] = useState("");
-  const [checkOut, setCheckOut] = useState("");
-  const [numberOfGuests, setNumberOfGuests] = useState("");
+  const [checkIn, setCheckIn] = useState(0);
+  const [checkOut, setCheckOut] = useState(0);
+  const [numberOfGuests, setNumberOfGuests] = useState(0);
+
+  const {fetchResidenceSearchResults} = useContext(ResidenceContext);
+
+  let history = useHistory();
 
   const submitSearch = e => {
     e.preventDefault();
-    console.log("Destination chosen  :  " + destination);
-    console.log("Check-in date chosen  :  " + checkIn);
-    console.log("Check-out date chosen  :  " + checkOut);
-    console.log("Number of guests chosen  :  " + numberOfGuests);
+    fetchResidenceSearchResults(destination, numberOfGuests)
+    history.push('/explore/residences/destination=' + destination + '&numberofguests=' + numberOfGuests)
   };
 
   return (
@@ -73,6 +77,7 @@ function LandingPage() {
             id="guestSelection"
             onChange={e => setNumberOfGuests(e.target.value)}
           >
+            <option> </option>
             <option value={1}>1</option>
             <option value={2}>2</option>
             <option value={3}>3</option>

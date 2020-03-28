@@ -4,6 +4,7 @@ export const ResidenceContext = createContext();
 
 export default function ResidenceContextProvider(props) {
   const [residences, setResidences] = useState(null);
+  const [residencesSearchResults, setResidencesSearchResults] = useState(null);
   const [residenceDetails, setResidenceDetails] = useState("");
   const [residenceImages, setResidenceImages] = useState("");
 
@@ -30,9 +31,13 @@ export default function ResidenceContextProvider(props) {
     setResidenceImages(res)
   };
 
-  useEffect(() => {
-    fetchResidence();
-  }, []);
+    const fetchResidenceSearchResults = async (country, maxguests) => {
+    let res = await fetch("/rest/search/residences/" + country + '/' + maxguests)
+    res = await res.json();
+      setResidences(res)
+      console.log(res);
+      
+  }
 
   const values = {
     residences,
@@ -43,6 +48,8 @@ export default function ResidenceContextProvider(props) {
     fetchResidenceDetails,
     fetchResidenceImages,
     residenceImages,
+    residencesSearchResults,
+    fetchResidenceSearchResults,
   };
 
   return (

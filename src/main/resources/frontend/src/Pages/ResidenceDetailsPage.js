@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import { ResidenceContext } from "../contexts/ResidenceContextProvider";
 import { useParams } from "react-router-dom";
-import { Button, FormGroup, Label, Input } from "reactstrap";
+import { Button, FormGroup, Input } from "reactstrap";
 
 
 function ResidenceDetailsPage() {
@@ -19,11 +19,7 @@ function ResidenceDetailsPage() {
   useEffect(() => {
     fetchResidenceImages(id);
   }, []);
-  
-  console.log(residenceImages);
-  console.log(numberOfGuests);
-  
-  
+
   return (
     <div>
       <div className="white m-5 searchBar"> Click here to search... </div>

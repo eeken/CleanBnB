@@ -36,6 +36,9 @@ function App() {
             <Route exact path="/explore">
               <Explore></Explore>
             </Route>
+            <Route exact path="/explore/residences/destination=:destination&numberofguests=:numberofguests">
+              <Explore></Explore>
+            </Route>
             <Route exact path="/about">
               <About></About>
             </Route>

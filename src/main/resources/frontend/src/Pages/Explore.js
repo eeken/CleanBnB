@@ -1,7 +1,26 @@
-import React from "react";
+import React, { useContext, useEffect } from "react";
 import ResidenceCard from "../components/ResidenceCard";
+import { useParams } from "react-router-dom";
+import { ResidenceContext } from "../contexts/ResidenceContextProvider";
 
 export default function Explore() {
+  const { fetchResidenceSearchResults } = useContext(ResidenceContext);
+  const { fetchResidence } = useContext(ResidenceContext);
+
+  let { destination } = useParams();
+  let { numberofguests } = useParams();
+
+  console.log(destination);
+  console.log(numberofguests);
+
+  useEffect(() => {
+    if (destination == null || numberofguests == null) {
+      fetchResidence();
+    } else {
+      fetchResidenceSearchResults(destination, numberofguests);
+    }
+  }, []);
+
   return (
     <div>
       <div className="white m-5 searchBar"> Click here to search... </div>
