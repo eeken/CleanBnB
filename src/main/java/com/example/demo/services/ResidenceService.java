@@ -20,8 +20,4 @@ public class ResidenceService {
     public List<Residence> getAllResidences(){
         return (List<Residence>) residenceRepo.findAll();
     }
-
-    public List<Residence> findByCountryAndMaxguests(String country, int maxguests){
-        return (List<Residence>) residenceRepo.findByCountryAndMaxguests(country, maxguests);
-    }
 }

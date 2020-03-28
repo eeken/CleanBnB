@@ -24,12 +24,4 @@ public class ResidenceController {
     public Residence getOneResidence(@PathVariable int id){
         return residenceService.getOneResidence(id);
     }
-
-    @GetMapping("/rest/search/residences/{country}/{maxguests}")
-    public List<Residence> findByCountryAndMaxguests(
-            @PathVariable(name="country", required = false) String country,
-            @PathVariable(name="maxguests",required = false) int maxguests
-    ){
-        System.out.println(country + ' ' + maxguests);
-        return residenceService.findByCountryAndMaxguests(country, maxguests); }
 }

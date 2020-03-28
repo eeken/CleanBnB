@@ -5,7 +5,6 @@ import java.util.List;
 
 @Entity
 @Table(name = "residences")
-@SecondaryTable(name="addresses")
 public class Residence {
 
     @Id
@@ -17,21 +16,19 @@ public class Residence {
     private int pricepernight;
     private int numberofbeds;
 
+    @ManyToOne
+    private Address address;
 
-    // FROM THE SECONDARY TABLE ADDRESSES
-    @Column(table="addresses")
-    private String county;
-    @Column(table="addresses")
-    private String city;
-    @Column(table="addresses")
-    private String country;
-    @Column(table="addresses")
-    private String street;
+    public Address getAddress() {
+        return address;
+    }
 
-    //SETTERS AND GETTERS FOR PRIMARY TABLE RESIDENCES
-    public int getPricepernight() { return pricepernight; }
+    public void setAddress(Address address) {
+        this.address = address;
+    }
 
-    public void setPricepernight(int pricepernight) { this.pricepernight = pricepernight; }
+    public Residence() {
+    }
 
     public int getId() {
         return id;
@@ -57,27 +54,28 @@ public class Residence {
         this.rooms = rooms;
     }
 
-    public int getMaxGuests() {
+    public int getMaxguests() {
         return maxguests;
     }
 
-    public void setMaxGuests(int maxguests) {
+    public void setMaxguests(int maxguests) {
         this.maxguests = maxguests;
     }
 
-    public int getNumberofbeds() { return numberofbeds; }
+    public int getPricepernight() {
+        return pricepernight;
+    }
 
-    public void setNumberofbeds(int numberofbeds) { this.numberofbeds = numberofbeds; }
+    public void setPricepernight(int pricepernight) {
+        this.pricepernight = pricepernight;
+    }
 
-    // GETTERS ADDRESSES
-    public String getCounty() { return county; }
+    public int getNumberofbeds() {
+        return numberofbeds;
+    }
 
-    public String getCity() { return city; }
-
-    public String getCountry() { return country; }
-
-    public String getStreet() { return street; }
-
-    public Residence() {}
+    public void setNumberofbeds(int numberofbeds) {
+        this.numberofbeds = numberofbeds;
+    }
 }
 

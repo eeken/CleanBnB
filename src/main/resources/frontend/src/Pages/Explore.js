@@ -10,9 +10,6 @@ export default function Explore() {
   let { destination } = useParams();
   let { numberofguests } = useParams();
 
-  console.log(destination);
-  console.log(numberofguests);
-
   useEffect(() => {
     if (destination == null || numberofguests == null) {
       fetchResidence();

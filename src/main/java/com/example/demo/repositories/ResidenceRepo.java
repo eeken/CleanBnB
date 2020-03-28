@@ -9,5 +9,4 @@ public interface ResidenceRepo extends CrudRepository<Residence, Integer> {
 
     public Residence findById(int id);
 
-    public List<Residence> findByCountryAndMaxguests(String country, int maxguests);
 }
