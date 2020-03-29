@@ -5,7 +5,8 @@ export const ResidenceContext = createContext();
 export default function ResidenceContextProvider(props) {
   const [residences, setResidences] = useState(null);
   const [residencesSearchResults, setResidencesSearchResults] = useState(null);
-  const [residenceDetails, setResidenceDetails] = useState("");
+  const [residence, setResidence] = useState(Object);
+  const [address, setAddress] = useState(Object);
   const [residenceImages, setResidenceImages] = useState("");
 
   const fetchResidence = async () => {
@@ -22,7 +23,8 @@ export default function ResidenceContextProvider(props) {
   const fetchResidenceDetails = async (id) => {
     let res = await fetch("/rest/residences/" + id);
     res = await res.json();
-    setResidenceDetails(res);
+    setAddress(res.address);
+    setResidence(res)
   };
 
   const fetchResidenceImages = async (id) => {
@@ -43,13 +45,15 @@ export default function ResidenceContextProvider(props) {
     residences,
     fetchResidence,
     setResidences,
-    residenceDetails,
-    setResidenceDetails,
-    fetchResidenceDetails,
+    residence,
+    setResidence,
+    fetchResidence,
     fetchResidenceImages,
     residenceImages,
     residencesSearchResults,
     fetchResidenceSearchResults,
+    fetchResidenceDetails,
+    address,
   };
 
   return (
