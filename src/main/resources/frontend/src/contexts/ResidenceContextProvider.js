@@ -10,7 +10,7 @@ export default function ResidenceContextProvider(props) {
   const [residenceImages, setResidenceImages] = useState("");
 
   const fetchResidence = async () => {
-    let res = await fetch("/rest/residences");
+    let res = await fetch("/rest/residences/");
     try {
       res = await res.json();
       setResidences(res);
@@ -23,7 +23,7 @@ export default function ResidenceContextProvider(props) {
   const fetchResidenceDetails = async (id) => {
     let res = await fetch("/rest/residences/" + id);
     res = await res.json();
-    setAddress(res.address);
+    setAddress(res);
     setResidence(res)
   };
 
@@ -33,12 +33,11 @@ export default function ResidenceContextProvider(props) {
     setResidenceImages(res)
   };
 
-    const fetchResidenceSearchResults = async (country, maxguests) => {
-    let res = await fetch("/rest/search/residences/" + country + '/' + maxguests)
+    const fetchResidenceSearchResults = async (country) => {
+    let res = await fetch("/rest/residences/" + country)
     res = await res.json();
       setResidences(res)
       console.log(res);
-      
   }
 
   const values = {

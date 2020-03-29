@@ -1,11 +1,22 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import { ResidenceContext } from "../contexts/ResidenceContextProvider";
-import { useHistory } from "react-router-dom";
+import { useHistory, useParams } from "react-router-dom";
 
 function ResidenceCard() {
   const { residences } = useContext(ResidenceContext);
 
   let history = useHistory();
+
+  const { fetchResidenceSearchResults } = useContext(ResidenceContext);
+
+  let { destination } = useParams();
+  console.log(destination);
+
+  useEffect(() => {
+    if (destination == '') {
+      fetchResidenceSearchResults(destination);
+    }
+  }, []);
 
   if (residences) {
     const list = () => {
@@ -28,7 +39,7 @@ function ResidenceCard() {
                 {residence.address.city}, {residence.address.country}
               </p>
               <p className="golden residenceDetailsCommonDetails">
-                {residence.maxGuests} guests - {residence.numberofbeds} beds -
+                {residence.maxguests} guests - {residence.numberofbeds} beds -
                 {residence.rooms} rooms
               </p>
 

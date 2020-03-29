@@ -20,17 +20,17 @@ function ResidenceDetailsPage() {
     fetchResidenceImages(id);
   }, []);
 
-  console.log(residence.address);
+  console.log(residence);
 
   return (
     <div>
       <div className="white m-5 searchBar"> Click here to search... </div>
 
       <div className="white">
-        <div className="row justify-content-center">
-          <div className="residencePageTitle golden col-12">
-            {" "}
-            , {residence.city}{" "}
+        <div className="col-12 justify-content-center">
+          <div className="residenceDetailsPageTitle golden">
+
+           {address.city} , {address.country}
           </div>
           {/* <div className=" sliderContainer container col-12 col-lg-6">  </div> */}
         </div>
@@ -46,7 +46,7 @@ function ResidenceDetailsPage() {
           />
           <div className="residencePageAddress golden mr-5">
             {" "}
-            {address.country}, {address.city}{" "}
+            {address.street}, {address.streetNumber}{" "}
           </div>
           <h4 className="golden">{residence.pricepernight}kr per night </h4>
         </div>

@@ -11,10 +11,10 @@ export default function Explore() {
   let { numberofguests } = useParams();
 
   useEffect(() => {
-    if (destination == null || numberofguests == null) {
+    if (destination == null ) {
       fetchResidence();
     } else {
-      fetchResidenceSearchResults(destination, numberofguests);
+      fetchResidenceSearchResults(destination);
     }
   }, []);
 

@@ -1,23 +1,20 @@
 import React, { useState, useContext } from "react";
 import { Button, Form, FormGroup, Label, Input } from "reactstrap";
 import { useHistory } from "react-router-dom";
-import { ResidenceContext } from "../contexts/ResidenceContextProvider";
 
 function LandingPage() {
   const [destination, setDestination] = useState("");
   const [checkIn, setCheckIn] = useState(0);
   const [checkOut, setCheckOut] = useState(0);
   const [numberOfGuests, setNumberOfGuests] = useState(0);
-
-  const {fetchResidenceSearchResults} = useContext(ResidenceContext);
-
-  let history = useHistory();
-
+  
   const submitSearch = e => {
     e.preventDefault();
-    fetchResidenceSearchResults(destination, numberOfGuests)
-    history.push('/explore/residences/destination=' + destination + '&numberofguests=' + numberOfGuests)
+    history.push('/explore/' + destination)
   };
+  
+  let history = useHistory();
+
 
   return (
     <div className="col-12 col-lg-3 col-md-6">

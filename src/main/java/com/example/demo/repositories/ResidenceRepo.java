@@ -9,4 +9,8 @@ public interface ResidenceRepo extends CrudRepository<Residence, Integer> {
 
     public Residence findById(int id);
 
+    public List<Residence> findAll();
+
+    public List<Residence> findByAddressCountry(String addressCountry);
+
 }
