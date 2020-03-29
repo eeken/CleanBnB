@@ -20,6 +20,11 @@ public class ResidenceController {
         return residenceService.getAllResidences(addressCountry);
     }
 
+    @GetMapping("/rest/residence/{id}")
+    public Residence findById(@PathVariable int id){
+        return residenceService.findById(id);
+    }
+
     @GetMapping("/rest/residences")
     public List<Residence> findAll() {
         return residenceService.findAll();

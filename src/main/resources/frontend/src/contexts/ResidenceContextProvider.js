@@ -21,10 +21,10 @@ export default function ResidenceContextProvider(props) {
   };
 
   const fetchResidenceDetails = async (id) => {
-    let res = await fetch("/rest/residences/" + id);
+    let res = await fetch("/rest/residence/" + id);
     res = await res.json();
-    setAddress(res);
     setResidence(res)
+    setAddress(res.address)
   };
 
   const fetchResidenceImages = async (id) => {

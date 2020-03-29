@@ -14,7 +14,7 @@ public class ResidenceService {
     @Autowired
     private ResidenceRepo residenceRepo;
 
-    public Residence getOneResidence(int id) {
+    public Residence findById(int id) {
         return residenceRepo.findById(id);
     }
 
