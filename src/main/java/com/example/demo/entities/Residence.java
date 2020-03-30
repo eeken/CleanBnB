@@ -12,9 +12,19 @@ public class Residence {
     private int id;
     private int size;
     private int rooms;
-    private int maxguests;
+    private int numberofguests;
     private int pricepernight;
     private int numberofbeds;
+
+    public Residence(int id, int size, int rooms, int numberofguests, int pricepernight, int numberofbeds, Address address) {
+        this.id = id;
+        this.size = size;
+        this.rooms = rooms;
+        this.numberofguests = numberofguests;
+        this.pricepernight = pricepernight;
+        this.numberofbeds = numberofbeds;
+        this.address = address;
+    }
 
     @ManyToOne
     private Address address;
@@ -46,20 +56,20 @@ public class Residence {
         this.size = size;
     }
 
+    public int getNumberofguests() {
+        return numberofguests;
+    }
+
+    public void setNumberofguests(int numberofguests) {
+        this.numberofguests = numberofguests;
+    }
+
     public int getRooms() {
         return rooms;
     }
 
     public void setRooms(int rooms) {
         this.rooms = rooms;
-    }
-
-    public int getMaxguests() {
-        return maxguests;
-    }
-
-    public void setMaxguests(int maxguests) {
-        this.maxguests = maxguests;
     }
 
     public int getPricepernight() {

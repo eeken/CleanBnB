@@ -6,11 +6,11 @@ function LandingPage() {
   const [destination, setDestination] = useState("");
   const [checkIn, setCheckIn] = useState(0);
   const [checkOut, setCheckOut] = useState(0);
-  const [numberOfGuests, setNumberOfGuests] = useState(0);
+  const [numberofguests, setNumberOfGuests] = useState('');
   
   const submitSearch = e => {
     e.preventDefault();
-    history.push('/explore/' + destination)
+    history.push('/explore/' + destination + '/' + numberofguests)
   };
   
   let history = useHistory();

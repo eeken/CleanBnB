@@ -31,7 +31,7 @@ function App() {
               <Route exact path="/">
                 <LandingPage></LandingPage>
               </Route>
-              <Route exact path={"/explore/:destination"}>
+              <Route exact path="/explore/:destination/:numberofguests">
                 <Explore></Explore>
               </Route>
               <Route exact path={"/explore"}>

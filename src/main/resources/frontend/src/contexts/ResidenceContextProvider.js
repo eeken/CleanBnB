@@ -20,25 +20,28 @@ export default function ResidenceContextProvider(props) {
     }
   };
 
-  const fetchResidenceDetails = async (id) => {
+  const fetchResidenceDetails = async id => {
     let res = await fetch("/rest/residence/" + id);
     res = await res.json();
-    setResidence(res)
-    setAddress(res.address)
+    setResidence(res);
+    setAddress(res.address);
   };
 
-  const fetchResidenceImages = async (id) => {
+  const fetchResidenceImages = async id => {
     let res = await fetch("/rest/images/" + id);
     res = await res.json();
-    setResidenceImages(res)
+    setResidenceImages(res);
   };
 
-    const fetchResidenceSearchResults = async (country) => {
-    let res = await fetch("/rest/residences/" + country)
+  const fetchResidenceSearchResults = async val => {
+    let res = await fetch(
+      "/rest/residences/" + val.destination + "/" + val.numberofguests
+    );
+    console.log(res + "1");
     res = await res.json();
-      setResidences(res)
-      console.log(res);
-  }
+    console.log(res + "2");
+    setResidences(res);
+  };
 
   const values = {
     residences,
@@ -52,7 +55,7 @@ export default function ResidenceContextProvider(props) {
     residencesSearchResults,
     fetchResidenceSearchResults,
     fetchResidenceDetails,
-    address,
+    address
   };
 
   return (

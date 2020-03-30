@@ -18,6 +18,12 @@ export default function Explore() {
     }
   }, []);
 
+  useEffect(() => {
+    if (destination == '') {
+      fetchResidenceSearchResults( { destination , numberofguests } );
+    }
+  }, []);
+
   return (
     <div>
       <div className="white m-5 searchBar"> Click here to search... </div>

@@ -22,9 +22,9 @@ public class ResidenceService {
         return residenceRepo.findAll();
     }
 
-    public List<Residence> getAllResidences(String addressCountry){
+    public List<Residence> getAllResidences(String addressCountry, int numberofguests, String addressCity, int number){
         List<Residence> residences = new ArrayList<>();
-        residenceRepo.findByAddressCountry(addressCountry).forEach(residences::add);
+        residenceRepo.findByAddressCountryAndNumberofguestsOrAddressCityAndNumberofguests(addressCountry, number, addressCity ,numberofguests).forEach(residences::add);
         return residences;
     }
 }

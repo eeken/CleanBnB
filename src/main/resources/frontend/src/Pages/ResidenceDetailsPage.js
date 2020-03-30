@@ -10,7 +10,7 @@ function ResidenceDetailsPage() {
   const { residenceImages } = useContext(ResidenceContext);
   const { fetchResidenceImages } = useContext(ResidenceContext);
   const { address } = useContext(ResidenceContext);
-  const [numberOfGuests, setNumberOfGuests] = useState("");
+  const [numberofguests, setNumberOfGuests] = useState("");
 
   useEffect(() => {
     fetchResidenceDetails(id);
