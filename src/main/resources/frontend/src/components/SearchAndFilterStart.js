@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useState } from "react";
 import { Button, Form, FormGroup, Label, Input } from "reactstrap";
 import { useHistory } from "react-router-dom";
 
@@ -6,7 +6,7 @@ function LandingPage() {
   const [destination, setDestination] = useState("");
   const [checkIn, setCheckIn] = useState(0);
   const [checkOut, setCheckOut] = useState(0);
-  const [numberofguests, setNumberOfGuests] = useState(1);
+  const [numberofguests, setNumberOfGuests] = useState('');
 
   const submitSearch = async e => {
     e.preventDefault();
@@ -75,8 +75,10 @@ function LandingPage() {
             type="select"
             name="guestSelection"
             id="guestSelection"
+            style={{textAlignLast: 'center'}}
             onChange={e => setNumberOfGuests(e.target.value)}
           >
+            <option value={''}>Number of guests</option>
             <option value={1}>1</option>
             <option value={2}>2</option>
             <option value={3}>3</option>
