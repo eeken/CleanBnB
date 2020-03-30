@@ -22,8 +22,8 @@ public class ResidenceService {
         return residenceRepo.findAll();
     }
 
-    public List<Residence> getAllResidences(String addressCountry, int numberofguests, String addressCity, int number){
+    public List<Residence> getAllResidences(String addressCountry, int guestSeach1, String addressCity, int guestSeach2){
         List<Residence> residences = new ArrayList<>();
-        return residenceRepo.findByAddressCountryAndNumberofguestsOrAddressCityAndNumberofguests(addressCountry, number, addressCity ,numberofguests);
+        return residenceRepo.findByAddressCountryAndMaxguestsOrAddressCityAndMaxguests(addressCountry, guestSeach1, addressCity ,guestSeach2);
     }
 }

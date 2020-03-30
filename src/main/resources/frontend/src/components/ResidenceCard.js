@@ -25,7 +25,7 @@ function ResidenceCard() {
             <div className="col-7">
               <p className="golden mt-3 mb-0 residenceDetailsTitle"> {residence.address.city}, {residence.address.country}  </p>
               <p className="golden residenceDetailsCommonDetails">
-                {residence.numberofguests} guests - {residence.numberofbeds}{" "}
+                {residence.maxguests} guests - {residence.numberofbeds}{" "}
                 beds -{residence.rooms} rooms
               </p>
 

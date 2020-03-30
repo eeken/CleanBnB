@@ -11,6 +11,6 @@ public interface ResidenceRepo extends CrudRepository<Residence, Integer> {
 
     public List<Residence> findAll();
 
-    public List<Residence> findByAddressCountryAndNumberofguestsOrAddressCityAndNumberofguests(String addressCountry, int numberofguests, String addressCity,  int number);
+    public List<Residence> findByAddressCountryAndMaxguestsOrAddressCityAndMaxguests(String addressCountry, int guestSeach1, String addressCity,  int guestSeach2);
 
 }
