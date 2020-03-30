@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import { ResidenceContext } from "../contexts/ResidenceContextProvider";
 import { useParams } from "react-router-dom";
-import { Button, FormGroup, Label, Input } from "reactstrap";
+import { Button, FormGroup, Input } from "reactstrap";
 
 
 function ResidenceDetailsPage() {
@@ -10,7 +10,7 @@ function ResidenceDetailsPage() {
   const { fetchResidenceDetails } = useContext(ResidenceContext);
   const { residenceImages } = useContext(ResidenceContext);
   const { fetchResidenceImages } = useContext(ResidenceContext);
-  const [numberOfGuests, setNumberOfGuests] = useState("");
+  const [ numberOfGuests, setNumberOfGuests ] = useState("");
 
   useEffect(() => {
     fetchResidenceDetails(id);
@@ -22,6 +22,13 @@ function ResidenceDetailsPage() {
   
   console.log(residenceImages);
   console.log(numberOfGuests);
+  console.log(residenceImages[0]);
+
+  function showImage() {
+    if (residenceImages) {
+      return residenceImages[0].imagelink;
+    }
+  }
   
   
   return (
@@ -34,7 +41,7 @@ function ResidenceDetailsPage() {
         {/* <div className=" sliderContainer container col-12 col-lg-6">  </div> */}
       </div>
         
-      <img width="100%" height="400vh" src={residenceImages.imagePath} />
+        <img width="100%" height="400vh" src={showImage()} />
         
       <div className="row m-4">
         <img width="70px" height="70px" src={residenceImages.imagePath} className="userImage mr-3"/>

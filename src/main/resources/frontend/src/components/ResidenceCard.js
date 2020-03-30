@@ -1,5 +1,6 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import { ResidenceContext } from "../contexts/ResidenceContextProvider";
+import { ImageContext } from "../contexts/ImageContextProvider";
 import { useHistory } from "react-router-dom";
 
 function ResidenceCard() {
@@ -19,7 +20,7 @@ function ResidenceCard() {
             <div className="col-4 col-lg-2 col-md-3 prevImage">
               <img
                 className="cardImage"
-                src={residence.image}
+                src={residence.imagelink}
                 alt="residence-preview"
               />
             </div>
