@@ -1,10 +1,11 @@
 import React from "react";
 import ResidenceCard from "../components/ResidenceCard";
+import SearchBar from "../components/SearchBar";
 
 export default function Explore() {
   return (
     <div>
-      <div className="white m-4 searchBar"> Click here to search... </div>
+      <SearchBar></SearchBar>
       <div className="col-12 white">
         <div className="whiteBackground p-4">
           <ul>
