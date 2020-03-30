@@ -4,24 +4,14 @@ import { useParams } from "react-router-dom";
 import { ResidenceContext } from "../contexts/ResidenceContextProvider";
 
 export default function Explore() {
-  const { fetchResidenceSearchResults } = useContext(ResidenceContext);
   const { fetchResidence } = useContext(ResidenceContext);
+  const { destination } = useParams();
+  const { numberofguests } = useParams();
 
-  let { destination } = useParams();
-  let { numberofguests } = useParams();
-
-  useEffect(() => {
-    if (destination == null ) {
-      fetchResidence();
-    } else {
-      fetchResidenceSearchResults(destination);
-    }
-  }, []);
+  console.log(destination);
 
   useEffect(() => {
-    if (destination == '') {
-      fetchResidenceSearchResults( { destination , numberofguests } );
-    }
+    fetchResidence({ destination, numberofguests });
   }, []);
 
   return (

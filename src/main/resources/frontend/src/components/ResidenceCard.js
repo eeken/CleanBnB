@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import { ResidenceContext } from "../contexts/ResidenceContextProvider";
 import { useHistory } from "react-router-dom";
 
@@ -18,12 +18,12 @@ function ResidenceCard() {
             <div className="col-4 col-lg-2 col-md-3 prevImage">
               <img
                 className="cardImage"
-                src={residence.image}
+                src={residence.image ? residence.image : "https://www.nationalpetregister.org/assets/img/no-photo.jpg"}
                 alt="residence-preview"
               />
             </div>
             <div className="col-7">
-              <p className="golden mt-3 mb-0 residenceDetailsTitle"></p>
+              <p className="golden mt-3 mb-0 residenceDetailsTitle"> {residence.address.city}, {residence.address.country}  </p>
               <p className="golden residenceDetailsCommonDetails">
                 {residence.numberofguests} guests - {residence.numberofbeds}{" "}
                 beds -{residence.rooms} rooms
@@ -43,11 +43,9 @@ function ResidenceCard() {
         );
       });
     };
-
     return <>{list()}</>;
   }
-
-  return null;
+  return <div> <h1> No matches </h1> </div>;
 }
 
 export default ResidenceCard;
