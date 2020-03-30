@@ -15,6 +15,11 @@ public class ImageController {
     @Autowired
     private ImageService imageService;
 
+    @GetMapping("/rest/images")
+    public List<Image> getAllImages(){
+        return imageService.getAllImages();
+    }
+
     @GetMapping("/rest/images/{residencyid}")
     public List<Image> findAllImagesByResidencyid(@PathVariable int residencyid){ return imageService.findAllImagesByResidencyid(residencyid); }
 }

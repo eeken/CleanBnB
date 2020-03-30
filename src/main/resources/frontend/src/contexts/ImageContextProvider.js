@@ -17,7 +17,6 @@ export default function ResidenceContextProvider(props) {
     }
   };
 
-
   const fetchResidenceImage = async (id) => {
     let res = await fetch("/rest/images/" + id);
     res = await res.json();

@@ -16,4 +16,9 @@ public class ImageService {
     public List<Image> findAllImagesByResidencyid(int residencyid){
         return (List<Image>) imageRepo.findAllImagesByResidencyid(residencyid);
     }
+
+    public List<Image> getAllImages(){
+        return (List<Image>) imageRepo.findAll();
+    }
+
 }
