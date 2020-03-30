@@ -10,7 +10,7 @@ function LandingPage() {
 
   const submitSearch = async e => {
     e.preventDefault();
-    if (numberofguests == '' && destination == '') {
+    if (numberofguests == '' || destination == '') {
       await history.push("/explore");
     } else {
       await history.push("/explore/destination=" + destination + "/numberofguests=" + numberofguests);

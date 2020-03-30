@@ -1,5 +1,6 @@
 import React, { useContext, useEffect } from "react";
 import { ResidenceContext } from "../contexts/ResidenceContextProvider";
+import { ImageContext } from "../contexts/ImageContextProvider";
 import { useHistory } from "react-router-dom";
 
 function ResidenceCard() {

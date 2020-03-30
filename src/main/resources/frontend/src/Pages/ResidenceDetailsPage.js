@@ -5,12 +5,12 @@ import { Button, FormGroup, Input } from "reactstrap";
 
 function ResidenceDetailsPage() {
   let { id } = useParams();
-  const { residence } = useContext(ResidenceContext);
   const { fetchResidenceDetails } = useContext(ResidenceContext);
+  const { residence } = useContext(ResidenceContext);
+  const { address } = useContext(ResidenceContext);
   const { residenceImages } = useContext(ResidenceContext);
   const { fetchResidenceImages } = useContext(ResidenceContext);
-  const { address } = useContext(ResidenceContext);
-  const [numberofguests, setNumberOfGuests] = useState("");
+  const [ numberOfGuests, setNumberOfGuests ] = useState("");
 
   useEffect(() => {
     fetchResidenceDetails(id);
@@ -19,37 +19,36 @@ function ResidenceDetailsPage() {
   useEffect(() => {
     fetchResidenceImages(id);
   }, []);
+  
+  console.log(residenceImages);
+  console.log(numberOfGuests);
+  console.log(residenceImages[0]);
 
-  console.log(residence);
-
+  function showImage() {
+    if (residenceImages) {
+      return residenceImages[0].imagelink;
+    }
+  }
+  
+  
   return (
     <div>
       <div className="white m-5 searchBar"> Click here to search... </div>
 
       <div className="white">
-        <div className="col-12 justify-content-center">
-          <div className="residenceDetailsPageTitle golden">
-
-           {address.city} , {address.country}
-          </div>
-          {/* <div className=" sliderContainer container col-12 col-lg-6">  </div> */}
+      <div className="justify-content-center">
+        <div className="residenceDetailsPageTitle golden">  {address.country}, {address.city} </div>
+        {/* <div className=" sliderContainer container col-12 col-lg-6">  </div> */}
+      </div>
+        
+        <img width="100%" height="400vh" src={showImage()} />
+        
+      <div className="row m-4">
+        <img width="70px" height="70px" src={residenceImages.imagePath ? residenceImages.imagePath : "https://www.nationalpetregister.org/assets/img/no-photo.jpg"} className="userImage mr-3"/>
+        <div className="residenceDetailsPageAddress golden mr-5">  {address.street}, {address.streetNumber} </div>
+        <h4 className="golden">{residence.pricepernight}kr per night </h4>
         </div>
 
-        <img width="100%" height="400vh" src={residenceImages.imagePath} />
-
-        <div className="row m-4">
-          <img
-            width="70px"
-            height="70px"
-            src={residenceImages.imagePath}
-            className="userImage mr-3"
-          />
-          <div className="residencePageAddress golden mr-5">
-            {" "}
-            {address.street}, {address.streetNumber}{" "}
-          </div>
-          <h4 className="golden">{residence.pricepernight}kr per night </h4>
-        </div>
         <hr></hr>
         <div className="row m-4">
           <div className="residencePageDescription golden m-3">
