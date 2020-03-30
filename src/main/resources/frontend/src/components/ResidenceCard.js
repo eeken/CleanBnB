@@ -25,16 +25,16 @@ function ResidenceCard() {
           <div
             key={i}
             onClick={() => history.push("/residence/" + residence.id)}
-            className="row text-left residenceCard mb-3"
+            className="row text-left residenceCard mb-2"
           >
-            <div className="col-4 col-lg-2 col-md-3 prevImage">
+            <div className="col-5 col-lg-2 col-md-3">
               <img
-                className="cardImage m-3"
+                className="cardImage"
                 src={showResidenceImage(residence.id)}
-                alt="residence-preview"
+                alt="residence-image"
               />
             </div>
-            <div className="col-7 pl-4">
+            <div className="col-7">
               <p className="golden mt-3 mb-0 residenceDetailsTitle">
                 {residence.city}, {residence.country}
               </p>

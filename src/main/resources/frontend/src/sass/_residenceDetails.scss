@@ -1,20 +1,24 @@
 .residenceCard {
-  height: 15vh;
+  height: 16vh;
   display: flex;
   align-items: center;
 
 }
-.prevImage {
+/* .prevImage {
   display: flex;
   justify-content: center;
   align-items: center;
   padding: 0;
-}
+} */
 .cardImage {
+  display: flex;
+  padding: 0;
+  margin: 0;
   height: 15vh;
   width: 20vh;
   border-radius: 5px;
 }
+
 .residenceDetailsTitle {
   font-size: 0.95rem;
   font-weight: 1000;
@@ -77,4 +81,13 @@
   background-color: #B9986D !important;
   border: none !important;
   font-weight: bold !important;
+}
+
+.priceTag {
+margin-left: auto;
+margin-right: 0;
+}
+
+.perNight{
+  font-size: 0.75em;
 }

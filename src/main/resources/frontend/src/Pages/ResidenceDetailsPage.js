@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from "react";
 import { ResidenceContext } from "../contexts/ResidenceContextProvider";
 import { useParams } from "react-router-dom";
 import { Button, FormGroup, Input } from "reactstrap";
+import SearchBar from "../components/SearchBar";
 
 
 function ResidenceDetailsPage() {
@@ -33,20 +34,19 @@ function ResidenceDetailsPage() {
   
   return (
     <div>
-      <div className="white m-5 searchBar"> Click here to search... </div>
-      
+      <SearchBar></SearchBar>
       <div className="white">
       <div className="row justify-content-center">
         <div className="residenceDetailsPageTitle golden col-12">  {residenceDetails.country}, {residenceDetails.city} </div>
         {/* <div className=" sliderContainer container col-12 col-lg-6">  </div> */}
       </div>
         
-        <img width="100%" height="400vh" src={showImage()} />
+        <img width="100%" height="auto" src={showImage()} />
         
       <div className="row m-4">
-        <img width="70px" height="70px" src={residenceImages.imagePath} className="userImage mr-3"/>
+        <img width="60px" height="60px" src={residenceImages.imagePath} className="userImage mr-3"/>
         <div className="residenceDetailsPageAddress golden mr-5">  {residenceDetails.country}, {residenceDetails.city} </div>
-        <h4 className="golden">{residenceDetails.pricepernight}kr per night </h4>
+        <h4 className="golden priceTag">{residenceDetails.pricepernight}kr <span className="perNight">per night</span></h4>
         </div>
         <hr></hr>
       <div className="row m-4">

@@ -7,7 +7,7 @@ export default function Explore() {
     <div>
       <SearchBar></SearchBar>
       <div className="col-12 white">
-        <div className="whiteBackground p-4">
+        <div className="whiteBackground pt-2 pb-2">
           <ul>
             <ResidenceCard></ResidenceCard>
           </ul>
