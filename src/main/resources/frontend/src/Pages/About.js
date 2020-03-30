@@ -53,7 +53,7 @@ export default function Explore() {
                             />
                         </div>
                         <div className="col-6">
-                            <p className="golden mt-3 mb-0 residenceDetailsTitle">Victor</p>
+                            <p className="golden mt-3 mb-0 residenceDetailsTitle">Victor Törnbom</p>
                             <p className="golden residenceDetailsCommonDetails">Technical Engineer Available 24/7</p>
                             <hr></hr>
                         </div>
