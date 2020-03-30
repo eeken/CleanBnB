@@ -1,7 +1,7 @@
 import React, {useReducer} from 'react'
 import {DateRangeInput} from '@datepicker-react/styled'
 
-export default function Calandar() {
+export default function Calendar() {
 
 const initialState = {
   startDate: null,

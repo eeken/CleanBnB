@@ -1,11 +1,14 @@
 import React from "react";
-import Calandar from '../components/Calandar'
+import Calendar from '../components/Calendar'
 
 
 function ResidenceDetails() {
-  return <div>
-    <Calandar/>
-  </div>;
+  return (
+    <div>
+    <h1>Nice house in Sweden</h1>
+    <Calendar/>
+  </div>
+  )
 }
 
 export default ResidenceDetails;
