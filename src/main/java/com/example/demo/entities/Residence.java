@@ -16,6 +16,7 @@ public class Residence {
     private int maxguests;
     private int pricepernight;
     private int numberofbeds;
+    private String title;
 
 
     // FROM THE SECONDARY TABLE ADDRESSES
@@ -65,9 +66,21 @@ public class Residence {
         this.maxguests = maxguests;
     }
 
-    public int getNumberofbeds() { return numberofbeds; }
+    public String getTitle() {
+        return title;
+    }
 
-    public void setNumberofbeds(int numberofbeds) { this.numberofbeds = numberofbeds; }
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public int getNumberofbeds() {
+        return numberofbeds;
+    }
+
+    public void setNumberofbeds(int numberofbeds) {
+        this.numberofbeds = numberofbeds;
+    }
 
     // GETTERS ADDRESSES
     public String getCounty() { return county; }

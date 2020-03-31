@@ -95,7 +95,7 @@ function ResidenceDetailsPage() {
           </div>
           <div className="col-9 golden m-3"><b>Total price:</b></div>
 
-          <div className="row golden mb-3"><input type="checkbox" className="mt-1 mr-2" id="policies" onclick="confirmPolicies()" />
+          <div className="row golden mb-3"><input type="checkbox" className="mt-1 mr-2" id="policies" onClick={confirmPolicies()} />
             Agree to the <a href="https://www.airbnb.com/help/topic/250/terms-policies"
               target="_blank"
             className="ml-1 policiesLink">terms and policies</a> 
