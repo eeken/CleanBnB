@@ -6,10 +6,7 @@ import { Button, FormGroup, Label, Input } from "reactstrap";
 
 function ResidenceDetailsPage() {
   let { id } = useParams();
-  const { residenceDetails } = useContext(ResidenceContext);
-  const { fetchResidenceDetails } = useContext(ResidenceContext);
-  const { residenceImages } = useContext(ResidenceContext);
-  const { fetchResidenceImages } = useContext(ResidenceContext);
+  const { residenceDetails, fetchResidenceDetails, residenceImages, fetchResidenceImages } = useContext(ResidenceContext);
   const [numberOfGuests, setNumberOfGuests] = useState("");
 
   useEffect(() => {
@@ -64,7 +61,8 @@ function ResidenceDetailsPage() {
             name="guestSelection"
             id="guestSelection"
             onChange={e => setNumberOfGuests(e.target.value)}
-          >
+              >
+                
             <option value={1}>1</option>
             <option value={2}>2</option>
             <option value={3}>3</option>
