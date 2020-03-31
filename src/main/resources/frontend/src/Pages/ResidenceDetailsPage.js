@@ -1,10 +1,10 @@
 import React, { useContext, useEffect, useState } from "react";
 import { ResidenceContext } from "../contexts/ResidenceContextProvider";
 import { useParams } from "react-router-dom";
-import { Button, FormGroup, Input } from "reactstrap";
+import { Button, FormGroup, Input, Carousel } from "reactstrap";
 import SearchBar from "../components/SearchBar";
 import Calender from "../components/Calender";
-
+import Test from "../components/Test";
 
 function ResidenceDetailsPage() {
   let { id } = useParams();
@@ -12,7 +12,7 @@ function ResidenceDetailsPage() {
   const { fetchResidenceDetails } = useContext(ResidenceContext);
   const { residenceImages } = useContext(ResidenceContext);
   const { fetchResidenceImages } = useContext(ResidenceContext);
-  const [numberOfGuests, setNumberOfGuests] = useState("");
+  const [ numberOfGuests, setNumberOfGuests ] = useState("");
 
   useEffect(() => {
     fetchResidenceDetails(id);
@@ -50,7 +50,8 @@ function ResidenceDetailsPage() {
           {/* <div className=" sliderContainer container col-12 col-lg-6">  </div> */}
         </div>
 
-        <img width="100%" height="auto" src={showImage()} />
+        {/* <img width="100%" height="auto" src={showImage()} /> */}
+        <Test></Test>
 
         <div className="row m-4">
           <img width="60px" height="60px" src={residenceImages.imagePath} className="userImage mr-3" />
