@@ -5,7 +5,7 @@ import SearchBar from "../components/SearchBar";
 export default function Explore() {
   return (
     <div>
-      <SearchBar></SearchBar>
+      {/* <SearchBar></SearchBar> */}
       <div className="col-12 white">
         <div className="whiteBackground pt-2 pb-2">
           <ul>

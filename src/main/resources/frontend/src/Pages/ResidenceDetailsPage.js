@@ -4,7 +4,7 @@ import { useParams } from "react-router-dom";
 import { Button, FormGroup, Input, Carousel } from "reactstrap";
 import SearchBar from "../components/SearchBar";
 import Calender from "../components/Calender";
-import Test from "../components/Test";
+import CarouselComponent from "../components/CarouselComponent";
 
 function ResidenceDetailsPage() {
   let { id } = useParams();
@@ -44,7 +44,7 @@ function ResidenceDetailsPage() {
 
   return (
     <div>
-      <SearchBar></SearchBar>
+     {/*  <SearchBar></SearchBar> */}
       <div className="white">
         <div className="row justify-content-center">
           <div className="residenceDetailsPageTitle golden col-12">  {residenceDetails.country}, {residenceDetails.city} </div>
@@ -52,7 +52,7 @@ function ResidenceDetailsPage() {
         </div>
 
         {/* <img width="100%" height="auto" src={showImage()} /> */}
-        <Test></Test>
+        <CarouselComponent></CarouselComponent>
 
         <div className="row m-4">
           <img width="60px" height="60px" src={residenceImages.imagePath} className="userImage mr-3" />
