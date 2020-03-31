@@ -3,6 +3,7 @@ import { ResidenceContext } from "../contexts/ResidenceContextProvider";
 import { useParams } from "react-router-dom";
 import { Button, FormGroup, Input } from "reactstrap";
 import SearchBar from "../components/SearchBar";
+import Calender from "../components/Calender";
 
 
 function ResidenceDetailsPage() {
@@ -59,7 +60,8 @@ function ResidenceDetailsPage() {
       </div>
         <hr></hr>
       <div className="row m-4">
-        <div className="col-12 residenceDetailsPageAddress golden mr-5">Availability</div>
+          <div className="col-12 residenceDetailsPageAddress golden mr-5">Availability</div>
+          <Calender></Calender>
       </div>
         <hr></hr>
       <div className="row m-4 justify-content-center">
