@@ -1,11 +1,22 @@
 import React, { useContext } from "react";
 import { ResidenceContext } from "../contexts/ResidenceContextProvider";
+import { ImageContext } from "../contexts/ImageContextProvider";
 import { useHistory } from "react-router-dom";
 
 function ResidenceCard() {
   const { residences } = useContext(ResidenceContext);
+  const { images } = useContext(ImageContext);
 
   let history = useHistory();
+
+  function showResidenceImage(currentResidencyId) {
+    console.log(currentResidencyId)
+    console.log(images)
+    if (images) {
+     let residenceImages = images.filter(image => image.residencyId == currentResidencyId)
+     return residenceImages[0].imagelink
+    }
+  }
 
   if (residences) {
     const list = () => {
@@ -14,13 +25,13 @@ function ResidenceCard() {
           <div
             key={i}
             onClick={() => history.push("/residence/" + residence.id)}
-            className="row text-left residenceCard mb-3"
+            className="row text-left residenceCard mb-2"
           >
-            <div className="col-4 col-lg-2 col-md-3 prevImage">
+            <div className="col-5 col-lg-2 col-md-3">
               <img
                 className="cardImage"
-                src={residence.image}
-                alt="residence-preview"
+                src={showResidenceImage(residence.id)}
+                alt="residence-image"
               />
             </div>
             <div className="col-7">
