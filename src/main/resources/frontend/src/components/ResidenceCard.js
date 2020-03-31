@@ -36,23 +36,23 @@ function ResidenceCard() {
               />
             </div>
             <div className="col-7">
-              <p className="golden mt-3 mb-0 residenceDetailsTitle">
-                {residence.city}, {residence.country}
+              <p className="golden mt-0 mb-0 residenceDetailsTitle">
+                {residence.title}
               </p>
-              <p className="golden residenceDetailsCommonDetails">
-                {residence.maxGuests} guests - {residence.numberofbeds} beds -
-                {residence.rooms} rooms
+              <p className="golden mb-0 residenceDetailsCommonDetails">
+                {residence.city}, {residence.country}<br></br>
+                {residence.maxGuests} guests - {residence.numberofbeds} beds - {residence.rooms}  rooms
               </p>
-
-              <div className="golden residencePriceDetails">
-                <p>
+              
+                <p className="golden mb-0 residencePriceDetails">
                   {residence.pricepernight} kr
                   <span className="residenceDetailsCommonDetails">
                     {" "}
                     per night{" "}
-                  </span>
+                </span>
+      
                 </p>
-              </div>
+            
             </div>
           </div>
         );
