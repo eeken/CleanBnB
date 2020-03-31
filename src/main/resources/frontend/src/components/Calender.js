@@ -12,6 +12,8 @@ export default function Calendar() {
   }
 
   function reducer(state, action) {
+    console.log('The startDate' + state.startDate)
+    console.log('The endDate' + state.endDate)
     switch (action.type) {
       case 'focusChange':
         return { ...state, focusedInput: action.payload }
