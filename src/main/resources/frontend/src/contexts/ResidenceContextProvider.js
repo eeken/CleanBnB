@@ -1,31 +1,29 @@
 import React, { createContext, useState } from "react";
 
 export const ResidenceContext = createContext();
-
 export default function ResidenceContextProvider(props) {
   const [residences, setResidences] = useState(null);
   const [residence, setResidence] = useState(Object);
   const [address, setAddress] = useState(Object);
   const [residenceImages, setResidenceImages] = useState("");
 
-  const fetchResidence = async values => {
-    if (values.destination == undefined) {
-      try {
-        let res = await fetch("/rest/residences/");
-        res = await res.json();
-        setResidences(res);
-      } catch {
-        console.log("Not authenticated");
-      }
-    } else {
-      let res = await fetch("/rest/residences/" + values.destination + "/" + values.numberofguests);
+  const fetchResidence = async params => {
+    console.log(params);
+    
+    try {
+      let res = await fetch(
+        "/rest/residences/explore?destination=" + params.destination + "&numberofguests=" + params.numberofguests );
       res = await res.json();
       setResidences(res);
+
+    } catch {
+      console.log("Not authenticated");
     }
   };
 
   const fetchResidenceDetails = async id => {
-    let res = await fetch("/rest/residence/" + id);
+    console.log(id + "context");
+    let res = await fetch("/rest/residences/details?id=" + id);
     res = await res.json();
     setResidence(res);
     setAddress(res.address);
@@ -43,7 +41,6 @@ export default function ResidenceContextProvider(props) {
     setResidences,
     residence,
     setResidence,
-    fetchResidence,
     fetchResidenceImages,
     residenceImages,
     fetchResidenceDetails,

@@ -3,18 +3,14 @@ import { Button, Form, FormGroup, Label, Input } from "reactstrap";
 import { useHistory } from "react-router-dom";
 
 function LandingPage() {
-  const [destination, setDestination] = useState("");
+  const [destination, setDestination] = useState();
   const [checkIn, setCheckIn] = useState(0);
   const [checkOut, setCheckOut] = useState(0);
-  const [numberofguests, setNumberOfGuests] = useState('');
+  const [numberofguests, setNumberOfGuests] = useState(0);
 
   const submitSearch = async e => {
     e.preventDefault();
-    if (numberofguests == '' || destination == '') {
-      await history.push("/explore");
-    } else {
-      await history.push("/explore/destination=" + destination + "/numberofguests=" + numberofguests);
-    }
+      await history.push("explore/" + destination + "/" + numberofguests);
   };
 
   let history = useHistory();

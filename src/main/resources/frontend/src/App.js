@@ -24,35 +24,35 @@ function App() {
   return (
     <div className="App">
       <ResidenceContextProvider>
-      <ImageContextProvider>
-        <Router>
-          <Header menuData={menu} userIsLoggedIn={userIsLoggedIn} />
-          <main className="mt-4">
-            {/* <Router> */}
-            <Switch>
-              <Route exact path="/">
-                <LandingPage></LandingPage>
-              </Route>
-              <Route exact path={"/explore/destination=:destination/numberofguests=:numberofguests"}>
-                <Explore></Explore>
-              </Route>
-              <Route exact path="/explore">
-                <Explore></Explore>
-              </Route>
-              <Route exact path="/about">
-                <About></About>
-              </Route>
-              <Route exact path="/login">
-                <Login></Login>
-              </Route>
-              <Route path={"/residence/:id"} component={ResidenceDetailsPage}>
-                <ResidenceDetailsPage></ResidenceDetailsPage>
-              </Route>
-            </Switch>
-          </main>
-          <Footer className="footer" />
-        </Router>
-      </ImageContextProvider>
+        <ImageContextProvider>
+          <Router>
+            <Header menuData={menu} userIsLoggedIn={userIsLoggedIn} />
+            <main className="mt-4">
+              {/* <Router> */}
+              <Switch>
+                <Route exact path="/">
+                  <LandingPage></LandingPage>
+                </Route>
+                <Route exact path="/explore/:destination/:numberofguests">
+                  <Explore></Explore>
+                </Route>
+                <Route exact path="/explore">
+                  <Explore></Explore>
+                </Route>
+                <Route exact path="/about">
+                  <About></About>
+                </Route>
+                <Route exact path="/login">
+                  <Login></Login>
+                </Route>
+                <Route path={"/residence/:id"} component={ResidenceDetailsPage}>
+                  <ResidenceDetailsPage></ResidenceDetailsPage>
+                </Route>
+              </Switch>
+            </main>
+            <Footer className="footer" />
+          </Router>
+        </ImageContextProvider>
       </ResidenceContextProvider>
     </div>
   );
