@@ -91,3 +91,28 @@ margin-right: 0;
 .perNight{
   font-size: 0.75em;
 }
+
+/* unvisited link */
+a:link {
+  color:#B9986D;
+}
+
+/* visited link */
+a:visited {
+  color:rgb(66, 43, 14);
+}
+
+/* mouse over link */
+a:hover {
+  color: rgb(121, 93, 57);
+}
+
+/* selected link */
+a:active {
+  color:rgb(0, 0, 0);
+}
+
+.policiesLink{
+  color:#B9986D;
+  text-decoration: underline;
+}
