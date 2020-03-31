@@ -9,6 +9,7 @@ import About from "./Pages/About";
 import Login from "./Pages/Login";
 import ResidenceDetailsPage from "./Pages/ResidenceDetailsPage";
 import ResidenceContextProvider from "./contexts/ResidenceContextProvider";
+import ImageContextProvider from "./contexts/ImageContextProvider";
 
 
 function App() {
@@ -25,6 +26,7 @@ function App() {
     
     <div className="App">
       <ResidenceContextProvider>
+      <ImageContextProvider>
       <Router>
         <Header menuData={menu} userIsLoggedIn={userIsLoggedIn}/>
         <main className="mt-4">
@@ -49,6 +51,7 @@ function App() {
         </main>
         <Footer className="footer"/>
       </Router>
+      </ImageContextProvider>
       </ResidenceContextProvider>
   </div>
   );
