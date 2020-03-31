@@ -11,6 +11,10 @@ public interface ResidenceRepo extends CrudRepository<Residence, Integer> {
 
     public List<Residence> findAll();
 
+    //USED IF USER DOES NOT PROVIDE PICKS NUMBEROFGUESTS IN SEARCH
     public List<Residence> findByAddressCountryContainsIgnoreCaseAndMaxguestsGreaterThanEqualOrAddressCityContainsIgnoreCaseAndMaxguestsGreaterThanEqual(String addressCountry, int guestSeach1, String addressCity,  int guestSeach2);
+
+    //USED IF USER PROVIDES NUMBEROFGUESTS IN SEARCH
+    public List<Residence> findByAddressCountryContainsIgnoreCaseAndMaxguestsOrAddressCityContainsIgnoreCaseAndMaxguests(String addressCountry, int guestSeach1, String addressCity,  int guestSeach2);
 
 }
