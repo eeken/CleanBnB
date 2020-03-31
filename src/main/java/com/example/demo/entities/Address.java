@@ -1,6 +1,8 @@
 package com.example.demo.entities;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "addresses")
@@ -14,6 +16,10 @@ public class Address {
     private String country;
     private String street;
     private String streetnumber;
+
+    @OneToMany
+    @JoinColumn(name="address_id")
+    private List<Residence> residenceList = new ArrayList<>();
 
     public int getId() {
         return id;

@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.example.demo.repositories.ResidenceRepo;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -13,14 +14,16 @@ public class ResidenceService {
     @Autowired
     private ResidenceRepo residenceRepo;
 
-    public Residence getOneResidence(int id) {
+    public Residence findById(int id) {
         return residenceRepo.findById(id);
     }
 
-    public List<Residence> getAllResidences(){
-        return (List<Residence>) residenceRepo.findAll();
+    public List<Residence> findAll(){
+        return residenceRepo.findAll();
     }
 
-
-
+    public List<Residence> getAllResidences(String addressCountry, int guestSeach1, String addressCity, int guestSeach2){
+        List<Residence> residences = new ArrayList<>();
+        return residenceRepo.findByAddressCountryAndMaxguestsOrAddressCityAndMaxguests(addressCountry, guestSeach1, addressCity ,guestSeach2);
+    }
 }

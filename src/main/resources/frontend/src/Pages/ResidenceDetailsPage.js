@@ -5,11 +5,11 @@ import { Button, FormGroup, Input } from "reactstrap";
 import SearchBar from "../components/SearchBar";
 import Calender from "../components/Calender";
 
-
 function ResidenceDetailsPage() {
   let { id } = useParams();
-  const { residenceDetails } = useContext(ResidenceContext);
   const { fetchResidenceDetails } = useContext(ResidenceContext);
+  const { residence } = useContext(ResidenceContext);
+  const { address } = useContext(ResidenceContext);
   const { residenceImages } = useContext(ResidenceContext);
   const { fetchResidenceImages } = useContext(ResidenceContext);
   const [numberOfGuests, setNumberOfGuests] = useState("");
@@ -47,8 +47,9 @@ function ResidenceDetailsPage() {
       <SearchBar></SearchBar>
       <div className="white">
         <div className="row justify-content-center">
-          <div className="residenceDetailsPageTitle golden col-12">  {residenceDetails.country}, {residenceDetails.city} </div>
-          {/* <div className=" sliderContainer container col-12 col-lg-6">  </div> */}
+        <div className="residenceDetailsPageTitle golden">  {address.country}, {address.city} </div>
+        {/* <div className=" sliderContainer container col-12 col-lg-6">  </div> */}
+      </div>
         </div>
 
         <img width="100%" height="auto" src={showImage()} />

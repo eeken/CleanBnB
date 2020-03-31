@@ -15,14 +15,21 @@ public class ResidenceController {
     @Autowired
     private ResidenceService residenceService;
 
+    @GetMapping("/rest/residences/{addressCountry}/{numberofguests}")
+    public List<Residence> getAllResidences(
+            @PathVariable("addressCountry") String addressCountry,
+            @PathVariable("addressCountry") String addressCity,
+            @PathVariable("numberofguests")  Integer numberofguests) {
+        return residenceService.getAllResidences(addressCountry, numberofguests, addressCity, numberofguests);
+    }
+
+    @GetMapping("/rest/residence/{id}")
+    public Residence findById(@PathVariable int id){
+        return residenceService.findById(id);
+    }
+
     @GetMapping("/rest/residences")
-    public List<Residence> getAllResidences(){
-        return residenceService.getAllResidences();
+    public List<Residence> findAll() {
+        return residenceService.findAll();
     }
-
-    @GetMapping("/rest/residences/{id}")
-    public Residence getOneResidence(@PathVariable int id){
-        return residenceService.getOneResidence(id);
-    }
-
 }

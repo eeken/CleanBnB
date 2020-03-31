@@ -1,48 +1,53 @@
-import React, { createContext, useState, useEffect } from "react";
+import React, { createContext, useState } from "react";
 
 export const ResidenceContext = createContext();
 
 export default function ResidenceContextProvider(props) {
   const [residences, setResidences] = useState(null);
-  const [residenceDetails, setResidenceDetails] = useState("");
+  const [residence, setResidence] = useState(Object);
+  const [address, setAddress] = useState(Object);
   const [residenceImages, setResidenceImages] = useState("");
 
-  const fetchResidence = async () => {
-    let res = await fetch("/rest/residences");
-    try {
+  const fetchResidence = async values => {
+    if (values.destination == undefined) {
+      try {
+        let res = await fetch("/rest/residences/");
+        res = await res.json();
+        setResidences(res);
+      } catch {
+        console.log("Not authenticated");
+      }
+    } else {
+      let res = await fetch("/rest/residences/" + values.destination + "/" + values.numberofguests);
       res = await res.json();
       setResidences(res);
-      console.log(res);
-    } catch {
-      console.log("Not authenticated");
     }
   };
 
-  const fetchResidenceDetails = async (id) => {
-    let res = await fetch("/rest/residences/" + id);
+  const fetchResidenceDetails = async id => {
+    let res = await fetch("/rest/residence/" + id);
     res = await res.json();
-    setResidenceDetails(res);
+    setResidence(res);
+    setAddress(res.address);
   };
 
-  const fetchResidenceImages = async (id) => {
+  const fetchResidenceImages = async id => {
     let res = await fetch("/rest/images/" + id);
     res = await res.json();
-    setResidenceImages(res)
+    setResidenceImages(res);
   };
-
-  useEffect(() => {
-    fetchResidence();
-  }, []);
 
   const values = {
     residences,
     fetchResidence,
     setResidences,
-    residenceDetails,
-    setResidenceDetails,
-    fetchResidenceDetails,
+    residence,
+    setResidence,
+    fetchResidence,
     fetchResidenceImages,
     residenceImages,
+    fetchResidenceDetails,
+    address
   };
 
   return (

@@ -5,7 +5,6 @@ import java.util.List;
 
 @Entity
 @Table(name = "residences")
-@SecondaryTable(name="addresses")
 public class Residence {
 
     @Id
@@ -17,21 +16,29 @@ public class Residence {
     private int pricepernight;
     private int numberofbeds;
 
+    public Residence(int id, int size, int rooms, int maxguests, int pricepernight, int numberofbeds, Address address) {
+        this.id = id;
+        this.size = size;
+        this.rooms = rooms;
+        this.maxguests = maxguests;
+        this.pricepernight = pricepernight;
+        this.numberofbeds = numberofbeds;
+        this.address = address;
+    }
 
-    // FROM THE SECONDARY TABLE ADDRESSES
-    @Column(table="addresses")
-    private String county;
-    @Column(table="addresses")
-    private String city;
-    @Column(table="addresses")
-    private String country;
-    @Column(table="addresses")
-    private String street;
+    @ManyToOne
+    private Address address;
 
-    //SETTERS AND GETTERS FOR PRIMARY TABLE RESIDENCES
-    public int getPricepernight() { return pricepernight; }
+    public Address getAddress() {
+        return address;
+    }
 
-    public void setPricepernight(int pricepernight) { this.pricepernight = pricepernight; }
+    public void setAddress(Address address) {
+        this.address = address;
+    }
+
+    public Residence() {
+    }
 
     public int getId() {
         return id;
@@ -49,6 +56,10 @@ public class Residence {
         this.size = size;
     }
 
+    public int getMaxguests() { return maxguests; }
+
+    public void setMaxguests(int maxguests) { this.maxguests = maxguests; }
+
     public int getRooms() {
         return rooms;
     }
@@ -57,27 +68,20 @@ public class Residence {
         this.rooms = rooms;
     }
 
-    public int getMaxGuests() {
-        return maxguests;
+    public int getPricepernight() {
+        return pricepernight;
     }
 
-    public void setMaxGuests(int maxguests) {
-        this.maxguests = maxguests;
+    public void setPricepernight(int pricepernight) {
+        this.pricepernight = pricepernight;
     }
 
-    public int getNumberofbeds() { return numberofbeds; }
+    public int getNumberofbeds() {
+        return numberofbeds;
+    }
 
-    public void setNumberofbeds(int numberofbeds) { this.numberofbeds = numberofbeds; }
-
-    // GETTERS ADDRESSES
-    public String getCounty() { return county; }
-
-    public String getCity() { return city; }
-
-    public String getCountry() { return country; }
-
-    public String getStreet() { return street; }
-
-    public Residence() {}
+    public void setNumberofbeds(int numberofbeds) {
+        this.numberofbeds = numberofbeds;
+    }
 }
 

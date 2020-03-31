@@ -35,12 +35,10 @@ function ResidenceCard() {
               />
             </div>
             <div className="col-7">
-              <p className="golden mt-3 mb-0 residenceDetailsTitle">
-                {residence.city}, {residence.country}
-              </p>
+              <p className="golden mt-3 mb-0 residenceDetailsTitle"> {residence.address.city}, {residence.address.country}  </p>
               <p className="golden residenceDetailsCommonDetails">
-                {residence.maxGuests} guests - {residence.numberofbeds} beds -
-                {residence.rooms} rooms
+                {residence.maxguests} guests - {residence.numberofbeds}{" "}
+                beds -{residence.rooms} rooms
               </p>
 
               <div className="golden residencePriceDetails">
@@ -57,11 +55,9 @@ function ResidenceCard() {
         );
       });
     };
-
     return <>{list()}</>;
   }
-
-  return null;
+  return <div> <h1> No matches </h1> </div>;
 }
 
 export default ResidenceCard;

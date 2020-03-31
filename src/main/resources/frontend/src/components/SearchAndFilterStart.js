@@ -1,19 +1,23 @@
 import React, { useState } from "react";
 import { Button, Form, FormGroup, Label, Input } from "reactstrap";
+import { useHistory } from "react-router-dom";
 
 function LandingPage() {
   const [destination, setDestination] = useState("");
-  const [checkIn, setCheckIn] = useState("");
-  const [checkOut, setCheckOut] = useState("");
-  const [numberOfGuests, setNumberOfGuests] = useState("");
+  const [checkIn, setCheckIn] = useState(0);
+  const [checkOut, setCheckOut] = useState(0);
+  const [numberofguests, setNumberOfGuests] = useState('');
 
-  const submitSearch = e => {
+  const submitSearch = async e => {
     e.preventDefault();
-    console.log("Destination chosen  :  " + destination);
-    console.log("Check-in date chosen  :  " + checkIn);
-    console.log("Check-out date chosen  :  " + checkOut);
-    console.log("Number of guests chosen  :  " + numberOfGuests);
+    if (numberofguests == '' || destination == '') {
+      await history.push("/explore");
+    } else {
+      await history.push("/explore/destination=" + destination + "/numberofguests=" + numberofguests);
+    }
   };
+
+  let history = useHistory();
 
   return (
     <div className="col-12 col-lg-3 col-md-6">
@@ -71,8 +75,10 @@ function LandingPage() {
             type="select"
             name="guestSelection"
             id="guestSelection"
+            style={{textAlignLast: 'center'}}
             onChange={e => setNumberOfGuests(e.target.value)}
           >
+            <option value={''}>Number of guests</option>
             <option value={1}>1</option>
             <option value={2}>2</option>
             <option value={3}>3</option>
@@ -81,7 +87,9 @@ function LandingPage() {
             <option value={6}>6</option>
           </Input>
         </FormGroup>
-        <Button className="searchButton" style={{backgroundColor: '#B9986D'}}>SEARCH</Button>
+        <Button className="searchButton" style={{ backgroundColor: "#B9986D" }}>
+          SEARCH
+        </Button>
       </Form>
     </div>
   );
