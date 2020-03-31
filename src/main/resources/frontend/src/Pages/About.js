@@ -7,7 +7,7 @@ export default function Explore() {
                 <div className="whiteBackground p-4">
                     <h2 className="searchAndFilterFormTitle golden" align="center">About CleanBNB</h2>
                     <div className="row m-2">
-                        <p className="golden aboutCleanBNB p-1 mt-2 mb-4" align="center">Airbnb is an online marketplace that connects people who want to rent out their homes with people who are looking for accommodations in that locale. It currently covers more than 81,000 cities and 191 countries worldwide. Also, in case you missed it: the company's name comes from "AirBnB”, only we make sure the residences are actually CLEAN.</p>
+                        <p className="golden aboutCleanBNB p-1 mt-2 mb-4" align="center">CleanBNB is an online marketplace that connects people who want to rent out their homes with people who are looking for accommodations in that locale. It currently covers more than 81,000 cities and 191 countries worldwide. Also, in case you missed it: the company's name comes from "AirBnB”, only we make sure the residences are actually CLEAN.</p>
                     </div>
 
                     <h4 className="golden" align="center">Meet the Team</h4>
