@@ -8,7 +8,7 @@ import Calender from "../components/Calender";
 function ResidenceDetailsPage() {
   let { id } = useParams();
   const { fetchResidenceDetails } = useContext(ResidenceContext);
-  const { residence } = useContext(ResidenceContext);
+  const { residenceDetails } = useContext(ResidenceContext);
   const { address } = useContext(ResidenceContext);
   const { residenceImages } = useContext(ResidenceContext);
   const { fetchResidenceImages } = useContext(ResidenceContext);
@@ -104,7 +104,6 @@ function ResidenceDetailsPage() {
           <Button className="bookingButton mb-5 p-2">BOOK THIS RESIDENCE</Button>
         </div>
       </div>
-    </div>
   );
 }
 
