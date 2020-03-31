@@ -26,6 +26,7 @@ function ResidenceCard() {
             key={i}
             onClick={() => history.push("/residence/" + residence.id)}
             className="row text-left residenceCard mb-2"
+            style={{cursor: 'pointer' }}
           >
             <div className="col-5 col-lg-2 col-md-3">
               <img
