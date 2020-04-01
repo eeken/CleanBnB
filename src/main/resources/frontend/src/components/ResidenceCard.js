@@ -10,8 +10,7 @@ function ResidenceCard() {
   let history = useHistory();
 
   function showResidenceImage(currentResidencyId) {
-    console.log(currentResidencyId)
-    console.log(images)
+    
     if (images) {
      let residenceImages = images.filter(image => image.residencyId == currentResidencyId)
      return residenceImages[0].imagelink

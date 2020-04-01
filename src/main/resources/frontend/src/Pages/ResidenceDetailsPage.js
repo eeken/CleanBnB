@@ -22,9 +22,9 @@ function ResidenceDetailsPage() {
     fetchResidenceImages(id);
   }, []);
 
-  console.log(residenceImages);
+  /*console.log(residenceImages);
   console.log(numberOfGuests);
-  console.log(residenceImages[0]);
+  console.log(residenceImages[0]);*/
 
   function showImage() {
     if (residenceImages) {

@@ -9,10 +9,10 @@ function LandingPage() {
 
   const submitSearch = e => {
     e.preventDefault();
-    console.log("Destination chosen  :  " + destination);
+    /*console.log("Destination chosen  :  " + destination);
     console.log("Check-in date chosen  :  " + checkIn);
     console.log("Check-out date chosen  :  " + checkOut);
-    console.log("Number of guests chosen  :  " + numberOfGuests);
+    console.log("Number of guests chosen  :  " + numberOfGuests);*/
   };
 
   return (

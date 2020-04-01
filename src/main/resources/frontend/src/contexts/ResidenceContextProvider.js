@@ -12,9 +12,9 @@ export default function ResidenceContextProvider(props) {
     try {
       res = await res.json();
       setResidences(res);
-      console.log(res);
+      
     } catch {
-      console.log("Not authenticated");
+      
     }
   };
 
