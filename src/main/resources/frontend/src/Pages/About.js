@@ -16,7 +16,7 @@ export default function Explore() {
                             <img
                                 height="100px"
                                 width="auto"
-                                src="https://lh3.googleusercontent.com/proxy/ooHELBpCH_4xdpPEbQw5RVzzlULWKSodgyAD7sa6Y3jLzgHfk7BYVsfyHtCMN6Z-Dq50KgD2Ax-EY0b4FRd8_oFlmAAhJcEt8kDY9rDmOCDZkyt2R5t2D7L2j94cZkYEipGOSIs"
+                                src={require('../images/m.jpg')}
                                 alt="team"
                             />
                         </div>
@@ -32,7 +32,7 @@ export default function Explore() {
                             <img
                                 height="100px"
                                 width="auto"
-                                src="https://lh3.googleusercontent.com/proxy/r_f234tdZwAVzBg4_f-tiRsAvYP_4VsHfyT5WPkgNDw8qZUcNUvNUbEtSDa2BN7nMUE4d8yB4CCgwuXavDWQWux3LNrxvAwo_6gRTHaKrNVfttoGM4zUsZ5-V_XGPsqg7cwHvRY"
+                                src={require('../images/o.jpg')}
                                 alt="team"
                             />
                         </div>
@@ -48,7 +48,7 @@ export default function Explore() {
                             <img
                                 height="100px"
                                 width="auto"
-                                src="https://lh3.googleusercontent.com/proxy/P_fJEF2EKFgwV-cNDkSlKLI9hFpHvAV1FKq_JubznbkO1hINfKjzAWn4b2jlVyGUcgqDj_Bl2g9dYyGfxBhPk1VgHxFpMogMnfYDNZ0jRd18Ho1qdHIlElq7J001nH07KGqLZQ"
+                                src={require('../images/v.jpg')}
                                 alt="team"
                             />
                         </div>
@@ -64,7 +64,7 @@ export default function Explore() {
                             <img
                                 height="100px"
                                 width="auto"
-                                src="https://lh3.googleusercontent.com/proxy/uzpHVFUIvyMVg9ykWzb5UbZwLYMWgW7qD_yddJLrBRs8QEcPH3juHyiid_dEUEJLtD51sT1xxcRcOQGmoc5DOpoBfWcutNOM9jou5gVGGl_JFuSJ_0uH7PEnJDfYqx3e0D0vGw"
+                                src={require('../images/p.jpg')}
                                 alt="team"
                             />
                         </div>
@@ -80,7 +80,7 @@ export default function Explore() {
                             <img
                                 height="100px"
                                 width="auto"
-                                src="https://lh3.googleusercontent.com/proxy/dR_S92tkJiAV6Ax3BjEmtJKccve7vJbZT-yLQNlejYnZ3lPAD2L9xL_oHdDMciECeWfR0q0OdbEVy8oZJpYMIMgIib1q6iaxc4VQ_V1i9-B6qovDxWwt0iTMg07Jl4_eMcsOXpc"
+                                src={require('../images/n.jpg')}
                                 alt="team"
                             />
                         </div>
