@@ -47,7 +47,7 @@ function ResidenceDetailsPage() {
      {/*  <SearchBar></SearchBar> */}
       <div className="white">
         <div className="row justify-content-center">
-          <div className="residenceDetailsPageTitle golden col-12">  {residenceDetails.country}, {residenceDetails.city} </div>
+          <div className="residenceDetailsPageTitle golden col-12 text-center">  {residenceDetails.title} </div>
           {/* <div className=" sliderContainer container col-12 col-lg-6">  </div> */}
         </div>
 
