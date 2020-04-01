@@ -40,7 +40,7 @@ function ResidenceCard() {
                 {residence.title}
               </p>
               <p className="golden mb-0 residenceDetailsCommonDetails">
-                {residence.city}, {residence.country}<br></br>
+                {residence.address.city}, {residence.address.country}<br></br>
                 {residence.maxGuests} guests - {residence.numberofbeds} beds - {residence.rooms}  rooms
               </p>
               
