@@ -44,7 +44,7 @@ function ResidenceCard() {
               </p>
               
                 <p className="golden mb-0 residencePriceDetails">
-                  {residence.pricepernight} kr
+                  ${residence.pricepernight}
                   <span className="residenceDetailsCommonDetails">
                     {" "}
                     per night{" "}
