@@ -55,7 +55,7 @@ function ResidenceDetailsPage() {
         <CarouselComponent></CarouselComponent>
 
         <div className="row m-4">
-          <img width="60px" height="60px" src={residenceImages.imagePath} className="userImage mr-3" />
+          {/* <img width="60px" height="60px" src={residenceImages.imagePath} className="userImage mr-3" /> */}
           <div className="residenceDetailsPageAddress golden mr-5">  {residenceDetails.country}, {residenceDetails.city} </div>
           <h4 className="golden priceTag">{residenceDetails.pricepernight}kr <span className="perNight">per night</span></h4>
         </div>
