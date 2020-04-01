@@ -1,9 +1,10 @@
 import React, { useContext, useEffect, useState } from "react";
 import { ResidenceContext } from "../contexts/ResidenceContextProvider";
 import { useParams } from "react-router-dom";
-import { Button, FormGroup, Input } from "reactstrap";
+import { Button, FormGroup, Input, Carousel } from "reactstrap";
 import SearchBar from "../components/SearchBar";
 import Calender from "../components/Calender";
+import CarouselComponent from "../components/CarouselComponent";
 
 function ResidenceDetailsPage() {
   let { id } = useParams();
@@ -12,7 +13,7 @@ function ResidenceDetailsPage() {
   const { address } = useContext(ResidenceContext);
   const { residenceImages } = useContext(ResidenceContext);
   const { fetchResidenceImages } = useContext(ResidenceContext);
-  const [numberOfGuests, setNumberOfGuests] = useState("");
+  const [ numberOfGuests, setNumberOfGuests ] = useState("");
 
   useEffect(() => {
     fetchResidenceDetails(id);
@@ -45,7 +46,7 @@ function ResidenceDetailsPage() {
 
   return (
     <div>
-      <SearchBar></SearchBar>
+     {/*  <SearchBar></SearchBar> */}
       <div className="white">
         <div>
           <div className="row justify-content-center">
@@ -57,7 +58,8 @@ function ResidenceDetailsPage() {
           </div>
         </div>
 
-        <img width="100%" height="auto" src={showImage()} />
+        {/* <img width="100%" height="auto" src={showImage()} /> */}
+        <CarouselComponent></CarouselComponent>
 
         <div className="row m-4">
           <img
@@ -139,16 +141,8 @@ function ResidenceDetailsPage() {
             <b>Total price:</b>
           </div>
 
-          <div className="row golden mb-3">
-            <input
-              type="checkbox"
-              className="mt-1 mr-2"
-              id="policies"
-              onclick="confirmPolicies()"
-            />
-            Agree to the{" "}
-            <a
-              href="https://www.airbnb.com/help/topic/250/terms-policies"
+          <div className="row golden mb-3"><input type="checkbox" className="mt-1 mr-2" id="policies" onClick={confirmPolicies()} />
+            Agree to the <a href="https://www.airbnb.com/help/topic/250/terms-policies"
               target="_blank"
               className="ml-1 policiesLink"
             >

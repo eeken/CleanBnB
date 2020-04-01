@@ -15,6 +15,7 @@ public class Residence {
     private int maxguests;
     private int pricepernight;
     private int numberofbeds;
+    private String title;
 
     public Residence(int id, int size, int rooms, int maxguests, int pricepernight, int numberofbeds, Address address) {
         this.id = id;
@@ -76,10 +77,16 @@ public class Residence {
         this.pricepernight = pricepernight;
     }
 
+    public String getTitle() {
+        return title;
+    }
     public int getNumberofbeds() {
         return numberofbeds;
     }
 
+    public void setTitle(String title) {
+        this.title = title;
+    }
     public void setNumberofbeds(int numberofbeds) {
         this.numberofbeds = numberofbeds;
     }

@@ -26,6 +26,7 @@ function ResidenceCard() {
             key={i}
             onClick={() => history.push("/residence/" + residence.id)}
             className="row text-left residenceCard mb-2"
+            style={{cursor: 'pointer' }}
           >
             <div className="col-5 col-lg-2 col-md-3">
               <img
@@ -35,21 +36,23 @@ function ResidenceCard() {
               />
             </div>
             <div className="col-7">
-              <p className="golden mt-3 mb-0 residenceDetailsTitle"> {residence.address.city}, {residence.address.country}  </p>
-              <p className="golden residenceDetailsCommonDetails">
-                {residence.maxguests} guests - {residence.numberofbeds}{" "}
-                beds -{residence.rooms} rooms
+              <p className="golden mt-0 mb-0 residenceDetailsTitle">
+                {residence.title}
               </p>
-
-              <div className="golden residencePriceDetails">
-                <p>
+              <p className="golden mb-0 residenceDetailsCommonDetails">
+                {residence.city}, {residence.country}<br></br>
+                {residence.maxGuests} guests - {residence.numberofbeds} beds - {residence.rooms}  rooms
+              </p>
+              
+                <p className="golden mb-0 residencePriceDetails">
                   {residence.pricepernight} kr
                   <span className="residenceDetailsCommonDetails">
                     {" "}
                     per night{" "}
-                  </span>
+                </span>
+      
                 </p>
-              </div>
+            
             </div>
           </div>
         );
