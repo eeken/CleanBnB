@@ -8,7 +8,8 @@ import CarouselComponent from "../components/CarouselComponent";
 
 function ResidenceDetailsPage() {
   let { id } = useParams();
-  const { residenceDetails } = useContext(ResidenceContext);
+  const { residence } = useContext(ResidenceContext);
+  const { address } = useContext(ResidenceContext);
   const { fetchResidenceDetails } = useContext(ResidenceContext);
   const { residenceImages } = useContext(ResidenceContext);
   const { fetchResidenceImages } = useContext(ResidenceContext);
@@ -47,7 +48,7 @@ function ResidenceDetailsPage() {
       {/*  <SearchBar></SearchBar> */}
       <div className="white">
         <div className="col-12 justify-content-center">
-          <div className="residenceDetailsPageTitle golden text-center">  {residenceDetails.title} </div>
+          <div className="residenceDetailsPageTitle golden text-center">  {residence.title} </div>
           {/* <div className=" sliderContainer container col-12 col-lg-6">  </div> */}
         </div>
 
@@ -56,8 +57,8 @@ function ResidenceDetailsPage() {
 
         <div className="row m-4">
           {/* <img width="60px" height="60px" src={residenceImages.imagePath} className="userImage mr-3" /> */}
-          <div className="residenceDetailsPageAddress golden mr-5">  {residenceDetails.country}, {residenceDetails.city} </div>
-          <h4 className="golden priceTag">${residenceDetails.pricepernight} <span className="perNight">per night</span></h4>
+          <div className="residenceDetailsPageAddress golden mr-5">  {address.country}, {address.city} </div>
+          <h4 className="golden priceTag">${residence.pricepernight} <span className="perNight">per night</span></h4>
         </div>
         <hr></hr>
         <div className="row m-4">
