@@ -122,10 +122,18 @@ a:active {
   text-decoration: underline;
 }
 
-.carousel-item > img { 
-  width: 100%; 
+.carousel {
+background-color:#B9986D;
+align-content: space-between;
+text-align: center;
 }
 
-.carousel-item {
-  height: 30vh;
+.carousel-item > img {
+display: inline block;
+height:50vh;
+}
+
+.carousel-inner .item img {
+object-fit: contain;
+align-content: center;
 }
