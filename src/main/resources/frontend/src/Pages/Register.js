@@ -16,6 +16,27 @@ function Register() {
     console.log("Password entered  :  " + password);
   };
 
+  /* async function springRegister() {
+    const credentials = {
+      username,
+      password
+    }
+  
+    let response = await fetch("/auth/register", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(credentials)
+    });
+
+    try {
+      response = await response.json()
+      setUser(response)
+      props.history.push('/')
+    } catch {
+      console.log('Bad credentials');
+    }
+  } */
+
   let history = useHistory()
 
   return (
