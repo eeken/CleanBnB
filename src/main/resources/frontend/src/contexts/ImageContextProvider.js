@@ -12,7 +12,7 @@ export default function ResidenceContextProvider(props) {
       res = await res.json();
       setImages(res);
     } catch {
-      console.log("Not authenticated");
+     // console.log("Not authenticated");
     }
   };
 
