@@ -59,3 +59,9 @@ main{
   border: 2px #B9986D;
   border-color: #B9986D !important;
 }
+.bvVeao {
+  z-index: 10;
+}
+main{
+  min-height: 82vh;
+}

@@ -1,32 +1,42 @@
 .residenceCard {
-  height: 15vh;
+  height: 16vh;
   display: flex;
   align-items: center;
 
 }
-.prevImage {
+.residenceCard:hover{
+  background-color: rgba(216, 195, 128, 0.3);
+}
+/* .prevImage {
   display: flex;
   justify-content: center;
   align-items: center;
   padding: 0;
-}
+} */
 .cardImage {
+  display: flex;
+  padding: 0;
+  margin: 0;
   height: 15vh;
-  width: auto;
+  width: 20vh;
   border-radius: 5px;
 }
+
 .residenceDetailsTitle {
   font-size: 0.95rem;
   font-weight: 1000;
 }
+
 .residencePriceDetails {
   font-size: 0.95rem;
   font-weight: 1000;
   border-bottom: solid 0.5px black;
+   padding-bottom: 7px;
 }
 .residenceDetailsCommonDetails {
   font-size: 0.75rem;
   font-weight: 0;
+ 
 }
 .perNightText {
   font-size: 1em;
@@ -42,4 +52,80 @@
   padding-left: 2em;
   font-style: italic;
   color: rgb(168, 168, 168);
+}
+.residenceDetailsPageTitle{
+  display: flex;
+  justify-content: center;
+  margin: 2.5vh;
+  font-size: 1.75em;
+  font-weight: bold;
+}
+
+.residenceDetailsPageAddress {
+  display: flex;
+  font-size: 1.3rem;
+  font-weight: bold;
+}
+
+.userImage {
+  display: flex;
+  align-items: flex-start;
+}
+
+.residenceSlider{
+  width: auto;
+}
+.sliderContainer{
+  display: flex;
+  height: 50vh;
+}
+
+.bookingButton {
+  width: 100%;
+  font-weight: bold;
+  background-color: #B9986D !important;
+  border: none !important;
+  font-weight: bold !important;
+}
+
+.priceTag {
+margin-left: auto;
+margin-right: 0;
+}
+
+.perNight{
+  font-size: 0.75em;
+}
+
+/* unvisited link */
+a:link {
+  color:#B9986D;
+}
+
+/* visited link */
+a:visited {
+  color:rgb(66, 43, 14);
+}
+
+/* mouse over link */
+a:hover {
+  color: rgb(121, 93, 57);
+}
+
+/* selected link */
+a:active {
+  color:rgb(0, 0, 0);
+}
+
+.policiesLink{
+  color:#B9986D;
+  text-decoration: underline;
+}
+
+.carousel-item > img { 
+  width: 100%; 
+}
+
+.carousel-item {
+  height: 30vh;
 }
