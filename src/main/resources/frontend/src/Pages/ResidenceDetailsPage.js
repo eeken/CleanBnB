@@ -8,26 +8,24 @@ import CarouselComponent from "../components/CarouselComponent";
 
 function ResidenceDetailsPage() {
   let { id } = useParams();
-  const { fetchResidenceDetails } = useContext(ResidenceContext);
-  const { residence } = useContext(ResidenceContext);
-  const { address } = useContext(ResidenceContext);
-  const { residenceImages } = useContext(ResidenceContext);
-  const { fetchResidenceImages } = useContext(ResidenceContext);
-  const [ numberOfGuests, setNumberOfGuests ] = useState("");
+  const [numberOfGuests, setNumberOfGuests] = useState("");
+  const {
+    residence,
+    address,
+    residenceImages,
+    fetchResidenceImages,
+    fetchResidenceDetails
+  } = useContext(ResidenceContext);
 
   useEffect(() => {
+    window.scroll({
+      top: 0,
+      left: 0,
+      behavior: "smooth"
+    });
     fetchResidenceDetails(id);
-  }, []);
-
-  useEffect(() => {
     fetchResidenceImages(id);
   }, []);
-
-  console.log(id + ": ID");
-
-  console.log(residenceImages);
-  console.log(numberOfGuests);
-  console.log(residenceImages[0]);
 
   function showImage() {
     if (residenceImages) {
@@ -46,10 +44,10 @@ function ResidenceDetailsPage() {
 
   return (
     <div>
-     {/*  <SearchBar></SearchBar> */}
+      {/*  <SearchBar></SearchBar> */}
       <div className="white">
         <div>
-          <div className="row justify-content-center">
+          <div className="justify-content-center">
             <div className="residenceDetailsPageTitle golden">
               {" "}
               {address.country}, {address.city}{" "}
@@ -115,7 +113,7 @@ function ResidenceDetailsPage() {
           <Calender></Calender>
         </div>
         <hr></hr>
-        <div className="row m-4 justify-content-center">
+        <div className="row ml-4 mr-4 justify-content-center">
           <div className="col-12 residenceDetailsPageAddress golden ml-1.5">
             Guests{" "}
           </div>
@@ -141,8 +139,16 @@ function ResidenceDetailsPage() {
             <b>Total price:</b>
           </div>
 
-          <div className="row golden mb-3"><input type="checkbox" className="mt-1 mr-2" id="policies" onClick={confirmPolicies()} />
-            Agree to the <a href="https://www.airbnb.com/help/topic/250/terms-policies"
+          <div className="row golden mb-3">
+            <input
+              type="checkbox"
+              className="mt-1 mr-2"
+              id="policies"
+              onClick={confirmPolicies()}
+            />
+            Agree to the{" "}
+            <a
+              href="https://www.airbnb.com/help/topic/250/terms-policies"
               target="_blank"
               className="ml-1 policiesLink"
             >

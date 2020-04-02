@@ -33,7 +33,7 @@ public class ResidenceController {
         return residenceService.findById(id);
     }
 
-    @GetMapping("/")
+    @GetMapping("")
     public List<Residence> findAll() {
         return residenceService.findAll();
     }

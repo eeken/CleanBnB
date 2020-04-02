@@ -10,8 +10,6 @@ function ResidenceCard() {
   let history = useHistory();
 
   function showResidenceImage(currentResidencyId) {
-    console.log(currentResidencyId)
-    console.log(images)
     if (images) {
      let residenceImages = images.filter(image => image.residencyId == currentResidencyId)
      return residenceImages[0].imagelink
@@ -24,9 +22,9 @@ function ResidenceCard() {
         return (
           <div
             key={i}
-            onClick={() => history.push("/residence/" + residence.id)}
+            onClick={() => history.push("/details/residence_id=" + residence.id)}
             className="row text-left residenceCard mb-2"
-            style={{cursor: 'pointer' }}
+            style={{ cursor: "pointer" }}
           >
             <div className="col-5 col-lg-2 col-md-3">
               <img
@@ -40,19 +38,19 @@ function ResidenceCard() {
                 {residence.title}
               </p>
               <p className="golden mb-0 residenceDetailsCommonDetails">
-                {residence.address.city}, {residence.address.country}<br></br>
-                {residence.maxGuests} guests - {residence.numberofbeds} beds - {residence.rooms}  rooms
+                {residence.address.city}, {residence.address.country}
+                <br></br>
+                {residence.maxguests} guests - {residence.numberofbeds} beds -{" "}
+                {residence.rooms} rooms
               </p>
-              
-                <p className="golden mb-0 residencePriceDetails">
-                  {residence.pricepernight} kr
-                  <span className="residenceDetailsCommonDetails">
-                    {" "}
-                    per night{" "}
+
+              <p className="golden mb-0 residencePriceDetails">
+                ${residence.pricepernight}
+                <span className="residenceDetailsCommonDetails">
+                  {" "}
+                  per night{" "}
                 </span>
-      
-                </p>
-            
+              </p>
             </div>
           </div>
         );

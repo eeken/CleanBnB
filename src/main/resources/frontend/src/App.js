@@ -26,18 +26,22 @@ function App() {
       <ResidenceContextProvider>
         <ImageContextProvider>
           <Router>
-            <Header menuData={menu} userIsLoggedIn={userIsLoggedIn} />
+            <Header menuData={menu} userIsLoggedIn={userIsLoggedIn} className="asdf"/>
             <main className="mt-4">
               {/* <Router> */}
               <Switch>
                 <Route exact path="/">
                   <LandingPage></LandingPage>
                 </Route>
-                <Route exact path="/explore/:destination/:numberofguests">
-                  <Explore></Explore>
-                </Route>
                 <Route exact path="/explore">
                   <Explore></Explore>
+                </Route>
+                <Route
+                  exact
+                  path="/explore/destination=:destination?&guests=:numberofguests?"
+                >
+                  <Explore
+                  key={window.location.pathname}></Explore>
                 </Route>
                 <Route exact path="/about">
                   <About></About>
@@ -45,7 +49,7 @@ function App() {
                 <Route exact path="/login">
                   <Login></Login>
                 </Route>
-                <Route path={"/residence/:id"} component={ResidenceDetailsPage}>
+                <Route path="/details/residence_id=:id?">
                   <ResidenceDetailsPage></ResidenceDetailsPage>
                 </Route>
               </Switch>
