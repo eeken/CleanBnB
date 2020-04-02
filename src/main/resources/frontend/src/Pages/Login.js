@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Button, Form, FormGroup, Label, Input } from "reactstrap";
+import { useHistory } from "react-router-dom"
 
 function Login() {
   const [email, setEmail] = useState("");
@@ -10,6 +11,8 @@ function Login() {
     console.log("Email entered :  " + email);
     console.log("Password entered  :  " + password);
   };
+
+  let history = useHistory()
 
   return (
     <div className="loginMain ">
@@ -50,7 +53,8 @@ function Login() {
         >
           Log In
         </Button>
-        <p
+        <p 
+          onClick={() => history.push("/register/")}
           align="right"
           className="loginRegisterText"
         >

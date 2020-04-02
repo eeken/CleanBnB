@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Button, Form, FormGroup, Label, Input } from "reactstrap";
+import { useHistory } from "react-router-dom"
 
 function Register() {
   const [firstName, setFirstName] = useState("");
@@ -15,6 +16,8 @@ function Register() {
     console.log("Password entered  :  " + password);
   };
 
+  let history = useHistory()
+
   return (
     <div className="registerMain ">
       <Form
@@ -22,7 +25,7 @@ function Register() {
         onSubmit={submitRegister}
       >
         <p className="registerFormTitle" align="center">
-          Register
+          REGISTER
         </p>
          <FormGroup align="left">
           <Label for="email-input" className="mb-1">
@@ -74,13 +77,13 @@ function Register() {
             backgroundColor: "#B9986D"
           }}
         >
-          Register
+          CREATE ACCOUNT
         </Button>
-        <p
+        <p onClick={() => history.push("/login/")}
           align="right"
           className="logInText"
         >
-          Or log in if you already have an account here!
+          Already have an account? Click here!
         </p>
       </Form>
     </div>
