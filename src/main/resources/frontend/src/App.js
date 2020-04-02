@@ -38,8 +38,6 @@ function App() {
             <Route exact path="/explore">
               <Explore></Explore>
             </Route>
-              <Explore></Explore>
-            </Route>
             <Route exact path="/about">
               <About></About>
             </Route>
@@ -57,7 +55,7 @@ function App() {
         <Footer className="footer"/>
       </Router>
       </ImageContextProvider>
-                  path="/explore/destination=:destination?&guests=:numberofguests?"
+                
       </ResidenceContextProvider>
     </div>
   );
