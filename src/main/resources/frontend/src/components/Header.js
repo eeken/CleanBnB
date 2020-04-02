@@ -38,13 +38,12 @@ export default function Header(props) {
         <div className="ml-5">
           <Button className="border">
             {user ? (
-              <a href="#log-out" className="login-logout"
+              <a className="login-logout"
               onClick={logout}>
                 LOG OUT
               </a>
             ) : (
               <a
-                href="#log-in"
                 className="login-logout"
                 onClick={login}>
                 LOG IN

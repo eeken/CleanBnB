@@ -10,6 +10,7 @@ import LandingPage from "./Pages/LandingPage";
 import Explore from "./Pages/Explore";
 import About from "./Pages/About";
 import Login from "./Pages/Login";
+import Register from "./Pages/Register";
 import ResidenceDetailsPage from "./Pages/ResidenceDetailsPage";
 
 // CONTEXTPROVIDERS

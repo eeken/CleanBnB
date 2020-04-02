@@ -46,14 +46,9 @@ function ResidenceDetailsPage() {
     <div>
       {/*  <SearchBar></SearchBar> */}
       <div className="white">
-        <div>
-          <div className="justify-content-center">
-            <div className="residenceDetailsPageTitle golden">
-              {" "}
-              {address.country}, {address.city}{" "}
-            </div>
-            {/* <div className=" sliderContainer container col-12 col-lg-6">  </div> */}
-          </div>
+        <div className="col-12 justify-content-center">
+          <div className="residenceDetailsPageTitle golden text-center">  {residence.title} </div>
+          {/* <div className=" sliderContainer container col-12 col-lg-6">  </div> */}
         </div>
 
         {/* <img width="100%" height="auto" src={showImage()} /> */}
@@ -74,6 +69,9 @@ function ResidenceDetailsPage() {
             {residence.pricepernight}kr{" "}
             <span className="perNight">per night</span>
           </h4>
+          {/* <img width="60px" height="60px" src={residenceImages.imagePath} className="userImage mr-3" /> */}
+          <div className="residenceDetailsPageAddress golden mr-5">  {address.country}, {address.city} </div>
+          <h4 className="golden priceTag">${residence.pricepernight} <span className="perNight">per night</span></h4>
         </div>
         <hr></hr>
         <div className="row m-4">
