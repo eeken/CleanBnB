@@ -8,11 +8,12 @@ import CarouselComponent from "../components/CarouselComponent";
 
 function ResidenceDetailsPage() {
   let { id } = useParams();
-  const { residenceDetails } = useContext(ResidenceContext);
+  const { residence } = useContext(ResidenceContext);
+  const { address } = useContext(ResidenceContext);
   const { fetchResidenceDetails } = useContext(ResidenceContext);
   const { residenceImages } = useContext(ResidenceContext);
   const { fetchResidenceImages } = useContext(ResidenceContext);
-  const [ numberOfGuests, setNumberOfGuests ] = useState("");
+  const [numberOfGuests, setNumberOfGuests] = useState("");
 
   useEffect(() => {
     fetchResidenceDetails(id);
@@ -44,10 +45,10 @@ function ResidenceDetailsPage() {
 
   return (
     <div>
-     {/*  <SearchBar></SearchBar> */}
+      {/*  <SearchBar></SearchBar> */}
       <div className="white">
-        <div className="row justify-content-center">
-          <div className="residenceDetailsPageTitle golden col-12 text-center">  {residenceDetails.title} </div>
+        <div className="col-12 justify-content-center">
+          <div className="residenceDetailsPageTitle golden text-center">  {residence.title} </div>
           {/* <div className=" sliderContainer container col-12 col-lg-6">  </div> */}
         </div>
 
@@ -56,8 +57,8 @@ function ResidenceDetailsPage() {
 
         <div className="row m-4">
           {/* <img width="60px" height="60px" src={residenceImages.imagePath} className="userImage mr-3" /> */}
-          <div className="residenceDetailsPageAddress golden mr-5">  {residenceDetails.country}, {residenceDetails.city} </div>
-          <h4 className="golden priceTag">{residenceDetails.pricepernight}kr <span className="perNight">per night</span></h4>
+          <div className="residenceDetailsPageAddress golden mr-5">  {address.country}, {address.city} </div>
+          <h4 className="golden priceTag">${residence.pricepernight} <span className="perNight">per night</span></h4>
         </div>
         <hr></hr>
         <div className="row m-4">
@@ -65,9 +66,9 @@ function ResidenceDetailsPage() {
         Proin et felis ultrices nulla feugiat venenatis id vel risus. </div>
         </div>
         <hr></hr>
-        <div className="row m-4">
+        {/*    <div className="row m-4">
           <div className="col-12 residenceDetailsPageAddress golden mr-5">Amenities </div>
-        </div>
+        </div> */}
         <hr></hr>
         <div className="row m-4">
           <div className="col-12 residenceDetailsPageAddress golden mr-5">Availability</div>
@@ -93,15 +94,15 @@ function ResidenceDetailsPage() {
               </Input>
             </FormGroup>
           </div>
-          <div className="col-9 golden m-3"><b>Total price:</b></div>
+          {/* <div className="col-9 golden m-3"><b>Total price:</b></div> */}
 
           <div className="row golden mb-3"><input type="checkbox" className="mt-1 mr-2" id="policies" onClick={confirmPolicies()} />
             Agree to the <a href="https://www.airbnb.com/help/topic/250/terms-policies"
               target="_blank"
-            className="ml-1 policiesLink">terms and policies</a> 
-            </div>
+              className="ml-1 policiesLink">terms and policies</a>
+          </div>
 
-          <Button className="bookingButton mb-5 p-2">BOOK THIS RESIDENCE</Button>
+          {/* <Button className="bookingButton mb-5 p-2">BOOK THIS RESIDENCE</Button> */}
         </div>
       </div>
     </div>

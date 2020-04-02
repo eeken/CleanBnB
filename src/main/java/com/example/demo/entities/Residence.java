@@ -5,7 +5,6 @@ import java.util.List;
 
 @Entity
 @Table(name = "residences")
-@SecondaryTable(name="addresses")
 public class Residence {
 
     @Id
@@ -18,21 +17,19 @@ public class Residence {
     private int numberofbeds;
     private String title;
 
+    @ManyToOne
+    private Address address;
 
-    // FROM THE SECONDARY TABLE ADDRESSES
-    @Column(table="addresses")
-    private String county;
-    @Column(table="addresses")
-    private String city;
-    @Column(table="addresses")
-    private String country;
-    @Column(table="addresses")
-    private String street;
+    public Address getAddress() {
+        return address;
+    }
 
-    //SETTERS AND GETTERS FOR PRIMARY TABLE RESIDENCES
-    public int getPricepernight() { return pricepernight; }
+    public void setAddress(Address address) {
+        this.address = address;
+    }
 
-    public void setPricepernight(int pricepernight) { this.pricepernight = pricepernight; }
+    public Residence() {
+    }
 
     public int getId() {
         return id;
@@ -50,6 +47,10 @@ public class Residence {
         this.size = size;
     }
 
+    public int getMaxguests() { return maxguests; }
+
+    public void setMaxguests(int maxguests) { this.maxguests = maxguests; }
+
     public int getRooms() {
         return rooms;
     }
@@ -58,39 +59,26 @@ public class Residence {
         this.rooms = rooms;
     }
 
-    public int getMaxGuests() {
-        return maxguests;
+    public int getPricepernight() {
+        return pricepernight;
     }
 
-    public void setMaxGuests(int maxguests) {
-        this.maxguests = maxguests;
+    public void setPricepernight(int pricepernight) {
+        this.pricepernight = pricepernight;
     }
 
     public String getTitle() {
         return title;
     }
-
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
     public int getNumberofbeds() {
         return numberofbeds;
     }
 
+    public void setTitle(String title) {
+        this.title = title;
+    }
     public void setNumberofbeds(int numberofbeds) {
         this.numberofbeds = numberofbeds;
     }
-
-    // GETTERS ADDRESSES
-    public String getCounty() { return county; }
-
-    public String getCity() { return city; }
-
-    public String getCountry() { return country; }
-
-    public String getStreet() { return street; }
-
-    public Residence() {}
 }
 

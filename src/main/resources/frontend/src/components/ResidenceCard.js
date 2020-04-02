@@ -12,7 +12,7 @@ function ResidenceCard() {
   function showResidenceImage(currentResidencyId) {
     
     if (images) {
-     let residenceImages = images.filter(image => image.residencyId == currentResidencyId)
+     let residenceImages = images.filter(image => image.residencyId === currentResidencyId)
      return residenceImages[0].imagelink
     }
   }
@@ -39,12 +39,12 @@ function ResidenceCard() {
                 {residence.title}
               </p>
               <p className="golden mb-0 residenceDetailsCommonDetails">
-                {residence.city}, {residence.country}<br></br>
-                {residence.maxGuests} guests - {residence.numberofbeds} beds - {residence.rooms}  rooms
+                {residence.address.city}, {residence.address.country}<br></br>
+                {residence.maxguests} guests - {residence.numberofbeds} beds - {residence.rooms}  rooms
               </p>
               
                 <p className="golden mb-0 residencePriceDetails">
-                  {residence.pricepernight} kr
+                  ${residence.pricepernight}
                   <span className="residenceDetailsCommonDetails">
                     {" "}
                     per night{" "}
