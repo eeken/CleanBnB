@@ -1,7 +1,7 @@
 import React, { useContext, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import ResidenceCard from "../components/ResidenceCard";
-import SearchBar from "../components/SearchBar";
+//import SearchBar from "../components/SearchBar";
 import { ResidenceContext } from "../contexts/ResidenceContextProvider";
 
 export default function Explore() {

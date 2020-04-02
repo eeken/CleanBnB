@@ -11,7 +11,7 @@ function ResidenceCard() {
 
   function showResidenceImage(currentResidencyId) {
     if (images) {
-     let residenceImages = images.filter(image => image.residencyId == currentResidencyId)
+     let residenceImages = images.filter(image => image.residencyId === currentResidencyId)
      return residenceImages[0].imagelink
     }
   }
