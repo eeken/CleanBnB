@@ -2,7 +2,7 @@ import React, { useReducer } from "react";
 import { DateRangeInput } from "@datepicker-react/styled";
 import { ThemeProvider } from "styled-components";
 
-export default function Calendar() {
+function Calender(props) {
 
   const initialState = {
     startDate: null,
@@ -27,6 +27,16 @@ export default function Calendar() {
 
   const [state, dispatch] = useReducer(reducer, initialState)
 
+  Date.prototype.getUnixTime = function() {
+    return this.getTime()/1000
+  };
+
+  let startDateUnix = new Date(state.startDate).getUnixTime();
+  let endDateUnix = new Date(state.endDate).getUnixTime();
+
+  let duration = (endDateUnix - startDateUnix) / 86400;
+  console.log(duration);
+  
   return (
     <ThemeProvider
     theme={{
@@ -50,7 +60,9 @@ export default function Calendar() {
       endDate={state.endDate}
       focusedInput={state.focusedInput}
       vertical={vertical => dispatch({type: 'verticalChange', payload: vertical})}
+      onChange={props.duration}
     />
     </ThemeProvider>
   )
 }
+export default Calender;

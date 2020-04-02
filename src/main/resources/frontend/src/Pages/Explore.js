@@ -1,6 +1,7 @@
 import React, { useContext, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import ResidenceCard from "../components/ResidenceCard";
+import SearchBar from "../components/SearchBar";
 import { ResidenceContext } from "../contexts/ResidenceContextProvider";
 
 export default function Explore() {
@@ -11,7 +12,7 @@ export default function Explore() {
   const params = {
     destination: destination,
     numberofguests: parseInt(numberofguests ? numberofguests : 0)
-  };
+  }
 
   useEffect(() => {
     fetchResidence(params);

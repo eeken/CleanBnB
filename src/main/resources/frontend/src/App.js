@@ -1,5 +1,5 @@
 import React from "react";
-import { BrowserRouter as Router, Switch, Route} from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Footer from "./components/Footer";
 import Header from "./components/Header";
 import "./sass/style.scss";
@@ -11,7 +11,6 @@ import Register from "./Pages/Register";
 import ResidenceDetailsPage from "./Pages/ResidenceDetailsPage";
 import ResidenceContextProvider from "./contexts/ResidenceContextProvider";
 import ImageContextProvider from "./contexts/ImageContextProvider";
-
 
 function App() {
   let menu = [
@@ -25,7 +24,6 @@ function App() {
   let userIsLoggedIn = false;
 
   return (
-    
     <div className="App">
       <ResidenceContextProvider>
       <ImageContextProvider>
@@ -40,7 +38,6 @@ function App() {
             <Route exact path="/explore">
               <Explore></Explore>
             </Route>
-            <Route exact path="/explore/:destination/:numberofguests">
               <Explore></Explore>
             </Route>
             <Route exact path="/about">
@@ -60,8 +57,9 @@ function App() {
         <Footer className="footer"/>
       </Router>
       </ImageContextProvider>
+                  path="/explore/destination=:destination?&guests=:numberofguests?"
       </ResidenceContextProvider>
-  </div>
+    </div>
   );
 }
 

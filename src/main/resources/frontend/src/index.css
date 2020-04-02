@@ -62,3 +62,6 @@ main{
 .bvVeao {
   z-index: 10;
 }
+main{
+  min-height: 82vh;
+}

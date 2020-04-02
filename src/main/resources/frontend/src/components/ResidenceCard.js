@@ -23,9 +23,9 @@ function ResidenceCard() {
         return (
           <div
             key={i}
-            onClick={() => history.push("/residence/" + residence.id)}
+            onClick={() => history.push("/details/residence_id=" + residence.id)}
             className="row text-left residenceCard mb-2"
-            style={{cursor: 'pointer' }}
+            style={{ cursor: "pointer" }}
           >
             <div className="col-5 col-lg-2 col-md-3">
               <img
@@ -49,19 +49,15 @@ function ResidenceCard() {
                     {" "}
                     per night{" "}
                 </span>
-      
-                </p>
-            
+              </p>
             </div>
           </div>
         );
       });
     };
-
     return <>{list()}</>;
   }
-
-  return null;
+  return <div> <h1> No matches </h1> </div>;
 }
 
 export default ResidenceCard;

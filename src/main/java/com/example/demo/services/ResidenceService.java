@@ -23,7 +23,6 @@ public class ResidenceService {
     }
 
     public List<Residence> getAllResidences(String addressCountry, int guestSeach1, String addressCity, int guestSeach2){
-        List<Residence> residences = new ArrayList<>();
         if(guestSeach1 == 0|| guestSeach2 == 0){
             return residenceRepo.findByAddressCountryContainsIgnoreCaseAndMaxguestsGreaterThanEqualOrAddressCityContainsIgnoreCaseAndMaxguestsGreaterThanEqual(addressCountry, guestSeach1, addressCity ,guestSeach2);
         }else{
