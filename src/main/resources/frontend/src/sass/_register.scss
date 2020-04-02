@@ -1,0 +1,27 @@
+.registerMain {
+  min-height: 85vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.registerForm {
+  border-radius: 5px;
+  padding: 30px;
+  font-weight: bold;
+}
+
+.registerFormTitle {
+  font-size: 1.8em;
+}
+.registerSubmitButton {
+  font-weight: Bold;
+  width: 100%;
+}
+.registerSubmitButton {
+  width: 100%;
+}
+.logInText {
+  font-style: italic;
+  font-size: 12px;
+  margin-top: 3px;
+}

@@ -7,6 +7,7 @@ import LandingPage from "./Pages/LandingPage";
 import Explore from "./Pages/Explore";
 import About from "./Pages/About";
 import Login from "./Pages/Login";
+import Register from "./Pages/Register";
 import ResidenceDetailsPage from "./Pages/ResidenceDetailsPage";
 import ResidenceContextProvider from "./contexts/ResidenceContextProvider";
 import ImageContextProvider from "./contexts/ImageContextProvider";
@@ -17,7 +18,8 @@ function App() {
     { label: "Home", route: "/" },
     { label: "Explore", route: "/explore" },
     { label: "About", route: "/about" },
-    { label: "Log In", route: "/login" }
+    { label: "Log In", route: "/login" },
+    { label: "Register", route: "/register" }
   ];
 
   let userIsLoggedIn = false;
@@ -46,6 +48,9 @@ function App() {
             </Route>
             <Route exact path="/login">
               <Login></Login>
+                </Route>
+                <Route exact path="/register">
+              <Register></Register>
             </Route>
             <Route path={"/residence/:id"} component={ResidenceDetailsPage}>
               <ResidenceDetailsPage></ResidenceDetailsPage>
