@@ -8,7 +8,7 @@ import {
   CarouselIndicators,
 } from 'reactstrap';
 
-const Test = (props) => {
+const CarouselComponent = (props) => {
   let { id } = useParams();
   const { residenceImages } = useContext(ResidenceContext);
   const { fetchResidenceImages } = useContext(ResidenceContext);
@@ -70,4 +70,4 @@ const Test = (props) => {
   );
 }
 
-export default Test;
+export default CarouselComponent;
