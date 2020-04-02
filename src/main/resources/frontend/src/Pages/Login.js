@@ -57,7 +57,7 @@ function Login() {
             Password
           </Label>
           <Input
-            type="text"
+            type="password"
             id="password-input"
             onChange={e => setPassword(e.target.value)}
           ></Input>
@@ -71,7 +71,8 @@ function Login() {
         >
           Log In
         </Button>
-        <p align="right" className="loginRegisterText">
+        <p align="right" className="loginRegisterText"
+        onClick={() => history.push('/register')}>
           Or become a member here!
         </p>
       </Form>

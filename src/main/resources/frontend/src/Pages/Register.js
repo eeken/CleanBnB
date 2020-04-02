@@ -86,7 +86,7 @@ function Register() {
             Password
           </Label>
           <Input
-            type="text"
+            type="password"
             id="password-input"
             onChange={e => setPassword(e.target.value)}
           ></Input>
@@ -100,7 +100,7 @@ function Register() {
         >
           CREATE ACCOUNT
         </Button>
-        <p onClick={() => history.push("/login/")}
+        <p onClick={() => history.push("/account-login")}
           align="right"
           className="logInText"
         >

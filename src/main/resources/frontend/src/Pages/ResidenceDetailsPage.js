@@ -47,7 +47,10 @@ function ResidenceDetailsPage() {
       {/*  <SearchBar></SearchBar> */}
       <div className="white">
         <div className="col-12 justify-content-center">
-          <div className="residenceDetailsPageTitle golden text-center">  {residence.title} </div>
+          <div className="residenceDetailsPageTitle golden text-center">
+            {" "}
+            {residence.title}{" "}
+          </div>
           {/* <div className=" sliderContainer container col-12 col-lg-6">  </div> */}
         </div>
 
@@ -62,21 +65,17 @@ function ResidenceDetailsPage() {
             className="userImage mr-3"
           />
           <div className="residenceDetailsPageAddress golden mr-5">
-            {" "}
-            {address.city}, {address.city}{" "}
+            {address.city}, {address.city}
           </div>
+          {/* <img width="60px" height="60px" src={residenceImages.imagePath} className="userImage mr-3" /> */}
           <h4 className="golden priceTag">
-            {residence.pricepernight}kr{" "}
+            ${residence.pricepernight}{" "}
             <span className="perNight">per night</span>
           </h4>
-          {/* <img width="60px" height="60px" src={residenceImages.imagePath} className="userImage mr-3" /> */}
-          <div className="residenceDetailsPageAddress golden mr-5">  {address.country}, {address.city} </div>
-          <h4 className="golden priceTag">${residence.pricepernight} <span className="perNight">per night</span></h4>
         </div>
         <hr></hr>
         <div className="row m-4">
           <div className="residenceDetailsPageDescription golden m-3">
-            {" "}
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras
             iaculis eleifend diam non consequat. Maecenas faucibus, est eleifend
             venenatis dictum, eros elit laoreet lorem, quis imperdiet tortor
@@ -94,13 +93,13 @@ function ResidenceDetailsPage() {
             vitae bibendum libero dui quis lacus. Donec tincidunt, felis eu
             consectetur ultrices, sapien orci volutpat lectus, vel faucibus
             magna nibh a risus. Proin et felis ultrices nulla feugiat venenatis
-            id vel risus.{" "}
+            id vel risus.
           </div>
         </div>
         <hr></hr>
         <div className="row m-4">
           <div className="col-12 residenceDetailsPageAddress golden mr-5">
-            Amenities{" "}
+            Amenities
           </div>
         </div>
         <hr></hr>
@@ -113,7 +112,7 @@ function ResidenceDetailsPage() {
         <hr></hr>
         <div className="row ml-4 mr-4 justify-content-center">
           <div className="col-12 residenceDetailsPageAddress golden ml-1.5">
-            Guests{" "}
+            Guests
           </div>
           <div className="col-9 golden mt-3 mr-3">
             Amount of guests (including children):
@@ -144,7 +143,7 @@ function ResidenceDetailsPage() {
               id="policies"
               onClick={confirmPolicies()}
             />
-            Agree to the{" "}
+            Agree to the
             <a
               href="https://www.airbnb.com/help/topic/250/terms-policies"
               target="_blank"

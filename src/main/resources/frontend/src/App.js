@@ -41,6 +41,7 @@ function App() {
                 <Switch>
                   <Route exact path="/" component={LandingPage} />
                   <Route exact path="/explore" component={Explore}/>
+                  <Route exact path="/register" component={Register}/>
                   <Route exact path="/about" component={About} />
                   <Route exact path="/account-login" component={Login} />
                   <Route path="/details/residence_id=:id?" component={ResidenceDetailsPage} />
@@ -56,5 +57,4 @@ function App() {
     </div>
   );
 }
-
 export default App;
