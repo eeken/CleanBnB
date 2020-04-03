@@ -1,7 +1,7 @@
 import React, { useState, useContext } from "react";
 import { Button, Form, FormGroup, Label, Input } from "reactstrap";
 import { useHistory } from "react-router-dom";
-import { userContext, UserContext } from '../contexts/UserContextProvider'
+import { UserContext } from '../contexts/UserContextProvider'
 
 function Login() {
   const [email, setEmail] = useState("");
@@ -71,7 +71,7 @@ function Login() {
         >
           Log In
         </Button>
-        <p align="right" className="loginRegisterText"
+        <p align="right" className="loginRegisterText cursorPointer"
         onClick={() => history.push('/register')}>
           Or become a member here!
         </p>

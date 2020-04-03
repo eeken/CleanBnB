@@ -12,9 +12,6 @@ export default function Header(props) {
 
   const { user, setUser } = useContext(UserContext);
 
-  console.log(location);
-
-
   const logout = () => {
     fetch("/logout");
     setUser(null);

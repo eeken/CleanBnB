@@ -22,22 +22,22 @@ public class MyUserDetailsService implements UserDetailsService {
 
     @PostConstruct
     private void createDefaultUsers(){
-        if (userRepo.findByUsername("user") == null) {
-            addUser(0, "firstName","lastName","email", "password");
+        if (userRepo.findByEmail("email") == null) {
+            addUser(0, "firstname", "lastname", "email", "password");
         }
     }
 
     @Override
-    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        User user = userRepo.findByUsername(username);
+    public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
+        User user = userRepo.findByEmail(email);
         if (user == null) {
-            throw new UsernameNotFoundException("User not found by name: " + username);
+            throw new UsernameNotFoundException("User not found by mail: " + email);
         }
         return toUserDetails(user);
     }
 
-    public User addUser(int id, String firstName, String lastName, String username, String password){
-        User user = new User(0,firstName,lastName,username,encoder.encode(password));
+    public User addUser(int id, String firstName, String lastName, String email, String password){
+        User user = new User(firstName,lastName,email,encoder.encode(password));
         try {
             return userRepo.save(user);
         } catch (Exception ex) {
@@ -48,7 +48,7 @@ public class MyUserDetailsService implements UserDetailsService {
 
     private UserDetails toUserDetails(User user) {
         return org.springframework.security.core.userdetails.User
-                .withUsername(user.getUsername())
+                .withUsername(user.getEmail())
                 .password(user.getPassword())
                 .roles("USER").build();
     }
