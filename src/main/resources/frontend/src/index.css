@@ -39,6 +39,12 @@ main{
 .darkbrown{
   background-color: #3F392F;
 }
+
+.darkbrowntext {
+  color: #3F392F;
+  font-size: 0.9em;
+}
+
 .golden{
   color: #B9986D;
 }
