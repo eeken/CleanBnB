@@ -1,11 +1,18 @@
+//REACT
 import React, { useContext, useEffect, useState } from "react";
+import { Button, FormGroup, Input } from "reactstrap";
+import { useParams } from "react-router-dom";
+
+//CONTEXTPROVIDERS
 import { ResidenceContext } from "../contexts/ResidenceContextProvider";
 import { AmenityContext } from "../contexts/AmenityContextProvider";
-import { useParams } from "react-router-dom";
-import { Button, FormGroup, Input } from "reactstrap";
+
+//COMPONENTS
 import SearchBar from "../components/SearchBar";
 import Calender from "../components/Calender";
 import CarouselComponent from "../components/CarouselComponent";
+
+//REACT ICONS
 import { FaSwimmingPool, FaSnowflake, FaBath, FaTv, FaWifi, FaTemperatureLow } from 'react-icons/fa';
 import { MdLocalLaundryService, MdLocalDrink, MdStreetview } from 'react-icons/md';
 
@@ -46,13 +53,11 @@ function ResidenceDetailsPage() {
     <div>
       <SearchBar></SearchBar>
       <div className="white">
-        <div>
-          <div className="justify-content-center">
-            <div className="residenceDetailsPageTitle golden">
-              {address.country}, {address.city}
-            </div>
-            {/* <div className=" sliderContainer container col-12 col-lg-6">  </div> */}
+        <div className="col-12 justify-content-center">
+          <div className="residenceDetailsPageTitle golden text-center">
+            {residence.title}
           </div>
+          {/* <div className=" sliderContainer container col-12 col-lg-6">  </div> */}
         </div>
         <CarouselComponent></CarouselComponent>
         <div className="row m-4">
@@ -65,8 +70,9 @@ function ResidenceDetailsPage() {
           <div className="residenceDetailsPageAddress golden mr-5">
             {address.city}, {address.city}
           </div>
+          {/* <img width="60px" height="60px" src={residenceImages.imagePath} className="userImage mr-3" /> */}
           <h4 className="golden priceTag">
-            {residence.pricepernight}kr
+            ${residence.pricepernight}{" "}
             <span className="perNight">per night</span>
           </h4>
         </div>
@@ -97,7 +103,6 @@ function ResidenceDetailsPage() {
         <div className="row m-4">
           <div className="col-12 residenceDetailsPageAddress golden mr-5">
             Amenities
-
           </div>
           <div className="darkbrowntext row mt-3 ml-1">
             {residenceAmenity.balcony && <p className="col-6"><MdStreetview className="golden" /> Balcony</p>}
@@ -152,7 +157,7 @@ function ResidenceDetailsPage() {
               id="policies"
               onClick={confirmPolicies()}
             />
-            Agree to the{" "}
+            Agree to the
             <a
               href="https://www.airbnb.com/help/topic/250/terms-policies"
               target="_blank"

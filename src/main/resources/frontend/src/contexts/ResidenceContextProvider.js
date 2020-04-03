@@ -10,10 +10,13 @@ export default function ResidenceContextProvider(props) {
   const fetchResidence = async params => {
     try {
       let res = await fetch(
-        "/rest/residences/explore?destination=" + params.destination + "&numberofguests=" + params.numberofguests );
+        "/rest/residences/explore?destination=" +
+          params.destination +
+          "&numberofguests=" +
+          params.numberofguests
+      );
       res = await res.json();
       setResidences(res);
-
     } catch {
       console.log("Not authenticated");
     }
