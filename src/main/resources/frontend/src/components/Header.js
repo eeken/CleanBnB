@@ -11,9 +11,6 @@ export default function Header(props) {
 
   const { user, setUser } = useContext(UserContext);
 
-  console.log(location);
-  
-
   const logout = () => {
     fetch("/logout");
     setUser(null);
@@ -47,7 +44,7 @@ export default function Header(props) {
                   </NavLink>
                 </li>
               ))}
-              <span className="nav-item" style={{cursor: 'pointer'}}>
+              <span className="nav-item cursorPointer">
                 {user ?
                   <a className="nav-link" onClick={ goToAccount }> <p className="golden"> My account </p> </a> :
                   <a className="nav-link" onClick={ goToRegisterAccount }> <p className="golden"> Register </p> </a>}

@@ -1,27 +1,25 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { Button, Form, FormGroup, Label, Input } from "reactstrap";
-import { useHistory } from "react-router-dom"
+import { useHistory } from "react-router-dom";
+import { UserContext } from "../contexts/UserContextProvider";
 
 function Register() {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const { setUser } = useContext(UserContext);
+  let history = useHistory();
 
-  const submitRegister = e => {
+  async function submitRegister(e) {
     e.preventDefault();
-    console.log("First name entered :  " + firstName);
-    console.log("Last name entered :  " + lastName);
-    console.log("Email entered :  " + email);
-    console.log("Password entered  :  " + password);
-  };
-
-  /* async function springRegister() {
     const credentials = {
-      username,
+      firstName,
+      lastName,
+      email,
       password
-    }
-  
+    };
+
     let response = await fetch("/auth/register", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -29,15 +27,13 @@ function Register() {
     });
 
     try {
-      response = await response.json()
-      setUser(response)
-      props.history.push('/')
+      response = await response.json();
+      setUser(response);
+      history.push("/my-account");
     } catch {
-      console.log('Bad credentials');
+      console.log("Bad credentials");
     }
-  } */
-
-  let history = useHistory()
+  }
 
   return (
     <div className="registerMain ">
@@ -48,7 +44,7 @@ function Register() {
         <p className="registerFormTitle" align="center">
           REGISTER
         </p>
-         <FormGroup align="left">
+        <FormGroup align="left">
           <Label for="email-input" className="mb-1">
             First Name
           </Label>
@@ -100,9 +96,10 @@ function Register() {
         >
           CREATE ACCOUNT
         </Button>
-        <p onClick={() => history.push("/account-login")}
+        <p
+          onClick={() => history.push("/account-login")}
           align="right"
-          className="logInText"
+          className="logInText cursorPointer"
         >
           Already have an account? Click here!
         </p>
