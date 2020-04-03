@@ -1,10 +1,14 @@
 import React, { useContext, useEffect, useState } from "react";
 import { ResidenceContext } from "../contexts/ResidenceContextProvider";
+import { AmenityContext } from "../contexts/AmenityContextProvider";
 import { useParams } from "react-router-dom";
-import { Button, FormGroup, Input, Carousel } from "reactstrap";
+import { Button, FormGroup, Input } from "reactstrap";
 import SearchBar from "../components/SearchBar";
 import Calender from "../components/Calender";
 import CarouselComponent from "../components/CarouselComponent";
+import { FaSwimmingPool, FaSnowflake, FaBath, FaTv, FaWifi, FaTemperatureLow } from 'react-icons/fa';
+import { MdLocalLaundryService, MdLocalDrink, MdStreetview } from 'react-icons/md';
+
 
 function ResidenceDetailsPage() {
   let { id } = useParams();
@@ -14,8 +18,9 @@ function ResidenceDetailsPage() {
     address,
     residenceImages,
     fetchResidenceImages,
-    fetchResidenceDetails
+    fetchResidenceDetails,
   } = useContext(ResidenceContext);
+  const { residenceAmenity, fetchResidenceAmenity } = useContext(AmenityContext)
 
   useEffect(() => {
     window.scroll({
@@ -25,13 +30,8 @@ function ResidenceDetailsPage() {
     });
     fetchResidenceDetails(id);
     fetchResidenceImages(id);
+    fetchResidenceAmenity(id);
   }, []);
-
-  function showImage() {
-    if (residenceImages) {
-      return residenceImages[0].imagelink;
-    }
-  }
 
   function confirmPolicies() {
     var checkBox = document.getElementById("policies");
@@ -44,21 +44,17 @@ function ResidenceDetailsPage() {
 
   return (
     <div>
-      {/*  <SearchBar></SearchBar> */}
+      <SearchBar></SearchBar>
       <div className="white">
         <div>
           <div className="justify-content-center">
             <div className="residenceDetailsPageTitle golden">
-              {" "}
-              {address.country}, {address.city}{" "}
+              {address.country}, {address.city}
             </div>
             {/* <div className=" sliderContainer container col-12 col-lg-6">  </div> */}
           </div>
         </div>
-
-        {/* <img width="100%" height="auto" src={showImage()} /> */}
         <CarouselComponent></CarouselComponent>
-
         <div className="row m-4">
           <img
             width="60px"
@@ -67,18 +63,16 @@ function ResidenceDetailsPage() {
             className="userImage mr-3"
           />
           <div className="residenceDetailsPageAddress golden mr-5">
-            {" "}
-            {address.city}, {address.city}{" "}
+            {address.city}, {address.city}
           </div>
           <h4 className="golden priceTag">
-            {residence.pricepernight}kr{" "}
+            {residence.pricepernight}kr
             <span className="perNight">per night</span>
           </h4>
         </div>
         <hr></hr>
         <div className="row m-4">
           <div className="residenceDetailsPageDescription golden m-3">
-            {" "}
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras
             iaculis eleifend diam non consequat. Maecenas faucibus, est eleifend
             venenatis dictum, eros elit laoreet lorem, quis imperdiet tortor
@@ -96,13 +90,25 @@ function ResidenceDetailsPage() {
             vitae bibendum libero dui quis lacus. Donec tincidunt, felis eu
             consectetur ultrices, sapien orci volutpat lectus, vel faucibus
             magna nibh a risus. Proin et felis ultrices nulla feugiat venenatis
-            id vel risus.{" "}
+            id vel risus.
           </div>
         </div>
         <hr></hr>
         <div className="row m-4">
           <div className="col-12 residenceDetailsPageAddress golden mr-5">
-            Amenities{" "}
+            Amenities
+
+          </div>
+          <div className="darkbrowntext row mt-3 ml-1">
+            {residenceAmenity.balcony && <p className="col-6"><MdStreetview className="golden" /> Balcony</p>}
+            {residenceAmenity.swimmingpool && <p className="col-6"><FaSwimmingPool className="golden" /> Swimming Pool</p>}
+            {residenceAmenity.wifi && <p className="col-6"><FaWifi className="golden" /> WiFi</p>}
+            {residenceAmenity.television && <p className="col-6"><FaTv className="golden" /> Television</p>}
+            {residenceAmenity.bathtub && <p className="col-6"><FaBath className="golden" /> Bathtub</p>}
+            {residenceAmenity.washingmachine && <p className="col-6"><MdLocalLaundryService className="golden" /> Washing Machine</p>}
+            {residenceAmenity.fridge && <p className="col-6"><FaTemperatureLow className="golden" /> Fridge</p>}
+            {residenceAmenity.freezer && <p className="col-6"><FaSnowflake className="golden" /> Freezer</p>}
+            {residenceAmenity.dishwasher && <p className="col-6"><MdLocalDrink className="golden" /> Dishwasher</p>}
           </div>
         </div>
         <hr></hr>
@@ -115,7 +121,7 @@ function ResidenceDetailsPage() {
         <hr></hr>
         <div className="row ml-4 mr-4 justify-content-center">
           <div className="col-12 residenceDetailsPageAddress golden ml-1.5">
-            Guests{" "}
+            Guests
           </div>
           <div className="col-9 golden mt-3 mr-3">
             Amount of guests (including children):

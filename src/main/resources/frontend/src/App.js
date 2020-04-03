@@ -10,6 +10,7 @@ import Login from "./Pages/Login";
 import ResidenceDetailsPage from "./Pages/ResidenceDetailsPage";
 import ResidenceContextProvider from "./contexts/ResidenceContextProvider";
 import ImageContextProvider from "./contexts/ImageContextProvider";
+import AmenityContextProvider from "./contexts/AmenityContextProvider";
 
 function App() {
   let menu = [
@@ -25,6 +26,7 @@ function App() {
     <div className="App">
       <ResidenceContextProvider>
         <ImageContextProvider>
+          <AmenityContextProvider>
           <Router>
             <Header menuData={menu} userIsLoggedIn={userIsLoggedIn} className="asdf"/>
             <main className="mt-4">
@@ -55,7 +57,8 @@ function App() {
               </Switch>
             </main>
             <Footer className="footer" />
-          </Router>
+            </Router>
+          </AmenityContextProvider>
         </ImageContextProvider>
       </ResidenceContextProvider>
     </div>
