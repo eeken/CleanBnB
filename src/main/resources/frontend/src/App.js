@@ -16,6 +16,7 @@ import ResidenceDetailsPage from "./Pages/ResidenceDetailsPage";
 // CONTEXTPROVIDERS
 import ResidenceContextProvider from "./contexts/ResidenceContextProvider";
 import ImageContextProvider from "./contexts/ImageContextProvider";
+import AmenityContextProvider from "./contexts/AmenityContextProvider";
 import UserContextProvider from "./contexts/UserContextProvider";
 
 // COMPONENTS
@@ -35,22 +36,24 @@ function App() {
       <UserContextProvider>
         <ResidenceContextProvider>
           <ImageContextProvider>
-            <Router>
-              <Header menuData={menu}/>
-              <main className="mt-4">
-                <Switch>
-                  <Route exact path="/" component={LandingPage} />
-                  <Route exact path="/explore" component={Explore}/>
-                  <Route exact path="/register" component={Register}/>
-                  <Route exact path="/about" component={About} />
-                  <Route exact path="/account-login" component={Login} />
-                  <Route path="/details/residence_id=:id?" component={ResidenceDetailsPage} />
-                  <Route exact path="/explore/destination=:destination?&guests=:numberofguests?"
-                    key={window.location.pathname} component={Explore}/>
-                </Switch>
-              </main>
-              <Footer className="footer" />
-            </Router>
+            <AmenityContextProvider>
+              <Router>
+                <Header menuData={menu} />
+                <main className="mt-4">
+                  <Switch>
+                    <Route exact path="/" component={LandingPage} />
+                    <Route exact path="/explore" component={Explore} />
+                    <Route exact path="/register" component={Register} />
+                    <Route exact path="/about" component={About} />
+                    <Route exact path="/account-login" component={Login} />
+                    <Route path="/details/residence_id=:id?" component={ResidenceDetailsPage} />
+                    <Route exact path="/explore/destination=:destination?&guests=:numberofguests?"
+                      key={window.location.pathname} component={Explore} />
+                  </Switch>
+                </main>
+                <Footer className="footer" />
+              </Router>
+            </AmenityContextProvider>
           </ImageContextProvider>
         </ResidenceContextProvider>
       </UserContextProvider>
