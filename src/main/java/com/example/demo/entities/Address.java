@@ -20,7 +20,7 @@ public class Address {
     //RELATIONS
     @OneToMany
     @JoinColumn(name="address_id")
-    private List<Residence> residenceList = new ArrayList<>();
+    private List<Residence> residenceList;
 
     //CONSTRUCTORS
     public Address() {}
@@ -62,5 +62,4 @@ public class Address {
     public void setStreetNumber(String streetnumber) {
         this.streetnumber = streetnumber;
     }
-
 }

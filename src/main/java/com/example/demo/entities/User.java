@@ -23,11 +23,13 @@ public class User {
     //RELATIONS
     @OneToMany
     @JoinColumn(name="user_id")
-    private List<Residence> residenceList = new ArrayList<>();
+    private List<Booking> bookingList;
 
     @OneToMany
     @JoinColumn(name="user_id")
-    private List<Booking> bookingList = new ArrayList<>();
+    private List<Residence> residenceList;
+
+
 
     //CONSTRUCTORS
     public User() {}

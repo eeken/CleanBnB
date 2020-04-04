@@ -1,5 +1,6 @@
 package com.example.demo.entities;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import org.hibernate.mapping.Join;
 
 import javax.persistence.*;
@@ -31,13 +32,15 @@ public class Residence {
     @ManyToOne
     private User user;
 
+    @JsonManagedReference
     @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name="amenity_id", referencedColumnName = "id")
+    @JoinColumn(name="amenity_id")
     private Amenity amenity;
 
-    @OneToMany
+    @JsonManagedReference
+    @OneToMany(cascade = CascadeType.ALL)
     @JoinColumn(name="residence_id")
-    private List<Booking> bookingList = new ArrayList<>();
+    private List<Booking> bookingList;
 
 
     // GETTERS AND SETTERS
@@ -60,6 +63,5 @@ public class Residence {
     public Amenity getAmenity() { return amenity; }
     public void setAmenity(Amenity amenity) { this.amenity = amenity; }
     public List<Booking> getBookingList() { return bookingList; }
-    public void setBookingList(List<Booking> bookingList) { this.bookingList = bookingList; }
 }
 

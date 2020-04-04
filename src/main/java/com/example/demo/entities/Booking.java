@@ -23,8 +23,10 @@ public class Booking {
     private User user;
 
     @ManyToOne
+    @JoinColumn(name="residence_id")
     private Residence residence;
 
+    public Booking() { }
 
     // GETTERS AND SETTERS
     public int getId() { return id; }
@@ -35,9 +37,5 @@ public class Booking {
     public void setCheckOut(Date checkOut) { this.checkOut = checkOut; }
     public int getTotalPrice() { return totalPrice; }
     public void setTotalPrice(int totalPrice) { this.totalPrice = totalPrice; }
-    public User getUser() { return user; }
-    public void setUser(User user) { this.user = user; }
-    public Residence getResidence() { return residence; }
-    public void setResidence(Residence residence) { this.residence = residence; }
 }
 
