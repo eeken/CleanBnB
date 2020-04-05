@@ -32,15 +32,17 @@ public class Residence {
     @ManyToOne
     private User user;
 
-    @JsonManagedReference
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name="amenity_id")
     private Amenity amenity;
 
-    @JsonManagedReference
     @OneToMany(cascade = CascadeType.ALL)
     @JoinColumn(name="residence_id")
-    private List<Booking> bookingList;
+    private List<Booking> bookedDays;
+
+    @OneToMany(cascade = CascadeType.ALL)
+    @JoinColumn(name="residence_id")
+    private List<AvailablePeriod> availableDays;
 
 
     // GETTERS AND SETTERS
@@ -62,6 +64,7 @@ public class Residence {
     public void setNumberofbeds(int numberofbeds) { this.numberofbeds = numberofbeds; }
     public Amenity getAmenity() { return amenity; }
     public void setAmenity(Amenity amenity) { this.amenity = amenity; }
-    public List<Booking> getBookingList() { return bookingList; }
+    public List<Booking> getBookedDays() { return bookedDays; }
+    public List<AvailablePeriod> getAvailableDays() { return availableDays; }
 }
 

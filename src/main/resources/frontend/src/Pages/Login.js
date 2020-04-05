@@ -49,6 +49,7 @@ function Login() {
             type="text"
             id="email-input"
             onChange={e => setEmail(e.target.value)}
+            required
           ></Input>
         </FormGroup>
 
@@ -60,6 +61,7 @@ function Login() {
             type="password"
             id="password-input"
             onChange={e => setPassword(e.target.value)}
+            required
           ></Input>
         </FormGroup>
 

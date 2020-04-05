@@ -17,7 +17,6 @@ public class Booking {
     @Column(name="total_price")
     private int totalPrice;
 
-
     //RELATIONS
     @ManyToOne
     private User user;
