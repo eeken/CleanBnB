@@ -1,5 +1,13 @@
 .confirmBookingTitle {
   font-weight: bold;
+  margin: 0;
+  padding: 0;
+}
+
+.thankYouText {
+  font-weight: bold;
+  font-size: 1.2em;
+  color: #3F392F;
 }
 
 .confirmBookingText {
@@ -19,7 +27,7 @@
 }
 
 #email-input{
-border-radius: 0;
+  border-radius: 0;
 }
 
 #email-input.form-control {
@@ -28,5 +36,18 @@ border-radius: 0;
   padding: 0;
   padding-left: 20px;
   border: 0;
-  border-bottom: 2px solid black;
+  border-bottom: 1.2px solid black;
+}
+
+hr {
+  margin: 0 !important;
+  margin-left: 10vw !important;
+  width: 80vw;
+}
+
+.returnButton {
+  width: 100%;
+  background-color: #B9986D !important;
+  border: none !important;
+  font-weight: bold !important;
 }

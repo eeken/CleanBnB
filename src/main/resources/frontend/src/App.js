@@ -12,6 +12,8 @@ import About from "./Pages/About";
 import Login from "./Pages/Login";
 import Register from "./Pages/Register";
 import ResidenceDetailsPage from "./Pages/ResidenceDetailsPage";
+import ConfirmBooking from "./Pages/ConfirmBooking";
+import CompleteBooking from "./Pages/CompleteBooking";
 
 // CONTEXTPROVIDERS
 import ResidenceContextProvider from "./contexts/ResidenceContextProvider";
@@ -22,7 +24,7 @@ import UserContextProvider from "./contexts/UserContextProvider";
 // COMPONENTS
 import Footer from "./components/Footer";
 import Header from "./components/Header";
-import ConfirmBooking from "./Pages/ConfirmBooking";
+
 
 
 function App() {
@@ -51,6 +53,7 @@ function App() {
                     <Route exact path="/explore/destination=:destination?&guests=:numberofguests?"
                       key={window.location.pathname} component={Explore} />
                     <Route exact path="/newbooking" component={ConfirmBooking} />
+                    <Route exact path="/completebooking" component={CompleteBooking} />
                   </Switch>
                 </main>
                 <Footer className="footer" />

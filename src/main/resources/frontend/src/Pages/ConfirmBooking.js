@@ -29,7 +29,7 @@ function ConfirmBooking() {
             className="userImage mr-3 mb-4"
           />
 
-          <div className="confirmBookingText darkbrowntext text-left">
+          <div className="confirmBookingText darkbrowntext text-left mb-4">
             <b>Residence:</b> Lake House in South Sweden<br></br>
             <b>Location:</b> Höör, Skåne, Sweden<br></br>
             <b>Amount of Guests:</b> 2<br></br>
@@ -40,7 +40,7 @@ function ConfirmBooking() {
           </div>
           <hr></hr>
          
-          <FormGroup className="col-10 offset-1 mb-4 mt-5">
+          <FormGroup className="col-10 offset-1 mb-5 mt-5">
             <div className="enterEmailText darkbrowntext" align="center">
               <b>Enter your e-mail address to complete the booking:</b>
             </div>
@@ -52,7 +52,7 @@ function ConfirmBooking() {
               placeholder="Enter your e-mail address here"
             ></Input>
           </FormGroup>
-
+          <hr></hr>
 
           <div className="golden darkbrowntext m-5" align="center">
             <input
@@ -75,13 +75,9 @@ function ConfirmBooking() {
             BOOK THIS RESIDENCE
           </Button>
 
-
         </div>
       </div>
     </div>
-
-
-
   )
 
 }
