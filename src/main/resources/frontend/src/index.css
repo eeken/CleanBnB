@@ -71,3 +71,7 @@ main{
 main{
   min-height: 82vh;
 }
+.cursorPointer{
+  cursor: pointer;
+  user-select: none;
+}

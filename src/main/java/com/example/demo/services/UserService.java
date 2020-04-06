@@ -16,11 +16,11 @@ public class UserService {
     private MyUserDetailsService myUserDetailsService;
 
     public User findCurrentUser() {
-        String username = SecurityContextHolder.getContext().getAuthentication().getName();
-        return userRepo.findByUsername(username);
+        String email = SecurityContextHolder.getContext().getAuthentication().getName();
+        return userRepo.findByEmail(email);
     }
 
     public User registerUser(User user) {
-        return myUserDetailsService.addUser((int) user.getId(), user.getFirstName(), user.getLastName(),user.getUsername(), user.getPassword());
+        return myUserDetailsService.addUser((int) user.getId(), user.getFirstName(), user.getLastName(),user.getEmail(), user.getPassword());
     }
 }
