@@ -19,7 +19,6 @@ public class Address {
 
     //RELATIONS
     @OneToMany
-    @JoinColumn(name="address_id")
     private List<Residence> residenceList;
 
     //CONSTRUCTORS

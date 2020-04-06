@@ -22,7 +22,6 @@ public class Booking {
     private User user;
 
     @ManyToOne
-    @JoinColumn(name="residence_id")
     private Residence residence;
 
     public Booking() { }

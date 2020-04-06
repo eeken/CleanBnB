@@ -27,6 +27,7 @@ public class Residence {
 
     //RELATIONS
     @ManyToOne
+    @JoinColumn(name="address_id")
     private Address address;
 
     @ManyToOne

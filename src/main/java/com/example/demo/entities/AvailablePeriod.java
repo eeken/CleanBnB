@@ -18,7 +18,6 @@ public class AvailablePeriod {
 
     //RELATIONS
     @ManyToOne
-    @JoinColumn(name="residence_id")
     private Residence residence;
 
     //CONSTRUCTORS
