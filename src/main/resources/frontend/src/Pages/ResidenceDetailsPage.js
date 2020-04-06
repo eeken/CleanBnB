@@ -40,20 +40,11 @@ function ResidenceDetailsPage() {
     fetchResidenceAmenity(id);
   }, []);
 
-  function confirmPolicies() {
-    var checkBox = document.getElementById("policies");
-    /* if (checkBox.checked == true) {
-      //allow client to book the residence
-    } else {
-      //don't allow client to book the residence
-    } */
-  }
-
   return (
     <div>
       <SearchBar></SearchBar>
       <div className="white">
-        <div className="col-12 justify-content-center">
+        <div className="col-12 justify-content-center pt-1">
           <div className="residenceDetailsPageTitle golden text-center">
             {residence.title}
           </div>
@@ -78,7 +69,7 @@ function ResidenceDetailsPage() {
         </div>
         <hr></hr>
         <div className="row m-4">
-          <div className="residenceDetailsPageDescription golden m-3">
+          <div className="golden m-3">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras
             iaculis eleifend diam non consequat. Maecenas faucibus, est eleifend
             venenatis dictum, eros elit laoreet lorem, quis imperdiet tortor
@@ -148,23 +139,6 @@ function ResidenceDetailsPage() {
           </div>
           <div className="col-9 golden m-3">
             <b>Total price:</b>
-          </div>
-
-          <div className="row golden mb-3">
-            <input
-              type="checkbox"
-              className="mt-1 mr-2"
-              id="policies"
-              onClick={confirmPolicies()}
-            />
-            Agree to the
-            <a
-              href="https://www.airbnb.com/help/topic/250/terms-policies"
-              target="_blank"
-              className="ml-1 policiesLink"
-            >
-              terms and policies
-            </a>
           </div>
 
           <Button className="bookingButton mb-5 p-2">
