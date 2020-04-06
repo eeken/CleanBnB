@@ -15,7 +15,7 @@ export default function Header(props) {
   const logout = () => {
     fetch("/logout");
     setUser(null);
-    if (location.pathname == '/my-account') {
+    if (location.pathname == '/my-page') {
       history.push('/')
     }
   };
@@ -24,7 +24,7 @@ export default function Header(props) {
   };
 
   const goToAccount = () => {
-    history.push("/my-account");
+    history.push("/my-page");
   };
 
   const goToRegisterAccount = () => {
@@ -47,7 +47,7 @@ export default function Header(props) {
             ))}
             <span className="nav-item" style={{ cursor: 'pointer' }}>
               {user ?
-                <a className="nav-link" onClick={goToAccount}> <p className="golden"> My account </p> </a> : 
+                <a className="nav-link" onClick={goToAccount}> <p className="golden"> My Page </p> </a> : 
                 <a className="nav-link" onClick={goToRegisterAccount}> <p className="golden"> Register </p> </a>
               }
             </span>
