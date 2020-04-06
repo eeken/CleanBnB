@@ -44,7 +44,7 @@ function ResidenceDetailsPage() {
     <div>
       <SearchBar></SearchBar>
       <div className="white">
-        <div className="col-12 justify-content-center">
+        <div className="col-12 justify-content-center pt-1">
           <div className="residenceDetailsPageTitle golden text-center">
             {residence.title}
           </div>
@@ -69,7 +69,7 @@ function ResidenceDetailsPage() {
         </div>
         <hr></hr>
         <div className="row m-4">
-          <div className="residenceDetailsPageDescription golden m-3">
+          <div className="golden m-3">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras
             iaculis eleifend diam non consequat. Maecenas faucibus, est eleifend
             venenatis dictum, eros elit laoreet lorem, quis imperdiet tortor

@@ -1,0 +1,32 @@
+.confirmBookingTitle {
+  font-weight: bold;
+}
+
+.confirmBookingText {
+  padding-left: 59px;
+  line-height: 25px;
+  font-size: 0.75em;
+}
+
+.enterEmailText {
+  line-height: 25px;
+  font-size: 0.75em;
+}
+
+.priceText {
+  font-size: 1.5em;
+  margin-left: 7px;
+}
+
+#email-input{
+border-radius: 0;
+}
+
+#email-input.form-control {
+  font-size: 0.7em;
+  font-style: italic;
+  padding: 0;
+  padding-left: 20px;
+  border: 0;
+  border-bottom: 2px solid black;
+}
