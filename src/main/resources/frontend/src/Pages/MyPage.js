@@ -13,16 +13,16 @@ function MyPage() {
   return (
     
     <Container  className="themed-container text-center" fluid="sm">
-      <Row className="white">
-        <Col className="p-5 golden">Welcome, Ola</Col>
+      <Row className="white boxes m-2">
+        <Col className="p-5 golden ">Welcome, Ola</Col>
       </Row>
-      <Row className="golden">
-        <Col className="p-3 darkbrown">SHOW MY BOOKINGS</Col>
+      <Row className="golden-bg boxes m-2">
+        <Col className="p-3 darkbrowntext">SHOW MY BOOKINGS</Col>
       </Row>
-      <Row className="golden">
-        <Col className="p-3 darkbrown">SHOW MY RESIDENCES</Col>
+      <Row className="golden-bg boxes m-2">
+        <Col className="p-3 darkbrowntext">SHOW MY RESIDENCES</Col>
       </Row>
-      <Row className="darkbrown">
+      <Row className="darkbrown boxes m-2">
         <Col className="p-3 golden">+ ADD A RESIDENCE</Col>
       </Row>
     
