@@ -47,15 +47,19 @@ const AddResidence = () => {
         </FormGroup>
       <FormGroup>
         <h5>RESIDENCE AMENITIES</h5>
-        <div className="row">
-        <Input className="col-5"
+        <div>
+          <div className="text-left">
+        <Input className="col-5 "
           type="checkbox"
-        />Balcony
-        <Input className="col-5"
+            />Balcony
+            </div>
+          <div className="text-right">
+        <Input className="col-5  text-right"
           type="checkbox"
           />Swimming Pool
           </div>
-            <div className="row">
+          </div>
+            <div>
         <Input className="col-5"
           type="checkbox"
         />WiFi
@@ -63,7 +67,90 @@ const AddResidence = () => {
           type="checkbox"
         />TV
         </div>
+        <div>
+        <Input className="col-5"
+          type="checkbox"
+        />Bathtub
+         <Input className="col-5"
+          type="checkbox"
+        />Washing Machine
+        </div>
+        <div >
+        <Input className="col-5 text-left"
+          type="checkbox"
+        />Fridge
+         <Input className="col-5 text-right"
+            type="checkbox"
+        />Freezer
+        </div>
+        <Input className="col-5"
+          type="checkbox"
+        />Dishwasher
          </FormGroup>
+      
+      <FormGroup>
+        <h5>RESIDENCE LOCATION</h5>
+        <Input
+          placeholder="Street"
+          />
+        <div className="row dateInputRow">
+          <Input
+              className="col-5 "
+            placeholder="Street Number"
+            />
+            <Input
+              className="col-5"
+              placeholder="Postal Code"
+          />
+        </div>
+        <div className="row dateInputRow">
+          <Input
+              className="col-5 "
+            placeholder="City"
+            />
+            <Input
+              className="col-5"
+              placeholder="County"
+          />
+          </div>
+          <Input
+          placeholder="Country "
+          />
+      </FormGroup>
+      <FormGroup>
+        <h5>DESCRIPTION</h5>
+        <Input
+          type="textarea"
+          placeholder="Describe your residence here.."
+          />
+      </FormGroup>
+      <FormGroup>
+        <h5>AVAILABLE DATES</h5>
+        <div className="row dateInputRow">
+          <Input
+            className="col-5"
+          type="date"
+          placeholder="From"
+          />
+          <Input
+             className="col-5"
+          type="date"
+          placeholder="From"
+          />
+          </div>
+      </FormGroup>
+      <FormGroup>
+        
+        <h5>RESIDENCE IMAGES</h5>
+        <div className="row dateInputRow">
+        <Button className="col-4">ADD IMAGE</Button>
+          <Input
+            className="col-7"
+        placeholder="enter path.."
+          />
+          </div>
+
+      </FormGroup>
       </Form>
   )
 }
