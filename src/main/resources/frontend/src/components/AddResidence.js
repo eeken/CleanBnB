@@ -149,7 +149,10 @@ const AddResidence = () => {
         placeholder="enter path.."
           />
           </div>
-
+        
+      </FormGroup>
+      <FormGroup>
+        <Button>PUBLISH THIS RESIDENCE</Button>
       </FormGroup>
       </Form>
   )
