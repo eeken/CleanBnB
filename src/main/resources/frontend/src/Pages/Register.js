@@ -52,6 +52,7 @@ function Register() {
             type="text"
             id="firstName-input"
             onChange={e => setFirstName(e.target.value)}
+            required
           ></Input>
         </FormGroup>
 
@@ -63,6 +64,7 @@ function Register() {
             type="text"
             id="email-input"
             onChange={e => setLastName(e.target.value)}
+            required
           ></Input>
         </FormGroup>
 
@@ -74,6 +76,7 @@ function Register() {
             type="text"
             id="email-input"
             onChange={e => setEmail(e.target.value)}
+            required
           ></Input>
         </FormGroup>
 
@@ -85,6 +88,7 @@ function Register() {
             type="password"
             id="password-input"
             onChange={e => setPassword(e.target.value)}
+            required
           ></Input>
         </FormGroup>
 

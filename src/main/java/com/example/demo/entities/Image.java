@@ -13,24 +13,21 @@ public class Image {
     private int residencyid;
     private String imagelink;
 
+
+    // GETTERS AND SETTERS
     public int getId() {
         return id;
     }
-
     public void setId(int id) {
         this.id = id;
     }
-
     public String getImagelink() {
         return imagelink;
     }
-
     public void setImagelink(String imagelink) { this.imagelink = imagelink; }
-
     public int getResidencyId() {
         return residencyid;
     }
-
     public void setResidencyId(int residencyid) {
         this.residencyid = residencyid;
     }
