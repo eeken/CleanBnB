@@ -2,7 +2,7 @@ import React, { createContext, useState, useEffect } from "react";
 
 export const ImageContext = createContext();
 
-export default function ResidenceContextProvider(props) {
+export default function ImageContextProvider(props) {
   const [images, setImages] = useState(null);
   const [residenceImage, setResidenceImage] = useState("");
 
