@@ -20,12 +20,6 @@ public class AvailablePeriod {
     @ManyToOne
     private Residence residence;
 
-    //CONSTRUCTORS
-    public AvailablePeriod(Date startDate, Date endDate) {
-        this.startDate = startDate;
-        this.endDate = endDate;
-    }
-
     //GETTERS AND SETTERS
     public int getId() { return id; }
     public void setId(int id) { this.id = id; }

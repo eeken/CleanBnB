@@ -10,6 +10,7 @@ public class Image {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
+    @Column(name = "residence_id")
     private int residencyid;
     private String imagelink;
 

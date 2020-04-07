@@ -29,4 +29,8 @@ public class ResidenceService {
             return residenceRepo.findByAddressCountryContainsIgnoreCaseAndMaxguestsOrAddressCityContainsIgnoreCaseAndMaxguests(addressCountry, guestSeach1, addressCity ,guestSeach2);
         }
     }
+
+    public Residence addResidence(Residence residence){
+        return residenceRepo.save(residence);
+    }
 }
