@@ -1,6 +1,10 @@
 package com.example.demo.entities;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+import org.hibernate.mapping.Join;
+
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -16,12 +20,35 @@ public class Residence {
     private int pricepernight;
     private int numberofbeds;
     private String title;
+
+    //CONSTRUCTORS
+    public Residence() { }
+
+
+    //RELATIONS
     @ManyToOne
+    @JoinColumn(name="address_id")
     private Address address;
 
+    @ManyToOne
+    private User user;
+
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name="amenity_id")
+    private Amenity amenity;
+
+    @OneToMany(cascade = CascadeType.ALL)
+    @JoinColumn(name="residence_id")
+    private List<Booking> bookedDays;
+
+    @OneToMany(cascade = CascadeType.ALL)
+    @JoinColumn(name="residence_id")
+    private List<AvailablePeriod> availableDays;
+
+
+    // GETTERS AND SETTERS
     public Address getAddress() { return address; }
     public void setAddress(Address address) { this.address = address; }
-    public Residence() { }
     public int getId() { return id; }
     public void setId(int id) { this.id = id; }
     public int getSize() { return size; }
@@ -36,5 +63,9 @@ public class Residence {
     public int getNumberofbeds() { return numberofbeds; }
     public void setTitle(String title) { this.title = title; }
     public void setNumberofbeds(int numberofbeds) { this.numberofbeds = numberofbeds; }
+    public Amenity getAmenity() { return amenity; }
+    public void setAmenity(Amenity amenity) { this.amenity = amenity; }
+    public List<Booking> getBookedDays() { return bookedDays; }
+    public List<AvailablePeriod> getAvailableDays() { return availableDays; }
 }
 
