@@ -40,13 +40,10 @@ function ConfirmBooking() {
           <Button className="returnButton col-10 offset-1 mt-5 mb-5">
             RETURN TO THE HOME PAGE
           </Button>
-
-
+          
         </div>
       </div>
     </div>
-
-
 
   )
 
