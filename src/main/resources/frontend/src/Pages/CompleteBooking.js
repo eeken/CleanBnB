@@ -6,6 +6,8 @@ import { useParams } from "react-router-dom";
 function ConfirmBooking() {
   const [email, setEmail] = useState();
 
+  
+
   function confirmPolicies() {
     var checkBox = document.getElementById("policies");
     /* if (checkBox.checked == true) {

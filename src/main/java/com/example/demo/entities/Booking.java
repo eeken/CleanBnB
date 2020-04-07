@@ -35,5 +35,6 @@ public class Booking {
     public void setCheckOut(Date checkOut) { this.checkOut = checkOut; }
     public int getTotalPrice() { return totalPrice; }
     public void setTotalPrice(int totalPrice) { this.totalPrice = totalPrice; }
+
 }
 

@@ -49,11 +49,11 @@ function App() {
                     <Route exact path="/register" component={Register} />
                     <Route exact path="/about" component={About} />
                     <Route exact path="/account-login" component={Login} />
+                    <Route path="/details/residence_id=:id?/completebooking" component={CompleteBooking} />
+                    <Route path="/details/residence_id=:id?/newbooking" component={ConfirmBooking} />
                     <Route path="/details/residence_id=:id?" component={ResidenceDetailsPage} />
                     <Route exact path="/explore/destination=:destination?&guests=:numberofguests?"
                       key={window.location.pathname} component={Explore} />
-                    <Route exact path="/newbooking" component={ConfirmBooking} />
-                    <Route exact path="/completebooking" component={CompleteBooking} />
                   </Switch>
                 </main>
                 <Footer className="footer" />
