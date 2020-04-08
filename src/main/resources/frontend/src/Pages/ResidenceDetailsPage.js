@@ -5,7 +5,6 @@ import { useParams } from "react-router-dom";
 
 //CONTEXTPROVIDERS
 import { ResidenceContext } from "../contexts/ResidenceContextProvider";
-import { AmenityContext } from "../contexts/AmenityContextProvider";
 
 //COMPONENTS
 import SearchBar from "../components/SearchBar";
@@ -22,12 +21,8 @@ function ResidenceDetailsPage() {
   const [numberOfGuests, setNumberOfGuests] = useState("");
   const {
     residence,
-    address,
-    residenceImages,
-    fetchResidenceImages,
     fetchResidenceDetails,
   } = useContext(ResidenceContext);
-  const { residenceAmenity, fetchResidenceAmenity } = useContext(AmenityContext)
 
   useEffect(() => {
     window.scroll({
@@ -36,9 +31,20 @@ function ResidenceDetailsPage() {
       behavior: "smooth"
     });
     fetchResidenceDetails(id);
-    fetchResidenceImages(id);
-    fetchResidenceAmenity(id);
   }, []);
+
+  if(residence === null){
+    return null;
+  }
+
+  function confirmPolicies() {
+    var checkBox = document.getElementById("policies");
+    /* if (checkBox.checked == true) {
+      //allow client to book the residence
+    } else {
+      //don't allow client to book the residence
+    } */
+  }
 
   return (
     <div>
@@ -55,11 +61,11 @@ function ResidenceDetailsPage() {
           <img
             width="60px"
             height="60px"
-            src={residenceImages.imagePath}
+            src={residence.images.imagelink}
             className="userImage mr-3"
           />
           <div className="residenceDetailsPageAddress golden mr-5">
-            {address.city}, {address.city}
+            {residence.address.city}, {residence.address.city}
           </div>
           {/* <img width="60px" height="60px" src={residenceImages.imagePath} className="userImage mr-3" /> */}
           <h4 className="golden priceTag">
@@ -96,15 +102,15 @@ function ResidenceDetailsPage() {
             Amenities
           </div>
           <div className="darkbrowntext row mt-3 ml-1">
-            {residenceAmenity.balcony && <p className="col-6"><MdStreetview className="golden" /> Balcony</p>}
-            {residenceAmenity.swimmingpool && <p className="col-6"><FaSwimmingPool className="golden" /> Swimming Pool</p>}
-            {residenceAmenity.wifi && <p className="col-6"><FaWifi className="golden" /> WiFi</p>}
-            {residenceAmenity.television && <p className="col-6"><FaTv className="golden" /> Television</p>}
-            {residenceAmenity.bathtub && <p className="col-6"><FaBath className="golden" /> Bathtub</p>}
-            {residenceAmenity.washingmachine && <p className="col-6"><MdLocalLaundryService className="golden" /> Washing Machine</p>}
-            {residenceAmenity.fridge && <p className="col-6"><FaTemperatureLow className="golden" /> Fridge</p>}
-            {residenceAmenity.freezer && <p className="col-6"><FaSnowflake className="golden" /> Freezer</p>}
-            {residenceAmenity.dishwasher && <p className="col-6"><MdLocalDrink className="golden" /> Dishwasher</p>}
+            {residence.amenity.balcony && <p className="col-6"><MdStreetview className="golden" /> Balcony</p>}
+            {residence.amenity.swimmingpool && <p className="col-6"><FaSwimmingPool className="golden" /> Swimming Pool</p>}
+            {residence.amenity.wifi && <p className="col-6"><FaWifi className="golden" /> WiFi</p>}
+            {residence.amenity.television && <p className="col-6"><FaTv className="golden" /> Television</p>}
+            {residence.amenity.bathtub && <p className="col-6"><FaBath className="golden" /> Bathtub</p>}
+            {residence.amenity.washingmachine && <p className="col-6"><MdLocalLaundryService className="golden" /> Washing Machine</p>}
+            {residence.amenity.fridge && <p className="col-6"><FaTemperatureLow className="golden" /> Fridge</p>}
+            {residence.amenity.freezer && <p className="col-6"><FaSnowflake className="golden" /> Freezer</p>}
+            {residence.amenity.dishwasher && <p className="col-6"><MdLocalDrink className="golden" /> Dishwasher</p>}
           </div>
         </div>
         <hr></hr>
