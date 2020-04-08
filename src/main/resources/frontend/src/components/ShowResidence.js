@@ -8,12 +8,16 @@ import ResidenceCard from "../components/ResidenceCard";
 function ShowResidence() {
   const { residences } = useContext(ResidenceContext);
   const { images } = useContext(ImageContext);
-  const { user } = useContext(UserContext)
-  console.log(user);
-
   const { fetchResidence } = useContext(ResidenceContext);
   const { destination } = useParams();
   const { numberofguests } = useParams();
+  const { user, fetchUser } = useContext(UserContext);
+
+  let history = useHistory();
+  console.log(user);
+  console.log(residences);
+  console.log('testing ' + user.residenceList.pricepernight);
+  // let name = user.firstName
 
   const params = {
     destination: destination,
@@ -23,9 +27,7 @@ function ShowResidence() {
   useEffect(() => {
     fetchResidence(params);
   }, []);
-
-  let history = useHistory();
-
+  
   function showResidenceImage(currentResidencyId) {
     
     if (images) {
@@ -36,7 +38,7 @@ function ShowResidence() {
 
   if (user !== null) {
     const list = () => {
-      return residences.map((residence, i) => {
+      return user.residenceList.map((residence, i) => {
         return (
           <div
             key={i}
