@@ -1,5 +1,6 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { Button, Form, FormGroup, Input } from "reactstrap";
+import { UserContext } from '../contexts/UserContextProvider'
 
 const AddResidence = () => {
   // RESIDENCE DETAILS
@@ -33,25 +34,64 @@ const AddResidence = () => {
   const [hasDishWasher, setHasDishwasher] = useState(false);
   const [hasWashingMachine, setHasWashingMachine] = useState(false);
 
-  const registerResidence = (e) => {
+  //RESIDENCE AVAILABLE PERIOD
+  //****    ENTITY: AVAILABLEPERIOD   ****
+  const [startDate, setStartDate] = useState(null);
+  const [endDate, setEndDate] = useState(null);
+
+  //RESIDENCE AVAILABLE PERIOD
+  //****    ENTITY: AVAILABLEPERIOD   ****
+  const [image, /*setImage*/] = useState(null);
+
+    //RESIDENCE USER/OWNER
+  //****    ENTITY: USER   ****
+  const { user } = useContext(UserContext);
+
+  const registerResidence = async (e) => {
     e.preventDefault();
-    console.log("Yay i added a residence");
-    console.log("Residence title: " + title);
-    console.log("Number of beds: " + numberOfBeds);
-    console.log("Residence size : " + residenceSize);
-    console.log("Number of rooms : " + numberOfRooms);
-    console.log("Max number of guests : " + maxNumberOfGuests);
-    console.log("Price per night : " + pricePerNight);
-    console.log("Description : " + description);
-    console.log("Has balcony : " + hasBalcony);
-    console.log("hasSwimmingPool : " + hasSwimmingPool);
-    console.log("hasWifi : " + hasWifi);
-    console.log("hasTelevision : " + hasTelevision);
-    console.log("hasBathtub : " + hasBathtub);
-    console.log("hasFreezer : " + hasFreezer);
-    console.log("hasFridge : " + hasFridge);
-    console.log("hasDishWasher : " + hasDishWasher);
-    console.log("hasWashingMachine : " + hasWashingMachine);
+    let newResidence = {
+      size: residenceSize,
+      rooms: numberOfRooms,
+      maxguests: maxNumberOfGuests,
+      pricepernight: pricePerNight,
+      numberofbeds: numberOfBeds,
+      title: title,
+        address: {
+          county: county,
+          city: city,
+          country: country,
+          street: streetName,
+          streetnumber: streetNumber
+        },
+        amenity:{
+          balcony: hasBalcony,
+          swimmingpool: hasSwimmingPool,
+          wifi: hasWifi,
+          tv: hasTelevision,
+          bathtub: hasBathtub,
+          freezer: hasFreezer,
+          fridge: hasFridge,
+          washingmachine: hasWashingMachine,
+          dishwasher: hasDishWasher
+        },
+        images:[
+          {imagelink: "test1"},
+          {imagelink: "test2"},
+          {imagelink: "test3"},
+        ],
+        user:{
+          id: user.id
+        }
+    }
+    console.log(newResidence);
+
+    let response = await fetch("/rest/residences/register", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(newResidence)
+    });
+
+
   };
 
   return (
@@ -285,8 +325,23 @@ const AddResidence = () => {
       <FormGroup className="mb-4">
         <h5>AVAILABLE DATES</h5>
         <div className="row dateInputRow">
-          <Input className="col-5" type="date" id="from" placeholder="From" />
-          <Input className="col-5" type="date" placeholder="From" />
+          <Input
+            className="col-5"
+            type="date"
+            id="from"
+            placeholder="From"
+            onChange={(e) => {
+              setStartDate(e.target.value);
+            }}
+          />
+          <Input
+            className="col-5"
+            type="date"
+            placeholder="From"
+            onChange={(e) => {
+              setEndDate(e.target.value);
+            }}
+          />
         </div>
       </FormGroup>
       <FormGroup className="container mb-4">
@@ -304,5 +359,3 @@ const AddResidence = () => {
 };
 
 export default AddResidence;
-
-const testStyling = {};
