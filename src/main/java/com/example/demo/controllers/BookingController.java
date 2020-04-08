@@ -23,8 +23,8 @@ public class BookingController {
         return bookingService.getOneBooking(id);
     }
 
-    @PostMapping("/rest/recipes")
-    public Booking createNewBooking(@RequestBody Booking booking) {
+    @PostMapping("/rest/bookings")
+    public Booking addBooking(@RequestBody Booking booking) {
         return bookingService.createBooking(booking);
     }
 

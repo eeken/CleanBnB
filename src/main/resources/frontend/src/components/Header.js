@@ -35,7 +35,6 @@ export default function Header(props) {
     <header>
       <Navbar className="darkbrown" dark expand="md">
         <NavbarToggler onClick={toggle} />
-
         <Button
           style={{
             backgroundColor: "transparent",

@@ -24,6 +24,7 @@ public class Booking {
     @ManyToOne
     private Residence residence;
 
+    //CONSTRUCTORS
     public Booking() { }
 
     // GETTERS AND SETTERS
