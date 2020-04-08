@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState, useContext } from "react";
 import { Collapse, Navbar, NavbarToggler, Nav, Button } from "reactstrap";
 import { NavLink, useHistory, useLocation } from "react-router-dom";
 import { UserContext } from "../contexts/UserContextProvider";
@@ -15,8 +15,8 @@ export default function Header(props) {
   const logout = () => {
     fetch("/logout");
     setUser(null);
-    if (location.pathname == "/my-page") {
-      history.push("/");
+    if (location.pathname === '/my-page') {
+      history.push('/')
     }
   };
   const login = () => {
@@ -24,7 +24,7 @@ export default function Header(props) {
   };
 
   const goToAccount = () => {
-    history.push("/my-account");
+    history.push("/my-page");
   };
 
   const goToRegisterAccount = () => {

@@ -27,10 +27,10 @@ function MyPage() {
       </Row>
       <Row className="darkbrown boxes m-2">
         <Col className="p-3 golden" >+ ADD A RESIDENCE</Col>
+        <AddResidence/>
       </Row>
       <Row>
         <Col>
-          <AddResidence></AddResidence>
         </Col>
       </Row>
     
