@@ -24,7 +24,7 @@ export default function Header(props) {
   };
 
   const goToAccount = () => {
-    history.push("/my-account");
+    history.push("/my-page");
   };
 
   const goToRegisterAccount = () => {
