@@ -12,6 +12,7 @@ import {
 import { useHistory } from "react-router-dom";
 import { UserContext } from "../contexts/UserContextProvider";
 import AddResidence from "../components/AddResidence";
+import ShowResidence from "../components/ShowResidence"
 
 function MyPage() {
   const { user, fetchUser } = useContext(UserContext);
@@ -32,7 +33,7 @@ function MyPage() {
       <Row className="golden-bg boxes m-2">
         <Col className="p-3 darkbrowntext">SHOW MY RESIDENCES</Col>
       </Row>
-      <ShowResidence />
+      <ShowResidence></ShowResidence>
       <Row className="darkbrown boxes m-2">
         <Col className="p-3 golden">+ ADD A RESIDENCE</Col>
       </Row>
