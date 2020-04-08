@@ -1,11 +1,15 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { Container, Row, Col } from "reactstrap";
 import { UserContext } from '../contexts/UserContextProvider'
 import AddResidence from "../components/AddResidence";
+import ShowResidence from "../components/ShowResidence";
 
 function MyPage() {
- 
   const { user } = useContext(UserContext)
+
+  function showInformation() {
+    let showResult = false;
+  }
 
   if (user === null) {
     return null;
@@ -22,9 +26,12 @@ function MyPage() {
       <Row className="golden-bg boxes m-2">
         <Col className="p-3 darkbrowntext">SHOW MY BOOKINGS</Col>
       </Row>
+      <div onClick={showInformation} style={{ cursor: "pointer" }}>
       <Row className="golden-bg boxes m-2">
         <Col className="p-3 darkbrowntext">SHOW MY RESIDENCES</Col>
       </Row>
+      <ShowResidence/>
+      </div>
       <Row className="darkbrown boxes m-2">
         <Col className="p-3 golden" >+ ADD A RESIDENCE</Col>
         <AddResidence/>
@@ -33,7 +40,6 @@ function MyPage() {
         <Col>
         </Col>
       </Row>
-    
       </Container>
   );
 

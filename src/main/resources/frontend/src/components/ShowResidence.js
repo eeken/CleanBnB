@@ -1,23 +1,15 @@
 import React, { useContext, useEffect } from "react";
 import { ResidenceContext } from "../contexts/ResidenceContextProvider";
 import { UserContext } from "../contexts/UserContextProvider";
-import { ImageContext } from "../contexts/ImageContextProvider";
 import { useHistory, useParams } from "react-router-dom";
-import ResidenceCard from "../components/ResidenceCard";
 
 function ShowResidence() {
-  const { residences } = useContext(ResidenceContext);
-  const { images } = useContext(ImageContext);
   const { fetchResidence } = useContext(ResidenceContext);
   const { destination } = useParams();
   const { numberofguests } = useParams();
-  const { user, fetchUser } = useContext(UserContext);
+  const { user } = useContext(UserContext);
 
   let history = useHistory();
-  console.log(user);
-  console.log(residences);
-  console.log('testing ' + user.residenceList.pricepernight);
-  // let name = user.firstName
 
   const params = {
     destination: destination,
@@ -27,29 +19,22 @@ function ShowResidence() {
   useEffect(() => {
     fetchResidence(params);
   }, []);
-  
-  function showResidenceImage(currentResidencyId) {
-    
-    if (images) {
-     let residenceImages = images.filter(image => image.residencyId === currentResidencyId)
-     return residenceImages[0].imagelink
-    }
-  }
 
   if (user !== null) {
     const list = () => {
       return user.residenceList.map((residence, i) => {
         return (
+          <div style={{ backgroundColor: "White" }}>
           <div
             key={i}
             onClick={() => history.push("/details/residence_id=" + residence.id)}
-            className="row text-left residenceCard mb-2"
-            style={{ cursor: "pointer" }}
+            className="row text-left residenceCard"
+            style={{ cursor: "pointer", backgroundColor: "White" }}
           >
             <div className="col-5 col-lg-2 col-md-3">
               <img
                 className="cardImage"
-                src={showResidenceImage(residence.id)}
+                src={residence.images[0].imagelink}
                 alt="residence-image"
               />
             </div>
@@ -70,6 +55,7 @@ function ShowResidence() {
                 </span>
               </p>
             </div>
+          </div>
           </div>
         );
       });
