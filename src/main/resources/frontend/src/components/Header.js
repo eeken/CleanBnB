@@ -35,24 +35,7 @@ export default function Header(props) {
     <header>
       <Navbar className="darkbrown" dark expand="md">
         <NavbarToggler onClick={toggle} />
-        <Collapse isOpen={isOpen} navbar>
-          <Nav className="mr-auto" navbar>
-            {props.menuData.map(item => (
-              <li className="nav-item" key={item.route}>
-                <NavLink className="nav-link" exact to={item.route}>
-                  <span className="golden">{item.label}</span>
-                </NavLink>
-              </li>
-              
-            ))}
-            <span className="nav-item" style={{ cursor: 'pointer' }}>
-              {user ?
-                <a className="nav-link" onClick={goToAccount}> <p className="golden"> My Page </p> </a> : 
-                <a className="nav-link" onClick={goToRegisterAccount}> <p className="golden"> Register </p> </a>
-              }
-            </span>
-          </Nav>
-        </Collapse>
+
         <Button
           style={{
             backgroundColor: "transparent",
