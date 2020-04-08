@@ -1,24 +1,10 @@
 //REACT
 import React, { useContext, useEffect, useState } from "react";
 import { Button, FormGroup, Input } from "reactstrap";
-import { useParams } from "react-router-dom";
 
 function ConfirmBooking() {
-  const [email, setEmail] = useState();
-
-  
-
-  function confirmPolicies() {
-    var checkBox = document.getElementById("policies");
-    /* if (checkBox.checked == true) {
-      //allow client to book the residence
-    } else {
-      //don't allow client to book the residence
-    } */
-  }
 
   return (
-
     <div>
       <div className="white">
         <div className="justify-content-center">
@@ -46,9 +32,7 @@ function ConfirmBooking() {
         </div>
       </div>
     </div>
-
   )
-
 }
 
 export default ConfirmBooking;

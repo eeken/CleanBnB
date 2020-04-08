@@ -1,10 +1,16 @@
 //REACT
 import React, { useContext, useEffect, useState } from "react";
 import { Button, FormGroup, Input } from "reactstrap";
-import { useParams } from "react-router-dom";
+
+//CONTEXTPROVIDERS
+import { BookingContext } from '../contexts/BookingContextProvider'
+
 
 function ConfirmBooking() {
   const [email, setEmail] = useState();
+  const [startDate, setStartDate] = useState('')
+  const [endDate, setEndDate] = useState('')
+  const { appendBooking } = useContext(BookingContext)
 
   function confirmPolicies() {
     var checkBox = document.getElementById("policies");
@@ -13,6 +19,34 @@ function ConfirmBooking() {
     } else {
       //don't allow client to book the residence
     } */
+  }
+
+  const createBooking = async (e) => {
+    e.preventDefault();
+
+    const booking = {
+      startDate,
+      endDate
+    }
+
+    console.log('Booking before: ', booking)
+
+    //send new recipe to backend
+    let res = await fetch('/rest/bookings', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(booking)
+    })
+
+    res = await res.json()
+
+    console.log('Booking after: ', res)
+
+    appendBooking(res)
+
+    setStartDate('')
+    setEndDate('')
+
   }
 
   return (
@@ -71,7 +105,9 @@ function ConfirmBooking() {
             </a></b>
           </div>
 
-          <Button className="bookingButton col-10 offset-1 mb-5 p-2">
+          <Button
+            className="bookingButton col-10 offset-1 mb-5 p-2"
+          onClick={createBooking()}>
             BOOK THIS RESIDENCE
           </Button>
 
