@@ -12,13 +12,11 @@ export default function ConfirmBooking() {
   const [email, setEmail] = useState();
   const [isBookingPossible, setIsBookingPossible] = useState(false)
 
-  let button = <Button className="bookingButton col-10 offset-1 mb-5 p-2" if isBookingPossible disabled>
-    BOOK THIS RESIDENCE
-          </Button>
-
   /*   let startDate = 1599490800 //update with values from residence-detail-page
     let endDate = 1599735600 //update with values from residence-detail-page
     let totalPrice = 1790 //update with values from residence-detail-page */
+
+  let button = <Button className="bookingButton col-10 offset-1 mb-5 p-2" disabled>BOOK THIS RESIDENCE</Button>
 
   function confirmPolicies() {
     var checkBox = document.getElementById("policies");
@@ -31,10 +29,8 @@ export default function ConfirmBooking() {
     }
   }
 
-  if ((!isBookingPossible) || (email == '')) {
-    button = <Button className="bookingButton col-10 offset-1 mb-5 p-2" disabled>BOOK THIS RESIDENCE</Button>;
-  } else {
-    button = <Button className="bookingButton col-10 offset-1 mb-5 p-2" >BOOK THIS RESIDENCE</Button>;
+  if ((isBookingPossible) && !(email == '')) {
+    button = <Button className="bookingButton col-10 offset-1 mb-5 p-2">BOOK THIS RESIDENCE</Button>;
   }
 
   const createBooking = async (e) => {
