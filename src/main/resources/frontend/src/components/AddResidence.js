@@ -47,7 +47,7 @@ const AddResidence = () => {
           />
         </div>
       </FormGroup>
-      <FormGroup>
+      <FormGroup className="container">
         <h5>RESIDENCE AMENITIES</h5>
         <div>
           <div className="text-left">
@@ -81,35 +81,49 @@ const AddResidence = () => {
         Dishwasher
       </FormGroup>
 
-      <FormGroup>
+      <FormGroup className="container">
         <h5>RESIDENCE LOCATION</h5>
-        <Input placeholder="Street" />
-        <div className="dateInputRow">
-          <Input className="col-5 " placeholder="Street Number" />
-          <Input className="col-5" placeholder="Postal Code" />
+        <div className=" row dateInputRow justify-content-space-around align-items-center">
+          <Input className="col-11" style={testStyling} placeholder="Street" />
+
+          <Input
+            className="col-5 "
+            placeholder="Street Number"
+            style={testStyling}
+          />
+          <Input
+            className="col-5"
+            placeholder="Postal Code"
+            style={testStyling}
+          />
+
+          <Input style={testStyling} className="col-5 " placeholder="City" />
+          <Input style={testStyling} className="col-5" placeholder="County" />
+
+          <Input
+            className="col-5"
+            id="destination-input"
+            placeholder="Country"
+            style={testStyling}
+          />
         </div>
-        <div className="dateInputRow">
-          <Input className="col-5 " placeholder="City" />
-          <Input className="col-5" placeholder="County" />
-        </div>
-        <Input placeholder="Country " />
       </FormGroup>
       <FormGroup>
         <h5>DESCRIPTION</h5>
         <Input type="textarea" placeholder="Describe your residence here.." />
       </FormGroup>
-      <FormGroup>
+      <FormGroup className="mb-4">
         <h5>AVAILABLE DATES</h5>
         <div className="row dateInputRow">
-          <Input className="col-5" type="date" placeholder="From" />
+          <Input className="col-5" type="date" id="from" placeholder="From" />
           <Input className="col-5" type="date" placeholder="From" />
         </div>
       </FormGroup>
-      <FormGroup>
+      <FormGroup className="container mb-4">
         <h5>RESIDENCE IMAGES</h5>
         <div className="row dateInputRow">
-          <Button className="col-4">ADD IMAGE</Button>
-          <Input className="col-7" placeholder="enter path.." />
+          <Button className="col-5">ADD IMAGE</Button>
+          <Input className="col-6" placeholder="enter path.." />
         </div>
       </FormGroup>
       <FormGroup>
