@@ -17,22 +17,21 @@ import { MdLocalLaundryService, MdLocalDrink, MdStreetview } from 'react-icons/m
 
 
 function ResidenceDetailsPage() {
+
   let { id } = useParams();
   const [checkIn, setCheckIn] = useState("12345678");
   const [checkOut, setCheckOut] = useState("12345678");
   const [amountOfNights, setAmountOfNights] = useState("4");
-  const [numberOfGuests, setNumberOfGuests] = useState("3");
+  const [numberOfGuests, setNumberOfGuests] = useState('');
   const [totalPrice, setTotalPrice] = useState("1234");
   const {
     residence,
     fetchResidenceDetails,
   } = useContext(ResidenceContext);
 
-
   let history = useHistory();
 
   const bookResidence = async e => {
-    let image = residence.images[0].imagelink
     e.preventDefault();
     await history.push(
       "residence_id=" + residence.id
@@ -55,8 +54,27 @@ function ResidenceDetailsPage() {
     fetchResidenceDetails(id);
   }, []);
 
+  console.log(residence)
+
+
   if (residence === null) {
     return null;
+  }
+
+  //why on earth does this cause unending re-rendering???? 
+  //seems to work now - ish - krångligt SOM FAAAAAN XD
+  const checkForMaxGuests = () => {
+    let maxAmountOfGuests = []
+    for (let i = 1; i <= residence.maxguests; i++) {
+      maxAmountOfGuests.push(i)
+    }
+
+    return (<>
+      {maxAmountOfGuests.map(guest => (
+          <option key={guest.value + 'uniquekey' + guest} value={guest.value}>{guest}</option>
+        ))}
+    </>
+    )
   }
 
   return (
@@ -141,21 +159,18 @@ function ResidenceDetailsPage() {
           </div>
             <div className="col-9 golden mt-3 mr-3">
               Amount of guests (including children):
-            <FormGroup>
+               {checkForMaxGuests}
+
+               <FormGroup>
                 <Input
                   type="select"
                   name="guestSelection"
                   id="guestSelection"
-                  onChange={e => setNumberOfGuests(e.target.value)}
-                >
-                  <option value={1}>1</option>
-                  <option value={2}>2</option>
-                  <option value={3}>3</option>
-                  <option value={4}>4</option>
-                  <option value={5}>5</option>
-                  <option value={6}>6</option>
+                  onChange={e => setNumberOfGuests(e.target.value)}>
+                  {checkForMaxGuests()}
                 </Input>
               </FormGroup>
+
             </div>
             <div className="col-9 golden m-3">
               <b>Total price:</b>
@@ -173,3 +188,5 @@ function ResidenceDetailsPage() {
 }
 
 export default ResidenceDetailsPage;
+
+
