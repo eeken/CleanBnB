@@ -29,7 +29,7 @@ function Register() {
     try {
       response = await response.json();
       setUser(response);
-      history.push("/my-account");
+      history.push("/my-page");
     } catch {
       console.log("Bad credentials");
     }

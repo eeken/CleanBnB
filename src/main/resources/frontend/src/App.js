@@ -11,6 +11,7 @@ import Explore from "./Pages/Explore";
 import About from "./Pages/About";
 import Login from "./Pages/Login";
 import Register from "./Pages/Register";
+import MyPage from "./Pages/MyPage";
 import ResidenceDetailsPage from "./Pages/ResidenceDetailsPage";
 import ConfirmBooking from "./Pages/ConfirmBooking";
 import CompleteBooking from "./Pages/CompleteBooking";
@@ -45,6 +46,7 @@ function App() {
                     <Route exact path="/register" component={Register} />
                     <Route exact path="/about" component={About} />
                     <Route exact path="/account-login" component={Login} />
+                    <Route exact path="/my-page" component={MyPage} />
                     <Route path="/details/residence_id=:id?/completebooking" component={CompleteBooking} />
                     <Route path="/details/residence_id=:id?/newbooking" component={ConfirmBooking} />
                     <Route path="/details/residence_id=:id?" component={ResidenceDetailsPage} />

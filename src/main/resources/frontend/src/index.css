@@ -48,6 +48,11 @@ main{
 .golden{
   color: #B9986D;
 }
+
+.golden-bg {
+  background-color: #B9986D;
+}
+
 .white{
   background-color: white;
 }
