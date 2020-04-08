@@ -1,37 +1,51 @@
 //REACT
-import React, { useContext, useEffect, useState } from "react";
-import { Button, FormGroup, Input } from "reactstrap";
+import React, { useState, useContext } from "react";
+import { Button, Form, FormGroup, Input } from "reactstrap";
 
 //CONTEXTPROVIDERS
 import { BookingContext } from '../contexts/BookingContextProvider'
 
 
-function ConfirmBooking() {
+export default function ConfirmBooking() {
+
+  //const { appendBooking } = useContext(BookingContext)
   const [email, setEmail] = useState();
-  const [startDate, setStartDate] = useState('')
-  const [endDate, setEndDate] = useState('')
-  const { appendBooking } = useContext(BookingContext)
+  const [isBookingPossible, setIsBookingPossible] = useState(false)
+
+  let button = <Button className="bookingButton col-10 offset-1 mb-5 p-2" if isBookingPossible disabled>
+    BOOK THIS RESIDENCE
+          </Button>
+
+  /*   let startDate = 1599490800 //update with values from residence-detail-page
+    let endDate = 1599735600 //update with values from residence-detail-page
+    let totalPrice = 1790 //update with values from residence-detail-page */
 
   function confirmPolicies() {
     var checkBox = document.getElementById("policies");
-    /* if (checkBox.checked == true) {
-      //allow client to book the residence
+    if (checkBox.checked === true) {
+      console.log('inside the if sats')
+      setIsBookingPossible(true)
     } else {
-      //don't allow client to book the residence
-    } */
+      console.log('inside the if-else sats')
+      setIsBookingPossible(false)
+    }
+  }
+
+  if ((!isBookingPossible) || (email == '')) {
+    button = <Button className="bookingButton col-10 offset-1 mb-5 p-2" disabled>BOOK THIS RESIDENCE</Button>;
+  } else {
+    button = <Button className="bookingButton col-10 offset-1 mb-5 p-2" >BOOK THIS RESIDENCE</Button>;
   }
 
   const createBooking = async (e) => {
     e.preventDefault();
 
     const booking = {
-      startDate,
-      endDate
+      startDate: 1599490800,
+      endDate: 1599735600,
+      totalPrice: 2311
     }
 
-    console.log('Booking before: ', booking)
-
-    //send new recipe to backend
     let res = await fetch('/rest/bookings', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
@@ -40,13 +54,7 @@ function ConfirmBooking() {
 
     res = await res.json()
 
-    console.log('Booking after: ', res)
-
-    appendBooking(res)
-
-    setStartDate('')
-    setEndDate('')
-
+    //appendBooking(res)
   }
 
   return (
@@ -73,49 +81,42 @@ function ConfirmBooking() {
             <b className="priceText golden">$1950</b>
           </div>
           <hr></hr>
-         
-          <FormGroup className="col-10 offset-1 mb-5 mt-5">
-            <div className="enterEmailText darkbrowntext" align="center">
-              <b>Enter your e-mail address to complete the booking:</b>
-            </div>
-            <Input
-              type="text"
-              id="email-input"
-              value={email}
-              onChange={e => setEmail(e.target.value)}
-              placeholder="Enter your e-mail address here"
-            ></Input>
-          </FormGroup>
-          <hr></hr>
+          <Form onSubmit={createBooking}>
+            <FormGroup className="col-10 offset-1 mb-5 mt-5">
+              <div className="enterEmailText darkbrowntext" align="center">
+                <b>Enter your e-mail address to complete the booking:</b>
+              </div>
+              <Input
+                type="text"
+                id="email-input"
+                value={email}
+                onChange={e => setEmail(e.target.value)}
+                placeholder="Enter your e-mail address here"
+              ></Input>
+            </FormGroup>
+            <hr></hr>
 
-          <div className="golden darkbrowntext m-5" align="center">
-            <input
-              type="checkbox"
-              className="mr-2"
-              id="policies"
-              onClick={confirmPolicies()}
-            />
-            <b>Agree to the
+            <div className="golden darkbrowntext m-5" align="center">
+              <input
+                type="checkbox"
+                className="mr-2"
+                id="policies"
+                onClick={confirmPolicies}
+              />
+              <b>Agree to the
               <a
-                href="https://www.airbnb.com/help/topic/250/terms-policies"
-                target="_blank"
-                className="ml-1 policiesLink"
-              >
-                terms and policies
+                  href="https://www.airbnb.com/help/topic/250/terms-policies"
+                  target="_blank"
+                  className="ml-1 policiesLink"
+                >
+                  terms and policies
             </a></b>
-          </div>
-
-          <Button
-            className="bookingButton col-10 offset-1 mb-5 p-2"
-          onClick={createBooking()}>
-            BOOK THIS RESIDENCE
-          </Button>
+            </div>
+            {button}
+          </Form>
 
         </div>
       </div>
     </div>
   )
-
 }
-
-export default ConfirmBooking;
