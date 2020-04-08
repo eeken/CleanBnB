@@ -1,115 +1,286 @@
-import React from 'react'
-import { Button, Form, FormGroup, Input } from 'reactstrap';
+import React, { useState } from "react";
+import { Button, Form, FormGroup, Input } from "reactstrap";
 
 const AddResidence = () => {
+  // RESIDENCE DETAILS
+  //****    ENTITY: RESIDENCE   ****
+  const [title, setTitle] = useState(null);
+  const [numberOfBeds, setNumberOfBeds] = useState(null);
+  const [residenceSize, setResidenceSize] = useState(null);
+  const [numberOfRooms, setNumberOfRooms] = useState(null);
+  const [maxNumberOfGuests, setMaxNumberOfGuests] = useState(null);
+  const [pricePerNight, setPricePerNight] = useState(null);
+  const [description, setDescription] = useState("");
+
+  //RESIDENCE LOCATION
+  //****    ENTITY: ADDRESS   ****
+  const [streetName, setStreetName] = useState(null);
+  const [streetNumber, setStreetNumber] = useState(null);
+  const [postalCode, setPostalCode] = useState(null);
+  const [city, setCity] = useState(null);
+  const [county, setCounty] = useState(null);
+  const [country, setCountry] = useState(null);
+
+  //RESIDENCE AMENITIES
+  //****    ENTITY: AMENITY   ****
+  const [hasBalcony, setHasBalcony] = useState(false);
+  const [hasSwimmingPool, setHasSwimmingPool] = useState(false);
+  const [hasWifi, setHasWifi] = useState(false);
+  const [hasTelevision, setHasTelevision] = useState(false);
+  const [hasBathtub, setHasBathtub] = useState(false);
+  const [hasFreezer, setHasFreezer] = useState(false);
+  const [hasFridge, setHasFridge] = useState(false);
+  const [hasDishWasher, setHasDishwasher] = useState(false);
+  const [hasWashingMachine, setHasWashingMachine] = useState(false);
+
+  const registerResidence = (e) => {
+    e.preventDefault();
+    console.log("Yay i added a residence");
+    console.log("Residence title: " + title);
+    console.log("Number of beds: " + numberOfBeds);
+    console.log("Residence size : " + residenceSize);
+    console.log("Number of rooms : " + numberOfRooms);
+    console.log("Max number of guests : " + maxNumberOfGuests);
+    console.log("Price per night : " + pricePerNight);
+    console.log("Description : " + description);
+    console.log("Has balcony : " + hasBalcony);
+    console.log("hasSwimmingPool : " + hasSwimmingPool);
+    console.log("hasWifi : " + hasWifi);
+    console.log("hasTelevision : " + hasTelevision);
+    console.log("hasBathtub : " + hasBathtub);
+    console.log("hasFreezer : " + hasFreezer);
+    console.log("hasFridge : " + hasFridge);
+    console.log("hasDishWasher : " + hasDishWasher);
+    console.log("hasWashingMachine : " + hasWashingMachine);
+  };
+
   return (
-    <Form className="white container golden">
-      <h5 className="mt-4">Have a location for rent?</h5>
+    <Form className="white container golden" onSubmit={registerResidence}>
+      <h5>Have a location for rent?</h5>
       <h5>Add it here!</h5>
       <h5>ABOUT THE RESIDENCE</h5>
-      <FormGroup className="container">
+      <FormGroup className="container mb-4">
         <div className=" row dateInputRow justify-content-space-around align-items-center">
           <Input
-            className="col-11 dateInput "
-            style={testStyling}
-            id="destination-input"
+            required
+            className="col-11 dateInput addResidenceInputField"
+            id="title"
             placeholder="Residence Title"
+            onChange={(e) => {
+              setTitle(e.target.value);
+            }}
           />
           <Input
-            className="col-5"
-            style={testStyling}
-            id="destination-input"
+            type="number"
+            required
+            className="col-5 addResidenceInputField"
+            id="numberOfBeds"
             placeholder="Amount of beds"
+            onChange={(e) => {
+              setNumberOfBeds(e.target.value);
+            }}
           />
           <Input
-            className="col-5 dateInput"
-            style={testStyling}
-            id="destination-input"
+            required
+            type="number"
+            className="col-5 dateInput addResidenceInputField"
+            id="residenceSize"
             placeholder="Residence size in m^2"
+            onChange={(e) => {
+              setResidenceSize(e.target.value);
+            }}
           />
           <Input
-            className="col-5"
-            style={testStyling}
-            id="destination-input"
+            required
+            type="number"
+            className="col-5 addResidenceInputField"
+            id="numberOfRooms"
             placeholder="Amount of Rooms"
+            onChange={(e) => {
+              setNumberOfRooms(e.target.value);
+            }}
           />
           <Input
-            className="col-5 dateInput"
-            id="destination-input"
+            required
+            type="number"
+            className="col-5 dateInput addResidenceInputField"
+            id="maxNumberOfGuests"
             placeholder="Max amount of guests"
-            style={testStyling}
+            onChange={(e) => {
+              setMaxNumberOfGuests(e.target.value);
+            }}
           />
           <Input
-            className="col-5"
-            id="destination-input"
+            required
+            type="number"
+            className="col-5 addResidenceInputField"
+            id="pricePerNight"
             placeholder="Price per night"
-            style={testStyling}
+            onChange={(e) => {
+              setPricePerNight(e.target.value);
+            }}
           />
+          {/* { Filler div, to make the design symmetric} */}
+          <div className="col-5"></div>
         </div>
       </FormGroup>
       <FormGroup className="container">
         <h5>RESIDENCE AMENITIES</h5>
         <div className="row justify-content-center">
-            <span className="col-5 text-left mb-3 mt-3" style={testStylingBox}>
-            <Input type="checkbox" /> Balcony
-            </span>
-            <span className="col-5 text-left mb-3 mt-3" style={testStylingBox}>
-            <Input type="checkbox" /> Swimming Pool
-            </span>
-            <span className="col-5 text-left mb-3" style={testStylingBox}>
-            <Input type="checkbox" /> Wifi
-            </span>
-            <span className="col-5 text-left mb-3" style={testStylingBox}>
-            <Input type="checkbox" /> Television
-            </span>
-            <span className="col-5 text-left mb-3" style={testStylingBox}>
-            <Input type="checkbox" /> Bathtub
-            </span>
-            <span className="col-5 text-left mb-3" style={testStylingBox}>
-            <Input type="checkbox" /> Washing Machine
-            </span>
-            <span className="col-5 text-left mb-3" style={testStylingBox}>
-            <Input type="checkbox" /> Freezer
-            </span>
-            <span className="col-5 text-left mb-3" style={testStylingBox}>
-            <Input type="checkbox" /> Fridge
-            </span>
-            <span className="col-10 text-left mb-3" style={testStylingBox}>
-            <Input type="checkbox" className="checkBox" /> Dishwasher
-            </span>
+          <span className="col-5 text-left mb-3 mt-3">
+            <Input
+              type="checkbox"
+              onChange={() => {
+                setHasBalcony(!hasBalcony);
+              }}
+            />
+            Balcony
+          </span>
+          <span className="col-5 text-left mb-3 mt-3">
+            <Input
+              type="checkbox"
+              onChange={() => {
+                setHasSwimmingPool(!hasSwimmingPool);
+              }}
+            />
+            Swimming Pool
+          </span>
+          <span className="col-5 text-left mb-3">
+            <Input
+              type="checkbox"
+              onChange={() => {
+                setHasWifi(!hasWifi);
+              }}
+            />
+            Wifi
+          </span>
+          <span className="col-5 text-left mb-3">
+            <Input
+              type="checkbox"
+              onChange={() => {
+                setHasTelevision(!hasTelevision);
+              }}
+            />
+            Television
+          </span>
+          <span className="col-5 text-left mb-3">
+            <Input
+              type="checkbox"
+              onChange={() => {
+                setHasBathtub(!hasBathtub);
+              }}
+            />
+            Bathtub
+          </span>
+          <span className="col-5 text-left mb-3">
+            <Input
+              type="checkbox"
+              onChange={() => {
+                setHasFreezer(!hasFreezer);
+              }}
+            />{" "}
+            Freezer
+          </span>
+          <span className="col-5 text-left mb-3">
+            <Input
+              type="checkbox"
+              onChange={() => {
+                setHasFridge(!hasFridge);
+              }}
+            />
+            Fridge
+          </span>
+          <span className="col-5 text-left mb-3">
+            <Input
+              type="checkbox"
+              className="checkBox"
+              onChange={() => {
+                setHasDishwasher(!hasDishWasher);
+              }}
+            />
+            Dishwasher
+          </span>
+          <span className="col-10 text-left mb-3">
+            <Input
+              type="checkbox"
+              onChange={() => {
+                setHasWashingMachine(!hasWashingMachine);
+              }}
+            />
+            Washing Machine
+          </span>
         </div>
       </FormGroup>
 
       <FormGroup className="container">
         <h5>RESIDENCE LOCATION</h5>
         <div className=" row dateInputRow justify-content-space-around align-items-center">
-          <Input className="col-11" style={testStyling} placeholder="Street" />
+          <Input
+            required
+            className="col-11 addResidenceInputField"
+            placeholder="Street"
+            onChange={(e) => {
+              setStreetName(e.target.value);
+            }}
+          />
 
           <Input
-            className="col-5"
+            required
+            type="number"
+            className="col-5 addResidenceInputField"
             placeholder="Street Number"
-            style={testStyling}
+            onChange={(e) => {
+              setStreetNumber(e.target.value);
+            }}
           />
           <Input
-            className="col-5"
+            required
+            type="number"
+            className="col-5 addResidenceInputField"
             placeholder="Postal Code"
-            style={testStyling}
+            onChange={(e) => {
+              setPostalCode(e.target.value);
+            }}
           />
-
-          <Input style={testStyling} className="col-5 " placeholder="City" />
-          <Input style={testStyling} className="col-5" placeholder="County" />
 
           <Input
-            className="col-5"
-            id="destination-input"
-            placeholder="Country"
-            style={testStyling}
+            required
+            className="col-5 addResidenceInputField"
+            placeholder="City"
+            onChange={(e) => {
+              setCity(e.target.value);
+            }}
           />
+          <Input
+            className="col-5 addResidenceInputField"
+            placeholder="County"
+            onChange={(e) => {
+              setCounty(e.target.value);
+            }}
+          />
+
+          <Input
+            required
+            className="col-5 addResidenceInputField"
+            placeholder="Country"
+            onChange={(e) => {
+              setCountry(e.target.value);
+            }}
+          />
+          {/* { Filler div, to make the design symmetric} */}
+          <div className="col-5"></div>
         </div>
       </FormGroup>
       <FormGroup>
         <h5>DESCRIPTION</h5>
-        <Input type="textarea" placeholder="Describe your residence here.." />
+        <Input
+          type="textarea"
+          rows="10"
+          placeholder="Describe your residence here.."
+          onChange={(e) => {
+            setDescription(e.target.value);
+          }}
+        />
       </FormGroup>
       <FormGroup className="mb-4">
         <h5>AVAILABLE DATES</h5>
@@ -130,22 +301,8 @@ const AddResidence = () => {
       </FormGroup>
     </Form>
   );
-}
-
-export default AddResidence
-
-const testStyling = {
-  border: "0",
-  borderBottom: "0.1px #3F392F solid",
-  borderRadius: "0",
-  fontStyle: "oblique",
 };
 
-const checkbox = {
-  color: "white"
-}
+export default AddResidence;
 
-const testStylingBox = {
-  fontSize: '0.9em',
-  borderRadius: '100%'
-}
+const testStyling = {};

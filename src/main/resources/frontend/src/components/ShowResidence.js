@@ -50,8 +50,7 @@ function ShowResidence() {
                 <p className="golden mb-0 residencePriceDetails">
                   ${residence.pricepernight}
                   <span className="residenceDetailsCommonDetails">
-                    {" "}
-                    per night{" "}
+                    per night
                 </span>
               </p>
             </div>

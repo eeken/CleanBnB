@@ -1,13 +1,14 @@
-.golden-text {
-  
-}
-
-.golden {
-
-}
-
 .boxes {
   border-radius: 10px;
+}
+
+.addResidenceButton {
+  background-color: #3f392f !important;
+  color: #b9986d !important;
+  border: 0 !important;
+}
+.addResidenceButton:focus {
+  outline: none;
 }
 
 .residence-input {
@@ -17,4 +18,16 @@
   padding-left: 20px;
   border: 0;
   border-bottom: 1.2px solid black;
+}
+.addResidenceInputField {
+  border: 0 !important;
+  border-bottom: 0.1px #3f392f solid !important;
+  border-radius: 0 !important;
+  font-style: oblique !important;
+  margin-bottom: 1.5em;
+}
+.addResidenceInputField:focus {
+  border-color: inherit!important;
+  -webkit-box-shadow: none!important;
+  box-shadow: none!important;
 }
