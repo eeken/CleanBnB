@@ -2,7 +2,6 @@ import React, { useContext } from "react";
 import { Container, Row, Col } from "reactstrap";
 import { UserContext } from '../contexts/UserContextProvider'
 import AddResidence from "../components/AddResidence";
-import ShowResidence from "../components/ShowResidence"
 
 function MyPage() {
  
@@ -26,7 +25,6 @@ function MyPage() {
       <Row className="golden-bg boxes m-2">
         <Col className="p-3 darkbrowntext">SHOW MY RESIDENCES</Col>
       </Row>
-      <ShowResidence></ShowResidence>
       <Row className="darkbrown boxes m-2">
         <Col className="p-3 golden" >+ ADD A RESIDENCE</Col>
       </Row>
