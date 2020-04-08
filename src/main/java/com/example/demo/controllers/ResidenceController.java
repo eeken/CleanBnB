@@ -37,4 +37,9 @@ public class ResidenceController {
     public List<Residence> findAll() {
         return residenceService.findAll();
     }
+
+    @PostMapping("/register")
+    public Residence addResidence(@RequestBody Residence residence){
+        return residenceService.addResidence(residence);
+    }
 }

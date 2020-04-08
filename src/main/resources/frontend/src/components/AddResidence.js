@@ -1,45 +1,49 @@
-import React from "react";
-import { Button, Form, FormGroup, Label, Input, FormText } from "reactstrap";
+import React from 'react'
+import { Button, Form, FormGroup, Label, Input, FormText } from 'reactstrap';
 
 const AddResidence = () => {
   return (
-    <Form className="white ">
+    <Form className="white">
       <h5>Have a location for rent?</h5>
       <h5>Add it here!</h5>
       <h5>ABOUT THE RESIDENCE</h5>
-      <FormGroup>
-        <div className="row">
+      <FormGroup className="container ">
+        <div className=" row dateInputRow justify-content-space-around align-items-center">
           <Input
-            className="col-5 residence-input"
+            className="col-11 dateInput "
+            style={testStyling}
             id="destination-input"
             placeholder="Residence Title"
           />
           <Input
-            className="col-5 residence-input"
+            className="col-5"
+            style={testStyling}
             id="destination-input"
             placeholder="Amount of beds"
           />
           <Input
             className="col-5 dateInput"
+            style={testStyling}
             id="destination-input"
             placeholder="Residence size in m^2"
           />
           <Input
             className="col-5"
+            style={testStyling}
             id="destination-input"
             placeholder="Amount of Rooms"
           />
-        </div>
-        <div className="row dateInputRow">
           <Input
             className="col-5 dateInput"
             id="destination-input"
             placeholder="Max amount of guests"
+            style={testStyling}
           />
           <Input
             className="col-5"
             id="destination-input"
             placeholder="Price per night"
+            style={testStyling}
           />
         </div>
       </FormGroup>
@@ -80,11 +84,11 @@ const AddResidence = () => {
       <FormGroup>
         <h5>RESIDENCE LOCATION</h5>
         <Input placeholder="Street" />
-        <div className="row dateInputRow">
+        <div className="dateInputRow">
           <Input className="col-5 " placeholder="Street Number" />
           <Input className="col-5" placeholder="Postal Code" />
         </div>
-        <div className="row dateInputRow">
+        <div className="dateInputRow">
           <Input className="col-5 " placeholder="City" />
           <Input className="col-5" placeholder="County" />
         </div>
@@ -113,6 +117,13 @@ const AddResidence = () => {
       </FormGroup>
     </Form>
   );
-};
+}
 
-export default AddResidence;
+export default AddResidence
+
+const testStyling = {
+  border: "0",
+  borderBottom: "1px #3F392F solid",
+  borderRadius: "0",
+  fontStyle: "oblique",
+};

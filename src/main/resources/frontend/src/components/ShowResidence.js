@@ -36,7 +36,7 @@ function ShowResidence() {
     }
   }
 
-  if (residences) {
+  if (user !== null) {
     const list = () => {
       return user.residenceList.map((residence, i) => {
         return (

@@ -24,9 +24,8 @@ public class Residence {
     //CONSTRUCTORS
     public Residence() { }
 
-
     //RELATIONS
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name="address_id")
     private Address address;
 
@@ -43,29 +42,40 @@ public class Residence {
 
     @OneToMany(cascade = CascadeType.ALL)
     @JoinColumn(name="residence_id")
+    private List<Image> images;
+
+    @OneToMany(cascade = CascadeType.ALL)
+    @JoinColumn(name="residence_id")
     private List<AvailablePeriod> availableDays;
 
 
     // GETTERS AND SETTERS
-    public Address getAddress() { return address; }
-    public void setAddress(Address address) { this.address = address; }
+
     public int getId() { return id; }
     public void setId(int id) { this.id = id; }
     public int getSize() { return size; }
     public void setSize(int size) { this.size = size; }
-    public int getMaxguests() { return maxguests; }
-    public void setMaxguests(int maxguests) { this.maxguests = maxguests; }
     public int getRooms() { return rooms; }
     public void setRooms(int rooms) { this.rooms = rooms; }
+    public int getMaxguests() { return maxguests; }
+    public void setMaxguests(int maxguests) { this.maxguests = maxguests; }
     public int getPricepernight() { return pricepernight; }
     public void setPricepernight(int pricepernight) { this.pricepernight = pricepernight; }
-    public String getTitle() { return title; }
     public int getNumberofbeds() { return numberofbeds; }
-    public void setTitle(String title) { this.title = title; }
     public void setNumberofbeds(int numberofbeds) { this.numberofbeds = numberofbeds; }
+    public String getTitle() { return title; }
+    public void setTitle(String title) { this.title = title; }
+    public Address getAddress() { return address; }
+    public void setAddress(Address address) { this.address = address; }
+    //public User getUser() { return user; }
+    public void setUser(User user) { this.user = user; }
     public Amenity getAmenity() { return amenity; }
     public void setAmenity(Amenity amenity) { this.amenity = amenity; }
     public List<Booking> getBookedDays() { return bookedDays; }
+    public void setBookedDays(List<Booking> bookedDays) { this.bookedDays = bookedDays; }
     public List<AvailablePeriod> getAvailableDays() { return availableDays; }
+    public void setAvailableDays(List<AvailablePeriod> availableDays) { this.availableDays = availableDays; }
+    public List<Image> getImages() { return images; }
+    public void setImages(List<Image> images) { this.images = images; }
 }
 
