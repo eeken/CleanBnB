@@ -11,7 +11,6 @@ import {
 const CarouselComponent = (props) => {
   let { id } = useParams();
   const { residenceImages } = useContext(ResidenceContext);
-  const { fetchResidenceImages } = useContext(ResidenceContext);
   const [activeIndex, setActiveIndex] = useState(0);
   const [animating, setAnimating] = useState(false);
 
@@ -31,10 +30,6 @@ const CarouselComponent = (props) => {
     if (animating) return;
     setActiveIndex(newIndex);
   }
-
-  useEffect(() => {
-    fetchResidenceImages(id);
-  }, []);
 
   let filteredArray = [];
   if (residenceImages) {

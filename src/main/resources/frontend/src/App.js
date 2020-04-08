@@ -15,8 +15,6 @@ import ResidenceDetailsPage from "./Pages/ResidenceDetailsPage";
 
 // CONTEXTPROVIDERS
 import ResidenceContextProvider from "./contexts/ResidenceContextProvider";
-import ImageContextProvider from "./contexts/ImageContextProvider";
-import AmenityContextProvider from "./contexts/AmenityContextProvider";
 import UserContextProvider from "./contexts/UserContextProvider";
 
 // COMPONENTS
@@ -35,8 +33,6 @@ function App() {
     <div className="App">
       <UserContextProvider>
         <ResidenceContextProvider>
-          <ImageContextProvider>
-            <AmenityContextProvider>
               <Router>
                 <Header menuData={menu} />
                 <main className="mt-4">
@@ -53,8 +49,6 @@ function App() {
                 </main>
                 <Footer className="footer" />
               </Router>
-            </AmenityContextProvider>
-          </ImageContextProvider>
         </ResidenceContextProvider>
       </UserContextProvider>
     </div>
