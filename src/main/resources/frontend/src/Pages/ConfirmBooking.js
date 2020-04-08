@@ -1,45 +1,65 @@
 //REACT
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import { Button, Form, FormGroup, Input } from "reactstrap";
+import { useParams } from "react-router-dom";
 
 //CONTEXTPROVIDERS
 import { BookingContext } from '../contexts/BookingContextProvider'
+import { ResidenceContext } from '../contexts/ResidenceContextProvider'
 
 
 export default function ConfirmBooking() {
 
-  //const { appendBooking } = useContext(BookingContext)
+  let { id } = useParams();
+  const {
+    residence,
+    fetchResidenceDetails,
+  } = useContext(ResidenceContext);
+
+  const { appendBooking } = useContext(BookingContext)
   const [email, setEmail] = useState();
   const [isBookingPossible, setIsBookingPossible] = useState(false)
+  const { checkin, checkout, numberofguests, amountofnights, totalprice } = useParams();
 
   /*   let startDate = 1599490800 //update with values from residence-detail-page
     let endDate = 1599735600 //update with values from residence-detail-page
     let totalPrice = 1790 //update with values from residence-detail-page */
 
+  useEffect(() => {
+    window.scroll({
+      top: 0,
+      left: 0,
+      behavior: "smooth"
+    });
+    fetchResidenceDetails(id);
+  }, []);
+
+  if (residence === null) {
+    return null;
+  }
+
   let button = <Button className="bookingButton col-10 offset-1 mb-5 p-2" disabled>BOOK THIS RESIDENCE</Button>
+
+  if ((isBookingPossible) && (!email == '')) {
+    button = <Button className="bookingButton col-10 offset-1 mb-5 p-2">BOOK THIS RESIDENCE</Button>;
+  }
 
   function confirmPolicies() {
     var checkBox = document.getElementById("policies");
     if (checkBox.checked === true) {
-      console.log('inside the if sats')
       setIsBookingPossible(true)
     } else {
-      console.log('inside the if-else sats')
       setIsBookingPossible(false)
     }
-  }
-
-  if ((isBookingPossible) && !(email == '')) {
-    button = <Button className="bookingButton col-10 offset-1 mb-5 p-2">BOOK THIS RESIDENCE</Button>;
   }
 
   const createBooking = async (e) => {
     e.preventDefault();
 
     const booking = {
-      startDate: 1599490800,
-      endDate: 1599735600,
-      totalPrice: 2311
+      startDate: 1599490800, //update data in here with actual data
+      endDate: 1599735600, //update data in here with actual data
+      totalPrice: 2311 //update data in here with actual data
     }
 
     let res = await fetch('/rest/bookings', {
@@ -50,7 +70,7 @@ export default function ConfirmBooking() {
 
     res = await res.json()
 
-    //appendBooking(res)
+    appendBooking(res)
   }
 
   return (
@@ -63,18 +83,18 @@ export default function ConfirmBooking() {
             width="100%"
             height="250vh"
             border="black"
-            src="{residenceImages.imagePath}"
+            src={residence.images[0].imagelink}
             className="userImage mr-3 mb-4"
           />
 
           <div className="confirmBookingText darkbrowntext text-left mb-4">
-            <b>Residence:</b> Lake House in South Sweden<br></br>
-            <b>Location:</b> Höör, Skåne, Sweden<br></br>
-            <b>Amount of Guests:</b> 2<br></br>
-            <b>Chosen date:</b> Sep 25 - Sep 28, 2020<br></br>
+            <b>Residence: </b>{residence.title}<br></br>
+            <b>Location: </b> {residence.address.city}, {residence.address.country}<br></br>
+            <b>Amount of Guests: </b> {numberofguests} <br></br>
+            <b>Chosen date: </b> {checkin} - {checkout}<br></br>
             <br></br>
-            <b>Total Price:</b> 650 x 3 nights =
-            <b className="priceText golden">$1950</b>
+            <b>Total Price:</b> {residence.pricepernight} x {amountofnights} nights =
+            <b className="priceText golden">${totalprice}</b>
           </div>
           <hr></hr>
           <Form onSubmit={createBooking}>
