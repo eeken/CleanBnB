@@ -43,10 +43,12 @@ export default function Header(props) {
                   <span className="golden">{item.label}</span>
                 </NavLink>
               </li>
+              
             ))}
             <span className="nav-item" style={{ cursor: 'pointer' }}>
               {user ?
-                <a className="nav-link" onClick={goToAccount}> <p className="golden"> My account </p> </a> : null
+                <a className="nav-link" onClick={goToAccount}> <p className="golden"> My account </p> </a> : 
+                <a className="nav-link" onClick={goToRegisterAccount}> <p className="golden"> Register </p> </a>
               }
             </span>
           </Nav>

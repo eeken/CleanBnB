@@ -3,9 +3,8 @@ import React, { createContext, useState } from "react";
 export const ResidenceContext = createContext();
 export default function ResidenceContextProvider(props) {
   const [residences, setResidences] = useState(null);
-  const [residence, setResidence] = useState(Object);
-  const [address, setAddress] = useState(Object);
-  const [residenceImages, setResidenceImages] = useState("");
+  const [residence, setResidence] = useState(null);
+  const [residenceImages, setResidenceImages] = useState(null);
 
   const fetchResidence = async params => {
     try {
@@ -17,6 +16,7 @@ export default function ResidenceContextProvider(props) {
       );
       res = await res.json();
       setResidences(res);
+      
     } catch {
       console.log("Not authenticated");
     }
@@ -26,13 +26,7 @@ export default function ResidenceContextProvider(props) {
     let res = await fetch("/rest/residences/details?id=" + id);
     res = await res.json();
     setResidence(res);
-    setAddress(res.address);
-  };
-
-  const fetchResidenceImages = async id => {
-    let res = await fetch("/rest/images/" + id);
-    res = await res.json();
-    setResidenceImages(res);
+    setResidenceImages(res.images)
   };
 
   const values = {
@@ -41,10 +35,9 @@ export default function ResidenceContextProvider(props) {
     setResidences,
     residence,
     setResidence,
-    fetchResidenceImages,
-    residenceImages,
     fetchResidenceDetails,
-    address
+    residenceImages,
+
   };
 
   return (
