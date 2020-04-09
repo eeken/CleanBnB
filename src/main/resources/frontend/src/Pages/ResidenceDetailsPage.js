@@ -19,11 +19,11 @@ import { MdLocalLaundryService, MdLocalDrink, MdStreetview } from 'react-icons/m
 function ResidenceDetailsPage() {
 
   let { id } = useParams();
-  const [checkIn, setCheckIn] = useState("12345678");
-  const [checkOut, setCheckOut] = useState("12345678");
-  const [amountOfNights, setAmountOfNights] = useState("4");
+  const [checkIn, setCheckIn] = useState("");
+  const [checkOut, setCheckOut] = useState("");
+  const [amountOfNights, setAmountOfNights] = useState("");
   const [numberOfGuests, setNumberOfGuests] = useState('');
-  const [totalPrice, setTotalPrice] = useState("1234");
+  const [totalPrice, setTotalPrice] = useState('');
   const {
     residence,
     fetchResidenceDetails,
@@ -54,6 +54,13 @@ function ResidenceDetailsPage() {
     fetchResidenceDetails(id);
   }, []);
 
+  //watcher
+  useEffect(() => { //skicka med vilken variabel den ska lyssna på
+    console.log('Watching counter')
+  }, [amountOfNights])
+
+
+
   console.log(residence)
 
 
@@ -61,9 +68,16 @@ function ResidenceDetailsPage() {
     return null;
   }
 
+  //creating dropdown array for maxguests
   let maxAmountOfGuests = []
   for (let i = 1; i <= residence.maxguests; i++) {
     maxAmountOfGuests.push(i)
+  }
+
+  function receiveCalenderInfo(numberOfNights, firstDate, secondDate) {
+    setAmountOfNights(numberOfNights)
+    setCheckIn(firstDate)
+    setCheckOut(secondDate)
   }
 
   return (
@@ -139,7 +153,7 @@ function ResidenceDetailsPage() {
             <div className="col-12 residenceDetailsPageAddress golden mr-5">
               Availability
           </div>
-            <Calender></Calender>
+            <Calender setCheckIn={setCheckIn} setCheckOut={setCheckOut} setAmountOfNights={setAmountOfNights}></Calender>
           </div>
           <hr></hr>
           <div className="row ml-4 mr-4 justify-content-center">
@@ -162,7 +176,7 @@ function ResidenceDetailsPage() {
 
             </div>
             <div className="col-9 golden m-3">
-              <b>Total price:</b>
+              <b>Total price: {residence.pricepernight} x {amountOfNights} = {totalPrice} </b>
             </div>
 
             <Button
