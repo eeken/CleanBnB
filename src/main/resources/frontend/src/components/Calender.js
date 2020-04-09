@@ -34,8 +34,6 @@ function Calender({ setAmountOfNights, setCheckIn, setCheckOut }) {
   let endDateUnix = new Date(state.endDate).getUnixTime();
   let duration = (endDateUnix - startDateUnix) / 86400;
 
-
-
   useEffect(() => {
     handleChange(startDateUnix, endDateUnix, duration)
   })
@@ -45,7 +43,6 @@ function Calender({ setAmountOfNights, setCheckIn, setCheckOut }) {
       setAmountOfNights(nights);
       setCheckIn(start)
       setCheckOut(end)
-      console.log(setAmountOfNights, setCheckIn, setCheckOut)
     }
   }
 

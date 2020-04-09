@@ -22,7 +22,7 @@ function ResidenceDetailsPage() {
   const [checkIn, setCheckIn] = useState("");
   const [checkOut, setCheckOut] = useState("");
   const [amountOfNights, setAmountOfNights] = useState("-");
-  const [numberOfGuests, setNumberOfGuests] = useState('');
+  const [numberOfGuests, setNumberOfGuests] = useState('1');
 
   const {
     residence,
@@ -69,6 +69,13 @@ function ResidenceDetailsPage() {
   for (let i = 1; i <= residence.maxguests; i++) {
     maxAmountOfGuests.push(i)
   }
+
+  let price = <b></b>
+
+  if ((amountOfNights > 0) && (amountOfNights > 0)) {
+    price = <b>Total price: {residence.pricepernight} x {amountOfNights} = {totalPrice = residence.pricepernight * amountOfNights} </b>
+  }
+
 
   return (
     <div>
@@ -166,7 +173,7 @@ function ResidenceDetailsPage() {
 
             </div>
             <div className="col-9 golden m-3">
-              <b>Total price: {residence.pricepernight} x {amountOfNights} = {totalPrice = residence.pricepernight * amountOfNights} </b>
+              {price}
             </div>
 
             <Button

@@ -17,13 +17,9 @@ export default function ConfirmBooking() {
   } = useContext(ResidenceContext);
 
   const { appendBooking } = useContext(BookingContext)
-  const [email, setEmail] = useState();
-  const [isBookingPossible, setIsBookingPossible] = useState(false)
+  const [ email, setEmail ] = useState();
+  const [ isBookingPossible, setIsBookingPossible ] = useState(false)
   const { checkin, checkout, numberofguests, amountofnights, totalprice } = useParams();
-
-  /*   let startDate = 1599490800 //update with values from residence-detail-page
-    let endDate = 1599735600 //update with values from residence-detail-page
-    let totalPrice = 1790 //update with values from residence-detail-page */
 
   useEffect(() => {
     window.scroll({
@@ -73,8 +69,19 @@ export default function ConfirmBooking() {
     appendBooking(res)
   }
 
-  return (
 
+  console.log(checkin)
+  console.log(checkout)
+
+  var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+  let checkinDate = new Date(checkin * 1000);
+  console.log(checkinDate)
+  checkinDate = checkinDate.getDay() + " " + months[checkinDate.getMonth()] + " " + checkinDate.getFullYear()
+
+  let checkoutDate = new Date(checkout * 1000);
+  checkoutDate = checkoutDate.getDay() + " " + months[checkoutDate.getMonth()] + " " + checkoutDate.getFullYear()
+
+  return (
     <div>
       <div className="white">
         <div className="justify-content-center">
@@ -91,7 +98,7 @@ export default function ConfirmBooking() {
             <b>Residence: </b>{residence.title}<br></br>
             <b>Location: </b> {residence.address.city}, {residence.address.country}<br></br>
             <b>Amount of Guests: </b> {numberofguests} <br></br>
-            <b>Chosen date: </b> {checkin} - {checkout}<br></br>
+            <b>Chosen dates: </b> {checkinDate} - {checkoutDate}<br></br>
             <br></br>
             <b>Total Price:</b> {residence.pricepernight} x {amountofnights} nights =
             <b className="priceText golden">${totalprice}</b>
