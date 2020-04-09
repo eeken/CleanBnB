@@ -89,13 +89,17 @@ const AddResidence = () => {
           id: user.id
         }
     }
-    console.log(newResidence);
-
+    
     let response = await fetch("/rest/residences/register", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(newResidence)
     });
+
+    response = await response.json()
+    
+    history.push("/details/residence_id=" + response.id);
+
   };
 
   return (
