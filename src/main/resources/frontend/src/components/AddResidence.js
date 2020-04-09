@@ -1,6 +1,7 @@
 import React, { useState, useContext } from "react";
 import { Button, Form, FormGroup, Input, Label } from "reactstrap";
 import { UserContext } from '../contexts/UserContextProvider'
+import { useHistory } from "react-router-dom";
 
 let images = []
 
@@ -28,6 +29,11 @@ const filesChange = async (fileList) => {
 };
 
 const AddResidence = () => {
+
+
+  let history = useHistory();
+
+
   // RESIDENCE DETAILS
   //****    ENTITY: RESIDENCE   ****
   const [title, setTitle] = useState(null);
@@ -70,7 +76,7 @@ const AddResidence = () => {
 
     //RESIDENCE USER/OWNER
   //****    ENTITY: USER   ****
-  const { user } = useContext(UserContext);
+  const { user, fetchUser } = useContext(UserContext);
 
   const registerResidence = async (e) => {
     e.preventDefault();
@@ -115,12 +121,13 @@ const AddResidence = () => {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(newResidence)
     });
-
-
   };
 
   return (
-    <Form className="white container golden" onSubmit={registerResidence}>
+    <Form 
+    id="addResidenceForm"
+    className="white container golden" 
+    onSubmit={registerResidence}>
       <h5>Have a location for rent?</h5>
       <h5>Add it here!</h5>
       <h5>ABOUT THE RESIDENCE</h5>

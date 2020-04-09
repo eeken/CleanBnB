@@ -1,7 +1,7 @@
 //REACT
 import React, { useContext, useEffect, useState } from "react";
-import { Button, FormGroup, Input } from "reactstrap";
-import { useParams } from "react-router-dom";
+import { Button, Form, FormGroup, Input } from "reactstrap";
+import { useParams, useHistory } from "react-router-dom";
 
 //CONTEXTPROVIDERS
 import { ResidenceContext } from "../contexts/ResidenceContextProvider";
@@ -17,12 +17,33 @@ import { MdLocalLaundryService, MdLocalDrink, MdStreetview } from 'react-icons/m
 
 
 function ResidenceDetailsPage() {
+
   let { id } = useParams();
-  const [numberOfGuests, setNumberOfGuests] = useState("");
+  const [checkIn, setCheckIn] = useState("12345678");
+  const [checkOut, setCheckOut] = useState("12345678");
+  const [amountOfNights, setAmountOfNights] = useState("4");
+  const [numberOfGuests, setNumberOfGuests] = useState('');
+  const [totalPrice, setTotalPrice] = useState("1234");
   const {
     residence,
     fetchResidenceDetails,
   } = useContext(ResidenceContext);
+
+  let history = useHistory();
+
+  const bookResidence = async e => {
+    e.preventDefault();
+    await history.push(
+      "residence_id=" + residence.id
+      + "/newbookingOf" + residence.title
+      + "&location=" + residence.address.city + "&" + residence.address.country
+      + "&numberOfGuests=" + numberOfGuests
+      + "&checkin=" + checkIn
+      + "&checkout=" + checkOut
+      + "&amountOfNights=" + amountOfNights
+      + "&totalPrice=" + totalPrice
+    );
+  };
 
   useEffect(() => {
     window.scroll({
@@ -33,59 +54,70 @@ function ResidenceDetailsPage() {
     fetchResidenceDetails(id);
   }, []);
 
-  if(residence === null){
+  console.log(residence)
+
+
+  if (residence === null) {
     return null;
   }
 
-  function confirmPolicies() {
-    var checkBox = document.getElementById("policies");
-    /* if (checkBox.checked == true) {
-      //allow client to book the residence
-    } else {
-      //don't allow client to book the residence
-    } */
+  //why on earth does this cause unending re-rendering???? 
+  //seems to work now - ish - krångligt SOM FAAAAAN XD
+  const checkForMaxGuests = () => {
+    let maxAmountOfGuests = []
+    for (let i = 1; i <= residence.maxguests; i++) {
+      maxAmountOfGuests.push(i)
+    }
+
+    return (<>
+      {maxAmountOfGuests.map(guest => (
+          <option key={guest.value + 'uniquekey' + guest} value={guest.value}>{guest}</option>
+        ))}
+    </>
+    )
   }
 
   return (
     <div>
       <SearchBar></SearchBar>
       <div className="white">
-        <div className="col-12 justify-content-center pt-1">
-          <div className="residenceDetailsPageTitle golden text-center">
-            {residence.title}
+        <Form onSubmit={bookResidence}>
+          <div className="col-12 justify-content-center pt-1">
+            <div className="residenceDetailsPageTitle golden text-center">
+              {residence.title}
+            </div>
+            {/* <div className=" sliderContainer container col-12 col-lg-6">  </div> */}
           </div>
-          {/* <div className=" sliderContainer container col-12 col-lg-6">  </div> */}
-        </div>
-        <CarouselComponent></CarouselComponent>
-        <div className="row m-4">
-          <img
-            width="60px"
-            height="60px"
-            src={residence.images.imagelink}
-            className="userImage mr-3"
-          />
-          <div className="residenceDetailsPageAddress golden mr-5">
-            {residence.address.city}, {residence.address.city}
+          <CarouselComponent></CarouselComponent>
+          <div className="row m-4">
+            <img
+              width="60px"
+              height="60px"
+              src={residence.images.imagelink}
+              className="userImage mr-3"
+            />
+            <div className="residenceDetailsPageAddress golden mr-5">
+              {residence.address.city}, {residence.address.city}
+            </div>
+            {/* <img width="60px" height="60px" src={residenceImages.imagePath} className="userImage mr-3" /> */}
+            <h4 className="golden priceTag">
+              ${residence.pricepernight}{" "}
+              <span className="perNight">per night</span>
+            </h4>
           </div>
-          {/* <img width="60px" height="60px" src={residenceImages.imagePath} className="userImage mr-3" /> */}
-          <h4 className="golden priceTag">
-            ${residence.pricepernight}{" "}
-            <span className="perNight">per night</span>
-          </h4>
-        </div>
-        <hr></hr>
-        <div className="row m-4">
-          <div className="golden m-3">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras
-            iaculis eleifend diam non consequat. Maecenas faucibus, est eleifend
-            venenatis dictum, eros elit laoreet lorem, quis imperdiet tortor
-            lectus quis mi. In molestie tincidunt ante, blandit vulputate nisi
-            aliquet sed. Suspendisse sit amet eros tortor. Nam ex lorem, porta
-            id gravida ut, dictum a risus. Nulla feugiat massa vel ex
-            scelerisque, ut sollicitudin massa fermentum. Interdum et malesuada
-            fames ac ante ipsum primis in faucibus. Aliquam tellus nisi,
+          <hr></hr>
+          <div className="row m-4">
+            <div className="golden m-3">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras
+              iaculis eleifend diam non consequat. Maecenas faucibus, est eleifend
+              venenatis dictum, eros elit laoreet lorem, quis imperdiet tortor
+              lectus quis mi. In molestie tincidunt ante, blandit vulputate nisi
+              aliquet sed. Suspendisse sit amet eros tortor. Nam ex lorem, porta
+              id gravida ut, dictum a risus. Nulla feugiat massa vel ex
+              scelerisque, ut sollicitudin massa fermentum. Interdum et malesuada
+              fames ac ante ipsum primis in faucibus. Aliquam tellus nisi,
             pharetra eu dui id. Ullamcorper laoreet elit.<br></br>
-            <br></br>Vivamus pulvinar purus a velit dictum lobortis sit amet sit
+              <br></br>Vivamus pulvinar purus a velit dictum lobortis sit amet sit
             amet tortor. Vestibulum ante ipsum primis in faucibus orci luctus et
             ultrices posuere cubilia Curae; Mauris nec gravida massa. Donec orci
             augue, pellentesque ac molestie eu, ultrices hendrerit ex. Aliquam
@@ -95,65 +127,66 @@ function ResidenceDetailsPage() {
             magna nibh a risus. Proin et felis ultrices nulla feugiat venenatis
             id vel risus.
           </div>
-        </div>
-        <hr></hr>
-        <div className="row m-4">
-          <div className="col-12 residenceDetailsPageAddress golden mr-5">
-            Amenities
           </div>
-          <div className="darkbrowntext row mt-3 ml-1">
-            {residence.amenity.balcony && <p className="col-6"><MdStreetview className="golden" /> Balcony</p>}
-            {residence.amenity.swimmingpool && <p className="col-6"><FaSwimmingPool className="golden" /> Swimming Pool</p>}
-            {residence.amenity.wifi && <p className="col-6"><FaWifi className="golden" /> WiFi</p>}
-            {residence.amenity.television && <p className="col-6"><FaTv className="golden" /> Television</p>}
-            {residence.amenity.bathtub && <p className="col-6"><FaBath className="golden" /> Bathtub</p>}
-            {residence.amenity.washingmachine && <p className="col-6"><MdLocalLaundryService className="golden" /> Washing Machine</p>}
-            {residence.amenity.fridge && <p className="col-6"><FaTemperatureLow className="golden" /> Fridge</p>}
-            {residence.amenity.freezer && <p className="col-6"><FaSnowflake className="golden" /> Freezer</p>}
-            {residence.amenity.dishwasher && <p className="col-6"><MdLocalDrink className="golden" /> Dishwasher</p>}
+          <hr></hr>
+          <div className="row m-4">
+            <div className="col-12 residenceDetailsPageAddress golden mr-5">
+              Amenities
           </div>
-        </div>
-        <hr></hr>
-        <div className="row m-4">
-          <div className="col-12 residenceDetailsPageAddress golden mr-5">
-            Availability
+            <div className="darkbrowntext row mt-3 ml-1">
+              {residence.amenity.balcony && <p className="col-6"><MdStreetview className="golden" /> Balcony</p>}
+              {residence.amenity.swimmingpool && <p className="col-6"><FaSwimmingPool className="golden" /> Swimming Pool</p>}
+              {residence.amenity.wifi && <p className="col-6"><FaWifi className="golden" /> WiFi</p>}
+              {residence.amenity.television && <p className="col-6"><FaTv className="golden" /> Television</p>}
+              {residence.amenity.bathtub && <p className="col-6"><FaBath className="golden" /> Bathtub</p>}
+              {residence.amenity.washingmachine && <p className="col-6"><MdLocalLaundryService className="golden" /> Washing Machine</p>}
+              {residence.amenity.fridge && <p className="col-6"><FaTemperatureLow className="golden" /> Fridge</p>}
+              {residence.amenity.freezer && <p className="col-6"><FaSnowflake className="golden" /> Freezer</p>}
+              {residence.amenity.dishwasher && <p className="col-6"><MdLocalDrink className="golden" /> Dishwasher</p>}
+            </div>
           </div>
-          <Calender></Calender>
-        </div>
-        <hr></hr>
-        <div className="row ml-4 mr-4 justify-content-center">
-          <div className="col-12 residenceDetailsPageAddress golden ml-1.5">
-            Guests
+          <hr></hr>
+          <div className="row m-4">
+            <div className="col-12 residenceDetailsPageAddress golden mr-5">
+              Availability
           </div>
-          <div className="col-9 golden mt-3 mr-3">
-            Amount of guests (including children):
-            <FormGroup>
-              <Input
-                type="select"
-                name="guestSelection"
-                id="guestSelection"
-                onChange={e => setNumberOfGuests(e.target.value)}
-              >
-                <option value={1}>1</option>
-                <option value={2}>2</option>
-                <option value={3}>3</option>
-                <option value={4}>4</option>
-                <option value={5}>5</option>
-                <option value={6}>6</option>
-              </Input>
-            </FormGroup>
+            <Calender></Calender>
           </div>
-          <div className="col-9 golden m-3">
-            <b>Total price:</b>
+          <hr></hr>
+          <div className="row ml-4 mr-4 justify-content-center">
+            <div className="col-12 residenceDetailsPageAddress golden ml-1.5">
+              Guests
           </div>
+            <div className="col-9 golden mt-3 mr-3">
+              Amount of guests (including children):
+               {checkForMaxGuests}
 
-          <Button className="bookingButton mb-5 p-2">
-            BOOK THIS RESIDENCE
+               <FormGroup>
+                <Input
+                  type="select"
+                  name="guestSelection"
+                  id="guestSelection"
+                  onChange={e => setNumberOfGuests(e.target.value)}>
+                  {checkForMaxGuests()}
+                </Input>
+              </FormGroup>
+
+            </div>
+            <div className="col-9 golden m-3">
+              <b>Total price:</b>
+            </div>
+
+            <Button
+              className="bookingButton mb-5 p-2">
+              BOOK THIS RESIDENCE
           </Button>
-        </div>
+          </div>
+        </Form>
       </div>
     </div>
   );
 }
 
 export default ResidenceDetailsPage;
+
+
