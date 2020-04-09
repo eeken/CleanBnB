@@ -39,7 +39,7 @@ function App() {
         <ResidenceContextProvider>
               <Router>
                 <Header menuData={menu} />
-                <main className="mt-4">
+                <main>
                   <Switch>
                     <Route exact path="/" component={LandingPage} />
                     <Route exact path="/explore" component={Explore} />

@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Button, Form, FormGroup, Label, Input } from "reactstrap";
 import { useHistory } from "react-router-dom";
+import Calender from "../components/Calender";
 
 function LandingPage() {
   const [destination, setDestination] = useState();
@@ -45,22 +46,7 @@ function LandingPage() {
               Check-out
             </Label>
           </div>
-          <div className="row dateInputRow">
-            <Input
-              className="col-5 dateInput"
-              id="destination-input"
-              type="date"
-              value={checkIn}
-              onChange={e => setCheckIn(e.target.value)}
-            />
-            <Input
-              className="col-5"
-              id="destination-input"
-              type="date"
-              value={checkOut}
-              onChange={e => setCheckOut(e.target.value)}
-            />
-          </div>
+          <Calender />
         </FormGroup>
 
         <FormGroup>
