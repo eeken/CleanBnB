@@ -7,11 +7,9 @@ import ShowResidence from "../components/ShowResidence";
 function MyPage() {
   const { user } = useContext(UserContext);
   const [addResidenceisOpen, setaddResidenceIsOpen] = useState(false);
+  const [showResidenceisOpen, setshowResidenceIsOpen] = useState(false);
   const toggleAddResidence = () => setaddResidenceIsOpen(!addResidenceisOpen);
-
-  function showInformation() {
-    let showResult = false;
-  }
+  const toggleShowResidence = () => setshowResidenceIsOpen(!showResidenceisOpen);
 
   if (user === null) {
     return null;
@@ -27,12 +25,20 @@ function MyPage() {
       <Row className="golden-bg boxes m-2">
         <Col className="p-3 darkbrowntext">SHOW MY BOOKINGS</Col>
       </Row>
-      <div onClick={showInformation} style={{ cursor: "pointer" }}>
-        <Row className="golden-bg boxes m-2">
-          <Col className="p-3 darkbrowntext">SHOW MY RESIDENCES</Col>
-        </Row>
-        <ShowResidence />
-      </div>
+      <Row className="showResidenceButton boxes m-2">
+        <Button
+          color="transparent"
+          className="container showResidenceButton boxes m-2 justify-content-center"
+          onClick={toggleShowResidence}
+        >
+          SHOW MY RESIDENCE
+        </Button>
+        <Collapse isOpen={showResidenceisOpen}>
+          <div className="mb-3">
+          <ShowResidence />
+          </div>
+        </Collapse>
+      </Row>
       <Row className="addResidenceButton  boxes m-2">
         <Button
           color="transparent"
