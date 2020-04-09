@@ -60,6 +60,7 @@ function Calender(props) {
       endDate={state.endDate}
       focusedInput={state.focusedInput}
       vertical={vertical => dispatch({type: 'verticalChange', payload: vertical})}
+      displayFormat="dd/MM/YYYY"
       onChange={props.duration}
     />
     </ThemeProvider>
