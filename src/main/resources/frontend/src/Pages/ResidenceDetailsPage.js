@@ -21,15 +21,16 @@ function ResidenceDetailsPage() {
   let { id } = useParams();
   const [checkIn, setCheckIn] = useState("");
   const [checkOut, setCheckOut] = useState("");
-  const [amountOfNights, setAmountOfNights] = useState("");
+  const [amountOfNights, setAmountOfNights] = useState("-");
   const [numberOfGuests, setNumberOfGuests] = useState('');
-  const [totalPrice, setTotalPrice] = useState('');
+
   const {
     residence,
     fetchResidenceDetails,
   } = useContext(ResidenceContext);
 
   let history = useHistory();
+  let totalPrice = '-';
 
   const bookResidence = async e => {
     e.preventDefault();
@@ -59,11 +60,6 @@ function ResidenceDetailsPage() {
     console.log('Watching counter')
   }, [amountOfNights])
 
-
-
-  console.log(residence)
-
-
   if (residence === null) {
     return null;
   }
@@ -72,12 +68,6 @@ function ResidenceDetailsPage() {
   let maxAmountOfGuests = []
   for (let i = 1; i <= residence.maxguests; i++) {
     maxAmountOfGuests.push(i)
-  }
-
-  function receiveCalenderInfo(numberOfNights, firstDate, secondDate) {
-    setAmountOfNights(numberOfNights)
-    setCheckIn(firstDate)
-    setCheckOut(secondDate)
   }
 
   return (
@@ -176,7 +166,7 @@ function ResidenceDetailsPage() {
 
             </div>
             <div className="col-9 golden m-3">
-              <b>Total price: {residence.pricepernight} x {amountOfNights} = {totalPrice} </b>
+              <b>Total price: {residence.pricepernight} x {amountOfNights} = {totalPrice = residence.pricepernight * amountOfNights} </b>
             </div>
 
             <Button
