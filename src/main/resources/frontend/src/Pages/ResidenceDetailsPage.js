@@ -61,20 +61,9 @@ function ResidenceDetailsPage() {
     return null;
   }
 
-  //why on earth does this cause unending re-rendering???? 
-  //seems to work now - ish - krångligt SOM FAAAAAN XD
-  const checkForMaxGuests = () => {
-    let maxAmountOfGuests = []
-    for (let i = 1; i <= residence.maxguests; i++) {
-      maxAmountOfGuests.push(i)
-    }
-
-    return (<>
-      {maxAmountOfGuests.map(guest => (
-          <option key={guest.value + 'uniquekey' + guest} value={guest.value}>{guest}</option>
-        ))}
-    </>
-    )
+  let maxAmountOfGuests = []
+  for (let i = 1; i <= residence.maxguests; i++) {
+    maxAmountOfGuests.push(i)
   }
 
   return (
@@ -116,7 +105,7 @@ function ResidenceDetailsPage() {
               id gravida ut, dictum a risus. Nulla feugiat massa vel ex
               scelerisque, ut sollicitudin massa fermentum. Interdum et malesuada
               fames ac ante ipsum primis in faucibus. Aliquam tellus nisi,
-            pharetra eu dui id. Ullamcorper laoreet elit.<br></br>
+             pharetra eu dui id. Ullamcorper laoreet elit.<br></br>
               <br></br>Vivamus pulvinar purus a velit dictum lobortis sit amet sit
             amet tortor. Vestibulum ante ipsum primis in faucibus orci luctus et
             ultrices posuere cubilia Curae; Mauris nec gravida massa. Donec orci
@@ -159,15 +148,15 @@ function ResidenceDetailsPage() {
           </div>
             <div className="col-9 golden mt-3 mr-3">
               Amount of guests (including children):
-               {checkForMaxGuests}
-
-               <FormGroup>
+                <FormGroup>
                 <Input
                   type="select"
                   name="guestSelection"
                   id="guestSelection"
                   onChange={e => setNumberOfGuests(e.target.value)}>
-                  {checkForMaxGuests()}
+                  {maxAmountOfGuests.map(guest => (
+                    <option key={guest.value + 'uniquekey' + guest} value={guest.value}>{guest}</option>
+                  ))}
                 </Input>
               </FormGroup>
 
