@@ -417,7 +417,7 @@ const AddResidence = () => {
             type="file"
             name="file"
             id="files"
-            multiple
+            required
             accept=".png,.jpg,.jpeg,.gif,.bmp,.jfif"
             onChange={e => filesChange(e.target.files)}
           />

@@ -1,6 +1,6 @@
 //REACT
 import React from "react";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route, Redirect } from "react-router-dom";
 
 // CSS/SASS
 import "./sass/style.scss";
@@ -15,6 +15,7 @@ import MyPage from "./Pages/MyPage";
 import ResidenceDetailsPage from "./Pages/ResidenceDetailsPage";
 import ConfirmBooking from "./Pages/ConfirmBooking";
 import CompleteBooking from "./Pages/CompleteBooking";
+import PageNotFound from "./Pages/PageNotFound";
 
 // CONTEXTPROVIDERS
 import ResidenceContextProvider from "./contexts/ResidenceContextProvider";
@@ -41,7 +42,7 @@ function App() {
           <BookingContextProvider>
             <Router>
               <Header menuData={menu} />
-              <main className="mt-4">
+              <main className="mt-4 main">
                 <Switch>
                   <Route exact path="/" component={LandingPage} />
                   <Route exact path="/explore" component={Explore} />
@@ -54,6 +55,7 @@ function App() {
                   <Route path="/details/residence_id=:id?" component={ResidenceDetailsPage} />
                   <Route exact path="/explore/destination=:destination?&guests=:numberofguests?"
                     key={window.location.pathname} component={Explore} />
+                  <Route  path="*" component={PageNotFound} />
                 </Switch>
               </main>
               <Footer className="footer" />
