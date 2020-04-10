@@ -59,7 +59,6 @@
   margin: 2.5vh;
   font-size: 1.75em;
   font-weight: bold;
-  line-height: 30px;
 }
 
 .residenceDetailsPageAddress {
@@ -83,6 +82,7 @@
 
 .bookingButton {
   width: 100%;
+  font-weight: bold;
   background-color: #B9986D !important;
   border: none !important;
   font-weight: bold !important;
@@ -129,6 +129,7 @@ text-align: center;
 }
 
 .carousel-item > img {
+display: inline block;
 height:50vh;
 }
 
@@ -136,4 +137,3 @@ height:50vh;
 object-fit: contain;
 align-content: center;
 }
-

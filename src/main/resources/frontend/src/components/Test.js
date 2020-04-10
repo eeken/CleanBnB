@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import { ResidenceContext } from "../contexts/ResidenceContextProvider";
 import { useParams } from "react-router-dom";
 import {
@@ -8,9 +8,10 @@ import {
   CarouselIndicators,
 } from 'reactstrap';
 
-const CarouselComponent = (props) => {
+const Test = (props) => {
   let { id } = useParams();
   const { residenceImages } = useContext(ResidenceContext);
+  const { fetchResidenceImages } = useContext(ResidenceContext);
   const [activeIndex, setActiveIndex] = useState(0);
   const [animating, setAnimating] = useState(false);
 
@@ -30,6 +31,10 @@ const CarouselComponent = (props) => {
     if (animating) return;
     setActiveIndex(newIndex);
   }
+
+  useEffect(() => {
+    fetchResidenceImages(id);
+  }, []);
 
   let filteredArray = [];
   if (residenceImages) {
@@ -65,4 +70,4 @@ const CarouselComponent = (props) => {
   );
 }
 
-export default CarouselComponent;
+export default Test;
