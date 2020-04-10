@@ -1,14 +1,86 @@
 // import the whole bootstrap
 @import "./bootstrap/bootstrap.scss";
-@import "./sticky-footer.scss";
 @import "./landingPage.scss";
 @import "./login.scss";
+@import "./register.scss";
 @import "./residenceDetails.scss";
 @import "./about.scss";
+@import "./myPage.scss";
+@import "./confirm-complete-booking.scss";
 
-// my own styling
+// other styling
 
-
-.fe-image{
+.fe-image {
   width: 300px;
+}
+
+#root {
+}
+
+.main {
+  flex: 1 !important;
+}
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+.App {
+  background-image: url("../images/clean-bnb-background-image.jpeg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+  background-position: 33.5%;
+  padding: 0;
+  display: flex !important;
+  min-height: 100vh !important;
+  flex-direction: column !important;
+}
+
+footer {
+  background-color: #3f392f;
+  color: #b9986d;
+}
+
+.darkbrown {
+  background-color: #3f392f;
+}
+
+.darkbrowntext {
+  color: #3f392f;
+  font-size: 0.9em;
+}
+
+.golden {
+  color: #b9986d;
+}
+
+.golden-bg {
+  background-color: #b9986d;
+}
+
+.white {
+  background-color: white;
+}
+
+.login-logout {
+  color: #b9986d;
+}
+
+.login-logout-button {
+  color: #3f392f;
+  border: 2px #b9986d;
+}
+
+.border {
+  border: 2px #b9986d;
+  border-color: #b9986d !important;
+}
+.bvVeao {
+  z-index: 10;
+}
+.cursorPointer {
+  cursor: pointer;
+  user-select: none;
 }

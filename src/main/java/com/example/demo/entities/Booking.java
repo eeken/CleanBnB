@@ -10,49 +10,32 @@ public class Booking {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
+    @Column(name="check_in")
     private Date checkIn;
+    @Column(name="check_out")
     private Date checkOut;
+    @Column(name="total_price")
     private int totalPrice;
-    private int residenceId;
 
-    public int getId() {
-        return id;
-    }
+    //RELATIONS
+    @ManyToOne
+    private User user;
 
-    public void setId(int id) {
-        this.id = id;
-    }
+    @ManyToOne
+    private Residence residence;
 
-    public Date getCheckIn() {
-        return checkIn;
-    }
+    //CONSTRUCTORS
+    public Booking() { }
 
-    public void setCheckIn(Date checkIn) {
-        this.checkIn = checkIn;
-    }
+    // GETTERS AND SETTERS
+    public int getId() { return id; }
+    public void setId(int id) { this.id = id; }
+    public Date getCheckIn() { return checkIn; }
+    public void setCheckIn(Date checkIn) { this.checkIn = checkIn; }
+    public Date getCheckOut() { return checkOut; }
+    public void setCheckOut(Date checkOut) { this.checkOut = checkOut; }
+    public int getTotalPrice() { return totalPrice; }
+    public void setTotalPrice(int totalPrice) { this.totalPrice = totalPrice; }
 
-    public Date getCheckOut() {
-        return checkOut;
-    }
-
-    public void setCheckOut(Date checkOut) {
-        this.checkOut = checkOut;
-    }
-
-    public int getTotalPrice() {
-        return totalPrice;
-    }
-
-    public void setTotalPrice(int totalPrice) {
-        this.totalPrice = totalPrice;
-    }
-
-    public int getResidenceId() {
-        return residenceId;
-    }
-
-    public void setResidenceId(int residenceId) {
-        this.residenceId = residenceId;
-    }
 }
 

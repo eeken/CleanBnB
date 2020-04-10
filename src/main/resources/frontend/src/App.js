@@ -1,15 +1,31 @@
+//REACT
 import React from "react";
-import { BrowserRouter as Router, Switch, Route} from "react-router-dom";
-import Footer from "./components/Footer";
-import Header from "./components/Header";
+import { BrowserRouter as Router, Switch, Route, Redirect } from "react-router-dom";
+
+// CSS/SASS
 import "./sass/style.scss";
+
+// PAGES
 import LandingPage from "./Pages/LandingPage";
 import Explore from "./Pages/Explore";
 import About from "./Pages/About";
 import Login from "./Pages/Login";
+import Register from "./Pages/Register";
+import MyPage from "./Pages/MyPage";
 import ResidenceDetailsPage from "./Pages/ResidenceDetailsPage";
+import ConfirmBooking from "./Pages/ConfirmBooking";
+import CompleteBooking from "./Pages/CompleteBooking";
+import PageNotFound from "./Pages/PageNotFound";
+
+// CONTEXTPROVIDERS
 import ResidenceContextProvider from "./contexts/ResidenceContextProvider";
-import ImageContextProvider from "./contexts/ImageContextProvider";
+import UserContextProvider from "./contexts/UserContextProvider";
+
+// COMPONENTS
+import Footer from "./components/Footer";
+import Header from "./components/Header";
+import BookingContextProvider from "./contexts/BookingContextProvider";
+
 
 
 function App() {
@@ -17,44 +33,37 @@ function App() {
     { label: "Home", route: "/" },
     { label: "Explore", route: "/explore" },
     { label: "About", route: "/about" },
-    { label: "Log In", route: "/login" }
   ];
 
-  let userIsLoggedIn = false;
-
   return (
-    
     <div className="App">
-      <ResidenceContextProvider>
-      <ImageContextProvider>
-      <Router>
-        <Header menuData={menu} userIsLoggedIn={userIsLoggedIn}/>
-        <main className="mt-4">
-          {/* <Router> */}
-          <Switch>
-            <Route exact path="/">
-              <LandingPage></LandingPage>
-            </Route>
-            <Route exact path="/explore">
-              <Explore></Explore>
-            </Route>
-            <Route exact path="/about">
-              <About></About>
-            </Route>
-            <Route exact path="/login">
-              <Login></Login>
-            </Route>
-            <Route path={"/residence/:id"} component={ResidenceDetailsPage}>
-              <ResidenceDetailsPage></ResidenceDetailsPage>
-            </Route>
-          </Switch>
-        </main>
-        <Footer className="footer"/>
-      </Router>
-      </ImageContextProvider>
-      </ResidenceContextProvider>
-  </div>
+      <UserContextProvider>
+        <ResidenceContextProvider>
+          <BookingContextProvider>
+            <Router>
+              <Header menuData={menu} />
+              <main className="mt-4 main">
+                <Switch>
+                  <Route exact path="/" component={LandingPage} />
+                  <Route exact path="/explore" component={Explore} />
+                  <Route exact path="/register" component={Register} />
+                  <Route exact path="/about" component={About} />
+                  <Route exact path="/account-login" component={Login} />
+                  <Route exact path="/my-page" component={MyPage} />
+                  <Route path="/details/residence_id=:id?/newbookingOf:residencetitle?&location=:residenceaddresscity?&:residenceaddresscountry?&numberOfGuests=:numberofguests?&checkin=:checkin?&checkout=:checkout?&amountOfNights=:amountofnights?&totalPrice=:totalprice?" component={ConfirmBooking} />
+                  <Route path="/details/residence_id=:id?/completebooking" component={CompleteBooking} />
+                  <Route path="/details/residence_id=:id?" component={ResidenceDetailsPage} />
+                  <Route exact path="/explore/destination=:destination?&guests=:numberofguests?"
+                    key={window.location.pathname} component={Explore} />
+                  <Route  path="*" component={PageNotFound} />
+                </Switch>
+              </main>
+              <Footer className="footer" />
+            </Router>
+          </BookingContextProvider>
+        </ResidenceContextProvider>
+      </UserContextProvider>
+    </div>
   );
 }
-
 export default App;

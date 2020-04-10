@@ -1,15 +1,36 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { Button, Form, FormGroup, Label, Input } from "reactstrap";
+import { useHistory } from "react-router-dom";
+import { UserContext } from '../contexts/UserContextProvider'
 
 function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const { fetchUser } = useContext(UserContext)
+  let history = useHistory();
 
-  const submitLogin = e => {
+  async function submitLogin(e) {
     e.preventDefault();
-    console.log("Email entered :  " + email);
-    console.log("Password entered  :  " + password);
-  };
+    const credentials =
+      "username=" +
+      encodeURIComponent(email) +
+      "&password=" +
+      encodeURIComponent(password);
+
+    let response = await fetch("/login", {
+      method: "POST",
+      headers: { "Content-Type": "application/x-www-form-urlencoded" },
+      body: credentials
+    });
+
+    if (response.url.includes("error")) {
+      console.log("Wrong username/password");
+    } else {
+      console.log("Successfully logged in");
+      history.push("/");
+      fetchUser()
+    }
+  }
 
   return (
     <div className="loginMain ">
@@ -28,6 +49,7 @@ function Login() {
             type="text"
             id="email-input"
             onChange={e => setEmail(e.target.value)}
+            required
           ></Input>
         </FormGroup>
 
@@ -36,9 +58,10 @@ function Login() {
             Password
           </Label>
           <Input
-            type="text"
+            type="password"
             id="password-input"
             onChange={e => setPassword(e.target.value)}
+            required
           ></Input>
         </FormGroup>
 
@@ -50,10 +73,8 @@ function Login() {
         >
           Log In
         </Button>
-        <p
-          align="right"
-          className="loginRegisterText"
-        >
+        <p align="right" className="loginRegisterText cursorPointer"
+        onClick={() => history.push('/register')}>
           Or become a member here!
         </p>
       </Form>
