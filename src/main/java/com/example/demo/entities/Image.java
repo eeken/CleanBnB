@@ -14,6 +14,8 @@ public class Image {
     private int residencyid;
     private String imagelink;
 
+    public Image() {
+    }
 
     // GETTERS AND SETTERS
     public int getId() {

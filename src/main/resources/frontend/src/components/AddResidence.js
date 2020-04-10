@@ -6,6 +6,24 @@ import { useHistory } from "react-router-dom";
 const AddResidence = () => {
   let history = useHistory();
 
+    // Since this is a wall of text...
+    // To find the FormGroup/Segment you're looking for...
+    // Copy / CTRL - F / Paste any of the keywords below
+  
+    //  For 'ABOUT THE RESIDENCE' --- RESIDENCE-DETAILS-FORM ---
+  
+    //  For 'RESIDENCE AMENITIES' --- RESIDENCE-AMENITIES-FORM ---
+  
+    //  For 'RESIDENCE LOCATION' --- RESIDENCE-LOCATION-FORM ---
+  
+    //  For 'RESIDENCE DESCRIPTION' --- RESIDENCE-DESCRIPTION-FORM ---
+  
+    //  For 'RESIDENCE AVAILABLE DATES' --- RESIDENCE-AVAILABLE-DATES-FORM ---
+  
+    //  For 'RESIDENCE RESIDENCE IMAGES' --- RESIDENCE-IMAGES-FORM ---
+
+
+
   // RESIDENCE DETAILS
   //****    ENTITY: RESIDENCE   ****
   const [title, setTitle] = useState(null);
@@ -63,19 +81,9 @@ const AddResidence = () => {
       body: formData,
     }).catch(console.warn);
     response = await response.json();
-    console.log(response);
 
-    let newImage = {
-      imagelink: response.toString()
-    }
-
-    images.push(newImage)
-
-    setImages(images)
-
+    setImages( images => [...images, { imagelink: response.toString() }] );
     console.log(images);
-    
-    
 
   };
 
@@ -110,7 +118,7 @@ const AddResidence = () => {
         washingmachine: hasWashingMachine,
         dishwasher: hasDishWasher,
       },
-      images: [],
+      images,
       user: {
         id: user.id,
       },
@@ -123,6 +131,9 @@ const AddResidence = () => {
       body: JSON.stringify(newResidence),
     });
     response = await response.json()
+
+    console.log(response);
+
     history.push("/details/residence_id=" + response.id)
   };
 
@@ -136,6 +147,9 @@ const AddResidence = () => {
       <h5>Add it here!</h5>
       <h5>ABOUT THE RESIDENCE</h5>
       <FormGroup className="container mb-4">
+
+             {/* RESIDENCE-DETAILS-FORM */}
+
         <div className=" row dateInputRow justify-content-space-around align-items-center">
           <Input
             required
@@ -200,6 +214,9 @@ const AddResidence = () => {
           <div className="col-5"></div>
         </div>
       </FormGroup>
+
+            {/* RESIDENCE-AMENITIES-FORM */}
+
       <FormGroup className="container">
         <h5>RESIDENCE AMENITIES</h5>
         <div className="row justify-content-center">
@@ -289,6 +306,9 @@ const AddResidence = () => {
       </FormGroup>
 
       <FormGroup className="container">
+
+        {/* RESIDENCE-LOCATION-FORM  */}
+
         <h5>RESIDENCE LOCATION</h5>
         <div className=" row dateInputRow justify-content-space-around align-items-center">
           <Input
@@ -348,6 +368,9 @@ const AddResidence = () => {
         </div>
       </FormGroup>
       <FormGroup>
+
+        {/* RESIDENCE-DESCRIPTION-FORM */}
+
         <h5>DESCRIPTION</h5>
         <Input
           type="textarea"
@@ -359,6 +382,9 @@ const AddResidence = () => {
         />
       </FormGroup>
       <FormGroup className="mb-4">
+
+          {/* RESIDENCE-AVAILABLE-DATES-FORM */}
+
         <h5>AVAILABLE DATES</h5>
         <div className="row dateInputRow">
           <Input
@@ -381,6 +407,9 @@ const AddResidence = () => {
         </div>
       </FormGroup>
       <FormGroup className="container mb-4">
+
+        {/* RESIDENCE-IMAGES-FORM */}
+
         <h5>RESIDENCE IMAGES</h5>
         <div className="row dateInputRow">
           <Label for="files">File to upload:</Label>
@@ -389,7 +418,6 @@ const AddResidence = () => {
             name="file"
             id="files"
             multiple
-            required
             accept=".png,.jpg,.jpeg,.gif,.bmp,.jfif"
             onChange={e => filesChange(e.target.files)}
           />

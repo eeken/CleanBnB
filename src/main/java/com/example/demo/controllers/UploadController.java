@@ -15,7 +15,7 @@ import java.util.UUID;
 public class UploadController {
     private static String currentWorkingDirectory = System.getProperty("user.dir");
     private static String frontendUploadDirectory = "/uploads/";
-    private static String backendUploadDirectory = currentWorkingDirectory + "/src/main/resources/static" + frontendUploadDirectory;
+    private static String backendUploadDirectory = currentWorkingDirectory + "/src/main/resources/static/" + frontendUploadDirectory;
 
     @PostConstruct
     public void createFolderIfMissing() {
