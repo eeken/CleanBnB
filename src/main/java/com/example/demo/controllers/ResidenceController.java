@@ -20,12 +20,14 @@ public class ResidenceController {
     public List<Residence> findResidences(
             @RequestParam(value="destination", required = false, defaultValue="") String addressCountry,
             @RequestParam(value="destination", required = false, defaultValue="")  String addressCity,
-            @RequestParam(value="numberofguests", required = false, defaultValue="0")  Integer numberofguests) {
+            @RequestParam(value="numberofguests", required = false, defaultValue="0")  Integer numberofguests,
+            @RequestParam(value="checkIn", required = false, defaultValue = "0") Integer startDate,
+            @RequestParam(value="checkOut", required = false, defaultValue = "0") Integer endDate) {
         if(addressCity.equalsIgnoreCase("undefined") || addressCountry.equalsIgnoreCase("undefined")){
             addressCity= "";
             addressCountry = "";
         }
-        return residenceService.findResidences(addressCountry, numberofguests, addressCity);
+        return residenceService.findResidences(addressCountry, numberofguests, addressCity, startDate, endDate);
     }
 
     @GetMapping("/details")

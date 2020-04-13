@@ -7,12 +7,19 @@ export default function ResidenceContextProvider(props) {
   const [residenceImages, setResidenceImages] = useState(null);
 
   const fetchResidence = async params => {
+    console.log(params.checkIn);
+    console.log(params.checkOut);
+    
     try {
       let res = await fetch(
         "/rest/residences/explore?destination=" +
           params.destination +
           "&numberofguests=" +
-          params.numberofguests
+          params.numberofguests +
+          "&checkIn=" +
+          params.checkIn +
+          "&checkOut=" +
+          params.checkOut
       );
       res = await res.json();
       setResidences(res);
