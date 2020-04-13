@@ -3,6 +3,31 @@ import { Button, Form, FormGroup, Input, Label } from "reactstrap";
 import { UserContext } from "../contexts/UserContextProvider";
 import { useHistory } from "react-router-dom";
 
+let images = []
+
+const filesChange = async (fileList) => {
+  // handle file changes
+  const formData = new FormData();
+
+  if (!fileList.length) return;
+
+  // append the files to FormData
+  Array.from(Array(fileList.length).keys()).map((x) => {
+    formData.append("files", fileList[x], fileList[x].name);
+  });
+
+  let response = await fetch("/static/upload", {
+    method: "POST",
+    body: formData,
+  }).catch(console.warn);
+
+  response = await response.json();
+
+  console.log(response);
+
+  images = response;
+};
+
 const AddResidence = () => {
   let history = useHistory();
 

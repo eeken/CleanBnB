@@ -22,7 +22,7 @@ function MyPage() {
   return (
     <Container className="themed-container text-center" fluid="sm">
       <Row className="white boxes m-2">
-        <Col className="p-5 golden ">Welcome, {user.firstName} </Col>
+        <Col className="p-5 golden ">Welcome, {user.firstName}! </Col>
       </Row>
       <Row className="golden-bg boxes m-2">
         <Col className="p-3 darkbrowntext">SHOW MY BOOKINGS</Col>
