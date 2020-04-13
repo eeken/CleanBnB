@@ -53,7 +53,7 @@ function App() {
                   <Route path="/details/residence_id=:id?/newbookingOf:residencetitle?&location=:residenceaddresscity?&:residenceaddresscountry?&numberOfGuests=:numberofguests?&checkin=:checkin?&checkout=:checkout?&amountOfNights=:amountofnights?&totalPrice=:totalprice?" component={ConfirmBooking} />
                   <Route path="/details/residence_id=:id?/completebooking" component={CompleteBooking} />
                   <Route path="/details/residence_id=:id?" component={ResidenceDetailsPage} />
-                  <Route exact path="/explore/destination=:destination?&guests=:numberofguests?"
+                  <Route exact path="/explore/destination=:destination?&guests=:numberofguests?&checkIn=:checkin?&checkOut=:checkout?"
                     key={window.location.pathname} component={Explore} />
                   <Route  path="*" component={PageNotFound} />
                 </Switch>

@@ -18,16 +18,11 @@ public class ResidenceService {
         return residenceRepo.findById(id);
     }
 
-    public List<Residence> findAll(){
-        return residenceRepo.findAll();
-    }
-
-    public List<Residence> getAllResidences(String addressCountry, int guestSeach1, String addressCity, int guestSeach2){
-        if(guestSeach1 == 0|| guestSeach2 == 0){
-            return residenceRepo.findByAddressCountryContainsIgnoreCaseAndMaxguestsGreaterThanEqualOrAddressCityContainsIgnoreCaseAndMaxguestsGreaterThanEqual(addressCountry, guestSeach1, addressCity ,guestSeach2);
-        }else{
-            return residenceRepo.findByAddressCountryContainsIgnoreCaseAndMaxguestsOrAddressCityContainsIgnoreCaseAndMaxguests(addressCountry, guestSeach1, addressCity ,guestSeach2);
+    public List<Residence> findResidences(String addressCountry, int numberofguests, String addressCity){
+        if(numberofguests == 0){
+            return residenceRepo.SearchLocationOnly(addressCountry, addressCity);
         }
+            return residenceRepo.SearchWithGuests(addressCountry, numberofguests, addressCity);
     }
 
     public Residence addResidence(Residence residence){

@@ -17,7 +17,7 @@ public class ResidenceController {
     private ResidenceService residenceService;
 
     @GetMapping( value= "/explore")
-    public List<Residence> getAllResidences(
+    public List<Residence> findResidences(
             @RequestParam(value="destination", required = false, defaultValue="") String addressCountry,
             @RequestParam(value="destination", required = false, defaultValue="")  String addressCity,
             @RequestParam(value="numberofguests", required = false, defaultValue="0")  Integer numberofguests) {
@@ -25,17 +25,12 @@ public class ResidenceController {
             addressCity= "";
             addressCountry = "";
         }
-        return residenceService.getAllResidences(addressCountry, numberofguests, addressCity, numberofguests);
+        return residenceService.findResidences(addressCountry, numberofguests, addressCity);
     }
 
     @GetMapping("/details")
     public Residence findById(@RequestParam(value="id") int id){
         return residenceService.findById(id);
-    }
-
-    @GetMapping("")
-    public List<Residence> findAll() {
-        return residenceService.findAll();
     }
 
     @PostMapping("/register")
