@@ -1,7 +1,32 @@
 import React, { useState, useContext } from "react";
-import { Button, Form, FormGroup, Input } from "reactstrap";
+import { Button, Form, FormGroup, Input, Label } from "reactstrap";
 import { UserContext } from '../contexts/UserContextProvider'
 import { useHistory } from "react-router-dom";
+
+let images = []
+
+const filesChange = async (fileList) => {
+  // handle file changes
+  const formData = new FormData();
+
+  if (!fileList.length) return;
+
+  // append the files to FormData
+  Array.from(Array(fileList.length).keys()).map((x) => {
+    formData.append("files", fileList[x], fileList[x].name);
+  });
+
+  let response = await fetch("/static/upload", {
+    method: "POST",
+    body: formData,
+  }).catch(console.warn);
+
+  response = await response.json();
+
+  console.log(response);
+
+  images = response;
+};
 
 const AddResidence = () => {
 
@@ -354,8 +379,14 @@ const AddResidence = () => {
       <FormGroup className="container mb-4">
         <h5>RESIDENCE IMAGES</h5>
         <div className="row dateInputRow">
-          <Button className="col-5">ADD IMAGE</Button>
-          <Input className="col-6" placeholder="enter path.." />
+          <Label for="files">File to upload:</Label>
+          <Input
+            type="file"
+            name="file"
+            id="files"
+            accept=".png,.jpg,.jpeg,.gif,.bmp,.jfif"
+            onChange={(e) => filesChange(e.target.files)}
+          />
         </div>
       </FormGroup>
       <FormGroup>
