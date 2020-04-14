@@ -142,7 +142,7 @@ function ResidenceDetailsPage() {
               {residence.amenity.balcony && <p className="col-6"><MdStreetview className="golden" /> Balcony</p>}
               {residence.amenity.swimmingpool && <p className="col-6"><FaSwimmingPool className="golden" /> Swimming Pool</p>}
               {residence.amenity.wifi && <p className="col-6"><FaWifi className="golden" /> WiFi</p>}
-              {residence.amenity.television && <p className="col-6"><FaTv className="golden" /> Television</p>}
+              {residence.amenity.tv && <p className="col-6"><FaTv className="golden" /> Television</p>}
               {residence.amenity.bathtub && <p className="col-6"><FaBath className="golden" /> Bathtub</p>}
               {residence.amenity.washingmachine && <p className="col-6"><MdLocalLaundryService className="golden" /> Washing Machine</p>}
               {residence.amenity.fridge && <p className="col-6"><FaTemperatureLow className="golden" /> Fridge</p>}

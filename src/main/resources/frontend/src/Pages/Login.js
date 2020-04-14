@@ -33,7 +33,7 @@ function Login() {
   }
 
   return (
-    <div className="loginMain ">
+    <div className="loginMain">
       <Form
         className="loginForm col-10 col-lg-3 col-md-6 darkbrown golden"
         onSubmit={submitLogin}
