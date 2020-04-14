@@ -13,7 +13,7 @@ public class Amenity {
     private boolean balcony;
     private boolean swimmingpool;
     private boolean wifi;
-    private boolean television;
+    private boolean tv;
     private boolean bathtub;
     private boolean freezer;
     private boolean fridge;
@@ -34,8 +34,8 @@ public class Amenity {
     public void setSwimmingpool(boolean swimmingpool) { this.swimmingpool = swimmingpool; }
     public boolean isWifi() { return wifi; }
     public void setWifi(boolean wifi) { this.wifi = wifi; }
-    public boolean isTelevision() { return television; }
-    public void setTelevision(boolean television) { this.television = television; }
+    public boolean isTv() { return tv; }
+    public void setTv(boolean tv) { this.tv = tv; }
     public boolean isBathtub() { return bathtub; }
     public void setBathtub(boolean bathtub) { this.bathtub = bathtub; }
     public boolean isFreezer() { return freezer; }
