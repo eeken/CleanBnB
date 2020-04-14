@@ -8,7 +8,9 @@ function Calender(props) {
     startDate: null,
     endDate: null,
     focusedInput: null,
-    vertical: true
+    vertical: true,
+    minDate: new Date("Tue Apr 14 2020 00:00:00 GMT+0200 (centraleuropeisk sommartid)"),
+    maxDate: new Date("Tue Apr 21 2020 00:00:00 GMT+0200 (centraleuropeisk sommartid)")
   }
 
   function reducer(state, action) {
@@ -36,6 +38,8 @@ function Calender(props) {
 
   let duration = (endDateUnix - startDateUnix) / 86400;
   console.log(duration);
+  console.log('minDate: ' + state.minDate);
+  console.log('maxDate: ' + state.maxDate);
   
   return (
     <ThemeProvider
@@ -60,8 +64,10 @@ function Calender(props) {
       endDate={state.endDate}
       focusedInput={state.focusedInput}
       vertical={vertical => dispatch({type: 'verticalChange', payload: vertical})}
-      displayFormat="dd/MM/YYYY"
+      displayFormat="dd/MM/yyyy"
       onChange={props.duration}
+      minBookingDate={state.minDate}
+      maxBookingDate={state.maxDate}
     />
     </ThemeProvider>
   )
