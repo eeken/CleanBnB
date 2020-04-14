@@ -10,12 +10,15 @@ function LandingPage() {
 
   const submitSearch = async e => {
     e.preventDefault();
-      await history.push("explore/destination=" + destination + "&guests=" + numberofguests);
+      await history.push("explore/destination=" + destination + "&guests=" + numberofguests + "&checkIn=" + checkIn + "&checkOut=" + checkOut);
   };
 
   let history = useHistory();
 
   return (
+
+    
+    
     <div className="col-12 col-lg-3 col-md-6">
       <Form
         className="darkbrown golden searchAndFilterForm"
