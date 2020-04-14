@@ -14,8 +14,8 @@ export default function Explore() {
   const params = {
     destination: destination,
     numberofguests: parseInt(numberofguests ? numberofguests : 0),
-    checkIn: checkIn,
-    checkOut: checkOut,
+    checkIn: parseInt(checkIn ? checkIn : 0),
+    checkOut: parseInt(checkOut ? checkOut : 0),
   }
 
   useEffect(() => {
