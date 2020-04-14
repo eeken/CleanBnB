@@ -116,7 +116,7 @@ export default function ConfirmBooking() {
               </div>
               <Input
                 type="text"
-                id="email-input"
+                id="confirm-booking-email-input"
                 value={email}
                 onChange={e => setEmail(e.target.value)}
                 placeholder="Enter your e-mail address here"
