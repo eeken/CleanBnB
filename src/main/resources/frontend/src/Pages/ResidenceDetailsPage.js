@@ -23,7 +23,7 @@ function ResidenceDetailsPage() {
 
   // Used to check if residence_id= is not a number
   //If false, redirect to 404 PageNotFound
-  if (id / id != 1) {
+  if (id / id !== 1) {
     history.push('/404')
   }
 
@@ -63,7 +63,6 @@ function ResidenceDetailsPage() {
 
   //watcher
   useEffect(() => { //skicka med vilken variabel den ska lyssna på
-    console.log('Watching counter')
   }, [amountOfNights])
 
   if (residence === null) {

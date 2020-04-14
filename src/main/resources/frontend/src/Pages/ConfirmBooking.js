@@ -69,13 +69,8 @@ export default function ConfirmBooking() {
     appendBooking(res)
   }
 
-
-  console.log(checkin)
-  console.log(checkout)
-
   var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
   let checkinDate = new Date(checkin * 1000);
-  console.log(checkinDate)
   checkinDate = checkinDate.getDate() + " " + months[checkinDate.getMonth()] + " " + checkinDate.getFullYear()
 
   let checkoutDate = new Date(checkout * 1000);
