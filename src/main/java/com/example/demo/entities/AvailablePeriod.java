@@ -15,11 +15,6 @@ public class AvailablePeriod {
     @Column(name="end_date")
     private int endDate;
 
-
-    //RELATIONS
-    @ManyToOne
-    private Residence residence;
-
     //GETTERS AND SETTERS
     public int getId() { return id; }
     public void setId(int id) { this.id = id; }

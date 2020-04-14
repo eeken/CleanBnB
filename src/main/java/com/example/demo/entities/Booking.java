@@ -16,13 +16,10 @@ public class Booking {
     private int checkOut;
     @Column(name="total_price")
     private int totalPrice;
-
-    //RELATIONS
-    @ManyToOne
-    private User user;
-
-    @ManyToOne
-    private Residence residence;
+    @Column(name="residence_id")
+    private int residenceId;
+    @Column(name="user_id")
+    private int userId;
 
     //CONSTRUCTORS
     public Booking() { }
@@ -51,6 +48,18 @@ public class Booking {
 
     public void setCheckOut(int checkOut) {
         this.checkOut = checkOut;
+    }
+
+    public int getResidenceId() {
+        return residenceId;
+    }
+
+    public void setResidenceId(int residenceId) {
+        this.residenceId = residenceId;
+    }
+
+    public void setUserId(int userId) {
+        this.userId = userId;
     }
 }
 

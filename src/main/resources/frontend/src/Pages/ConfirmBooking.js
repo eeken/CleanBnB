@@ -1,22 +1,24 @@
 //REACT
 import React, { useState, useContext, useEffect } from "react";
 import { Button, Form, FormGroup, Input } from "reactstrap";
-import { useParams } from "react-router-dom";
+import { useParams, useHistory } from "react-router-dom";
 
 //CONTEXTPROVIDERS
 import { BookingContext } from '../contexts/BookingContextProvider'
 import { ResidenceContext } from '../contexts/ResidenceContextProvider'
+import { UserContext } from "../contexts/UserContextProvider";
 
 
 export default function ConfirmBooking() {
 
   let { id } = useParams();
+  let history = useHistory();
   const {
     residence,
     fetchResidenceDetails,
   } = useContext(ResidenceContext);
 
-  const { appendBooking } = useContext(BookingContext)
+  const { user } = useContext(UserContext)
   const [ email, setEmail ] = useState();
   const [ isBookingPossible, setIsBookingPossible ] = useState(false)
   const { checkin, checkout, numberofguests, amountofnights, totalprice } = useParams();
@@ -51,22 +53,30 @@ export default function ConfirmBooking() {
 
   const createBooking = async (e) => {
     e.preventDefault();
-
     const booking = {
-      startDate: 1599490800, //update data in here with actual data
-      endDate: 1599735600, //update data in here with actual data
-      totalPrice: 2311 //update data in here with actual data
+      checkIn: checkin, 
+      checkOut: checkout, 
+      totalPrice: totalprice,
+      residenceId: residence.id,
+      userId: user.id
     }
-
     let res = await fetch('/rest/bookings', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(booking)
     })
-
     res = await res.json()
-
-    appendBooking(res)
+      
+    history.push(
+      + "/" + residence.title
+      + "&location=" + residence.address.city + "&" + residence.address.country
+      + "&numberOfGuests=" + numberofguests
+      + "&checkin=" + checkin
+      + "&checkout=" + checkout
+      + "&amountOfNights=" + amountofnights
+      + "&totalPrice=" + totalprice
+      + "/completebooking"
+    );
   }
 
   var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];

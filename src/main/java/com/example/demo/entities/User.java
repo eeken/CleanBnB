@@ -21,7 +21,7 @@ public class User {
     private String password;
 
     //RELATIONS
-    @OneToMany
+    @OneToMany(cascade = CascadeType.ALL)
     @JoinColumn(name="user_id")
     private List<Booking> bookingList;
 
