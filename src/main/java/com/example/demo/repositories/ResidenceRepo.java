@@ -17,10 +17,10 @@ public interface ResidenceRepo extends CrudRepository<Residence, Integer> {
     // *********************** LOCATION SEARCH ONLY *********************** //
     @Query(value=
             "SELECT r FROM Residence r " +
-            "WHERE" +
+            " WHERE " +
                     " r.address.country LIKE %:country% " +
-            "OR" +
-                    " r.address.city LIKE %:city%")
+            " OR " +
+                    " r.address.city LIKE %:city% ")
 
     public List<Residence> SearchLocationOnly(
             @Param("country") String addressCountry,
@@ -31,10 +31,10 @@ public interface ResidenceRepo extends CrudRepository<Residence, Integer> {
     // *********************** NUMBEROFGUESTS SEARCH ONLY *********************** //
     @Query(value =
             "SELECT r FROM Residence r " +
-            "WHERE" +
+            "WHERE " +
                 " r.address.country LIKE %:country% AND r.maxguests = :guests " +
-            "OR" +
-                " r.address.city LIKE %:city% AND r.maxguests = :guests")
+            "OR " +
+                " r.address.city LIKE %:city% AND r.maxguests = :guests ")
 
     public List<Residence> SearchWithGuests(
             @Param("country") String addressCountry,
@@ -42,14 +42,16 @@ public interface ResidenceRepo extends CrudRepository<Residence, Integer> {
             @Param("city") String addressCity
     );
 
+    // *********************** CHECKIN/CHECKOUT SEARCH ONLY *********************** //
     @Query( value =
             "SELECT * FROM residences " +
-                    "LEFT JOIN available_periods ON residences.id = available_periods.residence_id " +
-                    "LEFT JOIN bookings ON residences.id = bookings.residence_id " +
+                    " LEFT JOIN available_periods ON residences.id = available_periods.residence_id " +
+                    " LEFT JOIN bookings ON residences.id = bookings.residence_id " +
             "WHERE " +
-                    " :searchDateStart >= available_periods.start_date AND :searchDateEnd <= available_periods.end_date" +
-                    " AND bookings.check_in is NULL OR :searchDateStart NOT BETWEEN bookings.check_in AND bookings.check_out" +
-                    " AND bookings.check_out is NULL OR :searchDateEnd NOT BETWEEN bookings.check_in AND bookings.check_out",
+                    " :searchDateStart BETWEEN available_periods.start_date AND available_periods.start_date " +
+                    " AND :searchDateEnd BETWEEN available_periods.start_date AND available_periods.start_date " +
+                    " AND bookings.check_in is NULL OR :searchDateStart NOT BETWEEN bookings.check_in AND bookings.check_out " +
+                    " AND bookings.check_out is NULL OR :searchDateEnd NOT BETWEEN bookings.check_in AND bookings.check_out ",
             nativeQuery = true
     )
     public List<Residence> searchForCheckInAndCheckOut(
