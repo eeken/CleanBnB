@@ -12,7 +12,7 @@ function Calender(props) {
   }
 
   const constantState = {
-    minDate: new Date("Tue Apr 14 2020 00:00:00 GMT+0200 (centraleuropeisk sommartid)"),
+    minDate: new Date(),
     maxDate: new Date("Tue Apr 21 2020 00:00:00 GMT+0200 (centraleuropeisk sommartid)")
   }
 
@@ -31,7 +31,7 @@ function Calender(props) {
 
   const [state, dispatch] = useReducer(reducer, initialState)
 
-  const [conState, conDispatch] = useReducer(reducer, constantState)
+  const [conState] = useReducer(reducer, constantState)
 
   Date.prototype.getUnixTime = function() {
     return this.getTime()/1000
