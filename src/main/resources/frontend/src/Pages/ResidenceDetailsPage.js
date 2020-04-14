@@ -19,6 +19,14 @@ import { MdLocalLaundryService, MdLocalDrink, MdStreetview } from 'react-icons/m
 function ResidenceDetailsPage() {
 
   let { id } = useParams();
+  let history = useHistory();
+
+  // Used to check if residence_id= is not a number
+  //If false, redirect to 404 PageNotFound
+  if (id / id != 1) {
+    history.push('/404')
+  }
+
   const [checkIn, setCheckIn] = useState("12345678");
   const [checkOut, setCheckOut] = useState("12345678");
   const [amountOfNights, setAmountOfNights] = useState("4");
@@ -29,7 +37,6 @@ function ResidenceDetailsPage() {
     fetchResidenceDetails,
   } = useContext(ResidenceContext);
 
-  let history = useHistory();
 
   const bookResidence = async e => {
     e.preventDefault();

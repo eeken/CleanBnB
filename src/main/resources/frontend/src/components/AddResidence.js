@@ -1,6 +1,6 @@
 import React, { useState, useContext } from "react";
 import { Button, Form, FormGroup, Input, Label } from "reactstrap";
-import { UserContext } from '../contexts/UserContextProvider'
+import { UserContext } from "../contexts/UserContextProvider";
 import { useHistory } from "react-router-dom";
 
 let images = []
@@ -29,9 +29,24 @@ const filesChange = async (fileList) => {
 };
 
 const AddResidence = () => {
-
-
   let history = useHistory();
+
+    // Since this is a wall of text...
+    // To find the FormGroup/Segment you're looking for...
+    // Copy / CTRL - F / Paste any of the keywords below
+  
+    //  For 'ABOUT THE RESIDENCE' --- RESIDENCE-DETAILS-FORM ---
+  
+    //  For 'RESIDENCE AMENITIES' --- RESIDENCE-AMENITIES-FORM ---
+  
+    //  For 'RESIDENCE LOCATION' --- RESIDENCE-LOCATION-FORM ---
+  
+    //  For 'RESIDENCE DESCRIPTION' --- RESIDENCE-DESCRIPTION-FORM ---
+  
+    //  For 'RESIDENCE AVAILABLE DATES' --- RESIDENCE-AVAILABLE-DATES-FORM ---
+  
+    //  For 'RESIDENCE RESIDENCE IMAGES' --- RESIDENCE-IMAGES-FORM ---
+
 
 
   // RESIDENCE DETAILS
@@ -72,11 +87,34 @@ const AddResidence = () => {
 
   //RESIDENCE AVAILABLE PERIOD
   //****    ENTITY: AVAILABLEPERIOD   ****
-  const [image, /*setImage*/] = useState(null);
+  const [images, setImages] = useState([]);
 
-    //RESIDENCE USER/OWNER
+
+  const filesChange = async (fileList) => {
+    // handle file changes
+    const formData = new FormData();
+
+    if (!fileList.length) return;
+
+    // append the files to FormData
+    Array.from(Array(fileList.length).keys()).map(x => {
+      formData.append("files", fileList[x], fileList[x].name);
+    })
+
+    let response = await fetch("/static/upload", {
+      method: "POST",
+      body: formData,
+    }).catch(console.warn);
+    response = await response.json();
+
+    setImages( images => [...images, { imagelink: response.toString() }] );
+    console.log(images);
+
+  };
+
+  //RESIDENCE USER/OWNER
   //****    ENTITY: USER   ****
-  const { user, fetchUser } = useContext(UserContext);
+  const { user } = useContext(UserContext);
 
   const registerResidence = async (e) => {
     e.preventDefault();
@@ -87,51 +125,56 @@ const AddResidence = () => {
       pricepernight: pricePerNight,
       numberofbeds: numberOfBeds,
       title: title,
-        address: {
-          county: county,
-          city: city,
-          country: country,
-          street: streetName,
-          streetnumber: streetNumber
-        },
-        amenity:{
-          balcony: hasBalcony,
-          swimmingpool: hasSwimmingPool,
-          wifi: hasWifi,
-          tv: hasTelevision,
-          bathtub: hasBathtub,
-          freezer: hasFreezer,
-          fridge: hasFridge,
-          washingmachine: hasWashingMachine,
-          dishwasher: hasDishWasher
-        },
-        images:[
-          {imagelink: "test1"},
-          {imagelink: "test2"},
-          {imagelink: "test3"},
-        ],
-        user:{
-          id: user.id
-        }
-    }
+      address: {
+        county: county,
+        city: city,
+        country: country,
+        street: streetName,
+        streetnumber: streetNumber,
+      },
+      amenity: {
+        balcony: hasBalcony,
+        swimmingpool: hasSwimmingPool,
+        wifi: hasWifi,
+        tv: hasTelevision,
+        bathtub: hasBathtub,
+        freezer: hasFreezer,
+        fridge: hasFridge,
+        washingmachine: hasWashingMachine,
+        dishwasher: hasDishWasher,
+      },
+      images,
+      user: {
+        id: user.id,
+      },
+    };
     console.log(newResidence);
 
     let response = await fetch("/rest/residences/register", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(newResidence)
+      body: JSON.stringify(newResidence),
     });
+    response = await response.json()
+
+    console.log(response);
+
+    history.push("/details/residence_id=" + response.id)
   };
 
   return (
-    <Form 
-    id="addResidenceForm"
-    className="white container golden" 
-    onSubmit={registerResidence}>
+    <Form
+      id="addResidenceForm"
+      className="white container golden"
+      onSubmit={registerResidence}
+    >
       <h5>Have a location for rent?</h5>
       <h5>Add it here!</h5>
       <h5>ABOUT THE RESIDENCE</h5>
       <FormGroup className="container mb-4">
+
+             {/* RESIDENCE-DETAILS-FORM */}
+
         <div className=" row dateInputRow justify-content-space-around align-items-center">
           <Input
             required
@@ -196,6 +239,9 @@ const AddResidence = () => {
           <div className="col-5"></div>
         </div>
       </FormGroup>
+
+            {/* RESIDENCE-AMENITIES-FORM */}
+
       <FormGroup className="container">
         <h5>RESIDENCE AMENITIES</h5>
         <div className="row justify-content-center">
@@ -285,6 +331,9 @@ const AddResidence = () => {
       </FormGroup>
 
       <FormGroup className="container">
+
+        {/* RESIDENCE-LOCATION-FORM  */}
+
         <h5>RESIDENCE LOCATION</h5>
         <div className=" row dateInputRow justify-content-space-around align-items-center">
           <Input
@@ -344,6 +393,9 @@ const AddResidence = () => {
         </div>
       </FormGroup>
       <FormGroup>
+
+        {/* RESIDENCE-DESCRIPTION-FORM */}
+
         <h5>DESCRIPTION</h5>
         <Input
           type="textarea"
@@ -355,6 +407,9 @@ const AddResidence = () => {
         />
       </FormGroup>
       <FormGroup className="mb-4">
+
+          {/* RESIDENCE-AVAILABLE-DATES-FORM */}
+
         <h5>AVAILABLE DATES</h5>
         <div className="row dateInputRow">
           <Input
@@ -377,6 +432,9 @@ const AddResidence = () => {
         </div>
       </FormGroup>
       <FormGroup className="container mb-4">
+
+        {/* RESIDENCE-IMAGES-FORM */}
+
         <h5>RESIDENCE IMAGES</h5>
         <div className="row dateInputRow">
           <Label for="files">File to upload:</Label>
@@ -384,8 +442,9 @@ const AddResidence = () => {
             type="file"
             name="file"
             id="files"
+            required
             accept=".png,.jpg,.jpeg,.gif,.bmp,.jfif"
-            onChange={(e) => filesChange(e.target.files)}
+            onChange={e => filesChange(e.target.files)}
           />
         </div>
       </FormGroup>
