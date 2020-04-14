@@ -2,15 +2,18 @@ import React, { useState, useContext } from "react";
 import { Button, Form, FormGroup, Input, Label } from "reactstrap";
 import { UserContext } from "../contexts/UserContextProvider";
 import { useHistory } from "react-router-dom";
+import { ResidenceContext } from "../contexts/ResidenceContextProvider";
+
 
 const ShowResidence = () => {
+  const { user } = useContext(UserContext);
   const { residences } = useContext(ResidenceContext);
 
   let history = useHistory();
 
  if (residences) {
    const list = () => {
-     return user.residenceList.map((residence, i) => {
+     return user.bookingList.map((residence, i) => {
        return (
          <div style={{ backgroundColor: "White" }}>
            <div
