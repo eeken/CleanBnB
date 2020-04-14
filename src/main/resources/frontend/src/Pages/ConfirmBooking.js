@@ -1,7 +1,7 @@
 //REACT
 import React, { useState, useContext, useEffect } from "react";
 import { Button, Form, FormGroup, Input } from "reactstrap";
-import { useParams } from "react-router-dom";
+import { useParams, useHistory } from "react-router-dom";
 
 //CONTEXTPROVIDERS
 import { BookingContext } from '../contexts/BookingContextProvider'
@@ -11,12 +11,12 @@ import { ResidenceContext } from '../contexts/ResidenceContextProvider'
 export default function ConfirmBooking() {
 
   let { id } = useParams();
+  let history = useHistory();
   const {
     residence,
     fetchResidenceDetails,
   } = useContext(ResidenceContext);
 
-  const { appendBooking } = useContext(BookingContext)
   const [ email, setEmail ] = useState();
   const [ isBookingPossible, setIsBookingPossible ] = useState(false)
   const { checkin, checkout, numberofguests, amountofnights, totalprice } = useParams();
@@ -51,22 +51,22 @@ export default function ConfirmBooking() {
 
   const createBooking = async (e) => {
     e.preventDefault();
-
     const booking = {
-      startDate: 1599490800, //update data in here with actual data
-      endDate: 1599735600, //update data in here with actual data
-      totalPrice: 2311 //update data in here with actual data
+      checkIn: checkin, 
+      checkOut: checkout, 
+      totalPrice: totalprice,
+      residence_id: id
     }
-
     let res = await fetch('/rest/bookings', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(booking)
     })
-
     res = await res.json()
-
-    appendBooking(res)
+      
+    history.push(
+        "./completebooking"
+    );
   }
 
   var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
