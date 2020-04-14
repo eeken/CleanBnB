@@ -1,6 +1,5 @@
 import React, { useState, useContext } from 'react';
 import { ResidenceContext } from "../contexts/ResidenceContextProvider";
-import { useParams } from "react-router-dom";
 import {
   Carousel,
   CarouselItem,
@@ -9,7 +8,6 @@ import {
 } from 'reactstrap';
 
 const CarouselComponent = (props) => {
-  let { id } = useParams();
   const { residenceImages } = useContext(ResidenceContext);
   const [activeIndex, setActiveIndex] = useState(0);
   const [animating, setAnimating] = useState(false);

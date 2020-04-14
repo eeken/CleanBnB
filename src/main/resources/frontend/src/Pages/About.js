@@ -10,7 +10,8 @@ export default function Explore() {
                         <p className="golden aboutCleanBNB p-1 mt-2 mb-4" align="center">CleanBNB is an online marketplace that connects people who want to rent out their homes with people who are looking for accommodations in that locale. It currently covers more than 81,000 cities and 191 countries worldwide. Also, in case you missed it: the company's name comes from "AirBnB”, only we make sure the residences are actually CLEAN.</p>
                     </div>
 
-                    <h4 className="golden" align="center">Meet the Team</h4>
+                    <h4 className="golden mb-4" align="center">Meet the Team</h4>
+
                     <div className="row">
                         <div className="col-5">
                             <img
@@ -23,7 +24,6 @@ export default function Explore() {
                         <div className="col-6">
                             <p className="golden mt-3 mb-0 residenceDetailsTitle">Marcus Sandberg</p>
                             <p className="golden residenceDetailsCommonDetails">Capable of basically everything.</p>
-                            <hr></hr>
                         </div>
                     </div>
 
@@ -39,7 +39,6 @@ export default function Explore() {
                         <div className="col-6">
                             <p className="golden mt-3 mb-0 residenceDetailsTitle">Ola Wiebe</p>
                             <p className="golden residenceDetailsCommonDetails">Scrum Master Extraordinaire</p>
-                            <hr></hr>
                         </div>
                     </div>
 
@@ -55,7 +54,6 @@ export default function Explore() {
                         <div className="col-6">
                             <p className="golden mt-3 mb-0 residenceDetailsTitle">Victor Törnbom</p>
                             <p className="golden residenceDetailsCommonDetails">Technical Engineer Available 24/7</p>
-                            <hr></hr>
                         </div>
                     </div>
 
@@ -71,7 +69,6 @@ export default function Explore() {
                         <div className="col-6">
                             <p className="golden mt-3 mb-0 residenceDetailsTitle">Paola Tosca</p>
                             <p className="golden residenceDetailsCommonDetails">Design Lead Extravaganza</p>
-                            <hr></hr>
                         </div>
                     </div>
 
@@ -87,7 +84,6 @@ export default function Explore() {
                         <div className="col-6">
                             <p className="golden mt-3 mb-0 residenceDetailsTitle">Naim</p>
                             <p className="golden residenceDetailsCommonDetails">Wild Card</p>
-                            <hr></hr>
                         </div>
                     </div>
 

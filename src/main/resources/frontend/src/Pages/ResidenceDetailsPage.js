@@ -23,20 +23,20 @@ function ResidenceDetailsPage() {
 
   // Used to check if residence_id= is not a number
   //If false, redirect to 404 PageNotFound
-  if (id / id != 1) {
+  if (id / id !== 1) {
     history.push('/404')
   }
 
-  const [checkIn, setCheckIn] = useState("12345678");
-  const [checkOut, setCheckOut] = useState("12345678");
-  const [amountOfNights, setAmountOfNights] = useState("4");
-  const [numberOfGuests, setNumberOfGuests] = useState('');
-  const [totalPrice, setTotalPrice] = useState("1234");
+  const [checkIn, setCheckIn] = useState("");
+  const [checkOut, setCheckOut] = useState("");
+  const [amountOfNights, setAmountOfNights] = useState("-");
+  const [numberOfGuests, setNumberOfGuests] = useState('1');
   const {
     residence,
     fetchResidenceDetails,
   } = useContext(ResidenceContext);
 
+  let totalPrice = '-';
 
   const bookResidence = async e => {
     e.preventDefault();
@@ -61,28 +61,26 @@ function ResidenceDetailsPage() {
     fetchResidenceDetails(id);
   }, []);
 
-  console.log(residence)
-
+  //watcher
+  useEffect(() => { //skicka med vilken variabel den ska lyssna på
+  }, [amountOfNights])
 
   if (residence === null) {
     return null;
   }
 
-  //why on earth does this cause unending re-rendering???? 
-  //seems to work now - ish - krångligt SOM FAAAAAN XD
-  const checkForMaxGuests = () => {
-    let maxAmountOfGuests = []
-    for (let i = 1; i <= residence.maxguests; i++) {
-      maxAmountOfGuests.push(i)
-    }
-
-    return (<>
-      {maxAmountOfGuests.map(guest => (
-          <option key={guest.value + 'uniquekey' + guest} value={guest.value}>{guest}</option>
-        ))}
-    </>
-    )
+  //creating dropdown array for maxguests
+  let maxAmountOfGuests = []
+  for (let i = 1; i <= residence.maxguests; i++) {
+    maxAmountOfGuests.push(i)
   }
+
+  let price = <b></b>
+
+  if ((amountOfNights > 0) && (amountOfNights > 0)) {
+    price = <b>Total price: {residence.pricepernight} x {amountOfNights} = {totalPrice = residence.pricepernight * amountOfNights} </b>
+  }
+
 
   return (
     <div>
@@ -123,7 +121,7 @@ function ResidenceDetailsPage() {
               id gravida ut, dictum a risus. Nulla feugiat massa vel ex
               scelerisque, ut sollicitudin massa fermentum. Interdum et malesuada
               fames ac ante ipsum primis in faucibus. Aliquam tellus nisi,
-            pharetra eu dui id. Ullamcorper laoreet elit.<br></br>
+             pharetra eu dui id. Ullamcorper laoreet elit.<br></br>
               <br></br>Vivamus pulvinar purus a velit dictum lobortis sit amet sit
             amet tortor. Vestibulum ante ipsum primis in faucibus orci luctus et
             ultrices posuere cubilia Curae; Mauris nec gravida massa. Donec orci
@@ -157,7 +155,7 @@ function ResidenceDetailsPage() {
             <div className="col-12 residenceDetailsPageAddress golden mr-5">
               Availability
           </div>
-            <Calender></Calender>
+            <Calender setCheckIn={setCheckIn} setCheckOut={setCheckOut} setAmountOfNights={setAmountOfNights}></Calender>
           </div>
           <hr></hr>
           <div className="row ml-4 mr-4 justify-content-center">
@@ -166,21 +164,21 @@ function ResidenceDetailsPage() {
           </div>
             <div className="col-9 golden mt-3 mr-3">
               Amount of guests (including children):
-               {checkForMaxGuests}
-
-               <FormGroup>
+                <FormGroup>
                 <Input
                   type="select"
                   name="guestSelection"
                   id="guestSelection"
                   onChange={e => setNumberOfGuests(e.target.value)}>
-                  {checkForMaxGuests()}
+                  {maxAmountOfGuests.map(guest => (
+                    <option key={guest.value + 'uniquekey' + guest} value={guest.value}>{guest}</option>
+                  ))}
                 </Input>
               </FormGroup>
 
             </div>
             <div className="col-9 golden m-3">
-              <b>Total price:</b>
+              {price}
             </div>
 
             <Button
