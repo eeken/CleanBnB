@@ -55,7 +55,7 @@ export default function ConfirmBooking() {
       checkIn: checkin, 
       checkOut: checkout, 
       totalPrice: totalprice,
-      residence_id: id
+      residence_id: residence.id
     }
     let res = await fetch('/rest/bookings', {
       method: 'POST',
@@ -65,7 +65,14 @@ export default function ConfirmBooking() {
     res = await res.json()
       
     history.push(
-        "./completebooking"
+      + "/" + residence.title
+      + "&location=" + residence.address.city + "&" + residence.address.country
+      + "&numberOfGuests=" + numberofguests
+      + "&checkin=" + checkin
+      + "&checkout=" + checkout
+      + "&amountOfNights=" + amountofnights
+      + "&totalPrice=" + totalprice
+      + "/completebooking"
     );
   }
 
