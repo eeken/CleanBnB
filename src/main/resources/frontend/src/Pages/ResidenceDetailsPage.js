@@ -81,6 +81,7 @@ function ResidenceDetailsPage() {
     price = <b>Total price: {residence.pricepernight} x {amountOfNights} = {totalPrice = residence.pricepernight * amountOfNights} </b>
   }
 
+  console.log(residence)
 
   return (
     <div>

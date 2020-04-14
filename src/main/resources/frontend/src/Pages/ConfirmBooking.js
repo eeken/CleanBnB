@@ -6,6 +6,7 @@ import { useParams, useHistory } from "react-router-dom";
 //CONTEXTPROVIDERS
 import { BookingContext } from '../contexts/BookingContextProvider'
 import { ResidenceContext } from '../contexts/ResidenceContextProvider'
+import { UserContext } from "../contexts/UserContextProvider";
 
 
 export default function ConfirmBooking() {
@@ -17,6 +18,7 @@ export default function ConfirmBooking() {
     fetchResidenceDetails,
   } = useContext(ResidenceContext);
 
+  const { user } = useContext(UserContext)
   const [ email, setEmail ] = useState();
   const [ isBookingPossible, setIsBookingPossible ] = useState(false)
   const { checkin, checkout, numberofguests, amountofnights, totalprice } = useParams();
@@ -55,7 +57,8 @@ export default function ConfirmBooking() {
       checkIn: checkin, 
       checkOut: checkout, 
       totalPrice: totalprice,
-      residence_id: residence.id
+      residenceId: residence.id,
+      userId: user.id
     }
     let res = await fetch('/rest/bookings', {
       method: 'POST',
