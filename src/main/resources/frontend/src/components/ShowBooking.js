@@ -2,54 +2,29 @@ import React, { useState, useContext } from "react";
 import { Button, Form, FormGroup, Input, Label } from "reactstrap";
 import { UserContext } from "../contexts/UserContextProvider";
 import { useHistory } from "react-router-dom";
-import { ResidenceContext } from "../contexts/ResidenceContextProvider";
+import { BookingContext } from "../contexts/BookingContextProvider";
 
 
 const ShowResidence = () => {
   const { user } = useContext(UserContext);
-  const { residences } = useContext(ResidenceContext);
+  const { bookings } = useContext(BookingContext);
 
   let history = useHistory();
+  const convertDate = (checkIn) => {
+    checkIn = new Date(checkIn * 1000)
+    return checkIn
+  }
 
- if (residences) {
+ if (bookings) {
    const list = () => {
-     return user.bookingList.map((residence, i) => {
+     return user.bookingList.map((booking, i) => {
        return (
-         <div style={{ backgroundColor: "White" }}>
-           <div
-             key={i}
-             onClick={() =>
-               history.push("/details/residence_id=" + residence.id)
-             }
-             className="row text-left residenceCard"
-             style={{ cursor: "pointer", backgroundColor: "White" }}
-           >
-             <div className="col-5 col-lg-2 col-md-3">
-               <img
-                 className="cardImage"
-                 src={residence.images[0].imagelink}
-                 alt="residence-image"
-               />
-             </div>
-             <div className="col-7">
-               <p className="golden mt-0 mb-0 residenceDetailsTitle">
-                 {residence.title}
-               </p>
-               <p className="golden mb-0 residenceDetailsCommonDetails">
-                 {residence.address.city}, {residence.address.country}
-                 <br></br>
-                 {residence.maxguests} guests - {residence.numberofbeds} beds -{" "}
-                 {residence.rooms} rooms
-               </p>
-
-               <p className="golden mb-0 residencePriceDetails">
-                 ${residence.pricepernight}
-                 <span className="residenceDetailsCommonDetails">
-                   per night
-                 </span>
-               </p>
-             </div>
-           </div>
+         <div>
+           <h1>{booking.id}</h1>
+           <p>Amount of guests: {booking.amountOfGuests}</p>
+           <p>Check in: {booking.checkIn}</p>
+           <p>Check out: {booking.checkOut * 1000}</p>
+           <p>Address: {booking.residenceId} </p>
          </div>
        );
      });
