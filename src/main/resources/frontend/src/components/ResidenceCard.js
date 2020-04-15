@@ -38,7 +38,7 @@ function ResidenceCard() {
                   ${residence.pricepernight}
                   <span className="residenceDetailsCommonDetails">
                     {" "}
-                    per night{" "}
+                    per night
                 </span>
               </p>
             </div>

@@ -20,6 +20,7 @@ public class Residence {
     private int pricepernight;
     private int numberofbeds;
     private String title;
+    private String description;
 
     //CONSTRUCTORS
     public Residence() { }
@@ -77,5 +78,11 @@ public class Residence {
     public void setAvailableDays(List<AvailablePeriod> availableDays) { this.availableDays = availableDays; }
     public List<Image> getImages() { return images; }
     public void setImages(List<Image> images) { this.images = images; }
+    public String getDescription() {
+        return description;
+    }
+    public void setDescription(String description) {
+        this.description = description;
+    }
 }
 

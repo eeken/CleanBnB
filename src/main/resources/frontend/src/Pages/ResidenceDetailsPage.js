@@ -96,43 +96,28 @@ function ResidenceDetailsPage() {
           </div>
           <CarouselComponent></CarouselComponent>
           <div className="row m-4">
-            <img
-              width="60px"
-              height="60px"
-              src={residence.images.imagelink}
-              className="userImage mr-3"
-            />
-            <div className="residenceDetailsPageAddress golden mr-5">
-              {residence.address.city}, {residence.address.city}
+            <div className="residenceDetailsPageAddress golden pl-3 mr-5 mb-2">
+              {residence.address.city}, {residence.address.country}
             </div>
-            {/* <img width="60px" height="60px" src={residenceImages.imagePath} className="userImage mr-3" /> */}
             <h4 className="golden priceTag">
-              ${residence.pricepernight}{" "}
-              <span className="perNight">per night</span>
+              ${residence.pricepernight}
+              <span className="perNight"> per night</span>
             </h4>
           </div>
           <hr></hr>
           <div className="row m-4">
-            <div className="golden m-3">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras
-              iaculis eleifend diam non consequat. Maecenas faucibus, est eleifend
-              venenatis dictum, eros elit laoreet lorem, quis imperdiet tortor
-              lectus quis mi. In molestie tincidunt ante, blandit vulputate nisi
-              aliquet sed. Suspendisse sit amet eros tortor. Nam ex lorem, porta
-              id gravida ut, dictum a risus. Nulla feugiat massa vel ex
-              scelerisque, ut sollicitudin massa fermentum. Interdum et malesuada
-              fames ac ante ipsum primis in faucibus. Aliquam tellus nisi,
-             pharetra eu dui id. Ullamcorper laoreet elit.<br></br>
-              <br></br>Vivamus pulvinar purus a velit dictum lobortis sit amet sit
-            amet tortor. Vestibulum ante ipsum primis in faucibus orci luctus et
-            ultrices posuere cubilia Curae; Mauris nec gravida massa. Donec orci
-            augue, pellentesque ac molestie eu, ultrices hendrerit ex. Aliquam
-            lobortis, sem id condimentum semper, odio libero gravida velit,
-            vitae bibendum libero dui quis lacus. Donec tincidunt, felis eu
-            consectetur ultrices, sapien orci volutpat lectus, vel faucibus
-            magna nibh a risus. Proin et felis ultrices nulla feugiat venenatis
-            id vel risus.
+            <div className="col-12 darkbrowntext mr-5">
+              <div><span className="font-weight-bold golden">Living area: </span>{residence.size} m²</div>
+              <div><span className="font-weight-bold golden">Maximum amount of Guests: </span>{residence.maxguests}</div>
+              <div><span className="font-weight-bold golden">Amount of Rooms: </span>{residence.rooms}</div>
+              <div><span className="font-weight-bold golden">Amount of Beds: </span>{residence.numberofbeds}</div>
+            </div>
           </div>
+          <hr></hr>
+          <div className="row m-4">
+            <div className="darkbrowntext font-italic m-3" id="residence_description">
+              {residence.description}
+            </div>
           </div>
           <hr></hr>
           <div className="row m-4">
