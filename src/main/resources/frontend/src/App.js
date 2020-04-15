@@ -49,10 +49,12 @@ function App() {
                   <Route exact path="/register" component={Register} />
                   <Route exact path="/about" component={About} />
                   <Route exact path="/account-login" component={Login} />
+                  <Route exact path="/details/residence_id=:id?/login" component={Login} />
                   <Route exact path="/my-page" component={MyPage} />
                   <Route path="/details/residence_id=:id?/newbookingOf:residencetitle?&location=:residenceaddresscity?&:residenceaddresscountry?&numberOfGuests=:numberofguests?&checkin=:checkin?&checkout=:checkout?&amountOfNights=:amountofnights?&totalPrice=:totalprice?" component={ConfirmBooking} />
                   <Route path="/details/residence_id=:id?/:residencetitle?&location=:residenceaddresscity?&:residenceaddresscountry?&numberOfGuests=:numberofguests?&checkin=:checkin?&checkout=:checkout?&amountOfNights=:amountofnights?&totalPrice=:totalprice?/completebooking" component={CompleteBooking} />
                   <Route path="/details/residence_id=:id?" component={ResidenceDetailsPage} />
+                  
                   <Route exact path="/explore/destination=:destination?&guests=:numberofguests?&checkIn=:checkIn?&checkOut=:checkOut?"
                     key={window.location.pathname} component={Explore} />
                   <Route  path="*" component={PageNotFound} />

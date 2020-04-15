@@ -16,9 +16,6 @@ function LandingPage() {
   let history = useHistory();
 
   return (
-
-    
-    
     <div className="col-12 col-lg-3 col-md-6">
       <Form
         className="darkbrown golden searchAndFilterForm"

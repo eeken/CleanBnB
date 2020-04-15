@@ -1,6 +1,6 @@
 import React, { useState, useContext } from "react";
 import { Button, Form, FormGroup, Label, Input } from "reactstrap";
-import { useHistory } from "react-router-dom";
+import { useHistory, useLocation} from "react-router-dom";
 import { UserContext } from '../contexts/UserContextProvider'
 
 function Login() {
@@ -8,6 +8,7 @@ function Login() {
   const [password, setPassword] = useState("");
   const { fetchUser } = useContext(UserContext)
   let history = useHistory();
+  let location = useLocation();
 
   async function submitLogin(e) {
     e.preventDefault();
@@ -27,8 +28,15 @@ function Login() {
       console.log("Wrong username/password");
     } else {
       console.log("Successfully logged in");
-      history.push("/my-page");
-      fetchUser()
+
+      if (location.pathname.includes("residence_id")) {
+        history.push(location.pathname.slice(0, -6))
+        fetchUser()
+      } else {
+        history.push("/my-page");
+        fetchUser()
+      }
+      
     }
   }
 

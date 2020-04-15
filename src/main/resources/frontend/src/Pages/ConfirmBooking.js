@@ -38,7 +38,7 @@ export default function ConfirmBooking() {
 
   let button = <Button className="bookingButton col-10 offset-1 mb-5 p-2" disabled>BOOK THIS RESIDENCE</Button>
 
-  if ((isBookingPossible) && (!email == '')) {
+  if ((isBookingPossible)) {
     button = <Button className="bookingButton col-10 offset-1 mb-5 p-2">BOOK THIS RESIDENCE</Button>;
   }
 
@@ -110,20 +110,6 @@ export default function ConfirmBooking() {
           </div>
           <hr></hr>
           <Form onSubmit={createBooking}>
-            <FormGroup className="col-10 offset-1 mb-5 mt-5">
-              <div className="enterEmailText darkbrowntext" align="center">
-                <b>Enter your e-mail address to complete the booking:</b>
-              </div>
-              <Input
-                type="text"
-                id="confirm-booking-email-input"
-                value={email}
-                onChange={e => setEmail(e.target.value)}
-                placeholder="Enter your e-mail address here"
-              ></Input>
-            </FormGroup>
-            <hr></hr>
-
             <div className="golden darkbrowntext m-5" align="center">
               <input
                 type="checkbox"
