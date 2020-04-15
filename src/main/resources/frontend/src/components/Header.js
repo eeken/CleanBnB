@@ -31,6 +31,10 @@ export default function Header(props) {
     history.push("/register");
   };
 
+  function closeNavbar() {
+    setIsOpen(false)
+  };
+
   return (
     <header>
       <Navbar className="darkbrown" dark expand="md">
@@ -55,7 +59,7 @@ export default function Header(props) {
           <Nav className="mr-auto" navbar>
             {props.menuData.map((item) => (
               <li className="nav-item" key={item.route}>
-                <NavLink className="nav-link" exact to={item.route}>
+                <NavLink className="nav-link" exact to={item.route} onClick={closeNavbar}>
                   <span className="golden">{item.label}</span>
                 </NavLink>
               </li>
@@ -63,13 +67,11 @@ export default function Header(props) {
             <span className="nav-item" style={{ cursor: "pointer" }}>
               {user ? (
                 <a className="nav-link" onClick={goToAccount}>
-                  {" "}
-                  <p className="golden"> My Page </p>{" "}
+                  <p className="golden" onClick={closeNavbar}> My Page </p>
                 </a>
               ) : (
                 <a className="nav-link" onClick={goToRegisterAccount}>
-                  {" "}
-                  <p className="golden"> Register </p>{" "}
+                  <p className="golden" onClick={closeNavbar}> Register </p>
                 </a>
               )}
             </span>
