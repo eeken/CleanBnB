@@ -57,7 +57,7 @@ export default function ConfirmBooking() {
       checkIn: checkin, 
       checkOut: checkout, 
       totalPrice: totalprice,
-      residenceId: residence.id,
+      resId: residence.id,
       userId: user.id
     }
     let res = await fetch('/rest/bookings', {

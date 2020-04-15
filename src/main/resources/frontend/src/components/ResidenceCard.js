@@ -7,14 +7,15 @@ function ResidenceCard() {
 
   let history = useHistory();
 
-
   if (residences) {
     const list = () => {
       return residences.map((residence, i) => {
         return (
           <div
             key={i}
-            onClick={() => history.push("/details/residence_id=" + residence.id)}
+            onClick={() =>
+              history.push("/details/residence_id=" + residence.id)
+            }
             className="row text-left residenceCard mb-2"
             style={{ cursor: "pointer" }}
           >
@@ -30,14 +31,14 @@ function ResidenceCard() {
                 {residence.title}
               </p>
               <p className="golden mb-0 residenceDetailsCommonDetails">
-                {residence.address.city}, {residence.address.country}<br></br>
-                {residence.maxguests} guests - {residence.numberofbeds} beds - {residence.rooms}  rooms
+                {residence.address.city}, {residence.address.country}
+                <br></br>
+                {residence.maxguests} guests - {residence.numberofbeds} beds -{" "}
+                {residence.rooms} rooms
               </p>
-              
                 <p className="golden mb-0 residencePriceDetails">
                   ${residence.pricepernight}
                   <span className="residenceDetailsCommonDetails">
-                    {" "}
                     per night
                 </span>
               </p>
@@ -48,7 +49,12 @@ function ResidenceCard() {
     };
     return <>{list()}</>;
   }
-  return <div> <h1> No matches </h1> </div>;
+  return (
+    <div>
+      {" "}
+      <h1> No matches </h1>{" "}
+    </div>
+  );
 }
 
 export default ResidenceCard;
