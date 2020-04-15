@@ -15,7 +15,7 @@ import java.util.UUID;
 public class UploadController {
     private static String currentWorkingDirectory = System.getProperty("user.dir");
     private static String frontendUploadDirectory = "/uploads/";
-    private static String backendUploadDirectory = currentWorkingDirectory + "/src/main/resources/static" + frontendUploadDirectory;
+    private static String backendUploadDirectory = currentWorkingDirectory + "/src/main/resources/static/" + frontendUploadDirectory;
 
     @PostConstruct
     public void createFolderIfMissing() {
@@ -31,9 +31,10 @@ public class UploadController {
         List<String> resultingFilepaths = new ArrayList<>();
 
         for (MultipartFile file : files) {
+            final UUID uuid = UUID.randomUUID();
             String fileExt = file.getOriginalFilename().toLowerCase();
             fileExt = fileExt.substring(fileExt.lastIndexOf("."));
-            final String filename = file.getOriginalFilename();
+            final String filename = uuid + fileExt;
 
             if (!supportedFileExtensions.contains(fileExt)) {
                 continue;

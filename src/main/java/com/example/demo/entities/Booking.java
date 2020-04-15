@@ -16,15 +16,10 @@ public class Booking {
     private int checkOut;
     @Column(name="total_price")
     private int totalPrice;
-    @Column(name="amount_of_guests")
-    private int amountOfGuests;
-
-    //RELATIONS
-    @ManyToOne
-    private User user;
-
-    @ManyToOne
-    private Residence residence;
+    @Column(name="residence_id")
+    private int residenceId;
+    @Column(name="user_id")
+    private int userId;
 
     //CONSTRUCTORS
     public Booking() { }
@@ -32,13 +27,39 @@ public class Booking {
     // GETTERS AND SETTERS
     public int getId() { return id; }
     public void setId(int id) { this.id = id; }
-    public int getCheckIn() { return checkIn; }
-    public void setCheckIn(int checkIn) { this.checkIn = checkIn; }
-    public int getCheckOut() { return checkOut; }
-    public void setCheckOut(int checkOut) { this.checkOut = checkOut; }
+    //public Date getCheckIn() { return checkIn; }
+    //public void setCheckIn(Date checkIn) { this.checkIn = checkIn; }
+    //public Date getCheckOut() { return checkOut; }
+    //public void setCheckOut(Date checkOut) { this.checkOut = checkOut; }
     public int getTotalPrice() { return totalPrice; }
     public void setTotalPrice(int totalPrice) { this.totalPrice = totalPrice; }
-    public int getAmountOfGuests() { return amountOfGuests; }
-    public void setAmountOfGuests(int amountOfGuests) { this.amountOfGuests = amountOfGuests; }
+
+    public int getCheckIn() {
+        return checkIn;
+    }
+
+    public void setCheckIn(int checkIn) {
+        this.checkIn = checkIn;
+    }
+
+    public int getCheckOut() {
+        return checkOut;
+    }
+
+    public void setCheckOut(int checkOut) {
+        this.checkOut = checkOut;
+    }
+
+    public int getResidenceId() {
+        return residenceId;
+    }
+
+    public void setResidenceId(int residenceId) {
+        this.residenceId = residenceId;
+    }
+
+    public void setUserId(int userId) {
+        this.userId = userId;
+    }
 }
 

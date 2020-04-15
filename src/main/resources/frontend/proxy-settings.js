@@ -27,6 +27,7 @@ module.exports = {
             url.indexOf('/login') === 0 ||
             url.indexOf('/logout') === 0 ||
             url.indexOf('/static/upload') === 0 ||
+            url.indexOf('/uploads') === 0 ||
             url.indexOf('/api/') === 0 ||
             url.indexOf('/auth/') === 0 
   }
