@@ -7,12 +7,12 @@ import ShowBooking from "../components/ShowBooking";
 
 function MyPage() {
   const { user } = useContext(UserContext);
+  const [showBookingIsOpen, setshowBookingIsOpen] = useState(false);
+  const [showResidenceIsOpen, setshowResidenceIsOpen] = useState(false);
   const [addResidenceisOpen, setaddResidenceIsOpen] = useState(false);
+  const toggleShowBooking = () => setshowBookingIsOpen(!showBookingIsOpen);
+  const toggleShowResidence = () => setshowResidenceIsOpen(!showResidenceIsOpen);
   const toggleAddResidence = () => setaddResidenceIsOpen(!addResidenceisOpen);
-
-  function showInformation() {
-    let showResult = false;
-  }
 
   if (user === null) {
     return null;
@@ -25,16 +25,34 @@ function MyPage() {
       <Row className="white boxes m-2">
         <Col className="p-5 golden ">Welcome, {user.firstName}! </Col>
       </Row>
-      <Row className="golden-bg boxes m-2">
+      {/* <Row className="golden-bg boxes m-2 mb-0">
         <Col className="p-3 darkbrowntext">SHOW MY BOOKINGS</Col>
       </Row>
-      <ShowBooking></ShowBooking>
-      <div onClick={showInformation} style={{ cursor: "pointer" }}>
-        <Row className="golden-bg boxes m-2">
-          <Col className="p-3 darkbrowntext">SHOW MY RESIDENCES</Col>
-        </Row>
-        <ShowResidence />
-      </div>
+      <ShowBooking></ShowBooking> */}
+      <Row className="showBookingAndResidenceButton boxes m-2">
+        <Button
+          color="transparent"
+          className="container showBookingAndResidenceButton boxes m-2 justify-content-center"
+          onClick={toggleShowBooking}
+        >
+          SHOW MY BOOKINGS
+        </Button>
+        <Collapse isOpen={showBookingIsOpen}>
+          <ShowBooking />
+        </Collapse>
+      </Row>
+      <Row className="showBookingAndResidenceButton boxes m-2">
+        <Button
+          color="transparent"
+          className="container showBookingAndResidenceButton boxes m-2 justify-content-center"
+          onClick={toggleShowResidence}
+        >
+          SHOW MY RESIDENCES
+        </Button>
+        <Collapse isOpen={showResidenceIsOpen}>
+          <ShowResidence />
+        </Collapse>
+      </Row>
       <Row className="addResidenceButton  boxes m-2">
         <Button
           color="transparent"
