@@ -1,7 +1,11 @@
 package com.example.demo.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import javax.persistence.*;
 import java.sql.Date;
+import java.util.Arrays;
 
 @Entity
 @Table(name = "bookings")
@@ -16,15 +20,28 @@ public class Booking {
     private int checkOut;
     @Column(name="total_price")
     private int totalPrice;
-    @Column(name="residence_id")
-    private int residenceId;
+    @ManyToOne
+    @JoinColumn(name="residence_id")
+    @JsonIgnoreProperties("bookedDays")
+    private Residence residence;
     @Column(name="user_id")
     private int userId;
+    @Transient public int resId;
+
 
     //CONSTRUCTORS
     public Booking() { }
 
     // GETTERS AND SETTERS
+
+    public Residence getResidence() {
+        return residence;
+    }
+
+    public void setResidence(Residence residence) {
+        this.residence = residence;
+    }
+
     public int getId() { return id; }
     public void setId(int id) { this.id = id; }
     //public Date getCheckIn() { return checkIn; }
@@ -48,14 +65,6 @@ public class Booking {
 
     public void setCheckOut(int checkOut) {
         this.checkOut = checkOut;
-    }
-
-    public int getResidenceId() {
-        return residenceId;
-    }
-
-    public void setResidenceId(int residenceId) {
-        this.residenceId = residenceId;
     }
 
     public void setUserId(int userId) {

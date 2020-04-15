@@ -11,15 +11,6 @@ function ShowResidence() {
 
   let history = useHistory();
 
-  const params = {
-    destination: destination,
-    numberofguests: parseInt(numberofguests ? numberofguests : 0)
-  }
-
-  useEffect(() => {
-    fetchResidence(params);
-  }, []);
-
   if (user.residenceList !== null) {
     const list = () => {
       return user.residenceList.map((residence, i) => {

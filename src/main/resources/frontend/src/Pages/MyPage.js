@@ -3,6 +3,7 @@ import { Container, Row, Col, Collapse, Button } from "reactstrap";
 import { UserContext } from "../contexts/UserContextProvider";
 import AddResidence from "../components/AddResidence";
 import ShowResidence from "../components/ShowResidence";
+import ShowBooking from "../components/ShowBooking";
 
 function MyPage() {
   const { user } = useContext(UserContext);
@@ -27,6 +28,7 @@ function MyPage() {
       <Row className="golden-bg boxes m-2">
         <Col className="p-3 darkbrowntext">SHOW MY BOOKINGS</Col>
       </Row>
+      <ShowBooking></ShowBooking>
       <div onClick={showInformation} style={{ cursor: "pointer" }}>
         <Row className="golden-bg boxes m-2">
           <Col className="p-3 darkbrowntext">SHOW MY RESIDENCES</Col>

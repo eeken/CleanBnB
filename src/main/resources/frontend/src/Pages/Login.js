@@ -27,7 +27,7 @@ function Login() {
       console.log("Wrong username/password");
     } else {
       console.log("Successfully logged in");
-      history.push("/");
+      history.push("/my-page");
       fetchUser()
     }
   }
