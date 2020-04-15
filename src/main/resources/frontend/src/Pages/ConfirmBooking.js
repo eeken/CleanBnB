@@ -1,29 +1,27 @@
 //REACT
 import React, { useState, useContext, useEffect } from "react";
 import { Button, Form, FormGroup, Input } from "reactstrap";
-import { useParams } from "react-router-dom";
+import { useParams, useHistory } from "react-router-dom";
 
 //CONTEXTPROVIDERS
 import { BookingContext } from '../contexts/BookingContextProvider'
 import { ResidenceContext } from '../contexts/ResidenceContextProvider'
+import { UserContext } from "../contexts/UserContextProvider";
 
 
 export default function ConfirmBooking() {
 
   let { id } = useParams();
+  let history = useHistory();
   const {
     residence,
     fetchResidenceDetails,
   } = useContext(ResidenceContext);
 
-  const { appendBooking } = useContext(BookingContext)
-  const [email, setEmail] = useState();
-  const [isBookingPossible, setIsBookingPossible] = useState(false)
+  const { user } = useContext(UserContext)
+  const [ email, setEmail ] = useState();
+  const [ isBookingPossible, setIsBookingPossible ] = useState(false)
   const { checkin, checkout, numberofguests, amountofnights, totalprice } = useParams();
-
-  /*   let startDate = 1599490800 //update with values from residence-detail-page
-    let endDate = 1599735600 //update with values from residence-detail-page
-    let totalPrice = 1790 //update with values from residence-detail-page */
 
   useEffect(() => {
     window.scroll({
@@ -55,26 +53,40 @@ export default function ConfirmBooking() {
 
   const createBooking = async (e) => {
     e.preventDefault();
-
     const booking = {
-      startDate: 1599490800, //update data in here with actual data
-      endDate: 1599735600, //update data in here with actual data
-      totalPrice: 2311 //update data in here with actual data
+      checkIn: checkin, 
+      checkOut: checkout, 
+      totalPrice: totalprice,
+      residenceId: residence.id,
+      userId: user.id
     }
-
     let res = await fetch('/rest/bookings', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(booking)
     })
-
     res = await res.json()
-
-    appendBooking(res)
+      
+    history.push(
+      + "/" + residence.title
+      + "&location=" + residence.address.city + "&" + residence.address.country
+      + "&numberOfGuests=" + numberofguests
+      + "&checkin=" + checkin
+      + "&checkout=" + checkout
+      + "&amountOfNights=" + amountofnights
+      + "&totalPrice=" + totalprice
+      + "/completebooking"
+    );
   }
 
-  return (
+  var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+  let checkinDate = new Date(checkin * 1000);
+  checkinDate = checkinDate.getDate() + " " + months[checkinDate.getMonth()] + " " + checkinDate.getFullYear()
 
+  let checkoutDate = new Date(checkout * 1000);
+  checkoutDate = checkoutDate.getDate() + " " + months[checkoutDate.getMonth()] + " " + checkoutDate.getFullYear()
+
+  return (
     <div>
       <div className="white">
         <div className="justify-content-center">
@@ -91,7 +103,7 @@ export default function ConfirmBooking() {
             <b>Residence: </b>{residence.title}<br></br>
             <b>Location: </b> {residence.address.city}, {residence.address.country}<br></br>
             <b>Amount of Guests: </b> {numberofguests} <br></br>
-            <b>Chosen date: </b> {checkin} - {checkout}<br></br>
+            <b>Chosen dates: </b> {checkinDate} - {checkoutDate}<br></br>
             <br></br>
             <b>Total Price:</b> {residence.pricepernight} x {amountofnights} nights =
             <b className="priceText golden">${totalprice}</b>
@@ -104,7 +116,7 @@ export default function ConfirmBooking() {
               </div>
               <Input
                 type="text"
-                id="email-input"
+                id="confirm-booking-email-input"
                 value={email}
                 onChange={e => setEmail(e.target.value)}
                 placeholder="Enter your e-mail address here"

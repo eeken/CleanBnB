@@ -6,10 +6,6 @@ export default function BookingContextProvider(props) {
 
   const [bookings, setBookings] = useState([]);
 
-  const appendBooking = (booking) => {
-    setBookings([...bookings, booking])
-  }
-
   const fetchBookings = async () => {
     let res = await fetch('/rest/bookings')
     res = await res.json()
@@ -17,13 +13,12 @@ export default function BookingContextProvider(props) {
   }
 
   useEffect(() => {
-    fetchBookings() //so that bookings has data in it
+    fetchBookings() 
   }, []) 
 
   const values = {
     bookings,
     setBookings,
-    appendBooking
   };
 
   return (

@@ -20,7 +20,7 @@ function ShowResidence() {
     fetchResidence(params);
   }, []);
 
-  if (user !== null) {
+  if (user.residenceList !== null) {
     const list = () => {
       return user.residenceList.map((residence, i) => {
         return (
@@ -61,7 +61,7 @@ function ShowResidence() {
     };
     return <>{list()}</>;
   }
-  return <div> <h1> No matches </h1> </div>;
+  return <div></div>;
 }
 
 export default ShowResidence;
