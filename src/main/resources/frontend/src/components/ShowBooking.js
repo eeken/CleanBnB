@@ -12,8 +12,7 @@ const ShowResidence = () => {
 
   let history = useHistory();
   const convertDate = (checkIn) => {
-    checkIn = new Date(checkIn * 1000);
-    return checkIn;
+    return new Date(checkIn*1000).toLocaleDateString()
   };
 
   if (bookings) {
@@ -33,7 +32,7 @@ const ShowResidence = () => {
               </div>
               <div className="col-7">
                 <p className="golden mb-0 residenceDetailsTitle">
-                  Title of residence
+                  {booking.residence.title}
                 </p>
                 <p className="mb-0 residenceDetailsCommonDetails">
                   <span className="font-weight-bold">Amount of guests: </span>
@@ -41,7 +40,7 @@ const ShowResidence = () => {
                 </p>
                 <p className="mb-0 residenceDetailsCommonDetails">
                   <span className="font-weight-bold">Check in: </span>
-                  {booking.checkIn}
+                  {convertDate(booking.checkIn)}
                 </p>
                 <p className="residenceDetailsCommonDetails">
                   <span className="font-weight-bold">Check out: </span>

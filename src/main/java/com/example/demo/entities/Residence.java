@@ -29,9 +29,6 @@ public class Residence {
     @JoinColumn(name="address_id")
     private Address address;
 
-    @ManyToOne
-    private User user;
-
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name="amenity_id")
     private Amenity amenity;
@@ -68,7 +65,7 @@ public class Residence {
     public Address getAddress() { return address; }
     public void setAddress(Address address) { this.address = address; }
     //public User getUser() { return user; }
-    public void setUser(User user) { this.user = user; }
+
     public Amenity getAmenity() { return amenity; }
     public void setAmenity(Amenity amenity) { this.amenity = amenity; }
     public List<Booking> getBookedDays() { return bookedDays; }
