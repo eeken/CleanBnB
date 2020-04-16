@@ -20,6 +20,26 @@ function LandingPage() {
 
   let history = useHistory();
 
+  Date.prototype.getUnixTime = function() {
+    return this.getTime()/1000
+  };
+
+  let startDateUnix = new Date(startDate).getUnixTime();
+  let endDateUnix = new Date(endDate).getUnixTime();
+
+  let duration = (endDateUnix - startDateUnix) / 86400;
+  console.log(duration);
+
+  for(let day = 0; day < duration; day++) {
+    let date = new Date(startDate)
+    date.setDate(date.getDate() + day)
+    console.log(date)
+  }
+
+  if(endDate < startDate){
+    alert('Cannot do that');
+  }
+
   return (
     <div className="col-12 col-lg-3 col-md-6">
       <Form

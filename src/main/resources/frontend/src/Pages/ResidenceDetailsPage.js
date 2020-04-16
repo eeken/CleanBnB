@@ -15,7 +15,6 @@ import CarouselComponent from "../components/CarouselComponent";
 import { FaSwimmingPool, FaSnowflake, FaBath, FaTv, FaWifi, FaTemperatureLow } from 'react-icons/fa';
 import { MdLocalLaundryService, MdLocalDrink, MdStreetview } from 'react-icons/md';
 
-
 function ResidenceDetailsPage() {
   let { id } = useParams();
   const [numberOfGuests, setNumberOfGuests] = useState("");
