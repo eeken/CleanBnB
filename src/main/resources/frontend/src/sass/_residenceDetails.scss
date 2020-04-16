@@ -63,7 +63,6 @@
 }
 
 .residenceDetailsPageAddress {
-  display: flex;
   font-size: 1.3rem;
   font-weight: bold;
 }
@@ -137,3 +136,6 @@ object-fit: contain;
 align-content: center;
 }
 
+#residence_description{
+  white-space: pre-line;
+}
