@@ -51,8 +51,7 @@ function ResidenceCard() {
   }
   return (
     <div>
-      {" "}
-      <h1> No matches </h1>{" "}
+      <h1> No matches </h1>
     </div>
   );
 }
