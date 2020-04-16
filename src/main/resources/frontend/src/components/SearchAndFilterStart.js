@@ -52,15 +52,15 @@ function LandingPage() {
           </div>
         <DatePicker
           selected={startDate}
+          minDate={new Date()}
           onChange={date => setStartDate(date)}
           placeholderText="Select a date"
-          includeDates={[new Date(), (new Date(), 1)]}
         />
         <DatePicker
           selected={endDate}
+          minDate={new Date()}
           onChange={date => setEndDate(date)}
           placeholderText="Select a date"
-          excludeDates={[new Date(), (new Date(), 1)]}
         />
         </FormGroup>
 
