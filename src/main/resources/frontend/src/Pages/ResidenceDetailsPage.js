@@ -33,6 +33,8 @@ function ResidenceDetailsPage() {
   const { residence, fetchResidenceDetails } = useContext(ResidenceContext);
   const [startDate, setStartDate] = useState(new Date());
   const [endDate, setEndDate] = useState(new Date());
+  const [fetchedBookedDays , setFetchedBookedDays] = useState([]);
+  const [featchedAvailableDays, setFeatchedAvailableDays] = useState([]);
 
   Date.prototype.getUnixTime = function () {
     return this.getTime() / 1000;
@@ -53,17 +55,32 @@ function ResidenceDetailsPage() {
 
   console.log(residence);
 
+  for (let i = 0; i < residence.bookedDays.length; i++) {
+    let duration = (residence.bookedDays[i].checkOut - residence.bookedDays[i].checkIn) / 86400;
+    for (let day = 0; day <= duration; day++) {
+      let date = new Date(residence.bookedDays[i].checkIn * 1000);
+      date.setDate(date.getDate() + day);
+      setFetchedBookedDays(fetchedBookedDays => [...fetchedBookedDays, date.toString()]);
+    }
+  }
+
+  //console.log(fetchedBookedDays);
+  
   for (let i = 0; i < residence.availableDays.length; i++) {
-
-    let duration = ( residence.availableDays[i].endDate - residence.availableDays[i].startDate ) / 86400;
-    console.log(duration);
-
+    let duration = (residence.availableDays[i].endDate - residence.availableDays[i].startDate) / 86400;
     for (let day = 0; day <= duration; day++) {
       let date = new Date(residence.availableDays[i].startDate * 1000);
       date.setDate(date.getDate() + day);
-      console.log('first' + date);   
+      if (!featchedAvailableDays.includes(date.toString())) {
+        setFeatchedAvailableDays(featchedAvailableDays => [... featchedAvailableDays, date])
+      }
     }
   }
+
+  console.log('booked: ' + fetchedBookedDays);
+  
+  console.log('available : ' + featchedAvailableDays);
+  
 
   function confirmPolicies() {
     var checkBox = document.getElementById("policies");
