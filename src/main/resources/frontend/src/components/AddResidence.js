@@ -168,14 +168,16 @@ const AddResidence = () => {
       className="white container golden"
       onSubmit={registerResidence}
     >
-      <h5>Have a location for rent?</h5>
-      <h5>Add it here!</h5>
-      <h5>ABOUT THE RESIDENCE</h5>
       <FormGroup className="container mb-4">
 
              {/* RESIDENCE-DETAILS-FORM */}
 
         <div className=" row dateInputRow justify-content-space-around align-items-center">
+          <div className="m-4">
+            <h5>Have a location for rent?</h5>
+            <h5>Add it here!</h5>
+          </div>
+          <h5>ABOUT THE RESIDENCE</h5>
           <Input
             required
             className="col-11 dateInput addResidenceInputField"
@@ -449,7 +451,7 @@ const AddResidence = () => {
         </div>
       </FormGroup>
       <FormGroup>
-        <Button>PUBLISH THIS RESIDENCE</Button>
+        <Button className="bookingButton mb-4 p-2">PUBLISH THIS RESIDENCE</Button>
       </FormGroup>
     </Form>
   );

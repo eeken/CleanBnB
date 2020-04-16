@@ -4,10 +4,10 @@ import { Button, Form, FormGroup, Input } from "reactstrap";
 import { useParams, useHistory } from "react-router-dom";
 
 //CONTEXTPROVIDERS
+import UserContextProvider, { UserContext } from '../contexts/UserContextProvider'
 import { ResidenceContext } from "../contexts/ResidenceContextProvider";
 
 //COMPONENTS
-import SearchBar from "../components/SearchBar";
 import Calender from "../components/Calender";
 import CarouselComponent from "../components/CarouselComponent";
 
@@ -26,6 +26,8 @@ function ResidenceDetailsPage() {
   if (id / id !== 1) {
     history.push('/404')
   }
+
+  const { user } = useContext(UserContext)
 
   const [checkIn, setCheckIn] = useState("");
   const [checkOut, setCheckOut] = useState("");
@@ -78,102 +80,126 @@ function ResidenceDetailsPage() {
   let price = <b></b>
 
   if ((amountOfNights > 0) && (amountOfNights > 0)) {
-    price = <b>Total price: {residence.pricepernight} x {amountOfNights} = {totalPrice = residence.pricepernight * amountOfNights} </b>
+    price = <b>Total price: {residence.pricepernight} x {amountOfNights} = ${totalPrice = residence.pricepernight * amountOfNights} </b>
   }
+
+  const login = () => {
+    window.scroll({
+      top: 0,
+      left: 0,
+      behavior: "smooth"
+    });
+    history.push("/details/residence_id=" + residence.id + "/login");
+  };
 
   console.log(residence)
 
   return (
-    <div>
-      <SearchBar></SearchBar>
-      <div className="white">
-        <Form onSubmit={bookResidence}>
-          <div className="col-12 justify-content-center pt-1">
-            <div className="residenceDetailsPageTitle golden text-center">
-              {residence.title}
+
+    <div className="white">
+      <Form>
+        <div className="col-12 justify-content-center pt-1">
+          <div className="residenceDetailsPageTitle golden text-center">
+            {residence.title}
+          </div>
+          {/* <div className=" sliderContainer container col-12 col-lg-6">  </div> */}
+        </div>
+        <CarouselComponent></CarouselComponent>
+        <div className="row m-4">
+          <div className="residenceDetailsPageAddress golden pl-3 mr-5 mb-2">
+            {residence.address.city}, {residence.address.country}
+          </div>
+          <h4 className="golden priceTag">
+            ${residence.pricepernight}
+            <span className="perNight"> per night</span>
+          </h4>
+        </div>
+        <hr></hr>
+        <div className="row m-4">
+          <div className="col-12 darkbrowntext mr-5">
+            <div><span className="font-weight-bold golden">Living area: </span>{residence.size} m²</div>
+            <div><span className="font-weight-bold golden">Maximum amount of Guests: </span>{residence.maxguests}</div>
+            <div><span className="font-weight-bold golden">Amount of Rooms: </span>{residence.rooms}</div>
+            <div><span className="font-weight-bold golden">Amount of Beds: </span>{residence.numberofbeds}</div>
+          </div>
+        </div>
+        <hr></hr>
+        <div className="row m-4">
+          <div className="darkbrowntext font-italic m-3" id="residence_description">
+            {residence.description}
+          </div>
+        </div>
+        <hr></hr>
+        <div className="row m-4">
+          <div className="col-12 residenceDetailsPageAddress golden mr-5">
+            Amenities
             </div>
-            {/* <div className=" sliderContainer container col-12 col-lg-6">  </div> */}
+          <div className="darkbrowntext row mt-3 ml-1">
+            {residence.amenity.balcony && <p className="col-6"><MdStreetview className="golden" /> Balcony</p>}
+            {residence.amenity.swimmingpool && <p className="col-6"><FaSwimmingPool className="golden" /> Swimming Pool</p>}
+            {residence.amenity.wifi && <p className="col-6"><FaWifi className="golden" /> WiFi</p>}
+            {residence.amenity.tv && <p className="col-6"><FaTv className="golden" /> Television</p>}
+            {residence.amenity.bathtub && <p className="col-6"><FaBath className="golden" /> Bathtub</p>}
+            {residence.amenity.washingmachine && <p className="col-6"><MdLocalLaundryService className="golden" /> Washing Machine</p>}
+            {residence.amenity.fridge && <p className="col-6"><FaTemperatureLow className="golden" /> Fridge</p>}
+            {residence.amenity.freezer && <p className="col-6"><FaSnowflake className="golden" /> Freezer</p>}
+            {residence.amenity.dishwasher && <p className="col-6"><MdLocalDrink className="golden" /> Dishwasher</p>}
           </div>
-          <CarouselComponent></CarouselComponent>
-          <div className="row m-4">
-            <div className="residenceDetailsPageAddress golden pl-3 mr-5 mb-2">
-              {residence.address.city}, {residence.address.country}
+        </div>
+        <hr></hr>
+      </Form>
+
+
+
+      {!user ? (
+        <div className="row ml-4 mr-4">
+          <Button style={{ cursor: 'pointer' }}
+            className="bookingButton mb-5 p-2"
+            onClick={login}>
+            LOG IN TO BOOK THIS RESIDENCE
+        </Button>
+        </div>
+      ) : (
+          <Form onSubmit={bookResidence}>
+            <div className="row m-4">
+              <div className="col-12 residenceDetailsPageAddress golden mb-2">
+                Availability
+                </div>
+              <div className="ml-3 mr-3">
+                <Calender setCheckIn={setCheckIn} setCheckOut={setCheckOut} setAmountOfNights={setAmountOfNights}></Calender>
+              </div>
             </div>
-            <h4 className="golden priceTag">
-              ${residence.pricepernight}
-              <span className="perNight"> per night</span>
-            </h4>
-          </div>
-          <hr></hr>
-          <div className="row m-4">
-            <div className="col-12 darkbrowntext mr-5">
-              <div><span className="font-weight-bold golden">Living area: </span>{residence.size} m²</div>
-              <div><span className="font-weight-bold golden">Maximum amount of Guests: </span>{residence.maxguests}</div>
-              <div><span className="font-weight-bold golden">Amount of Rooms: </span>{residence.rooms}</div>
-              <div><span className="font-weight-bold golden">Amount of Beds: </span>{residence.numberofbeds}</div>
-            </div>
-          </div>
-          <hr></hr>
-          <div className="row m-4">
-            <div className="darkbrowntext font-italic m-3" id="residence_description">
-              {residence.description}
-            </div>
-          </div>
-          <hr></hr>
-          <div className="row m-4">
-            <div className="col-12 residenceDetailsPageAddress golden mr-5">
-              Amenities
-          </div>
-            <div className="darkbrowntext row mt-3 ml-1">
-              {residence.amenity.balcony && <p className="col-6"><MdStreetview className="golden" /> Balcony</p>}
-              {residence.amenity.swimmingpool && <p className="col-6"><FaSwimmingPool className="golden" /> Swimming Pool</p>}
-              {residence.amenity.wifi && <p className="col-6"><FaWifi className="golden" /> WiFi</p>}
-              {residence.amenity.tv && <p className="col-6"><FaTv className="golden" /> Television</p>}
-              {residence.amenity.bathtub && <p className="col-6"><FaBath className="golden" /> Bathtub</p>}
-              {residence.amenity.washingmachine && <p className="col-6"><MdLocalLaundryService className="golden" /> Washing Machine</p>}
-              {residence.amenity.fridge && <p className="col-6"><FaTemperatureLow className="golden" /> Fridge</p>}
-              {residence.amenity.freezer && <p className="col-6"><FaSnowflake className="golden" /> Freezer</p>}
-              {residence.amenity.dishwasher && <p className="col-6"><MdLocalDrink className="golden" /> Dishwasher</p>}
-            </div>
-          </div>
-          <hr></hr>
-          <div className="row m-4">
-            <div className="col-12 residenceDetailsPageAddress golden mr-5">
-              Availability
-          </div>
-            <Calender setCheckIn={setCheckIn} setCheckOut={setCheckOut} setAmountOfNights={setAmountOfNights}></Calender>
-          </div>
-          <hr></hr>
-          <div className="row ml-4 mr-4 justify-content-center">
-            <div className="col-12 residenceDetailsPageAddress golden ml-1.5">
-              Guests
-          </div>
-            <div className="col-9 golden mt-3 mr-3">
-              Amount of guests (including children):
+            <hr></hr>
+            <div className="row ml-4 mr-4 justify-content-center">
+              <div className="col-12 residenceDetailsPageAddress golden ml-1.5 mt-3">
+                Guests
+              </div>
+              <div className="col-9 golden mt-3 mr-3">
+                Amount of guests (including children):
                 <FormGroup>
-                <Input
-                  type="select"
-                  name="guestSelection"
-                  id="guestSelection"
-                  onChange={e => setNumberOfGuests(e.target.value)}>
-                  {maxAmountOfGuests.map(guest => (
-                    <option key={guest.value + 'uniquekey' + guest} value={guest.value}>{guest}</option>
-                  ))}
-                </Input>
-              </FormGroup>
-
+                  <Input
+                    type="select"
+                    name="guestSelection"
+                    id="guestSelection"
+                    onChange={e => setNumberOfGuests(e.target.value)}>
+                    {maxAmountOfGuests.map(guest => (
+                      <option key={guest.value + 'uniquekey' + guest} value={guest.value}>{guest}</option>
+                    ))}
+                  </Input>
+                </FormGroup>
+              </div>
+              <div className="col-10 golden m-3">
+                {price}
+              </div>
+              <Button
+                style={{ cursor: 'pointer' }}
+                className="bookingButton mb-5 p-2">
+                BOOK THIS RESIDENCE
+              </Button>
             </div>
-            <div className="col-9 golden m-3">
-              {price}
-            </div>
+          </Form>
 
-            <Button
-              className="bookingButton mb-5 p-2">
-              BOOK THIS RESIDENCE
-          </Button>
-          </div>
-        </Form>
-      </div>
+        )}
     </div>
   );
 }

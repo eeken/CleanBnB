@@ -11,8 +11,8 @@ const ShowResidence = () => {
   const { residence, fetchResidenceDetails } = useContext(ResidenceContext);
 
   let history = useHistory();
-  const convertDate = (checkIn) => {
-    return new Date(checkIn*1000).toLocaleDateString()
+  const convertDate = (date) => {
+    return new Date(date*1000).toLocaleDateString()
   };
 
   if (bookings) {
@@ -20,13 +20,12 @@ const ShowResidence = () => {
       return user.bookingList.map((booking, i) => {
         //fetchResidenceDetails(booking.residenceId)
         return (
-          <div className="white">
-            <h6>CURRENT BOOKINGS</h6>
-            <div className="row text-left">
+          <div className="white pb-1 pt-1">
+            <div className="row text-left pt-2">
               <div className="col-5 col-lg-2 col-md-3">
                 <img
                   className="cardImage"
-                  // src
+                  src={booking.residence.images[0].imagelink}
                   alt="residence-image"
                 />
               </div>
@@ -44,22 +43,25 @@ const ShowResidence = () => {
                 </p>
                 <p className="residenceDetailsCommonDetails">
                   <span className="font-weight-bold">Check out: </span>
-                  {booking.checkOut}
+                  {convertDate(booking.checkOut)}
                 </p>
               </div>
             </div>
             <div className="col-12 text-left">
               <p className="residenceDetailsCommonDetails">
                 <span className="font-weight-bold">Address: </span>
-                {booking.residenceId}{" "}
+                {booking.residence.address.street}
+                {booking.residence.address.streetNumber},
+                {booking.residence.address.city},
+                {booking.residence.address.county}
+                {booking.residence.address.country},
               </p>
             </div>
             <div className="col-12 text-right">
-              <p className="golden ">
-                Total price:{" "}
-                <span className="font-weight-bold">
-                  {" "}
-                  {booking.totalPrice} kr
+              <p className="golden">
+                Total price:
+                <span className="font-weight-bold ml-1">
+                  ${booking.totalPrice}
                 </span>
               </p>
             </div>
@@ -71,8 +73,7 @@ const ShowResidence = () => {
   }
   return (
     <div>
-      {" "}
-      <h1> No matches </h1>{" "}
+      <h1> No matches </h1>
     </div>
   );
 };

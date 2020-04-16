@@ -20,6 +20,8 @@ public class Booking {
     private int checkOut;
     @Column(name="total_price")
     private int totalPrice;
+    @Column(name="amount_of_guests")
+    private int amountOfGuests;
     @ManyToOne
     @JoinColumn(name="residence_id")
     @JsonIgnoreProperties("bookedDays")
@@ -65,6 +67,14 @@ public class Booking {
 
     public void setCheckOut(int checkOut) {
         this.checkOut = checkOut;
+    }
+
+    public int getAmountOfGuests() {
+        return amountOfGuests;
+    }
+
+    public void setAmountOfGuests(int amountOfGuests) {
+        this.amountOfGuests = amountOfGuests;
     }
 
     public void setUserId(int userId) {

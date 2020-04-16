@@ -2,7 +2,7 @@
   height: 16vh;
   display: flex;
   align-items: center;
-
+  position: relative;
 }
 .residenceCard:hover{
   background-color: rgba(216, 195, 128, 0.3);
@@ -20,30 +20,43 @@
   height: 15vh;
   width: 20vh;
   border-radius: 5px;
+  object-fit: cover;
+  align-self: flex-start;
 }
 
 .residenceDetailsTitle {
   font-size: 0.95rem;
   font-weight: 1000;
+  line-height: 1.1rem;
+  margin-top: 1.5rem;
+}
+
+.residenceDetailsCommonDetails {
+  font-size: 0.75rem;
+  font-weight: 0;
+  line-height: 0.9rem;
+  margin-top: 0.2rem;
+}
+
+.detailtext {
+  display: inline-block;
+  font-size: 0.75rem;
 }
 
 .residencePriceDetails {
   font-size: 0.95rem;
   font-weight: 1000;
-  border-bottom: solid 0.5px black;
-   padding-bottom: 7px;
-}
-.residenceDetailsCommonDetails {
-  font-size: 0.75rem;
-  font-weight: 0;
- 
-}
-.perNightText {
-  font-size: 1em;
+  /* border-bottom: solid 0.5px black; */
 }
 
+.perNightText {
+  font-size: 1em;
+  flex: 1 1 auto;
+}
+
+
 .whiteBackground {
-  background-color: white;
+  background-color: white !important;
 }
 
 .searchBar {
@@ -63,7 +76,6 @@
 }
 
 .residenceDetailsPageAddress {
-  display: flex;
   font-size: 1.3rem;
   font-weight: bold;
 }
