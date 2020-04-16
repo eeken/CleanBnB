@@ -18,7 +18,8 @@ function ShowResidence() {
               onClick={() => history.push("/details/residence_id=" + residence.id)}
               className="text-left residenceCard mb-3"
               style={{ cursor: "pointer" }}
-            >
+          >
+            
               <div className="col-5">
                 <img
                   className="cardImage"
@@ -50,7 +51,8 @@ function ShowResidence() {
     };
     return (
       <FormGroup className="white">
-        <div className="pt-4 pb-3">{list()}</div>
+        <p className="darkbrowntext currenttext font-weight-bold pt-4">MY RESIDENCES</p>
+        <div className="pb-3">{list()}</div>
       </FormGroup>
 
     )

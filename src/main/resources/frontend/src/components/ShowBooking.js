@@ -21,6 +21,7 @@ const ShowResidence = () => {
         //fetchResidenceDetails(booking.residenceId)
         return (
           <div className="white pb-1 pt-1">
+            <hr className="m-0 ml-4 mb-2" style={{ "width": "85%" }}></hr>
             <div className="row text-left pt-2">
               <div className="col-5 col-lg-2 col-md-3 ">
                 <img
@@ -30,7 +31,7 @@ const ShowResidence = () => {
                 />
               </div>
               <div className="col-7">
-                <p className="golden mb-0 residenceDetailsTitle">
+                <p className="golden mb-0 mt-2 pr-2 residenceDetailsTitle">
                   {booking.residence.title}
                 </p>
                 <p className="mb-0 residenceDetailsCommonDetails">
@@ -48,28 +49,30 @@ const ShowResidence = () => {
               </div>
             </div>
             <div className="col-12 text-left">
-              <p className="residenceDetailsCommonDetails">
+              <p className="residenceDetailsCommonDetails m-3">
                 <span className="font-weight-bold">Address: </span>
-                {booking.residence.address.street}
-                {booking.residence.address.streetNumber},
-                {booking.residence.address.city},
-                {booking.residence.address.county}
-                {booking.residence.address.country},
+                {booking.residence.address.street} {booking.residence.address.streetNumber}, {booking.residence.address.city}, {booking.residence.address.country}
               </p>
             </div>
-            <div className="col-12 text-right white">
-              <p className="golden">
+            <div className="col-12 text-right white r-2 font-weight-bold">
+              <p className="golden totalpricetext mb-0 mr-4">
                 Total price:
-                <span className="font-weight-bold ml-1">
-                  ${booking.totalPrice}
-                </span>
+                <span className="ml-1 pricetext">
+                  ${booking.totalPrice}</span>
+                
               </p>
             </div>
           </div>
         );
       });
     };
-    return <>{list()}</>;
+    return (
+      <FormGroup className="white">
+        <p className="darkbrowntext currenttext font-weight-bold pt-4">CURRENT BOOKINGS</p>
+        <div className="pb-3">{list()}</div>
+      </FormGroup>
+
+    )
   }
   return (
     <div>
