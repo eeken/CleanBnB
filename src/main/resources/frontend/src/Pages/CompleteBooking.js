@@ -1,6 +1,6 @@
 //REACT
-import React, { useContext, useEffect, useState } from "react";
-import { Button, FormGroup, Input } from "reactstrap";
+import React, { useContext, useEffect } from "react";
+import { Button } from "reactstrap";
 import { useParams, useHistory } from "react-router-dom";
 
 //CONTEXTPROVIDERS

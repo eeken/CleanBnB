@@ -86,8 +86,6 @@ export default function Explore() {
                             <p className="golden residenceDetailsCommonDetails">Wild Card</p>
                         </div>
                     </div>
-
-
                 </div>
             </div>
         </div>
