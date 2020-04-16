@@ -51,7 +51,7 @@ function ResidenceCard() {
   }
   return (
     <div>
-      <h1> No matches </h1>
+      <h3 className="golden m-2"> No results </h3>
     </div>
   );
 }

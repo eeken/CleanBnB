@@ -1,7 +1,6 @@
 import React, { useContext, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import ResidenceCard from "../components/ResidenceCard";
-//import SearchBar from "../components/SearchBar";
 import { ResidenceContext } from "../contexts/ResidenceContextProvider";
 
 export default function Explore() {
@@ -23,15 +22,15 @@ export default function Explore() {
   }, []);
 
   return (
-    <div>
-      {/* <SearchBar></SearchBar> */}
-      <div className="col-12 white">
-        <div className="whiteBackground pt-2 pb-2">
-          <ul>
-            <ResidenceCard></ResidenceCard>
-          </ul>
-        </div>
+
+    <div className="col-12 white ">
+      <h4 className="golden font-weight-bold p-4" align="center">Residences for rent</h4>
+      <div className="pb-2">
+        <ul>
+          <ResidenceCard></ResidenceCard>
+        </ul>
       </div>
     </div>
+
   );
 }
