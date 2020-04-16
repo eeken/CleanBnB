@@ -22,9 +22,9 @@ const ShowResidence = () => {
         return (
           <div className="white pb-1 pt-1">
             <div className="row text-left pt-2">
-              <div className="col-5 col-lg-2 col-md-3">
+              <div className="col-5 col-lg-2 col-md-3 ">
                 <img
-                  className="cardImage"
+                  className="cardImage pl-3"
                   src={booking.residence.images[0].imagelink}
                   alt="residence-image"
                 />
@@ -57,7 +57,7 @@ const ShowResidence = () => {
                 {booking.residence.address.country},
               </p>
             </div>
-            <div className="col-12 text-right">
+            <div className="col-12 text-right white">
               <p className="golden">
                 Total price:
                 <span className="font-weight-bold ml-1">
