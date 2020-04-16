@@ -9,7 +9,6 @@ export default function UserContextProvider(props) {
     try {
       res = await res.json();
       setUser(res);
-      console.log(res);
     } catch {
       console.log("Not authenticated");
     }

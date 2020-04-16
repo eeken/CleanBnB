@@ -1,12 +1,16 @@
 import React, { useState } from "react";
 import { Button, Form, FormGroup, Label, Input } from "reactstrap";
 import { useHistory } from "react-router-dom";
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
 
 function LandingPage() {
   const [destination, setDestination] = useState();
-  const [checkIn, setCheckIn] = useState(0);
-  const [checkOut, setCheckOut] = useState(0);
+  const [checkIn, /*setCheckIn*/] = useState(0);
+  const [checkOut, /*setCheckOut*/] = useState(0);
   const [numberofguests, setNumberOfGuests] = useState(0);
+  const [startDate, setStartDate] = useState(new Date());
+  const [endDate, setEndDate] = useState(new Date());
 
   const submitSearch = async e => {
     e.preventDefault();
@@ -14,6 +18,24 @@ function LandingPage() {
   };
 
   let history = useHistory();
+
+  Date.prototype.getUnixTime = function() {
+    return this.getTime()/1000
+  };
+
+  let startDateUnix = new Date(startDate).getUnixTime();
+  let endDateUnix = new Date(endDate).getUnixTime();
+
+  let duration = (endDateUnix - startDateUnix) / 86400;
+
+  for(let day = 0; day < duration; day++) {
+    let date = new Date(startDate)
+    date.setDate(date.getDate() + day)
+  }
+
+  if(endDate < startDate){
+    alert('Cannot do that');
+  }
 
   return (
     <div className="col-12 col-lg-3 col-md-6">
@@ -45,22 +67,18 @@ function LandingPage() {
               Check-out
             </Label>
           </div>
-          <div className="row dateInputRow">
-            <Input
-              className="col-5 dateInput"
-              id="destination-input"
-              type="date"
-              value={checkIn}
-              onChange={e => setCheckIn(e.target.value)}
-            />
-            <Input
-              className="col-5"
-              id="destination-input"
-              type="date"
-              value={checkOut}
-              onChange={e => setCheckOut(e.target.value)}
-            />
-          </div>
+        <DatePicker
+          selected={startDate}
+          minDate={new Date()}
+          onChange={date => setStartDate(date)}
+          placeholderText="Select a date"
+        />
+        <DatePicker
+          selected={endDate}
+          minDate={new Date()}
+          onChange={date => setEndDate(date)}
+          placeholderText="Select a date"
+        />
         </FormGroup>
 
         <FormGroup>
