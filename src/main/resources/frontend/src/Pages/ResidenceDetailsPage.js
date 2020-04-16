@@ -261,10 +261,13 @@ function ResidenceDetailsPage() {
         </div>
       ) : (
           <Form onSubmit={bookResidence}>
-            <div className="row m-4">
-              <div className="col-12 residenceDetailsPageAddress golden mr-5">
+            <div className="row m-4 justify-content-center">
+              <div className="col-12 residenceDetailsPageAddress golden mr-5 ml-5">
                 Availability
-          </div>
+              </div>
+              <div className="col-9 golden m-3">
+                Choose your Start Date and End Date:
+              </div>
               <DatePicker
                 selected={startDate}
                 minDate={new Date()}

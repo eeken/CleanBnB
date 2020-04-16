@@ -48,7 +48,7 @@ function LandingPage() {
         </h2>
         <FormGroup align="left">
           <Label for="destination-input" className="mb-1">
-            Destination{" "}
+            Destination
           </Label>
           <Input
             type="text"
@@ -59,26 +59,31 @@ function LandingPage() {
         </FormGroup>
 
         <FormGroup>
-          <div className="row justify-content-around">
-            <Label for="destination-input" className="mb-1">
+          <div className="row justify-content-between m-0">
+            <Label for="destination-input" className="mb-1 ml-1">
               Check-in
             </Label>
-            <Label for="destination-input" className="mb-1">
+            <Label for="destination-input" className="mb-1 mr-1">
               Check-out
             </Label>
           </div>
-        <DatePicker
+
+          <div className="calendar">
+          <DatePicker
+            className="datepickerstyle"
           selected={startDate}
           minDate={new Date()}
           onChange={date => setStartDate(date)}
           placeholderText="Select a date"
         />
-        <DatePicker
+          <DatePicker
+          className="datepickerstyle"
           selected={endDate}
           minDate={new Date()}
           onChange={date => setEndDate(date)}
           placeholderText="Select a date"
-        />
+            />
+          </div>
         </FormGroup>
 
         <FormGroup>
@@ -91,6 +96,7 @@ function LandingPage() {
             id="guestSelection"
             style={{textAlignLast: 'center'}}
             onChange={e => setNumberOfGuests(e.target.value)}
+            className="mb-4"
           >
             <option value={''}>Number of guests</option>
             <option value={1}>1</option>

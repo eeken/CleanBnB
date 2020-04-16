@@ -410,17 +410,21 @@ const AddResidence = () => {
       </FormGroup>
       <FormGroup className="mb-4">
         <h5>AVAILABLE DATES</h5>
+        <div align="left" style={{"width":"80%"}}>
           <DatePicker
             selected={startDate}
             minDate={new Date()}
-            onChange={(date) => setStartDate(new Date(date).valueOf())}
+          onChange={(date) => setStartDate(new Date(date).valueOf())}
+          placeholderText="Select a date"
           />
           <DatePicker
             selected={endDate}
             minDate={new Date()}
-            onChange={(date) => setEndDate(new Date(date).valueOf())}
+          onChange={(date) => setEndDate(new Date(date).valueOf())}
+          placeholderText="Select a date"
           />
-          <button onClick={addDates}>Add date</button>
+          <button onClick={addDates} className="mt-2">Add date</button>
+        </div>
       </FormGroup>
       <FormGroup className="container mb-4">
         {/* RESIDENCE-IMAGES-FORM */}
