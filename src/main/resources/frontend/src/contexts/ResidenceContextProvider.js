@@ -31,6 +31,7 @@ export default function ResidenceContextProvider(props) {
     res = await res.json();
 
     let bookedTempArr = [];
+    let bookedDaysLoaded = false;
     let arr = [];
 
     // ALL THE BOOKED DAYS ARE LOOPED OUT AND ADDED TO THE TEMP bookedTempArr
@@ -42,21 +43,25 @@ export default function ResidenceContextProvider(props) {
           let date = new Date(res.bookedDays[i].checkIn * 1000);
           date.setDate(date.getDate() + day);
           bookedTempArr.push(date.toString());
+          console.log("is " + date);
         }
       }
-      for (let i = 0; i < res.availableDays.length; i++) {
-        let duration =
-          (res.availableDays[i].endDate - res.availableDays[i].startDate) /
-          86400;
-        for (let day = 0; day <= duration; day++) {
-          let date = new Date(res.availableDays[i].startDate * 1000);
-          date.setDate(date.getDate() + day);
-          if (!bookedTempArr.includes(date.toString())) {
-            arr.push(date);
+      if (bookedDaysLoaded) {
+        for (let i = 0; i < res.availableDays.length; i++) {
+          let duration =
+            (res.availableDays[i].endDate - res.availableDays[i].startDate) /
+            86400;
+          for (let day = 0; day <= duration; day++) {
+            let date = new Date(res.availableDays[i].startDate * 1000);
+            date.setDate(date.getDate() + day);
+            if (!bookedTempArr.includes(date.toString())) {
+              arr.push(date);
+              console.log("not : " + date);
+            }
           }
         }
+        res.availableDays = arr;
       }
-      res.availableDays = arr;
     }
 
     setResidence(res);
