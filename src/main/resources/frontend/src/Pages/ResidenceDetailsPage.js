@@ -9,7 +9,6 @@ import { ResidenceContext } from "../contexts/ResidenceContextProvider";
 
 //COMPONENTS
 import SearchBar from "../components/SearchBar";
-import Calender from "../components/Calender";
 import CarouselComponent from "../components/CarouselComponent";
 
 //REACT ICONS
@@ -64,16 +63,16 @@ function ResidenceDetailsPage() {
       for (let day = 0; day <= duration; day++) {
         let date = new Date(residence.bookedDays[i].checkIn * 1000);
         date.setDate(date.getDate() + day);
-        arr.push(date.toString())
+        arr.push(date.toString());
       }
     }
-    setFetchedBookedDays(arr)
+    setFetchedBookedDays(arr);
     setFetchedBookedDaysLoaded(true);
     setCheckDays(true);
   }
 
   if (checkDays) {
-    let arr = []
+    let arr = [];
     for (let i = 0; i < residence.availableDays.length; i++) {
       let duration =
         (residence.availableDays[i].endDate -
@@ -83,7 +82,7 @@ function ResidenceDetailsPage() {
         let date = new Date(residence.availableDays[i].startDate * 1000);
         date.setDate(date.getDate() + day);
         if (!fetchedBookedDays.includes(date.toString())) {
-          arr.push(date)
+          arr.push(date);
         }
       }
     }
@@ -216,12 +215,14 @@ function ResidenceDetailsPage() {
             selected={startDate}
             minDate={new Date()}
             onChange={(date) => setStartDate(date)}
+            includeDates={featchedAvailableDays}
             placeholderText="Select a date"
           />
           <DatePicker
             selected={endDate}
             minDate={new Date()}
             onChange={(date) => setEndDate(date)}
+            includeDates={featchedAvailableDays}
             placeholderText="Select a date"
           />
         </div>

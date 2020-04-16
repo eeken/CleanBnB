@@ -1,7 +1,6 @@
 import React, { useState, useContext } from "react";
 import { Button, Form, FormGroup, Input } from "reactstrap";
 import { UserContext } from '../contexts/UserContextProvider'
-import Calender from '../components/Calender';
 
 const AddResidence = () => {
   // RESIDENCE DETAILS
@@ -325,7 +324,7 @@ const AddResidence = () => {
       </FormGroup>
       <FormGroup className="mb-4">
         <h5>AVAILABLE DATES</h5>
-          <Calender/>
+       
       </FormGroup>
       <FormGroup className="container mb-4">
         <h5>RESIDENCE IMAGES</h5>
