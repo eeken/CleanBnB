@@ -8,10 +8,14 @@ export default function Explore() {
   const { fetchResidence } = useContext(ResidenceContext);
   const { destination } = useParams();
   const { numberofguests } = useParams();
+  const { checkIn } = useParams();
+  const { checkOut } = useParams();
 
   const params = {
     destination: destination,
-    numberofguests: parseInt(numberofguests ? numberofguests : 0)
+    numberofguests: parseInt(numberofguests ? numberofguests : 0),
+    checkIn: parseInt(checkIn ? checkIn : 0),
+    checkOut: parseInt(checkOut ? checkOut : 0),
   }
 
   useEffect(() => {

@@ -1,22 +1,92 @@
 //REACT
-import React, { useContext, useEffect, useState } from "react";
-import { Button, FormGroup, Input } from "reactstrap";
-import { useParams } from "react-router-dom";
+import React, { useState, useContext, useEffect } from "react";
+import { Button, Form, FormGroup, Input } from "reactstrap";
+import { useParams, useHistory } from "react-router-dom";
 
-function ConfirmBooking() {
-  const [email, setEmail] = useState();
+//CONTEXTPROVIDERS
+import { BookingContext } from '../contexts/BookingContextProvider'
+import { ResidenceContext } from '../contexts/ResidenceContextProvider'
+import { UserContext } from "../contexts/UserContextProvider";
+
+
+export default function ConfirmBooking() {
+
+  let { id } = useParams();
+  let history = useHistory();
+  const {
+    residence,
+    fetchResidenceDetails,
+  } = useContext(ResidenceContext);
+
+  const { user } = useContext(UserContext)
+  const [ email, setEmail ] = useState();
+  const [ isBookingPossible, setIsBookingPossible ] = useState(false)
+  const { checkin, checkout, numberofguests, amountofnights, totalprice } = useParams();
+
+  useEffect(() => {
+    window.scroll({
+      top: 0,
+      left: 0,
+      behavior: "smooth"
+    });
+    fetchResidenceDetails(id);
+  }, []);
+
+  if (residence === null) {
+    return null;
+  }
+
+  let button = <Button className="bookingButton col-10 offset-1 mb-5 p-2" disabled>BOOK THIS RESIDENCE</Button>
+
+  if ((isBookingPossible)) {
+    button = <Button className="bookingButton col-10 offset-1 mb-5 p-2">BOOK THIS RESIDENCE</Button>;
+  }
 
   function confirmPolicies() {
     var checkBox = document.getElementById("policies");
-    /* if (checkBox.checked == true) {
-      //allow client to book the residence
+    if (checkBox.checked === true) {
+      setIsBookingPossible(true)
     } else {
-      //don't allow client to book the residence
-    } */
+      setIsBookingPossible(false)
+    }
   }
 
-  return (
+  const createBooking = async (e) => {
+    e.preventDefault();
+    const booking = {
+      checkIn: checkin, 
+      checkOut: checkout, 
+      totalPrice: totalprice,
+      resId: residence.id,
+      userId: user.id
+    }
+    let res = await fetch('/rest/bookings', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(booking)
+    })
+    res = await res.json()
+      
+    history.push(
+      + "/" + residence.title
+      + "&location=" + residence.address.city + "&" + residence.address.country
+      + "&numberOfGuests=" + numberofguests
+      + "&checkin=" + checkin
+      + "&checkout=" + checkout
+      + "&amountOfNights=" + amountofnights
+      + "&totalPrice=" + totalprice
+      + "/completebooking"
+    );
+  }
 
+  var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+  let checkinDate = new Date(checkin * 1000);
+  checkinDate = checkinDate.getDate() + " " + months[checkinDate.getMonth()] + " " + checkinDate.getFullYear()
+
+  let checkoutDate = new Date(checkout * 1000);
+  checkoutDate = checkoutDate.getDate() + " " + months[checkoutDate.getMonth()] + " " + checkoutDate.getFullYear()
+
+  return (
     <div>
       <div className="white">
         <div className="justify-content-center">
@@ -25,61 +95,42 @@ function ConfirmBooking() {
             width="100%"
             height="250vh"
             border="black"
-            src="{residenceImages.imagePath}"
+            src={residence.images[0].imagelink}
             className="userImage mr-3 mb-4"
           />
 
           <div className="confirmBookingText darkbrowntext text-left mb-4">
-            <b>Residence:</b> Lake House in South Sweden<br></br>
-            <b>Location:</b> Höör, Skåne, Sweden<br></br>
-            <b>Amount of Guests:</b> 2<br></br>
-            <b>Chosen date:</b> Sep 25 - Sep 28, 2020<br></br>
+            <b>Residence: </b>{residence.title}<br></br>
+            <b>Location: </b> {residence.address.city}, {residence.address.country}<br></br>
+            <b>Amount of Guests: </b> {numberofguests} <br></br>
+            <b>Chosen dates: </b> {checkinDate} - {checkoutDate}<br></br>
             <br></br>
-            <b>Total Price:</b> 650 x 3 nights =
-            <b className="priceText golden">$1950</b>
+            <b>Total Price:</b> {residence.pricepernight} x {amountofnights} nights =
+            <b className="priceText golden">${totalprice}</b>
           </div>
           <hr></hr>
-         
-          <FormGroup className="col-10 offset-1 mb-5 mt-5">
-            <div className="enterEmailText darkbrowntext" align="center">
-              <b>Enter your e-mail address to complete the booking:</b>
-            </div>
-            <Input
-              type="text"
-              id="email-input"
-              value={email}
-              onChange={e => setEmail(e.target.value)}
-              placeholder="Enter your e-mail address here"
-            ></Input>
-          </FormGroup>
-          <hr></hr>
-
-          <div className="golden darkbrowntext m-5" align="center">
-            <input
-              type="checkbox"
-              className="mr-2"
-              id="policies"
-              onClick={confirmPolicies()}
-            />
-            <b>Agree to the
+          <Form onSubmit={createBooking}>
+            <div className="golden darkbrowntext m-5" align="center">
+              <input
+                type="checkbox"
+                className="mr-2"
+                id="policies"
+                onClick={confirmPolicies}
+              />
+              <b>Agree to the
               <a
-                href="https://www.airbnb.com/help/topic/250/terms-policies"
-                target="_blank"
-                className="ml-1 policiesLink"
-              >
-                terms and policies
+                  href="https://www.airbnb.com/help/topic/250/terms-policies"
+                  target="_blank"
+                  className="ml-1 policiesLink"
+                >
+                  terms and policies
             </a></b>
-          </div>
-
-          <Button className="bookingButton col-10 offset-1 mb-5 p-2">
-            BOOK THIS RESIDENCE
-          </Button>
+            </div>
+            {button}
+          </Form>
 
         </div>
       </div>
     </div>
   )
-
 }
-
-export default ConfirmBooking;

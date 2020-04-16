@@ -20,6 +20,7 @@ public class Residence {
     private int pricepernight;
     private int numberofbeds;
     private String title;
+    private String description;
 
     //CONSTRUCTORS
     public Residence() { }
@@ -28,9 +29,6 @@ public class Residence {
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name="address_id")
     private Address address;
-
-    @ManyToOne
-    private User user;
 
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name="amenity_id")
@@ -68,7 +66,7 @@ public class Residence {
     public Address getAddress() { return address; }
     public void setAddress(Address address) { this.address = address; }
     //public User getUser() { return user; }
-    public void setUser(User user) { this.user = user; }
+
     public Amenity getAmenity() { return amenity; }
     public void setAmenity(Amenity amenity) { this.amenity = amenity; }
     public List<Booking> getBookedDays() { return bookedDays; }
@@ -77,5 +75,11 @@ public class Residence {
     public void setAvailableDays(List<AvailablePeriod> availableDays) { this.availableDays = availableDays; }
     public List<Image> getImages() { return images; }
     public void setImages(List<Image> images) { this.images = images; }
+    public String getDescription() {
+        return description;
+    }
+    public void setDescription(String description) {
+        this.description = description;
+    }
 }
 

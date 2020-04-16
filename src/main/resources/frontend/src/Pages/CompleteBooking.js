@@ -1,22 +1,45 @@
 //REACT
 import React, { useContext, useEffect, useState } from "react";
 import { Button, FormGroup, Input } from "reactstrap";
-import { useParams } from "react-router-dom";
+import { useParams, useHistory } from "react-router-dom";
+
+//CONTEXTPROVIDERS
+import { ResidenceContext } from "../contexts/ResidenceContextProvider";
 
 function ConfirmBooking() {
-  const [email, setEmail] = useState();
+  let { id } = useParams();
+  let history = useHistory();
+  const { checkin, checkout, numberofguests, amountofnights, totalprice } = useParams();
+  const {
+    residence,
+    fetchResidenceDetails,
+  } = useContext(ResidenceContext);
 
-  function confirmPolicies() {
-    var checkBox = document.getElementById("policies");
-    /* if (checkBox.checked == true) {
-      //allow client to book the residence
-    } else {
-      //don't allow client to book the residence
-    } */
+  useEffect(() => {
+    window.scroll({
+      top: 0,
+      left: 0,
+      behavior: "smooth"
+    });
+    fetchResidenceDetails(id);
+  }, []);
+
+  if (!residence) {
+    return null
+  }
+  
+  var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+  let checkinDate = new Date(checkin * 1000);
+  checkinDate = checkinDate.getDate() + " " + months[checkinDate.getMonth()] + " " + checkinDate.getFullYear()
+
+  let checkoutDate = new Date(checkout * 1000);
+  checkoutDate = checkoutDate.getDate() + " " + months[checkoutDate.getMonth()] + " " + checkoutDate.getFullYear()
+
+  const returnHome = async () => {
+    await history.push("/")
   }
 
   return (
-
     <div>
       <div className="white">
         <div className="justify-content-center">
@@ -28,28 +51,24 @@ function ConfirmBooking() {
 
           <div className="confirmBookingText darkbrowntext text-left">
 
-            <b>Residence:</b> Lake House in South Sweden<br></br>
-            <b>Location:</b> Höör, Skåne, Sweden<br></br>
-            <b>Amount of Guests:</b> 2<br></br>
-            <b>Chosen date:</b> Sep 25 - Sep 28, 2020<br></br>
+            <b>Residence:</b> {residence.title} <br></br>
+            <b>Location:</b>  {residence.address.city}, {residence.address.country} <br></br>
+            <b>Amount of Guests:</b> {numberofguests} <br></br>
+            <b>Chosen date:</b> {checkinDate} - {checkoutDate}<br></br>
             <br></br>
-            <b>Total Price:</b> 650 x 3 nights =
-            <b className="priceText golden">$1950</b>
+            <b>Total Price:</b> {residence.pricepernight} x {amountofnights} nights =
+            <b className="priceText golden">${totalprice}</b>
           </div>
 
-          <Button className="returnButton col-10 offset-1 mt-5 mb-5">
+          <Button className="returnButton col-10 offset-1 mt-5 mb-5"
+          onClick={returnHome}>
             RETURN TO THE HOME PAGE
           </Button>
-
-
+          
         </div>
       </div>
     </div>
-
-
-
   )
-
 }
 
 export default ConfirmBooking;

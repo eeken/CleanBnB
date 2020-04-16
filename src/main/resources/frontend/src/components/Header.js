@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState, useContext } from "react";
 import { Collapse, Navbar, NavbarToggler, Nav, Button } from "reactstrap";
 import { NavLink, useHistory, useLocation } from "react-router-dom";
 import { UserContext } from "../contexts/UserContextProvider";
@@ -15,7 +15,7 @@ export default function Header(props) {
   const logout = () => {
     fetch("/logout");
     setUser(null);
-    if (location.pathname == '/my-page') {
+    if (location.pathname === '/my-page') {
       history.push('/')
     }
   };
@@ -31,28 +31,14 @@ export default function Header(props) {
     history.push("/register");
   };
 
+  function closeNavbar() {
+    setIsOpen(false)
+  };
+
   return (
     <header>
       <Navbar className="darkbrown" dark expand="md">
         <NavbarToggler onClick={toggle} />
-        <Collapse isOpen={isOpen} navbar>
-          <Nav className="mr-auto" navbar>
-            {props.menuData.map(item => (
-              <li className="nav-item" key={item.route}>
-                <NavLink className="nav-link" exact to={item.route}>
-                  <span className="golden">{item.label}</span>
-                </NavLink>
-              </li>
-              
-            ))}
-            <span className="nav-item" style={{ cursor: 'pointer' }}>
-              {user ?
-                <a className="nav-link" onClick={goToAccount}> <p className="golden"> My Page </p> </a> : 
-                <a className="nav-link" onClick={goToRegisterAccount}> <p className="golden"> Register </p> </a>
-              }
-            </span>
-          </Nav>
-        </Collapse>
         <Button
           style={{
             backgroundColor: "transparent",
@@ -64,11 +50,33 @@ export default function Header(props) {
               <FiLogOut className="golden" size={30} />
             </a>
           ) : (
-              <a className="login-logout" onClick={login}>
-                <FiLogIn className="golden" size={30} />
-              </a>
-            )}
+            <a className="login-logout" onClick={login}>
+              <FiLogIn className="golden" size={30} />
+            </a>
+          )}
         </Button>
+        <Collapse isOpen={isOpen} navbar>
+          <Nav className="mr-auto" navbar>
+            {props.menuData.map((item) => (
+              <li className="nav-item" key={item.route}>
+                <NavLink className="nav-link" exact to={item.route} onClick={closeNavbar}>
+                  <span className="golden">{item.label}</span>
+                </NavLink>
+              </li>
+            ))}
+            <span className="nav-item" style={{ cursor: "pointer" }}>
+              {user ? (
+                <a className="nav-link" onClick={goToAccount}>
+                  <p className="golden" onClick={closeNavbar}> My Page </p>
+                </a>
+              ) : (
+                <a className="nav-link" onClick={goToRegisterAccount}>
+                  <p className="golden" onClick={closeNavbar}> Register </p>
+                </a>
+              )}
+            </span>
+          </Nav>
+        </Collapse>
       </Navbar>
     </header>
   );

@@ -17,19 +17,21 @@ function Register() {
       firstName,
       lastName,
       email,
-      password
+      password,
     };
 
     let response = await fetch("/auth/register", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(credentials)
+      body: JSON.stringify(credentials),
     });
 
     try {
       response = await response.json();
       setUser(response);
-      history.push("/my-page");
+      if (response) {
+       await history.push("/my-page");
+      }
     } catch {
       console.log("Bad credentials");
     }
@@ -51,7 +53,7 @@ function Register() {
           <Input
             type="text"
             id="firstName-input"
-            onChange={e => setFirstName(e.target.value)}
+            onChange={(e) => setFirstName(e.target.value)}
             required
           ></Input>
         </FormGroup>
@@ -63,7 +65,7 @@ function Register() {
           <Input
             type="text"
             id="email-input"
-            onChange={e => setLastName(e.target.value)}
+            onChange={(e) => setLastName(e.target.value)}
             required
           ></Input>
         </FormGroup>
@@ -75,7 +77,7 @@ function Register() {
           <Input
             type="text"
             id="email-input"
-            onChange={e => setEmail(e.target.value)}
+            onChange={(e) => setEmail(e.target.value)}
             required
           ></Input>
         </FormGroup>
@@ -87,7 +89,7 @@ function Register() {
           <Input
             type="password"
             id="password-input"
-            onChange={e => setPassword(e.target.value)}
+            onChange={(e) => setPassword(e.target.value)}
             required
           ></Input>
         </FormGroup>
@@ -95,7 +97,7 @@ function Register() {
         <Button
           className="registerSubmitButton"
           style={{
-            backgroundColor: "#B9986D"
+            backgroundColor: "#B9986D",
           }}
         >
           CREATE ACCOUNT

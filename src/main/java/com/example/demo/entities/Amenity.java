@@ -21,7 +21,6 @@ public class Amenity {
     private boolean dishwasher;
 
     //RELATIONS
-
     @OneToOne(mappedBy = "amenity")
     private Residence residence;
 

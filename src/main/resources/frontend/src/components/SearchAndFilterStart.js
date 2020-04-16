@@ -14,7 +14,7 @@ function LandingPage() {
 
   const submitSearch = async e => {
     e.preventDefault();
-      await history.push("explore/destination=" + destination + "&guests=" + numberofguests);
+      await history.push("explore/destination=" + destination + "&guests=" + numberofguests + "&checkIn=" + checkIn + "&checkOut=" + checkOut);
   };
 
   let history = useHistory();
