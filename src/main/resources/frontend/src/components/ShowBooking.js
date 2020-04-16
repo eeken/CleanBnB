@@ -1,16 +1,12 @@
-import React, { useState, useContext } from "react";
-import { Button, Form, FormGroup, Input, Label } from "reactstrap";
+import React, { useContext } from "react";
+import { FormGroup } from "reactstrap";
 import { UserContext } from "../contexts/UserContextProvider";
-import { useHistory } from "react-router-dom";
 import { BookingContext } from "../contexts/BookingContextProvider";
-import { ResidenceContext } from "../contexts/ResidenceContextProvider";
 
 const ShowResidence = () => {
   const { user } = useContext(UserContext);
   const { bookings } = useContext(BookingContext);
-  const { residence, fetchResidenceDetails } = useContext(ResidenceContext);
 
-  let history = useHistory();
   const convertDate = (date) => {
     return new Date(date*1000).toLocaleDateString()
   };
@@ -18,7 +14,6 @@ const ShowResidence = () => {
   if (bookings) {
     const list = () => {
       return user.bookingList.map((booking, i) => {
-        //fetchResidenceDetails(booking.residenceId)
         return (
           <div className="pb-1 pt-1">
             <hr className="m-0 ml-4 mb-2" style={{ "width": "85%" }}></hr>
@@ -59,7 +54,6 @@ const ShowResidence = () => {
                 Total price:
                 <span className="ml-1 pricetext">
                   ${booking.totalPrice}</span>
-                
               </p>
             </div>
           </div>
@@ -71,12 +65,11 @@ const ShowResidence = () => {
         <p className="darkbrowntext currenttext font-weight-bold pt-4">CURRENT BOOKINGS</p>
         <div className="pb-3">{list()}</div>
       </FormGroup>
-
     )
   }
   return (
-    <div>
-      <h1> No matches </h1>
+    <div className="white">
+      <h1 className="golden"> No bookings yet</h1>
     </div>
   );
 };

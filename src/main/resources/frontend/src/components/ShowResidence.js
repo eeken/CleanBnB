@@ -1,8 +1,7 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext } from "react";
 import { FormGroup } from "reactstrap";
-import { ResidenceContext } from "../contexts/ResidenceContextProvider";
 import { UserContext } from "../contexts/UserContextProvider";
-import { useHistory, useParams } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 
 function ShowResidence() {
   const { user } = useContext(UserContext);
@@ -28,8 +27,6 @@ function ShowResidence() {
                   alt="residence"
                 />
               </div>
-
-
               <div className="col-7 ml-2">
                 <p className="darkbrowntext mb-0 mt-2 pr-2 residenceDetailsTitle">
                   {residence.title}
@@ -40,12 +37,10 @@ function ShowResidence() {
                 <p className="golden totalpricetext mb-0 mt-4 mr-3 font-weight-bold text-right">
                   <span className="ml-1 pricetext">
                     ${residence.pricepernight}</span> per night
-
               </p>
               </div>
-        
-              </div>
             </div>
+          </div>
         );
       });
     };
@@ -54,7 +49,6 @@ function ShowResidence() {
         <p className="darkbrowntext currenttext font-weight-bold pt-4">MY RESIDENCES</p>
         <div className="pb-3">{list()}</div>
       </FormGroup>
-
     )
   }
   return <div></div>;
