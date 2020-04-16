@@ -50,19 +50,18 @@ const ShowResidence = () => {
             <div className="col-12 text-left">
               <p className="residenceDetailsCommonDetails">
                 <span className="font-weight-bold">Address: </span>
-                {booking.residence.address.street}{" "}
-                {booking.residence.address.streetNumber},{" "}
-                {booking.residence.address.city},{" "}
-                {booking.residence.address.county}{" "}
+                {booking.residence.address.street}
+                {booking.residence.address.streetNumber},
+                {booking.residence.address.city},
+                {booking.residence.address.county}
                 {booking.residence.address.country},
               </p>
             </div>
             <div className="col-12 text-right">
-              <p className="golden ">
-                Total price:{" "}
-                <span className="font-weight-bold">
-                  {" "}
-                  {booking.totalPrice} kr
+              <p className="golden">
+                Total price: 
+                <span className="font-weight-bold ml-1">
+                   ${booking.totalPrice}
                 </span>
               </p>
             </div>
@@ -74,8 +73,7 @@ const ShowResidence = () => {
   }
   return (
     <div>
-      {" "}
-      <h1> No matches </h1>{" "}
+      <h1> No matches </h1>
     </div>
   );
 };

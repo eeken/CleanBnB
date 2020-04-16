@@ -50,6 +50,7 @@ function MyPage() {
           <ShowBooking />
         </Collapse>
       </Row>
+
       <Row className="showBookingAndResidenceButton boxes m-2 mb-3">
         <Button
           color="transparent"
@@ -62,6 +63,7 @@ function MyPage() {
           <ShowResidence />
         </Collapse>
       </Row>
+
       <Row className="addResidenceButton boxes m-2 mb-5">
         <Button
           color="transparent"
@@ -74,9 +76,6 @@ function MyPage() {
         <Collapse isOpen={addResidenceisOpen}>
           <AddResidence />
         </Collapse>
-      </Row>
-      <Row>
-        <Col></Col>
       </Row>
     </Container>
   );
