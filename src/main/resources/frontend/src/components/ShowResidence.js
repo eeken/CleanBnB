@@ -13,13 +13,14 @@ function ShowResidence() {
     const list = () => {
       return user.residenceList.map((residence, i) => {
         return (
+          <div className="pb-1 pt-1">
+            <hr className="m-0 ml-4 mb-3" style={{ "width": "85%" }}></hr>
             <div
               key={i}
               onClick={() => history.push("/details/residence_id=" + residence.id)}
               className="text-left residenceCard mb-3"
               style={{ cursor: "pointer" }}
-          >
-            
+            >
               <div className="col-5">
                 <img
                   className="cardImage"
@@ -28,23 +29,22 @@ function ShowResidence() {
                 />
               </div>
 
-              <div className="col-7 ml-1">
-                <p className="row golden mb-0 ml-1 pr-1 residenceDetailsTitle">
+
+              <div className="col-7 ml-2">
+                <p className="darkbrowntext mb-0 mt-2 pr-2 residenceDetailsTitle">
                   {residence.title}
                 </p>
-                <p className="row golden residenceDetailsCommonDetails ml-1">
+                <p className="mb-0 residenceDetailsCommonDetails">
+                  {residence.maxguests} guests - {residence.numberofbeds} beds - {residence.rooms}  room(s)
+                </p>
+                <p className="golden totalpricetext mb-0 mt-4 mr-3 font-weight-bold text-right">
+                  <span className="ml-1 pricetext">
+                    ${residence.pricepernight}</span> per night
 
-                  {residence.maxguests} guests - {residence.numberofbeds} beds - {residence.rooms}  rooms
               </p>
-
-                <p className="golden residencePriceDetails ml-1">
-                  ${residence.pricepernight}
-                  <p className="golden detailtext ml-1">
-                    p/n
-                </p>
-                </p>
               </div>
-
+        
+              </div>
             </div>
         );
       });

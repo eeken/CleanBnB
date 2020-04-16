@@ -20,7 +20,7 @@ const ShowResidence = () => {
       return user.bookingList.map((booking, i) => {
         //fetchResidenceDetails(booking.residenceId)
         return (
-          <div className="white pb-1 pt-1">
+          <div className="pb-1 pt-1">
             <hr className="m-0 ml-4 mb-2" style={{ "width": "85%" }}></hr>
             <div className="row text-left pt-2">
               <div className="col-5 col-lg-2 col-md-3 ">
