@@ -2,6 +2,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import { Button, FormGroup, Input } from "reactstrap";
 import { useParams } from "react-router-dom";
+import DatePicker from "react-datepicker";
 
 //CONTEXTPROVIDERS
 import { ResidenceContext } from "../contexts/ResidenceContextProvider";
@@ -12,28 +13,57 @@ import Calender from "../components/Calender";
 import CarouselComponent from "../components/CarouselComponent";
 
 //REACT ICONS
-import { FaSwimmingPool, FaSnowflake, FaBath, FaTv, FaWifi, FaTemperatureLow } from 'react-icons/fa';
-import { MdLocalLaundryService, MdLocalDrink, MdStreetview } from 'react-icons/md';
+import {
+  FaSwimmingPool,
+  FaSnowflake,
+  FaBath,
+  FaTv,
+  FaWifi,
+  FaTemperatureLow,
+} from "react-icons/fa";
+import {
+  MdLocalLaundryService,
+  MdLocalDrink,
+  MdStreetview,
+} from "react-icons/md";
 
 function ResidenceDetailsPage() {
   let { id } = useParams();
   const [numberOfGuests, setNumberOfGuests] = useState("");
-  const {
-    residence,
-    fetchResidenceDetails,
-  } = useContext(ResidenceContext);
+  const { residence, fetchResidenceDetails } = useContext(ResidenceContext);
+  const [startDate, setStartDate] = useState(new Date());
+  const [endDate, setEndDate] = useState(new Date());
+
+  Date.prototype.getUnixTime = function () {
+    return this.getTime() / 1000;
+  };
 
   useEffect(() => {
     window.scroll({
       top: 0,
       left: 0,
-      behavior: "smooth"
+      behavior: "smooth",
     });
     fetchResidenceDetails(id);
   }, []);
 
-  if(residence === null){
+  if (residence === null) {
     return null;
+  }
+
+  console.log(residence);
+
+  for (let i = 0; i < residence.availableDays.length; i++) {
+
+    let duration = ( residence.availableDays[i].endDate - residence.availableDays[i].startDate ) / 86400;
+    console.log(duration);
+
+    for (let day = 0; day < duration; day++) {
+      let date = new Date(residence.availableDays[i].startDate);
+      date.setDate(date.getDate() + day);
+      console.log('first' + date);   
+
+    }
   }
 
   function confirmPolicies() {
@@ -101,15 +131,51 @@ function ResidenceDetailsPage() {
             Amenities
           </div>
           <div className="darkbrowntext row mt-3 ml-1">
-            {residence.amenity.balcony && <p className="col-6"><MdStreetview className="golden" /> Balcony</p>}
-            {residence.amenity.swimmingpool && <p className="col-6"><FaSwimmingPool className="golden" /> Swimming Pool</p>}
-            {residence.amenity.wifi && <p className="col-6"><FaWifi className="golden" /> WiFi</p>}
-            {residence.amenity.television && <p className="col-6"><FaTv className="golden" /> Television</p>}
-            {residence.amenity.bathtub && <p className="col-6"><FaBath className="golden" /> Bathtub</p>}
-            {residence.amenity.washingmachine && <p className="col-6"><MdLocalLaundryService className="golden" /> Washing Machine</p>}
-            {residence.amenity.fridge && <p className="col-6"><FaTemperatureLow className="golden" /> Fridge</p>}
-            {residence.amenity.freezer && <p className="col-6"><FaSnowflake className="golden" /> Freezer</p>}
-            {residence.amenity.dishwasher && <p className="col-6"><MdLocalDrink className="golden" /> Dishwasher</p>}
+            {residence.amenity.balcony && (
+              <p className="col-6">
+                <MdStreetview className="golden" /> Balcony
+              </p>
+            )}
+            {residence.amenity.swimmingpool && (
+              <p className="col-6">
+                <FaSwimmingPool className="golden" /> Swimming Pool
+              </p>
+            )}
+            {residence.amenity.wifi && (
+              <p className="col-6">
+                <FaWifi className="golden" /> WiFi
+              </p>
+            )}
+            {residence.amenity.television && (
+              <p className="col-6">
+                <FaTv className="golden" /> Television
+              </p>
+            )}
+            {residence.amenity.bathtub && (
+              <p className="col-6">
+                <FaBath className="golden" /> Bathtub
+              </p>
+            )}
+            {residence.amenity.washingmachine && (
+              <p className="col-6">
+                <MdLocalLaundryService className="golden" /> Washing Machine
+              </p>
+            )}
+            {residence.amenity.fridge && (
+              <p className="col-6">
+                <FaTemperatureLow className="golden" /> Fridge
+              </p>
+            )}
+            {residence.amenity.freezer && (
+              <p className="col-6">
+                <FaSnowflake className="golden" /> Freezer
+              </p>
+            )}
+            {residence.amenity.dishwasher && (
+              <p className="col-6">
+                <MdLocalDrink className="golden" /> Dishwasher
+              </p>
+            )}
           </div>
         </div>
         <hr></hr>
@@ -117,7 +183,18 @@ function ResidenceDetailsPage() {
           <div className="col-12 residenceDetailsPageAddress golden mr-5">
             Availability
           </div>
-          <Calender></Calender>
+          <DatePicker
+            selected={startDate}
+            minDate={new Date()}
+            onChange={(date) => setStartDate(date)}
+            placeholderText="Select a date"
+          />
+          <DatePicker
+            selected={endDate}
+            minDate={new Date()}
+            onChange={(date) => setEndDate(date)}
+            placeholderText="Select a date"
+          />
         </div>
         <hr></hr>
         <div className="row ml-4 mr-4 justify-content-center">
@@ -131,7 +208,7 @@ function ResidenceDetailsPage() {
                 type="select"
                 name="guestSelection"
                 id="guestSelection"
-                onChange={e => setNumberOfGuests(e.target.value)}
+                onChange={(e) => setNumberOfGuests(e.target.value)}
               >
                 <option value={1}>1</option>
                 <option value={2}>2</option>
