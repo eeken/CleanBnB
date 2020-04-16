@@ -59,9 +59,9 @@ const ShowResidence = () => {
             </div>
             <div className="col-12 text-right">
               <p className="golden">
-                Total price: 
+                Total price:
                 <span className="font-weight-bold ml-1">
-                   ${booking.totalPrice}
+                  ${booking.totalPrice}
                 </span>
               </p>
             </div>
