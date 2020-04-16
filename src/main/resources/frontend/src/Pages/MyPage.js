@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import { Container, Row, Col, Collapse, Button } from "reactstrap";
 import { UserContext } from "../contexts/UserContextProvider";
 import AddResidence from "../components/AddResidence";
@@ -7,13 +7,19 @@ import ShowBooking from "../components/ShowBooking";
 import { FaPlus } from 'react-icons/fa';
 
 function MyPage() {
-  const { user } = useContext(UserContext);
+  const { user, fetchUser } = useContext(UserContext);
   const [showBookingIsOpen, setshowBookingIsOpen] = useState(false);
   const [showResidenceIsOpen, setshowResidenceIsOpen] = useState(false);
   const [addResidenceisOpen, setaddResidenceIsOpen] = useState(false);
   const toggleShowBooking = () => setshowBookingIsOpen(!showBookingIsOpen);
   const toggleShowResidence = () => setshowResidenceIsOpen(!showResidenceIsOpen);
   const toggleAddResidence = () => setaddResidenceIsOpen(!addResidenceisOpen);
+
+
+  useEffect(() => {
+    fetchUser() 
+  }, []) 
+
 
   if (user === null) {
     return null;

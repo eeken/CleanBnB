@@ -1,16 +1,12 @@
-import React, { useState, useContext } from "react";
-import { Button, Form, FormGroup, Input, Label } from "reactstrap";
+import React, { useContext } from "react";
+import { FormGroup } from "reactstrap";
 import { UserContext } from "../contexts/UserContextProvider";
-import { useHistory } from "react-router-dom";
 import { BookingContext } from "../contexts/BookingContextProvider";
-import { ResidenceContext } from "../contexts/ResidenceContextProvider";
 
 const ShowResidence = () => {
   const { user } = useContext(UserContext);
   const { bookings } = useContext(BookingContext);
-  const { residence, fetchResidenceDetails } = useContext(ResidenceContext);
 
-  let history = useHistory();
   const convertDate = (date) => {
     return new Date(date*1000).toLocaleDateString()
   };
@@ -18,9 +14,9 @@ const ShowResidence = () => {
   if (bookings) {
     const list = () => {
       return user.bookingList.map((booking, i) => {
-        //fetchResidenceDetails(booking.residenceId)
         return (
-          <div className="white pb-1 pt-1">
+          <div className="pb-1 pt-1">
+            <hr className="m-0 ml-4 mb-2" style={{ "width": "85%" }}></hr>
             <div className="row text-left pt-2">
               <div className="col-5 col-lg-2 col-md-3 ">
                 <img
@@ -30,7 +26,7 @@ const ShowResidence = () => {
                 />
               </div>
               <div className="col-7">
-                <p className="golden mb-0 residenceDetailsTitle">
+                <p className="golden mb-0 mt-2 pr-2 residenceDetailsTitle">
                   {booking.residence.title}
                 </p>
                 <p className="mb-0 residenceDetailsCommonDetails">
@@ -48,32 +44,32 @@ const ShowResidence = () => {
               </div>
             </div>
             <div className="col-12 text-left">
-              <p className="residenceDetailsCommonDetails">
+              <p className="residenceDetailsCommonDetails m-3">
                 <span className="font-weight-bold">Address: </span>
-                {booking.residence.address.street}
-                {booking.residence.address.streetNumber},
-                {booking.residence.address.city},
-                {booking.residence.address.county}
-                {booking.residence.address.country},
+                {booking.residence.address.street} {booking.residence.address.streetNumber}, {booking.residence.address.city}, {booking.residence.address.country}
               </p>
             </div>
-            <div className="col-12 text-right white">
-              <p className="golden">
+            <div className="col-12 text-right white r-2 font-weight-bold">
+              <p className="golden totalpricetext mb-0 mr-4">
                 Total price:
-                <span className="font-weight-bold ml-1">
-                  ${booking.totalPrice}
-                </span>
+                <span className="ml-1 pricetext">
+                  ${booking.totalPrice}</span>
               </p>
             </div>
           </div>
         );
       });
     };
-    return <>{list()}</>;
+    return (
+      <FormGroup className="white">
+        <p className="darkbrowntext currenttext font-weight-bold pt-4">CURRENT BOOKINGS</p>
+        <div className="pb-3">{list()}</div>
+      </FormGroup>
+    )
   }
   return (
-    <div>
-      <h1> No matches </h1>
+    <div className="white">
+      <h1 className="golden"> No bookings yet</h1>
     </div>
   );
 };

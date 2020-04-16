@@ -2,15 +2,14 @@ import React, { useState, useContext } from "react";
 import { Button, Form, FormGroup, Input, Label } from "reactstrap";
 import { UserContext } from "../contexts/UserContextProvider";
 import { useHistory } from "react-router-dom";
+import DatePicker from "react-datepicker";
 
-let images = []
+let images = [];
 
 const filesChange = async (fileList) => {
   // handle file changes
   const formData = new FormData();
-
   if (!fileList.length) return;
-
   // append the files to FormData
   Array.from(Array(fileList.length).keys()).map((x) => {
     formData.append("files", fileList[x], fileList[x].name);
@@ -20,34 +19,28 @@ const filesChange = async (fileList) => {
     method: "POST",
     body: formData,
   }).catch(console.warn);
-
   response = await response.json();
-
-  console.log(response);
-
   images = response;
 };
 
 const AddResidence = () => {
   let history = useHistory();
 
-    // Since this is a wall of text...
-    // To find the FormGroup/Segment you're looking for...
-    // Copy / CTRL - F / Paste any of the keywords below
-  
-    //  For 'ABOUT THE RESIDENCE' --- RESIDENCE-DETAILS-FORM ---
-  
-    //  For 'RESIDENCE AMENITIES' --- RESIDENCE-AMENITIES-FORM ---
-  
-    //  For 'RESIDENCE LOCATION' --- RESIDENCE-LOCATION-FORM ---
-  
-    //  For 'RESIDENCE DESCRIPTION' --- RESIDENCE-DESCRIPTION-FORM ---
-  
-    //  For 'RESIDENCE AVAILABLE DATES' --- RESIDENCE-AVAILABLE-DATES-FORM ---
-  
-    //  For 'RESIDENCE RESIDENCE IMAGES' --- RESIDENCE-IMAGES-FORM ---
+  // Since this is a wall of text...
+  // To find the FormGroup/Segment you're looking for...
+  // Copy / CTRL - F / Paste any of the keywords below
 
+  //  For 'ABOUT THE RESIDENCE' --- RESIDENCE-DETAILS-FORM ---
 
+  //  For 'RESIDENCE AMENITIES' --- RESIDENCE-AMENITIES-FORM ---
+
+  //  For 'RESIDENCE LOCATION' --- RESIDENCE-LOCATION-FORM ---
+
+  //  For 'RESIDENCE DESCRIPTION' --- RESIDENCE-DESCRIPTION-FORM ---
+
+  //  For 'RESIDENCE AVAILABLE DATES' --- RESIDENCE-AVAILABLE-DATES-FORM ---
+
+  //  For 'RESIDENCE RESIDENCE IMAGES' --- RESIDENCE-IMAGES-FORM ---
 
   // RESIDENCE DETAILS
   //****    ENTITY: RESIDENCE   ****
@@ -82,13 +75,13 @@ const AddResidence = () => {
 
   //RESIDENCE AVAILABLE PERIOD
   //****    ENTITY: AVAILABLEPERIOD   ****
+  const [availableDays, setAvailableDays] = useState([]);
   const [startDate, setStartDate] = useState(null);
   const [endDate, setEndDate] = useState(null);
 
   //RESIDENCE AVAILABLE PERIOD
   //****    ENTITY: AVAILABLEPERIOD   ****
   const [images, setImages] = useState([]);
-
 
   const filesChange = async (fileList) => {
     // handle file changes
@@ -97,20 +90,26 @@ const AddResidence = () => {
     if (!fileList.length) return;
 
     // append the files to FormData
-    Array.from(Array(fileList.length).keys()).map(x => {
+    Array.from(Array(fileList.length).keys()).map((x) => {
       formData.append("files", fileList[x], fileList[x].name);
-    })
+    });
 
     let response = await fetch("/static/upload", {
       method: "POST",
       body: formData,
     }).catch(console.warn);
     response = await response.json();
-
-    setImages( images => [...images, { imagelink: response.toString() }] );
-    console.log(images);
-
+    setImages((images) => [...images, { imagelink: response.toString() }]);
   };
+
+  const addDates = (e) => {
+    e.preventDefault()
+    let start = (startDate/1000)
+    let end = (endDate/1000)
+    setAvailableDays((availableDays) => [...availableDays, { startDate: start , endDate: end }]);
+    setStartDate(null)
+    setEndDate(null) 
+  }
 
   //RESIDENCE USER/OWNER
   //****    ENTITY: USER   ****
@@ -118,6 +117,11 @@ const AddResidence = () => {
 
   const registerResidence = async (e) => {
     e.preventDefault();
+
+    if(availableDays.length == 0){
+      return null
+    }
+
     let newResidence = {
       size: residenceSize,
       rooms: numberOfRooms,
@@ -125,6 +129,7 @@ const AddResidence = () => {
       pricepernight: pricePerNight,
       numberofbeds: numberOfBeds,
       title: title,
+      description: description,
       address: {
         county: county,
         city: city,
@@ -143,23 +148,21 @@ const AddResidence = () => {
         washingmachine: hasWashingMachine,
         dishwasher: hasDishWasher,
       },
+      availableDays,
       images,
       user: {
         id: user.id,
       },
     };
-    console.log(newResidence);
 
     let response = await fetch("/rest/residences/register", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(newResidence),
     });
-    response = await response.json()
+    response = await response.json();
 
-    console.log(response);
-
-    history.push("/details/residence_id=" + response.id)
+    history.push("/details/residence_id=" + response.id);
   };
 
   return (
@@ -169,8 +172,7 @@ const AddResidence = () => {
       onSubmit={registerResidence}
     >
       <FormGroup className="container mb-4">
-
-             {/* RESIDENCE-DETAILS-FORM */}
+        {/* RESIDENCE-DETAILS-FORM */}
 
         <div className=" row dateInputRow justify-content-space-around align-items-center">
           <div className="m-4">
@@ -242,7 +244,7 @@ const AddResidence = () => {
         </div>
       </FormGroup>
 
-            {/* RESIDENCE-AMENITIES-FORM */}
+      {/* RESIDENCE-AMENITIES-FORM */}
 
       <FormGroup className="container">
         <h5>RESIDENCE AMENITIES</h5>
@@ -333,7 +335,6 @@ const AddResidence = () => {
       </FormGroup>
 
       <FormGroup className="container">
-
         {/* RESIDENCE-LOCATION-FORM  */}
 
         <h5>RESIDENCE LOCATION</h5>
@@ -395,7 +396,6 @@ const AddResidence = () => {
         </div>
       </FormGroup>
       <FormGroup>
-
         {/* RESIDENCE-DESCRIPTION-FORM */}
 
         <h5>DESCRIPTION</h5>
@@ -409,32 +409,20 @@ const AddResidence = () => {
         />
       </FormGroup>
       <FormGroup className="mb-4">
-
-          {/* RESIDENCE-AVAILABLE-DATES-FORM */}
-
         <h5>AVAILABLE DATES</h5>
-        <div className="row dateInputRow">
-          <Input
-            className="col-5"
-            type="date"
-            id="from"
-            placeholder="From"
-            onChange={(e) => {
-              setStartDate(e.target.value);
-            }}
+          <DatePicker
+            selected={startDate}
+            minDate={new Date()}
+            onChange={(date) => setStartDate(new Date(date).valueOf())}
           />
-          <Input
-            className="col-5"
-            type="date"
-            placeholder="From"
-            onChange={(e) => {
-              setEndDate(e.target.value);
-            }}
+          <DatePicker
+            selected={endDate}
+            minDate={new Date()}
+            onChange={(date) => setEndDate(new Date(date).valueOf())}
           />
-        </div>
+          <button onClick={addDates}>Add date</button>
       </FormGroup>
       <FormGroup className="container mb-4">
-
         {/* RESIDENCE-IMAGES-FORM */}
 
         <h5>RESIDENCE IMAGES</h5>
@@ -446,12 +434,14 @@ const AddResidence = () => {
             id="files"
             required
             accept=".png,.jpg,.jpeg,.gif,.bmp,.jfif"
-            onChange={e => filesChange(e.target.files)}
+            onChange={(e) => filesChange(e.target.files)}
           />
         </div>
       </FormGroup>
       <FormGroup>
-        <Button className="bookingButton mb-4 p-2">PUBLISH THIS RESIDENCE</Button>
+        <Button className="bookingButton mb-4 p-2">
+          PUBLISH THIS RESIDENCE
+        </Button>
       </FormGroup>
     </Form>
   );

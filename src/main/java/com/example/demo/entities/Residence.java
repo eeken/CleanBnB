@@ -46,6 +46,9 @@ public class Residence {
     @JoinColumn(name="residence_id")
     private List<AvailablePeriod> availableDays;
 
+    @ManyToOne
+    private User user;
+
 
     // GETTERS AND SETTERS
 
@@ -65,8 +68,6 @@ public class Residence {
     public void setTitle(String title) { this.title = title; }
     public Address getAddress() { return address; }
     public void setAddress(Address address) { this.address = address; }
-    //public User getUser() { return user; }
-
     public Amenity getAmenity() { return amenity; }
     public void setAmenity(Amenity amenity) { this.amenity = amenity; }
     public List<Booking> getBookedDays() { return bookedDays; }
@@ -75,11 +76,8 @@ public class Residence {
     public void setAvailableDays(List<AvailablePeriod> availableDays) { this.availableDays = availableDays; }
     public List<Image> getImages() { return images; }
     public void setImages(List<Image> images) { this.images = images; }
-    public String getDescription() {
-        return description;
-    }
-    public void setDescription(String description) {
-        this.description = description;
-    }
+    public String getDescription() { return description; }
+    public void setDescription(String description) { this.description = description; }
+    public void setUser(User user) { this.user = user; }
 }
 
