@@ -4,6 +4,7 @@ import { UserContext } from "../contexts/UserContextProvider";
 import AddResidence from "../components/AddResidence";
 import ShowResidence from "../components/ShowResidence";
 import ShowBooking from "../components/ShowBooking";
+import { FaPlus } from 'react-icons/fa';
 
 function MyPage() {
   const { user } = useContext(UserContext);
@@ -22,43 +23,44 @@ function MyPage() {
   //fetchUser()
   return (
     <Container className="themed-container text-center" fluid="sm">
-      <Row className="white boxes m-2">
-        <Col className="p-5 golden ">Welcome, {user.firstName}! </Col>
+      <Row className="white boxes m-2 mb-4 mt-4">
+        <Col className="p-5 golden font-weight-bold"><h3>Welcome, {user.firstName}!</h3></Col>
       </Row>
       {/* <Row className="golden-bg boxes m-2 mb-0">
         <Col className="p-3 darkbrowntext">SHOW MY BOOKINGS</Col>
       </Row>
       <ShowBooking></ShowBooking> */}
-      <Row className="showBookingAndResidenceButton boxes m-2">
+      <Row className="showBookingAndResidenceButton boxes m-2 mb-3">
         <Button
           color="transparent"
-          className="container showBookingAndResidenceButton boxes m-2 justify-content-center"
+          className="container showBookingAndResidenceButton boxes m-2 justify-content-center font-weight-bold"
           onClick={toggleShowBooking}
         >
-          SHOW MY BOOKINGS
+          SHOW MY BOOKINGS ({user.bookingList.length})
         </Button>
         <Collapse isOpen={showBookingIsOpen}>
           <ShowBooking />
         </Collapse>
       </Row>
-      <Row className="showBookingAndResidenceButton boxes m-2">
+      <Row className="showBookingAndResidenceButton boxes m-2 mb-3">
         <Button
           color="transparent"
-          className="container showBookingAndResidenceButton boxes m-2 justify-content-center"
+          className="container showBookingAndResidenceButton boxes m-2 justify-content-center font-weight-bold"
           onClick={toggleShowResidence}
         >
-          SHOW MY RESIDENCES
+          SHOW MY RESIDENCES ({user.residenceList.length})
         </Button>
         <Collapse isOpen={showResidenceIsOpen}>
           <ShowResidence />
         </Collapse>
       </Row>
-      <Row className="addResidenceButton  boxes m-2">
+      <Row className="addResidenceButton boxes m-2 mb-5">
         <Button
           color="transparent"
-          className="container addResidenceButton boxes m-2 justify-content-center"
+          className="container addResidenceButton boxes m-2 justify-content-center font-weight-bold"
           onClick={toggleAddResidence}
         >
+          <FaPlus className="golden mb-1 mr-2" /> 
           ADD A RESIDENCE
         </Button>
         <Collapse isOpen={addResidenceisOpen}>
