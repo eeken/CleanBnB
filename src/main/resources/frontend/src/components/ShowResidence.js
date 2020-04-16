@@ -16,7 +16,7 @@ function ShowResidence() {
             <div
               key={i}
               onClick={() => history.push("/details/residence_id=" + residence.id)}
-              className="text-left residenceCard mb-2"
+              className="text-left residenceCard mb-3"
               style={{ cursor: "pointer" }}
             >
               <div className="col-5">
@@ -26,24 +26,24 @@ function ShowResidence() {
                   alt="residence"
                 />
               </div>
+
               <div className="col-7 ml-1">
-                <p className="row golden mb-0 ml-1 residenceDetailsTitle">
+                <p className="row golden mb-0 ml-1 pr-1 residenceDetailsTitle">
                   {residence.title}
                 </p>
-                <p className="row golden residenceDetailsCommonDetails mb-2 ml-1">
+                <p className="row golden residenceDetailsCommonDetails ml-1">
 
                   {residence.maxguests} guests - {residence.numberofbeds} beds - {residence.rooms}  rooms
               </p>
-              
-              <p className="row golden m-0 residencePriceDetails d-flex align-items-end flex-column">
+
+                <p className="golden residencePriceDetails ml-1">
                   ${residence.pricepernight}
-                  <span className="residenceDetailsCommonDetails ml-1">
-                    per night
-                </span>
+                  <p className="golden detailtext ml-1">
+                    p/n
                 </p>
-              
+                </p>
               </div>
-         
+
             </div>
         );
       });
