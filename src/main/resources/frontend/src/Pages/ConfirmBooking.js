@@ -55,6 +55,7 @@ export default function ConfirmBooking() {
       checkIn: checkin, 
       checkOut: checkout, 
       totalPrice: totalprice,
+      amountOfGuests: numberofguests,
       resId: residence.id,
       userId: user.id
     }

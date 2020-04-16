@@ -9,7 +9,6 @@ import { UserContext } from "../contexts/UserContextProvider";
 import { ResidenceContext } from "../contexts/ResidenceContextProvider";
 
 //COMPONENTS
-import Calender from "../components/Calender";
 import CarouselComponent from "../components/CarouselComponent";
 
 //REACT ICONS
@@ -39,9 +38,6 @@ function ResidenceDetailsPage() {
 
   const { user } = useContext(UserContext);
 
-  const [checkIn, setCheckIn] = useState("");
-  const [checkOut, setCheckOut] = useState("");
-  const [amountOfNights, setAmountOfNights] = useState("-");
   const [numberOfGuests, setNumberOfGuests] = useState("1");
   const { residence, fetchResidenceDetails } = useContext(ResidenceContext);
   const [startDate, setStartDate] = useState(new Date());
@@ -52,10 +48,11 @@ function ResidenceDetailsPage() {
   };
 
   let totalPrice = "-";
+  let amountOfNights = null;
 
   const bookResidence = async (e) => {
 
-    if(startDate > endDate){
+    if (startDate > endDate) {
       let temp = startDate
       setStartDate(endDate)
       setEndDate(temp)
@@ -64,23 +61,23 @@ function ResidenceDetailsPage() {
     e.preventDefault();
     await history.push(
       "residence_id=" +
-        residence.id +
-        "/newbookingOf" +
-        residence.title +
-        "&location=" +
-        residence.address.city +
-        "&" +
-        residence.address.country +
-        "&numberOfGuests=" +
-        numberOfGuests +
-        "&checkin=" +
-        checkIn +
-        "&checkout=" +
-        checkOut +
-        "&amountOfNights=" +
-        amountOfNights +
-        "&totalPrice=" +
-        totalPrice
+      residence.id +
+      "/newbookingOf" +
+      residence.title +
+      "&location=" +
+      residence.address.city +
+      "&" +
+      residence.address.country +
+      "&numberOfGuests=" +
+      numberOfGuests +
+      "&checkin=" +
+      startDateUnix +
+      "&checkout=" +
+      endDateUnix +
+      "&amountOfNights=" +
+      amountOfNights +
+      "&totalPrice=" +
+      totalPrice
     );
   };
 
@@ -93,14 +90,15 @@ function ResidenceDetailsPage() {
     fetchResidenceDetails(id);
   }, []);
 
-  //watcher
   useEffect(() => {
-    //skicka med vilken variabel den ska lyssna på
   }, [amountOfNights]);
 
   if (residence === null) {
     return null;
   }
+
+  console.log(startDate, endDate)
+
 
   //creating dropdown array for maxguests
   let maxAmountOfGuests = [];
@@ -110,11 +108,15 @@ function ResidenceDetailsPage() {
 
   let price = <b></b>;
 
-  if (amountOfNights > 0 && amountOfNights > 0) {
+  let startDateUnix = new Date(startDate).getUnixTime();
+  let endDateUnix = new Date(endDate).getUnixTime();
+  amountOfNights = (endDateUnix - startDateUnix) / 86400;
+
+  if (amountOfNights > 0 && amountOfNights !== 0) {
     price = (
       <b>
         Total price: {residence.pricepernight} x {amountOfNights} = $
-        {(totalPrice = residence.pricepernight * amountOfNights)}{" "}
+        {(totalPrice = residence.pricepernight * amountOfNights)}
       </b>
     );
   }
@@ -128,6 +130,19 @@ function ResidenceDetailsPage() {
     history.push("/details/residence_id=" + residence.id + "/login");
   };
 
+  let button = <Button disabled
+    style={{ cursor: "pointer" }}
+    className="bookingButton mb-5 p-2"
+  >
+    BOOK THIS RESIDENCE
+            </Button>
+
+  if (totalPrice > 0) {
+    button = <Button style={{ cursor: "pointer" }}
+      className="bookingButton mb-5 p-2">BOOK THIS RESIDENCE</Button>;
+  }
+
+
   return (
     <div className="white">
       <Form>
@@ -135,7 +150,6 @@ function ResidenceDetailsPage() {
           <div className="residenceDetailsPageTitle golden text-center">
             {residence.title}
           </div>
-          {/* <div className=" sliderContainer container col-12 col-lg-6">  </div> */}
         </div>
         <CarouselComponent></CarouselComponent>
         <div className="row m-4">
@@ -156,7 +170,7 @@ function ResidenceDetailsPage() {
             </div>
             <div>
               <span className="font-weight-bold golden">
-                Maximum amount of Guests:{" "}
+                Maximum amount of Guests:
               </span>
               {residence.maxguests}
             </div>
@@ -233,25 +247,6 @@ function ResidenceDetailsPage() {
           </div>
         </div>
         <hr></hr>
-        <div className="row m-4">
-          <div className="col-12 residenceDetailsPageAddress golden mr-5">
-            Availability
-          </div>
-          <DatePicker
-            selected={startDate}
-            minDate={new Date()}
-            onChange={(date) => setStartDate(date)}
-            includeDates={residence.availableDays}
-            placeholderText="Select a date"
-          />
-          <DatePicker
-            selected={endDate}
-            minDate={new Date()}
-            onChange={(date) => setEndDate(date)}
-            includeDates={residence.availableDays}
-            placeholderText="Select a date"
-          />
-        </div>
       </Form>
 
       {!user ? (
@@ -265,54 +260,56 @@ function ResidenceDetailsPage() {
           </Button>
         </div>
       ) : (
-        <Form onSubmit={bookResidence}>
-          <div className="row m-4">
-            <div className="col-12 residenceDetailsPageAddress golden mb-2">
-              Availability
-            </div>
-            <div className="ml-3 mr-3">
-              <Calender
-                setCheckIn={setCheckIn}
-                setCheckOut={setCheckOut}
-                setAmountOfNights={setAmountOfNights}
-              ></Calender>
-            </div>
+          <Form onSubmit={bookResidence}>
+            <div className="row m-4">
+              <div className="col-12 residenceDetailsPageAddress golden mr-5">
+                Availability
           </div>
-          <hr></hr>
-          <div className="row ml-4 mr-4 justify-content-center">
-            <div className="col-12 residenceDetailsPageAddress golden ml-1.5 mt-3">
-              Guests
+              <DatePicker
+                selected={startDate}
+                minDate={new Date()}
+                onChange={(date) => setStartDate(date)}
+                includeDates={residence.availableDays}
+                placeholderText="Select a date"
+              />
+              <DatePicker
+                selected={endDate}
+                minDate={new Date()}
+                onChange={(date) => setEndDate(date)}
+                includeDates={residence.availableDays}
+                placeholderText="Select a date"
+              />
             </div>
-            <div className="col-9 golden mt-3 mr-3">
-              Amount of guests (including children):
+            <hr></hr>
+            <div className="row ml-4 mr-4 justify-content-center">
+              <div className="col-12 residenceDetailsPageAddress golden ml-1.5 mt-3">
+                Guests
+            </div>
+              <div className="col-9 golden mt-3 mr-3">
+                Amount of guests (including children):
               <FormGroup>
-                <Input
-                  type="select"
-                  name="guestSelection"
-                  id="guestSelection"
-                  onChange={(e) => setNumberOfGuests(e.target.value)}
-                >
-                  {maxAmountOfGuests.map((guest) => (
-                    <option
-                      key={guest.value + "uniquekey" + guest}
-                      value={guest.value}
-                    >
-                      {guest}
-                    </option>
-                  ))}
-                </Input>
-              </FormGroup>
+                  <Input
+                    type="select"
+                    name="guestSelection"
+                    id="guestSelection"
+                    onChange={(e) => setNumberOfGuests(e.target.value)}
+                  >
+                    {maxAmountOfGuests.map((guest) => (
+                      <option
+                        key={guest.value + "uniquekey" + guest}
+                        value={guest.value}
+                      >
+                        {guest}
+                      </option>
+                    ))}
+                  </Input>
+                </FormGroup>
+              </div>
+              <div className="col-8 golden m-3">{price}</div>
+              {button}
             </div>
-            <div className="col-10 golden m-3">{price}</div>
-            <Button
-              style={{ cursor: "pointer" }}
-              className="bookingButton mb-5 p-2"
-            >
-              BOOK THIS RESIDENCE
-            </Button>
-          </div>
-        </Form>
-      )}
+          </Form>
+        )}
     </div>
   );
 }

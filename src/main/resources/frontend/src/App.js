@@ -42,7 +42,7 @@ function App() {
           <BookingContextProvider>
             <Router>
               <Header menuData={menu} />
-              <main className="mt-4 main">
+              <main className="main">
                 <Switch>
                   <Route exact path="/" component={LandingPage} />
                   <Route exact path="/explore" component={Explore} />

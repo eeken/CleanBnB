@@ -1,10 +1,10 @@
 import React from "react";
-import SearchAndFilerStart from "../components/SearchAndFilterStart";
+import SearchAndFilterStart from "../components/SearchAndFilterStart";
 
 function LandingPage() {
   return (
     <div className="landingPageMain">
-      <SearchAndFilerStart />
+      <SearchAndFilterStart />
     </div>
   );
 }
