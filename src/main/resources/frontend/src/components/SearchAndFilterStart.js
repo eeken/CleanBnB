@@ -2,12 +2,16 @@ import React, { useState } from "react";
 import { Button, Form, FormGroup, Label, Input } from "reactstrap";
 import { useHistory } from "react-router-dom";
 import Calender from "../components/Calender";
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
 
 function LandingPage() {
   const [destination, setDestination] = useState();
   const [checkIn, setCheckIn] = useState(0);
   const [checkOut, setCheckOut] = useState(0);
   const [numberofguests, setNumberOfGuests] = useState(0);
+  const [startDate, setStartDate] = useState(new Date());
+  const [endDate, setEndDate] = useState(new Date());
 
   const submitSearch = async e => {
     e.preventDefault();
@@ -46,7 +50,18 @@ function LandingPage() {
               Check-out
             </Label>
           </div>
-          <Calender />
+        <DatePicker
+          selected={startDate}
+          onChange={date => setStartDate(date)}
+          placeholderText="Select a date"
+          includeDates={[new Date(), (new Date(), 1)]}
+        />
+        <DatePicker
+          selected={endDate}
+          onChange={date => setEndDate(date)}
+          placeholderText="Select a date"
+          excludeDates={[new Date(), (new Date(), 1)]}
+        />
         </FormGroup>
 
         <FormGroup>
