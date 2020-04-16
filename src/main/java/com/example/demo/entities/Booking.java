@@ -24,7 +24,7 @@ public class Booking {
     private int amountOfGuests;
     @ManyToOne
     @JoinColumn(name="residence_id")
-    @JsonIgnoreProperties("bookedDays")
+    @JsonIgnoreProperties({"bookedDays", "user"})
     private Residence residence;
     @Column(name="user_id")
     private int userId;
@@ -39,42 +39,31 @@ public class Booking {
     public Residence getResidence() {
         return residence;
     }
-
     public void setResidence(Residence residence) {
         this.residence = residence;
     }
-
     public int getId() { return id; }
     public void setId(int id) { this.id = id; }
-
     public int getCheckIn() {
         return checkIn;
     }
-
     public void setCheckIn(int checkIn) {
         this.checkIn = checkIn;
     }
-
     public int getCheckOut() {
         return checkOut;
     }
-
     public void setCheckOut(int checkOut) {
         this.checkOut = checkOut;
     }
-
     public int getTotalPrice() { return totalPrice; }
     public void setTotalPrice(int totalPrice) { this.totalPrice = totalPrice; }
-    
-
     public int getAmountOfGuests() {
         return amountOfGuests;
     }
-
     public void setAmountOfGuests(int amountOfGuests) {
         this.amountOfGuests = amountOfGuests;
     }
-
     public void setUserId(int userId) {
         this.userId = userId;
     }

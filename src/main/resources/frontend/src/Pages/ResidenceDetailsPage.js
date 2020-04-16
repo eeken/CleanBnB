@@ -5,13 +5,10 @@ import { useParams, useHistory } from "react-router-dom";
 import DatePicker from "react-datepicker";
 
 //CONTEXTPROVIDERS
-import UserContextProvider, {
-  UserContext,
-} from "../contexts/UserContextProvider";
+import { UserContext } from "../contexts/UserContextProvider";
 import { ResidenceContext } from "../contexts/ResidenceContextProvider";
 
 //COMPONENTS
-import SearchBar from "../components/SearchBar";
 import Calender from "../components/Calender";
 import CarouselComponent from "../components/CarouselComponent";
 
@@ -49,10 +46,6 @@ function ResidenceDetailsPage() {
   const { residence, fetchResidenceDetails } = useContext(ResidenceContext);
   const [startDate, setStartDate] = useState(new Date());
   const [endDate, setEndDate] = useState(new Date());
-  const [fetchedBookedDays, setFetchedBookedDays] = useState([]);
-  const [featchedAvailableDays, setFeatchedAvailableDays] = useState([]);
-  const [fetchedBookedDaysLoaded, setFetchedBookedDaysLoaded] = useState(false);
-  const [checkDays, setCheckDays] = useState(false);
 
   Date.prototype.getUnixTime = function () {
     return this.getTime() / 1000;
@@ -61,6 +54,13 @@ function ResidenceDetailsPage() {
   let totalPrice = "-";
 
   const bookResidence = async (e) => {
+
+    if(startDate > endDate){
+      let temp = startDate
+      setStartDate(endDate)
+      setEndDate(temp)
+    }
+
     e.preventDefault();
     await history.push(
       "residence_id=" +
@@ -102,50 +102,11 @@ function ResidenceDetailsPage() {
     return null;
   }
 
-  if (!fetchedBookedDaysLoaded) {
-    let arr = [];
-    for (let i = 0; i < residence.bookedDays.length; i++) {
-      let duration =
-        (residence.bookedDays[i].checkOut - residence.bookedDays[i].checkIn) /
-        86400;
-      for (let day = 0; day <= duration; day++) {
-        let date = new Date(residence.bookedDays[i].checkIn * 1000);
-        date.setDate(date.getDate() + day);
-        arr.push(date.toString());
-      }
-    }
-    setFetchedBookedDays(arr);
-    setFetchedBookedDaysLoaded(true);
-    setCheckDays(true);
-  }
-
-  if (checkDays) {
-    let arr = [];
-    for (let i = 0; i < residence.availableDays.length; i++) {
-      let duration =
-        (residence.availableDays[i].endDate -
-          residence.availableDays[i].startDate) /
-        86400;
-      for (let day = 0; day <= duration; day++) {
-        let date = new Date(residence.availableDays[i].startDate * 1000);
-        date.setDate(date.getDate() + day);
-        if (!fetchedBookedDays.includes(date.toString())) {
-          arr.push(date);
-        }
-      }
-    }
-    setFeatchedAvailableDays(arr);
-    setCheckDays(false);
-  }
   //creating dropdown array for maxguests
   let maxAmountOfGuests = [];
   for (let i = 1; i <= residence.maxguests; i++) {
     maxAmountOfGuests.push(i);
   }
-
-  console.log("Booked" + fetchedBookedDays);
-  console.log("Not booked" + featchedAvailableDays);
-  console.log(residence);
 
   let price = <b></b>;
 
@@ -166,8 +127,6 @@ function ResidenceDetailsPage() {
     });
     history.push("/details/residence_id=" + residence.id + "/login");
   };
-
-  console.log(residence);
 
   return (
     <div className="white">
@@ -282,14 +241,14 @@ function ResidenceDetailsPage() {
             selected={startDate}
             minDate={new Date()}
             onChange={(date) => setStartDate(date)}
-            includeDates={featchedAvailableDays}
+            includeDates={residence.availableDays}
             placeholderText="Select a date"
           />
           <DatePicker
             selected={endDate}
             minDate={new Date()}
             onChange={(date) => setEndDate(date)}
-            includeDates={featchedAvailableDays}
+            includeDates={residence.availableDays}
             placeholderText="Select a date"
           />
         </div>

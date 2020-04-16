@@ -6,8 +6,8 @@ import "react-datepicker/dist/react-datepicker.css";
 
 function LandingPage() {
   const [destination, setDestination] = useState();
-  const [checkIn, setCheckIn] = useState(0);
-  const [checkOut, setCheckOut] = useState(0);
+  const [checkIn, /*setCheckIn*/] = useState(0);
+  const [checkOut, /*setCheckOut*/] = useState(0);
   const [numberofguests, setNumberOfGuests] = useState(0);
   const [startDate, setStartDate] = useState(new Date());
   const [endDate, setEndDate] = useState(new Date());
@@ -27,12 +27,10 @@ function LandingPage() {
   let endDateUnix = new Date(endDate).getUnixTime();
 
   let duration = (endDateUnix - startDateUnix) / 86400;
-  console.log(duration);
 
   for(let day = 0; day < duration; day++) {
     let date = new Date(startDate)
     date.setDate(date.getDate() + day)
-    console.log(date)
   }
 
   if(endDate < startDate){
