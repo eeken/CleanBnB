@@ -33,8 +33,10 @@ function ResidenceDetailsPage() {
   const { residence, fetchResidenceDetails } = useContext(ResidenceContext);
   const [startDate, setStartDate] = useState(new Date());
   const [endDate, setEndDate] = useState(new Date());
-  const [fetchedBookedDays , setFetchedBookedDays] = useState([]);
+  const [fetchedBookedDays, setFetchedBookedDays] = useState([]);
   const [featchedAvailableDays, setFeatchedAvailableDays] = useState([]);
+  const [fetchedBookedDaysLoaded, setFetchedBookedDaysLoaded] = useState(false);
+  const [checkDays, setCheckDays] = useState(false);
 
   Date.prototype.getUnixTime = function () {
     return this.getTime() / 1000;
@@ -53,34 +55,41 @@ function ResidenceDetailsPage() {
     return null;
   }
 
-  console.log(residence);
-
-  for (let i = 0; i < residence.bookedDays.length; i++) {
-    let duration = (residence.bookedDays[i].checkOut - residence.bookedDays[i].checkIn) / 86400;
-    for (let day = 0; day <= duration; day++) {
-      let date = new Date(residence.bookedDays[i].checkIn * 1000);
-      date.setDate(date.getDate() + day);
-      setFetchedBookedDays(fetchedBookedDays => [...fetchedBookedDays, date.toString()]);
-    }
-  }
-
-  //console.log(fetchedBookedDays);
-  
-  for (let i = 0; i < residence.availableDays.length; i++) {
-    let duration = (residence.availableDays[i].endDate - residence.availableDays[i].startDate) / 86400;
-    for (let day = 0; day <= duration; day++) {
-      let date = new Date(residence.availableDays[i].startDate * 1000);
-      date.setDate(date.getDate() + day);
-      if (!featchedAvailableDays.includes(date.toString())) {
-        setFeatchedAvailableDays(featchedAvailableDays => [... featchedAvailableDays, date])
+  if (!fetchedBookedDaysLoaded) {
+    let arr = [];
+    for (let i = 0; i < residence.bookedDays.length; i++) {
+      let duration =
+        (residence.bookedDays[i].checkOut - residence.bookedDays[i].checkIn) /
+        86400;
+      for (let day = 0; day <= duration; day++) {
+        let date = new Date(residence.bookedDays[i].checkIn * 1000);
+        date.setDate(date.getDate() + day);
+        arr.push(date.toString())
       }
     }
+    setFetchedBookedDays(arr)
+    setFetchedBookedDaysLoaded(true);
+    setCheckDays(true);
   }
 
-  console.log('booked: ' + fetchedBookedDays);
-  
-  console.log('available : ' + featchedAvailableDays);
-  
+  if (checkDays) {
+    let arr = []
+    for (let i = 0; i < residence.availableDays.length; i++) {
+      let duration =
+        (residence.availableDays[i].endDate -
+          residence.availableDays[i].startDate) /
+        86400;
+      for (let day = 0; day <= duration; day++) {
+        let date = new Date(residence.availableDays[i].startDate * 1000);
+        date.setDate(date.getDate() + day);
+        if (!fetchedBookedDays.includes(date.toString())) {
+          arr.push(date)
+        }
+      }
+    }
+    setFeatchedAvailableDays(arr);
+    setCheckDays(false);
+  }
 
   function confirmPolicies() {
     var checkBox = document.getElementById("policies");
@@ -90,6 +99,10 @@ function ResidenceDetailsPage() {
       //don't allow client to book the residence
     } */
   }
+
+  console.log("Booked" + fetchedBookedDays);
+  console.log("Not booked" + featchedAvailableDays);
+  console.log(residence);
 
   return (
     <div>
