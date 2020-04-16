@@ -19,6 +19,14 @@ function MyPage() {
     return null;
   }
 
+  function showUserItems(item) {
+    if (item === "residences" && user !== null) {
+      return user.residenceList.length
+    }
+    else if (item === "bookings" & user !== null) {
+      return user.bookingList.length
+    }
+  }
   // let name = user.firstName
   //fetchUser()
   return (
@@ -36,7 +44,7 @@ function MyPage() {
           className="container showBookingAndResidenceButton boxes m-2 justify-content-center font-weight-bold"
           onClick={toggleShowBooking}
         >
-          SHOW MY BOOKINGS ({user.bookingList.length})
+          SHOW MY BOOKINGS ({showUserItems("bookings")})
         </Button>
         <Collapse isOpen={showBookingIsOpen}>
           <ShowBooking />
@@ -48,7 +56,7 @@ function MyPage() {
           className="container showBookingAndResidenceButton boxes m-2 justify-content-center font-weight-bold"
           onClick={toggleShowResidence}
         >
-          SHOW MY RESIDENCES ({user.residenceList.length})
+          SHOW MY RESIDENCES ({showUserItems("residences")})
         </Button>
         <Collapse isOpen={showResidenceIsOpen}>
           <ShowResidence />
