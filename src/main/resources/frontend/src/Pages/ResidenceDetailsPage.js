@@ -58,11 +58,10 @@ function ResidenceDetailsPage() {
     let duration = ( residence.availableDays[i].endDate - residence.availableDays[i].startDate ) / 86400;
     console.log(duration);
 
-    for (let day = 0; day < duration; day++) {
-      let date = new Date(residence.availableDays[i].startDate);
+    for (let day = 0; day <= duration; day++) {
+      let date = new Date(residence.availableDays[i].startDate * 1000);
       date.setDate(date.getDate() + day);
       console.log('first' + date);   
-
     }
   }
 
