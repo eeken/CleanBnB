@@ -76,6 +76,7 @@ function LandingPage() {
           onChange={date => setStartDate(date)}
           placeholderText="Select a date"
         />
+        <span className="rightArrow">
           <DatePicker
           className="datepickerstyle"
           selected={endDate}
@@ -83,6 +84,7 @@ function LandingPage() {
           onChange={date => setEndDate(date)}
           placeholderText="Select a date"
             />
+            </span>
           </div>
         </FormGroup>
 

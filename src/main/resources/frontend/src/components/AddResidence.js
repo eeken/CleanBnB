@@ -424,6 +424,7 @@ const AddResidence = () => {
           placeholderText="Select a date"
           className="datepickerstyle"
           />
+          <span className="rightArrow">
           <DatePicker
             selected={endDate}
             minDate={new Date()}
@@ -431,6 +432,7 @@ const AddResidence = () => {
           placeholderText="Select a date"
           className="datepickerstyle"
           />
+          </span>
           <button onClick={addDates} className="mt-2">Add date</button>
           {availableDays.length == 0 ? (<div></div>)
             : (

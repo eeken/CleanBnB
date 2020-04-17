@@ -91,10 +91,10 @@ footer {
   width: 50% !important;
 }
 .react-datepicker-popper{
-  /* transform: none !important; */
-/*   right: 50px !important;
+  transform: none !important;
+  right: 50px !important;
   top: 280px !important;
-  left: 60px !important; */
+  left: 60px !important;
 }
 
 .detailDate .react-datepicker-popper {
@@ -110,6 +110,11 @@ footer {
   top: 1796px !important;
   left: 60px !important;
 }
+
+.rightArrow .react-datepicker__triangle{
+  left: 190px !important;
+}
+
 
 .react-datepicker__input-container{
   width: 100% !important;
