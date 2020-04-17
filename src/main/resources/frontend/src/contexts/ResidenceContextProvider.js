@@ -42,11 +42,13 @@ export default function ResidenceContextProvider(props) {
         for (let day = 0; day <= duration; day++) {
           let date = new Date(res.bookedDays[i].checkIn * 1000);
           date.setDate(date.getDate() + day);
-          bookedTempArr.push(date.toString());
-          console.log("is " + date);
+          bookedTempArr.push(date.toString().slice(0,-46));
+          console.log("is " + date.toString().slice(0,-46));
         }
+        bookedDaysLoaded = true;
       }
-      if (bookedDaysLoaded) {
+      
+      if (bookedDaysLoaded || res.bookedDays != null ) {
         for (let i = 0; i < res.availableDays.length; i++) {
           let duration =
             (res.availableDays[i].endDate - res.availableDays[i].startDate) /
@@ -54,9 +56,9 @@ export default function ResidenceContextProvider(props) {
           for (let day = 0; day <= duration; day++) {
             let date = new Date(res.availableDays[i].startDate * 1000);
             date.setDate(date.getDate() + day);
-            if (!bookedTempArr.includes(date.toString())) {
+            if (!bookedTempArr.includes(date.toString().slice(0,-46))) {
               arr.push(date);
-              console.log("not : " + date);
+              console.log("not : " + date.toString().slice(0,-46));
             }
           }
         }
