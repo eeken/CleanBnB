@@ -104,11 +104,11 @@ const AddResidence = () => {
 
   const addDates = (e) => {
     e.preventDefault()
-    let start = (startDate/1000)
-    let end = (endDate/1000)
-    setAvailableDays((availableDays) => [...availableDays, { startDate: start , endDate: end }]);
+    let start = (startDate / 1000)
+    let end = (endDate / 1000)
+    setAvailableDays((availableDays) => [...availableDays, { startDate: start, endDate: end }]);
     setStartDate(null)
-    setEndDate(null) 
+    setEndDate(null)
   }
 
   //RESIDENCE USER/OWNER
@@ -118,7 +118,7 @@ const AddResidence = () => {
   const registerResidence = async (e) => {
     e.preventDefault();
 
-    if(availableDays.length == 0){
+    if (availableDays.length == 0) {
       return null
     }
 
@@ -164,6 +164,12 @@ const AddResidence = () => {
 
     history.push("/details/residence_id=" + response.id);
   };
+
+/*   const availableDaysChosen = () => {
+    for (let i = 0; i < availableDays.length; {
+      return <p> { availableDays[i].startDate }, { availableDays[i].endDate }</p >
+          }
+} */
 
   return (
     <Form
@@ -426,6 +432,15 @@ const AddResidence = () => {
           className="datepickerstyle"
           />
           <button onClick={addDates} className="mt-2">Add date</button>
+          {availableDays.length == 0 ? (<div></div>)
+            : (
+              <ul className="m-1 ml-5">
+                {availableDays.map(availablePeriod =>
+                  <li>{new Date(availablePeriod.startDate * 1000).toLocaleDateString()} - 
+                  {new Date(availablePeriod.endDate * 1000).toLocaleDateString()}</li>
+                )}
+              </ul>
+            )}
         </div>
       </FormGroup>
       <FormGroup className="container mb-4">
