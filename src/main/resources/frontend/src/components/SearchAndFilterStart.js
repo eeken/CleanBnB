@@ -9,8 +9,8 @@ function LandingPage() {
   const [checkIn, /*setCheckIn*/] = useState(0);
   const [checkOut, /*setCheckOut*/] = useState(0);
   const [numberofguests, setNumberOfGuests] = useState(0);
-  const [startDate, setStartDate] = useState(new Date());
-  const [endDate, setEndDate] = useState(new Date());
+  const [startDate, setStartDate] = useState(null);
+  const [endDate, setEndDate] = useState(null);
 
   const submitSearch = async e => {
     e.preventDefault();
@@ -31,10 +31,6 @@ function LandingPage() {
   for(let day = 0; day < duration; day++) {
     let date = new Date(startDate)
     date.setDate(date.getDate() + day)
-  }
-
-  if(endDate < startDate){
-    alert('Cannot do that');
   }
 
   return (

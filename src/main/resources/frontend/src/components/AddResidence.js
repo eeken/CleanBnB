@@ -210,7 +210,7 @@ const AddResidence = () => {
             type="number"
             className="col-5 dateInput addResidenceInputField"
             id="residenceSize"
-            placeholder="Residence size in m^2"
+            placeholder="Size in m^2"
             onChange={(e) => {
               setResidenceSize(e.target.value);
             }}
@@ -230,7 +230,7 @@ const AddResidence = () => {
             type="number"
             className="col-5 dateInput addResidenceInputField"
             id="maxNumberOfGuests"
-            placeholder="Max amount of guests"
+            placeholder="Amount of guests"
             onChange={(e) => {
               setMaxNumberOfGuests(e.target.value);
             }}

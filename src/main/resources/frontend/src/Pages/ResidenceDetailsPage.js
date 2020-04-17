@@ -40,8 +40,8 @@ function ResidenceDetailsPage() {
 
   const [numberOfGuests, setNumberOfGuests] = useState("1");
   const { residence, fetchResidenceDetails } = useContext(ResidenceContext);
-  const [startDate, setStartDate] = useState(new Date());
-  const [endDate, setEndDate] = useState(new Date());
+  const [startDate, setStartDate] = useState(null);
+  const [endDate, setEndDate] = useState(null);
 
   Date.prototype.getUnixTime = function () {
     return this.getTime() / 1000;

@@ -42,6 +42,10 @@
   font-style: oblique !important;
   margin-bottom: 1.5em;
 }
+
+.addResidenceInputField::placeholder {
+  font-size: 13px;
+}
 .addResidenceInputField:focus {
   border-color: inherit!important;
   -webkit-box-shadow: none!important;
