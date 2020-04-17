@@ -170,8 +170,7 @@ function ResidenceDetailsPage() {
             </div>
             <div>
               <span className="font-weight-bold golden">
-                Maximum amount of Guests:
-              </span>
+                Maximum amount of Guests: </span>
               {residence.maxguests}
             </div>
             <div>
@@ -277,6 +276,7 @@ function ResidenceDetailsPage() {
                 placeholderText="Select a date"
                 className="datepickerstyle detailDate"
                 />
+                <span className="rightArrow">
               <DatePicker
                 selected={endDate}
                 minDate={new Date()}
@@ -285,6 +285,7 @@ function ResidenceDetailsPage() {
                 placeholderText="Select a date"
                 className="datepickerstyle detailDate"
                 />
+                </span>
                 </div>
             </div>
             <hr></hr>
