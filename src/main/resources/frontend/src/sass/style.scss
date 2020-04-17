@@ -84,3 +84,56 @@ footer {
   cursor: pointer;
   user-select: none;
 }
+
+.calendar{
+}
+.react-datepicker-wrapper{
+  width: 50% !important;
+}
+.react-datepicker-popper{
+  transform: none !important;
+  right: 50px !important;
+  top: 280px !important;
+  left: 60px !important;
+}
+
+.detailDate .react-datepicker-popper {
+  transform: none !important;
+  right: 50px !important;
+  top: 1506px !important;
+  left: 60px !important;
+}
+
+.addCalendar .react-datepicker-popper{
+  transform: none !important;
+  right: 50px !important;
+  top: 1796px !important;
+  left: 60px !important;
+}
+
+.rightArrow .react-datepicker__triangle{
+  left: 190px !important;
+}
+
+
+.react-datepicker__input-container{
+  width: 100% !important;
+}
+.datepickerstyle{
+width: 96%;
+border-radius: 5px;
+margin: 0 auto !important ;
+}
+input {
+  border: none;
+  border-bottom: 1px solid #b9986d;
+  color: #3f392f;
+  text-align: center;
+  height: 35px;
+}
+.react-datepicker__day--selected{
+  background-color: #b9986d !important;
+}
+.react-datepicker__tab-loop{
+  display: inline-block;
+}

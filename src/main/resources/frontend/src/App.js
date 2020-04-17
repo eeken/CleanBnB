@@ -26,8 +26,6 @@ import Footer from "./components/Footer";
 import Header from "./components/Header";
 import BookingContextProvider from "./contexts/BookingContextProvider";
 
-
-
 function App() {
   let menu = [
     { label: "Home", route: "/" },
@@ -54,10 +52,10 @@ function App() {
                   <Route path="/details/residence_id=:id?/newbookingOf:residencetitle?&location=:residenceaddresscity?&:residenceaddresscountry?&numberOfGuests=:numberofguests?&checkin=:checkin?&checkout=:checkout?&amountOfNights=:amountofnights?&totalPrice=:totalprice?" component={ConfirmBooking} />
                   <Route path="/details/residence_id=:id?/:residencetitle?&location=:residenceaddresscity?&:residenceaddresscountry?&numberOfGuests=:numberofguests?&checkin=:checkin?&checkout=:checkout?&amountOfNights=:amountofnights?&totalPrice=:totalprice?/completebooking" component={CompleteBooking} />
                   <Route path="/details/residence_id=:id?" component={ResidenceDetailsPage} />
-                  
+
                   <Route exact path="/explore/destination=:destination?&guests=:numberofguests?&checkIn=:checkIn?&checkOut=:checkOut?"
                     key={window.location.pathname} component={Explore} />
-                  <Route  path="*" component={PageNotFound} />
+                  <Route path="*" component={PageNotFound} />
                 </Switch>
               </main>
               <Footer className="footer" />

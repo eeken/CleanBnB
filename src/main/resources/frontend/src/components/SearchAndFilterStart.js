@@ -9,8 +9,8 @@ function LandingPage() {
   const [checkIn, /*setCheckIn*/] = useState(0);
   const [checkOut, /*setCheckOut*/] = useState(0);
   const [numberofguests, setNumberOfGuests] = useState(0);
-  const [startDate, setStartDate] = useState(new Date());
-  const [endDate, setEndDate] = useState(new Date());
+  const [startDate, setStartDate] = useState(null);
+  const [endDate, setEndDate] = useState(null);
 
   const submitSearch = async e => {
     e.preventDefault();
@@ -33,10 +33,6 @@ function LandingPage() {
     date.setDate(date.getDate() + day)
   }
 
-  if(endDate < startDate){
-    alert('Cannot do that');
-  }
-
   return (
     <div className="col-12 col-lg-3 col-md-6">
       <Form
@@ -48,7 +44,7 @@ function LandingPage() {
         </h2>
         <FormGroup align="left">
           <Label for="destination-input" className="mb-1">
-            Destination{" "}
+            Destination
           </Label>
           <Input
             type="text"
@@ -59,26 +55,33 @@ function LandingPage() {
         </FormGroup>
 
         <FormGroup>
-          <div className="row justify-content-around">
-            <Label for="destination-input" className="mb-1">
+          <div className="row justify-content-between m-0">
+            <Label for="destination-input" className="mb-1 ml-1">
               Check-in
             </Label>
-            <Label for="destination-input" className="mb-1">
+            <Label for="destination-input" className="mb-1 mr-1">
               Check-out
             </Label>
           </div>
-        <DatePicker
+
+          <div className="calendar">
+          <DatePicker
+            className="datepickerstyle"
           selected={startDate}
           minDate={new Date()}
           onChange={date => setStartDate(date)}
           placeholderText="Select a date"
         />
-        <DatePicker
+        <span className="rightArrow">
+          <DatePicker
+          className="datepickerstyle"
           selected={endDate}
           minDate={new Date()}
           onChange={date => setEndDate(date)}
           placeholderText="Select a date"
-        />
+            />
+            </span>
+          </div>
         </FormGroup>
 
         <FormGroup>
@@ -91,6 +94,7 @@ function LandingPage() {
             id="guestSelection"
             style={{textAlignLast: 'center'}}
             onChange={e => setNumberOfGuests(e.target.value)}
+            className="mb-4"
           >
             <option value={''}>Number of guests</option>
             <option value={1}>1</option>

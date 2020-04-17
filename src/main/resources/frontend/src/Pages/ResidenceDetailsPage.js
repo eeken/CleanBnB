@@ -40,8 +40,8 @@ function ResidenceDetailsPage() {
 
   const [numberOfGuests, setNumberOfGuests] = useState("1");
   const { residence, fetchResidenceDetails } = useContext(ResidenceContext);
-  const [startDate, setStartDate] = useState(new Date());
-  const [endDate, setEndDate] = useState(new Date());
+  const [startDate, setStartDate] = useState(null);
+  const [endDate, setEndDate] = useState(null);
 
   Date.prototype.getUnixTime = function () {
     return this.getTime() / 1000;
@@ -170,8 +170,7 @@ function ResidenceDetailsPage() {
             </div>
             <div>
               <span className="font-weight-bold golden">
-                Maximum amount of Guests:
-              </span>
+                Maximum amount of Guests: </span>
               {residence.maxguests}
             </div>
             <div>
@@ -261,24 +260,33 @@ function ResidenceDetailsPage() {
         </div>
       ) : (
           <Form onSubmit={bookResidence}>
-            <div className="row m-4">
-              <div className="col-12 residenceDetailsPageAddress golden mr-5">
+            <div className="row m-4 justify-content-center">
+              <div className="col-12 residenceDetailsPageAddress golden mr-5 ml-5">
                 Availability
-          </div>
+              </div>
+              <div className="col-9 golden m-3">
+                Choose your Start Date and End Date:
+              </div>
+              <div className="detailDate">
               <DatePicker
                 selected={startDate}
                 minDate={new Date()}
                 onChange={(date) => setStartDate(date)}
                 includeDates={residence.availableDays}
                 placeholderText="Select a date"
-              />
+                className="datepickerstyle detailDate"
+                />
+                <span className="rightArrow">
               <DatePicker
                 selected={endDate}
                 minDate={new Date()}
                 onChange={(date) => setEndDate(date)}
                 includeDates={residence.availableDays}
                 placeholderText="Select a date"
-              />
+                className="datepickerstyle detailDate"
+                />
+                </span>
+                </div>
             </div>
             <hr></hr>
             <div className="row ml-4 mr-4 justify-content-center">

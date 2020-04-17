@@ -5,33 +5,34 @@ import { BookingContext } from "../contexts/BookingContextProvider";
 
 const ShowResidence = () => {
   const { user } = useContext(UserContext);
-  const { bookings } = useContext(BookingContext);
+  const { booking } = useContext(BookingContext);
 
   const convertDate = (date) => {
     return new Date(date*1000).toLocaleDateString()
   };
 
-  if (bookings) {
+  if (user.bookingList) {
     const list = () => {
       return user.bookingList.map((booking, i) => {
         return (
           <div className="pb-1 pt-1">
             <hr className="m-0 ml-4 mb-2" style={{ "width": "85%" }}></hr>
-            <div className="row text-left pt-2">
-              <div className="col-5 col-lg-2 col-md-3 ">
+            <div className="text-left residenceCard mb-3">
+
+              <div className="col-5">
                 <img
-                  className="cardImage pl-3"
+                  className="cardImage"
                   src={booking.residence.images[0].imagelink}
-                  alt="residence-image"
+                  alt="residence"
                 />
               </div>
-              <div className="col-7">
+              <div className="col-7 ml-2">
                 <p className="golden mb-0 mt-2 pr-2 residenceDetailsTitle">
                   {booking.residence.title}
                 </p>
                 <p className="mb-0 residenceDetailsCommonDetails">
                   <span className="font-weight-bold">Amount of guests: </span>
-                  {booking.amountOfGuests}
+                  {booking.amountOfGuests} guest(s)
                 </p>
                 <p className="mb-0 residenceDetailsCommonDetails">
                   <span className="font-weight-bold">Check in: </span>
@@ -68,9 +69,7 @@ const ShowResidence = () => {
     )
   }
   return (
-    <div className="white">
-      <h1 className="golden"> No bookings yet</h1>
-    </div>
+    <div></div>
   );
 };
 export default ShowResidence;
