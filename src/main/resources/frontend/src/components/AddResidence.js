@@ -410,18 +410,20 @@ const AddResidence = () => {
       </FormGroup>
       <FormGroup className="mb-4">
         <h5>AVAILABLE DATES</h5>
-        <div align="left" style={{"width":"80%"}}>
+        <div align="left" className="addCalendar">
           <DatePicker
             selected={startDate}
             minDate={new Date()}
           onChange={(date) => setStartDate(new Date(date).valueOf())}
           placeholderText="Select a date"
+          className="datepickerstyle"
           />
           <DatePicker
             selected={endDate}
             minDate={new Date()}
           onChange={(date) => setEndDate(new Date(date).valueOf())}
           placeholderText="Select a date"
+          className="datepickerstyle"
           />
           <button onClick={addDates} className="mt-2">Add date</button>
         </div>
