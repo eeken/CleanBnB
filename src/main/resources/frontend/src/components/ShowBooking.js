@@ -5,13 +5,13 @@ import { BookingContext } from "../contexts/BookingContextProvider";
 
 const ShowResidence = () => {
   const { user } = useContext(UserContext);
-  const { bookings } = useContext(BookingContext);
+  const { booking } = useContext(BookingContext);
 
   const convertDate = (date) => {
     return new Date(date*1000).toLocaleDateString()
   };
 
-  if (bookings) {
+  if (user.bookingList) {
     const list = () => {
       return user.bookingList.map((booking, i) => {
         return (
@@ -68,9 +68,7 @@ const ShowResidence = () => {
     )
   }
   return (
-    <div className="white">
-      <h1 className="golden"> No bookings yet</h1>
-    </div>
+    <div></div>
   );
 };
 export default ShowResidence;

@@ -27,9 +27,15 @@ function MyPage() {
 
   function showUserItems(item) {
     if (item === "residences" && user !== null) {
+      if (user.residenceList === null) {
+        return null;
+      }
       return user.residenceList.length
     }
     else if (item === "bookings" & user !== null) {
+      if (user.bookingList === null) {
+        return null;
+      }
       return user.bookingList.length
     }
   }
