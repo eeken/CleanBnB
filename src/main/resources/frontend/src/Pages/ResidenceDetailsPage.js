@@ -268,20 +268,24 @@ function ResidenceDetailsPage() {
               <div className="col-9 golden m-3">
                 Choose your Start Date and End Date:
               </div>
+              <div className="detailDate">
               <DatePicker
                 selected={startDate}
                 minDate={new Date()}
                 onChange={(date) => setStartDate(date)}
                 includeDates={residence.availableDays}
                 placeholderText="Select a date"
-              />
+                className="datepickerstyle detailDate"
+                />
               <DatePicker
                 selected={endDate}
                 minDate={new Date()}
                 onChange={(date) => setEndDate(date)}
                 includeDates={residence.availableDays}
                 placeholderText="Select a date"
-              />
+                className="datepickerstyle detailDate"
+                />
+                </div>
             </div>
             <hr></hr>
             <div className="row ml-4 mr-4 justify-content-center">

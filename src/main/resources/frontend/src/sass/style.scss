@@ -96,6 +96,21 @@ footer {
   top: 280px !important;
   left: 60px !important;
 }
+
+.detailDate .react-datepicker-popper {
+  transform: none !important;
+  right: 50px !important;
+  top: 1506px !important;
+  left: 60px !important;
+}
+
+.addCalendar .react-datepicker-popper{
+  transform: none !important;
+  right: 50px !important;
+  top: 1796px !important;
+  left: 60px !important;
+}
+
 .react-datepicker__input-container{
   width: 100% !important;
 }
