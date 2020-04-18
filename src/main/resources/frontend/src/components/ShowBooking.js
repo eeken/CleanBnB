@@ -1,14 +1,12 @@
 import React, { useContext } from "react";
 import { FormGroup } from "reactstrap";
 import { UserContext } from "../contexts/UserContextProvider";
-import { BookingContext } from "../contexts/BookingContextProvider";
 
 const ShowResidence = () => {
   const { user } = useContext(UserContext);
-  const { booking } = useContext(BookingContext);
 
   const convertDate = (date) => {
-    return new Date(date*1000).toLocaleDateString()
+    return new Date(date * 1000).toLocaleDateString();
   };
 
   if (user.bookingList) {
@@ -16,9 +14,8 @@ const ShowResidence = () => {
       return user.bookingList.map((booking, i) => {
         return (
           <div className="pb-1 pt-1">
-            <hr className="m-0 ml-4 mb-2" style={{ "width": "85%" }}></hr>
+            <hr className="m-0 ml-4 mb-2" style={{ width: "85%" }}></hr>
             <div className="text-left residenceCard mb-3">
-
               <div className="col-5">
                 <img
                   className="cardImage"
@@ -47,14 +44,16 @@ const ShowResidence = () => {
             <div className="col-12 text-left">
               <p className="residenceDetailsCommonDetails m-3">
                 <span className="font-weight-bold">Address: </span>
-                {booking.residence.address.street} {booking.residence.address.streetNumber}, {booking.residence.address.city}, {booking.residence.address.country}
+                {booking.residence.address.street}{" "}
+                {booking.residence.address.streetNumber},{" "}
+                {booking.residence.address.city},{" "}
+                {booking.residence.address.country}
               </p>
             </div>
             <div className="col-12 text-right white r-2 font-weight-bold">
               <p className="golden totalpricetext mb-0 mr-4">
                 Total price:
-                <span className="ml-1 pricetext">
-                  ${booking.totalPrice}</span>
+                <span className="ml-1 pricetext">${booking.totalPrice}</span>
               </p>
             </div>
           </div>
@@ -63,13 +62,13 @@ const ShowResidence = () => {
     };
     return (
       <FormGroup className="white">
-        <p className="darkbrowntext currenttext font-weight-bold pt-4">CURRENT BOOKINGS</p>
+        <p className="darkbrowntext currenttext font-weight-bold pt-4">
+          CURRENT BOOKINGS
+        </p>
         <div className="pb-3">{list()}</div>
       </FormGroup>
-    )
+    );
   }
-  return (
-    <div></div>
-  );
+  return <div></div>;
 };
 export default ShowResidence;

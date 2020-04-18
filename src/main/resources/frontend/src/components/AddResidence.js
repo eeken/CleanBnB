@@ -103,13 +103,16 @@ const AddResidence = () => {
   };
 
   const addDates = (e) => {
-    e.preventDefault()
-    let start = (startDate / 1000)
-    let end = (endDate / 1000)
-    setAvailableDays((availableDays) => [...availableDays, { startDate: start, endDate: end }]);
-    setStartDate(null)
-    setEndDate(null)
-  }
+    e.preventDefault();
+    let start = startDate / 1000;
+    let end = endDate / 1000;
+    setAvailableDays((availableDays) => [
+      ...availableDays,
+      { startDate: start, endDate: end },
+    ]);
+    setStartDate(null);
+    setEndDate(null);
+  };
 
   //RESIDENCE USER/OWNER
   //****    ENTITY: USER   ****
@@ -119,7 +122,7 @@ const AddResidence = () => {
     e.preventDefault();
 
     if (availableDays.length == 0) {
-      return null
+      return null;
     }
 
     let newResidence = {
@@ -164,13 +167,6 @@ const AddResidence = () => {
 
     history.push("/details/residence_id=" + response.id);
   };
-
-/*   const availableDaysChosen = () => {
-    for (let i = 0; i < availableDays.length; {
-      return <p> { availableDays[i].startDate }, { availableDays[i].endDate }</p >
-          }
-} */
-
   return (
     <Form
       id="addResidenceForm"
@@ -179,7 +175,6 @@ const AddResidence = () => {
     >
       <FormGroup className="container mb-4">
         {/* RESIDENCE-DETAILS-FORM */}
-
         <div className=" row dateInputRow justify-content-space-around align-items-center">
           <div className="m-4">
             <h5>Have a location for rent?</h5>
@@ -420,29 +415,39 @@ const AddResidence = () => {
           <DatePicker
             selected={startDate}
             minDate={new Date()}
-          onChange={(date) => setStartDate(new Date(date).valueOf())}
-          placeholderText="Select a date"
-          className="datepickerstyle"
+            onChange={(date) => setStartDate(new Date(date).valueOf())}
+            placeholderText="Select a date"
+            className="datepickerstyle"
           />
           <span className="rightArrow">
-          <DatePicker
-            selected={endDate}
-            minDate={new Date()}
-          onChange={(date) => setEndDate(new Date(date).valueOf())}
-          placeholderText="Select a date"
-          className="datepickerstyle"
-          />
+            <DatePicker
+              selected={endDate}
+              minDate={new Date()}
+              onChange={(date) => setEndDate(new Date(date).valueOf())}
+              placeholderText="Select a date"
+              className="datepickerstyle"
+            />
           </span>
-          <button onClick={addDates} className="mt-2">Add date</button>
-          {availableDays.length == 0 ? (<div></div>)
-            : (
-              <ul className="m-1 ml-5">
-                {availableDays.map(availablePeriod =>
-                  <li>{new Date(availablePeriod.startDate * 1000).toLocaleDateString()} - 
-                  {new Date(availablePeriod.endDate * 1000).toLocaleDateString()}</li>
-                )}
-              </ul>
-            )}
+          <button onClick={addDates} className="mt-2">
+            Add date
+          </button>
+          {availableDays.length == 0 ? (
+            <div></div>
+          ) : (
+            <ul className="m-1 ml-5">
+              {availableDays.map((availablePeriod) => (
+                <li>
+                  {new Date(
+                    availablePeriod.startDate * 1000
+                  ).toLocaleDateString()}{" "}
+                  -
+                  {new Date(
+                    availablePeriod.endDate * 1000
+                  ).toLocaleDateString()}
+                </li>
+              ))}
+            </ul>
+          )}
         </div>
       </FormGroup>
       <FormGroup className="container mb-4">

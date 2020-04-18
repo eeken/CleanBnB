@@ -46,12 +46,11 @@ public interface ResidenceRepo extends CrudRepository<Residence, Integer> {
     @Query( value =
             "SELECT * FROM residences " +
                     " LEFT JOIN available_periods ON residences.id = available_periods.residence_id " +
-                    " LEFT JOIN bookings ON residences.id = bookings.residence_id " +
             "WHERE " +
-                    " :searchDateStart BETWEEN available_periods.start_date AND available_periods.start_date " +
-                    " AND :searchDateEnd BETWEEN available_periods.start_date AND available_periods.start_date " +
-                    " AND bookings.check_in is NULL OR :searchDateStart NOT BETWEEN bookings.check_in AND bookings.check_out " +
-                    " AND bookings.check_out is NULL OR :searchDateEnd NOT BETWEEN bookings.check_in AND bookings.check_out ",
+                    "   :searchDateStart BETWEEN available_periods.start_date AND available_periods.end_date " +
+                    " AND " +
+                    "   :searchDateEnd BETWEEN available_periods.start_date AND available_periods.end_date " +
+                    " GROUP BY residences.id ",
             nativeQuery = true
     )
     public List<Residence> searchForCheckInAndCheckOut(

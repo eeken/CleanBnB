@@ -13,10 +13,12 @@ function ShowResidence() {
       return user.residenceList.map((residence, i) => {
         return (
           <div className="pb-1 pt-1">
-            <hr className="m-0 ml-4 mb-3" style={{ "width": "85%" }}></hr>
+            <hr className="m-0 ml-4 mb-3" style={{ width: "85%" }}></hr>
             <div
               key={i}
-              onClick={() => history.push("/details/residence_id=" + residence.id)}
+              onClick={() =>
+                history.push("/details/residence_id=" + residence.id)
+              }
               className="text-left residenceCard mb-3"
               style={{ cursor: "pointer" }}
             >
@@ -32,12 +34,15 @@ function ShowResidence() {
                   {residence.title}
                 </p>
                 <p className="mb-0 residenceDetailsCommonDetails">
-                  {residence.maxguests} guests - {residence.numberofbeds} beds - {residence.rooms}  room(s)
+                  {residence.maxguests} guests - {residence.numberofbeds} beds -{" "}
+                  {residence.rooms} room(s)
                 </p>
                 <p className="golden totalpricetext mb-0 mt-4 mr-3 font-weight-bold text-right">
                   <span className="ml-1 pricetext">
-                    ${residence.pricepernight}</span> per night
-              </p>
+                    ${residence.pricepernight}
+                  </span>
+                  per night
+                </p>
               </div>
             </div>
           </div>
@@ -46,10 +51,12 @@ function ShowResidence() {
     };
     return (
       <FormGroup className="white">
-        <p className="darkbrowntext currenttext font-weight-bold pt-4">MY RESIDENCES</p>
+        <p className="darkbrowntext currenttext font-weight-bold pt-4">
+          MY RESIDENCES
+        </p>
         <div className="pb-3">{list()}</div>
       </FormGroup>
-    )
+    );
   }
   return <div></div>;
 }

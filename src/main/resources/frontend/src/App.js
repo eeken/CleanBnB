@@ -1,6 +1,10 @@
 //REACT
 import React from "react";
-import { BrowserRouter as Router, Switch, Route, Redirect } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+} from "react-router-dom";
 
 // CSS/SASS
 import "./sass/style.scss";
@@ -24,7 +28,6 @@ import UserContextProvider from "./contexts/UserContextProvider";
 // COMPONENTS
 import Footer from "./components/Footer";
 import Header from "./components/Header";
-import BookingContextProvider from "./contexts/BookingContextProvider";
 
 function App() {
   let menu = [
@@ -37,30 +40,45 @@ function App() {
     <div className="App">
       <UserContextProvider>
         <ResidenceContextProvider>
-          <BookingContextProvider>
-            <Router>
-              <Header menuData={menu} />
-              <main className="main">
-                <Switch>
-                  <Route exact path="/" component={LandingPage} />
-                  <Route exact path="/explore" component={Explore} />
-                  <Route exact path="/register" component={Register} />
-                  <Route exact path="/about" component={About} />
-                  <Route exact path="/account-login" component={Login} />
-                  <Route exact path="/details/residence_id=:id?/login" component={Login} />
-                  <Route exact path="/my-page" component={MyPage} />
-                  <Route path="/details/residence_id=:id?/newbookingOf:residencetitle?&location=:residenceaddresscity?&:residenceaddresscountry?&numberOfGuests=:numberofguests?&checkin=:checkin?&checkout=:checkout?&amountOfNights=:amountofnights?&totalPrice=:totalprice?" component={ConfirmBooking} />
-                  <Route path="/details/residence_id=:id?/:residencetitle?&location=:residenceaddresscity?&:residenceaddresscountry?&numberOfGuests=:numberofguests?&checkin=:checkin?&checkout=:checkout?&amountOfNights=:amountofnights?&totalPrice=:totalprice?/completebooking" component={CompleteBooking} />
-                  <Route path="/details/residence_id=:id?" component={ResidenceDetailsPage} />
+          <Router>
+            <Header menuData={menu} />
+            <main className="main">
+              <Switch>
+                <Route exact path="/" component={LandingPage} />
+                <Route exact path="/explore" component={Explore} />
+                <Route exact path="/register" component={Register} />
+                <Route exact path="/about" component={About} />
+                <Route exact path="/account-login" component={Login} />
+                <Route
+                  exact
+                  path="/details/residence_id=:id?/login"
+                  component={Login}
+                />
+                <Route exact path="/my-page" component={MyPage} />
+                <Route
+                  path="/details/residence_id=:id?/newbookingOf:residencetitle?&location=:residenceaddresscity?&:residenceaddresscountry?&numberOfGuests=:numberofguests?&checkin=:checkin?&checkout=:checkout?&amountOfNights=:amountofnights?&totalPrice=:totalprice?"
+                  component={ConfirmBooking}
+                />
+                <Route
+                  path="/details/residence_id=:id?/:residencetitle?&location=:residenceaddresscity?&:residenceaddresscountry?&numberOfGuests=:numberofguests?&checkin=:checkin?&checkout=:checkout?&amountOfNights=:amountofnights?&totalPrice=:totalprice?/completebooking"
+                  component={CompleteBooking}
+                />
+                <Route
+                  path="/details/residence_id=:id?"
+                  component={ResidenceDetailsPage}
+                />
 
-                  <Route exact path="/explore/destination=:destination?&guests=:numberofguests?&checkIn=:checkIn?&checkOut=:checkOut?"
-                    key={window.location.pathname} component={Explore} />
-                  <Route path="*" component={PageNotFound} />
-                </Switch>
-              </main>
-              <Footer className="footer" />
-            </Router>
-          </BookingContextProvider>
+                <Route
+                  exact
+                  path="/explore/destination=:destination?&guests=:numberofguests?&checkIn=:checkIn?&checkOut=:checkOut?"
+                  key={window.location.pathname}
+                  component={Explore}
+                />
+                <Route path="*" component={PageNotFound} />
+              </Switch>
+            </main>
+            <Footer className="footer" />
+          </Router>
         </ResidenceContextProvider>
       </UserContextProvider>
     </div>

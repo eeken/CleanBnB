@@ -15,8 +15,8 @@ export default function Header(props) {
   const logout = () => {
     fetch("/logout");
     setUser(null);
-    if (location.pathname === '/my-page') {
-      history.push('/')
+    if (location.pathname === "/my-page") {
+      history.push("/");
     }
   };
   const login = () => {
@@ -32,8 +32,8 @@ export default function Header(props) {
   };
 
   function closeNavbar() {
-    setIsOpen(false)
-  };
+    setIsOpen(false);
+  }
 
   return (
     <header>
@@ -59,7 +59,12 @@ export default function Header(props) {
           <Nav className="mr-auto" navbar>
             {props.menuData.map((item) => (
               <li className="nav-item" key={item.route}>
-                <NavLink className="nav-link" exact to={item.route} onClick={closeNavbar}>
+                <NavLink
+                  className="nav-link"
+                  exact
+                  to={item.route}
+                  onClick={closeNavbar}
+                >
                   <span className="golden">{item.label}</span>
                 </NavLink>
               </li>
@@ -67,11 +72,15 @@ export default function Header(props) {
             <span className="nav-item" style={{ cursor: "pointer" }}>
               {user ? (
                 <a className="nav-link" onClick={goToAccount}>
-                  <p className="golden" onClick={closeNavbar}> My Page </p>
+                  <p className="golden" onClick={closeNavbar}>
+                    My Page
+                  </p>
                 </a>
               ) : (
                 <a className="nav-link" onClick={goToRegisterAccount}>
-                  <p className="golden" onClick={closeNavbar}> Register </p>
+                  <p className="golden" onClick={closeNavbar}>
+                    Register
+                  </p>
                 </a>
               )}
             </span>
