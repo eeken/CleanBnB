@@ -36,11 +36,9 @@ function ResidenceCard() {
                 {residence.maxguests} guests - {residence.numberofbeds} beds -{" "}
                 {residence.rooms} rooms
               </p>
-                <p className="golden mb-0 residencePriceDetails">
-                  ${residence.pricepernight}
-                  <span className="residenceDetailsCommonDetails">
-                    per night
-                </span>
+              <p className="golden mb-0 residencePriceDetails">
+                ${residence.pricepernight}
+                <span className="residenceDetailsCommonDetails">per night</span>
               </p>
             </div>
           </div>

@@ -10,6 +10,7 @@ export default function Explore() {
   const { checkIn } = useParams();
   const { checkOut } = useParams();
 
+  // Attempt to prevent users from crashing the page with non integer inputs
   const params = {
     destination: destination,
     numberofguests: parseInt(numberofguests ? numberofguests : 0),
