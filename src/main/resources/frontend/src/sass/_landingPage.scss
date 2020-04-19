@@ -1,0 +1,25 @@
+.landingPageMain {
+  min-height: 80vh;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+.searchAndFilterForm {
+  border-radius: 5px;
+  padding: 30px;
+  font-weight: bold;
+}
+.searchAndFilterFormTitle {
+  font-size: 1.8em;
+}
+.dateInputRow {
+  justify-content: space-around;
+}
+.dateInput {
+  font-size: 0.1em;
+}
+.searchButton {
+  width: 100%;
+  font-weight: bold;
+}

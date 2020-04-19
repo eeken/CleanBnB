@@ -1,0 +1,135 @@
+.residenceCard {
+  height: 16vh;
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+.residenceCard:hover{
+  background-color: rgba(185, 152, 109, 0.3);
+}
+.cardImage {
+  display: flex;
+  padding: 0;
+  margin: 0;
+  height: 15vh;
+  width: 20vh;
+  border-radius: 5px;
+  object-fit: cover;
+  align-self: flex-start;
+}
+
+.residenceDetailsTitle {
+  font-size: 0.95rem;
+  font-weight: 1000;
+  line-height: 1.1rem;
+  margin-top: 1.5rem;
+}
+
+.residenceDetailsCommonDetails {
+  font-size: 0.75rem;
+  font-weight: 0;
+  line-height: 0.9rem;
+  margin-top: 0.2rem;
+}
+
+.detailtext {
+  display: inline-block;
+  font-size: 0.75rem;
+}
+
+.residencePriceDetails {
+  font-size: 0.95rem;
+  font-weight: 1000;
+}
+
+.perNightText {
+  font-size: 1em;
+  flex: 1 1 auto;
+}
+
+
+.whiteBackground {
+  background-color: white !important;
+}
+
+.residenceDetailsPageTitle{
+  display: flex;
+  justify-content: center;
+  margin: 2.5vh;
+  font-size: 1.75em;
+  font-weight: bold;
+  line-height: 30px;
+}
+
+.residenceDetailsPageAddress {
+  font-size: 1.3rem;
+  font-weight: bold;
+}
+
+.residenceSlider{
+  width: auto;
+}
+.sliderContainer{
+  display: flex;
+  height: 50vh;
+}
+
+.bookingButton {
+  width: 100%;
+  background-color: #B9986D !important;
+  border: none !important;
+  font-weight: bold !important;
+}
+
+.priceTag {
+margin-left: auto;
+margin-right: 0;
+}
+
+.perNight{
+  font-size: 0.75em;
+}
+
+/* unvisited link */
+a:link {
+  color:#B9986D;
+}
+
+/* visited link */
+a:visited {
+  color:rgb(66, 43, 14);
+}
+
+/* mouse over link */
+a:hover {
+  color: rgb(121, 93, 57);
+}
+
+/* selected link */
+a:active {
+  color:rgb(0, 0, 0);
+}
+
+.policiesLink{
+  color:#B9986D;
+  text-decoration: underline;
+}
+
+.carousel {
+background-color:#B9986D;
+align-content: space-between;
+text-align: center;
+}
+
+.carousel-item > img {
+height:50vh;
+}
+
+.carousel-inner .item img {
+object-fit: contain;
+align-content: center;
+}
+
+#residence_description{
+  white-space: pre-line;
+}

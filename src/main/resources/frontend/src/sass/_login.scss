@@ -1,0 +1,30 @@
+.loginMain {
+  min-height: 85vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.loginForm {
+  border-radius: 5px;
+  padding: 30px;
+  font-weight: bold;
+}
+#email-input {
+  border-radius: 5px;
+}
+
+.loginFormTitle {
+  font-size: 1.8em;
+}
+.loginSubmitButton {
+  font-weight: Bold;
+  width: 100%;
+}
+.loginSubmitButton {
+  width: 100%;
+}
+.loginRegisterText {
+  font-style: italic;
+  font-size: 12px;
+  margin-top: 3px;
+}
